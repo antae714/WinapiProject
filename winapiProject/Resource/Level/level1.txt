@@ -1,0 +1,14 @@
+Transform,Texture{Bitmap:./Resource/Image/./Resource/Image/background.bmp,Width:900,Height:600}
+Transform{X:-100,Y:-100},Texture{Bitmap:./Resource/Image/bitmap1.bmp,Width:25,Height:25},Script{TestScript2}
+Transform{X:0,Y:-100},Texture{Bitmap:./Resource/Image/bitmap1.bmp,Width:25,Height:25},Script{TestScript2}
+Transform{X:100,Y:-100},Texture{Bitmap:./Resource/Image/bitmap1.bmp,Width:25,Height:25},Script{TestScript2}
+Transform{X:-100,Y:0},Texture{Bitmap:./Resource/Image/bitmap1.bmp,Width:25,Height:25},Script{TestScript2}
+Transform{X:0,Y:0},Texture{Bitmap:./Resource/Image/bitmap1.bmp,Width:25,Height:25},Script{TestScript2}
+Transform{X:100,Y:0},Texture{Bitmap:./Resource/Image/bitmap1.bmp,Width:25,Height:25},Script{TestScript2}
+Transform{X:-100,Y:100},Texture{Bitmap:./Resource/Image/bitmap1.bmp,Width:25,Height:25},Script{TestScript2}
+Transform{X:0,Y:100},Texture{Bitmap:./Resource/Image/bitmap1.bmp,Width:25,Height:25},Script{TestScript2}
+Transform{X:100,Y:100},Texture{Bitmap:./Resource/Image/bitmap1.bmp,Width:25,Height:25},Script{TestScript2}
+Transform{X:-100,Y:200},Texture{Bitmap:./Resource/Image/bitmap1.bmp,Width:25,Height:25},Script{TestScript2}
+Transform{X:0,Y:200},Texture{Bitmap:./Resource/Image/bitmap1.bmp,Width:25,Height:25},Script{TestScript2}
+Transform{X:100,Y:200},Texture{Bitmap:./Resource/Image/bitmap1.bmp,Width:25,Height:25},Script{TestScript2}
+Transform{X:-400},Texture{Bitmap:./Resource/Image/character.bmp,Width:100,Height:150},Script{TestScript}

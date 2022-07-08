@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\Manager">
+      <UniqueIdentifier>{07db61c6-09d9-4bcb-a87c-348e5ca287b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Manager">
+      <UniqueIdentifier>{e8fc9ca4-ccd9-4cb8-8a18-0e2471ced5e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\BaseData">
+      <UniqueIdentifier>{f4928f2e-f5f9-4e52-890a-176299042720}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\BaseData">
+      <UniqueIdentifier>{44f83030-6367-46df-a168-792b48c25e28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\GameData">
+      <UniqueIdentifier>{51afb0b4-f60e-4070-8abb-00c7d775d261}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\GameData">
+      <UniqueIdentifier>{ddf94b83-a58b-42cd-8c9b-dc2c1d0f20e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Component">
+      <UniqueIdentifier>{17e2e524-3894-4c6d-b2d5-b7f467851f04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Component">
+      <UniqueIdentifier>{03a2ca85-5491-478d-9b0e-23ee6405e12c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Event">
+      <UniqueIdentifier>{299ed5f5-1b6d-4d8d-add5-6b1c364b49a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Event">
+      <UniqueIdentifier>{09f8cdbe-2bca-49f0-89c7-b93a081bee0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Math">
+      <UniqueIdentifier>{3c04a3ec-ff0f-4f34-b689-67253ed588fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Enum">
+      <UniqueIdentifier>{1e87ffc0-13da-43b8-88ac-b4d89e55763f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Math">
+      <UniqueIdentifier>{3bfe616a-b897-4195-b0e3-e10b3dee41e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Enum">
+      <UniqueIdentifier>{e69fca2e-6751-4f08-8a5c-3bf89c0e7910}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Command">
+      <UniqueIdentifier>{8f891f7a-32b1-4f14-888e-1b68e86695eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Command">
+      <UniqueIdentifier>{2b0e371b-3ff4-401b-a1a7-8e53f1d687f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Script">
+      <UniqueIdentifier>{1197f6a2-0ad8-4889-8bbe-84d4e5cf0289}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Script">
+      <UniqueIdentifier>{fff08bca-ea9b-4f20-9c9f-d8fc55d0d07b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Level">
+      <UniqueIdentifier>{f0fb3aaf-48ca-4501-9349-f94a92069379}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Level">
+      <UniqueIdentifier>{d148e5db-e332-45ad-a199-e71e222efe20}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SingletonCls.h">
+      <Filter>헤더 파일\BaseData</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>헤더 파일\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="GameData.h">
+      <Filter>헤더 파일\GameData</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowMsg.h">
+      <Filter>헤더 파일\GameData</Filter>
+    </ClInclude>
+    <ClInclude Include="Main.h">
+      <Filter>헤더 파일\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="AllObject.h">
+      <Filter>헤더 파일\GameData</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>헤더 파일\BaseData</Filter>
+    </ClInclude>
+    <ClInclude Include="UpdateManager.h">
+      <Filter>헤더 파일\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>헤더 파일\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="EventStruct.h">
+      <Filter>헤더 파일\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="EventMap.h">
+      <Filter>헤더 파일\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Cls.h">
+      <Filter>헤더 파일\BaseData</Filter>
+    </ClInclude>
+    <ClInclude Include="EventList.h">
+      <Filter>헤더 파일\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="OnTriggerEvent.h">
+      <Filter>헤더 파일\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>헤더 파일\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureComponent.h">
+      <Filter>헤더 파일\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="CompanentManager.h">
+      <Filter>헤더 파일\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="E_Component.h">
+      <Filter>헤더 파일\Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="Math.h">
+      <Filter>헤더 파일\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix3x3.h">
+      <Filter>헤더 파일\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Rect.h">
+      <Filter>헤더 파일\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>헤더 파일\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3.h">
+      <Filter>헤더 파일\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformComponent.h">
+      <Filter>헤더 파일\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="EventStruct2.h">
+      <Filter>헤더 파일\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="EventList1.h">
+      <Filter>헤더 파일\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenPoint.h">
+      <Filter>헤더 파일\BaseData</Filter>
+    </ClInclude>
+    <ClInclude Include="Macro.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="InputComponenet.h">
+      <Filter>헤더 파일\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="UpdateCommand.h">
+      <Filter>헤더 파일\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="InputCommand.h">
+      <Filter>헤더 파일\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="Command.h">
+      <Filter>헤더 파일\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="Script.h">
+      <Filter>헤더 파일\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScript.h">
+      <Filter>헤더 파일\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScript2.h">
+      <Filter>헤더 파일\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelData.h">
+      <Filter>헤더 파일\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelLoader.h">
+      <Filter>헤더 파일\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>헤더 파일\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScript3.h">
+      <Filter>헤더 파일\Script</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AllObject.cpp">
+      <Filter>소스 파일\GameData</Filter>
+    </ClCompile>
+    <ClCompile Include="GameData.cpp">
+      <Filter>소스 파일\GameData</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowMsg.cpp">
+      <Filter>소스 파일\GameData</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>소스 파일\BaseData</Filter>
+    </ClCompile>
+    <ClCompile Include="SingletonCls.cpp">
+      <Filter>소스 파일\BaseData</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>소스 파일\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>소스 파일\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="UpdateManager.cpp">
+      <Filter>소스 파일\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>소스 파일\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="EventStruct.cpp">
+      <Filter>소스 파일\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="EventMap.cpp">
+      <Filter>소스 파일\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="Cls.cpp">
+      <Filter>소스 파일\BaseData</Filter>
+    </ClCompile>
+    <ClCompile Include="EventList.cpp">
+      <Filter>소스 파일\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="OnTriggerEvent.cpp">
+      <Filter>소스 파일\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>소스 파일\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureComponent.cpp">
+      <Filter>소스 파일\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="CompanentManager.cpp">
+      <Filter>소스 파일\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="E_Component.cpp">
+      <Filter>소스 파일\Enum</Filter>
+    </ClCompile>
+    <ClCompile Include="Math.cpp">
+      <Filter>소스 파일\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix3x3.cpp">
+      <Filter>소스 파일\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Rect.cpp">
+      <Filter>소스 파일\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2.cpp">
+      <Filter>소스 파일\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3.cpp">
+      <Filter>소스 파일\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformComponent.cpp">
+      <Filter>소스 파일\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="EventStruct2.cpp">
+      <Filter>소스 파일\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="EventList1.cpp">
+      <Filter>소스 파일\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenPoint.cpp">
+      <Filter>소스 파일\BaseData</Filter>
+    </ClCompile>
+    <ClCompile Include="InputComponenet.cpp">
+      <Filter>소스 파일\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Command.cpp">
+      <Filter>소스 파일\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="InputCommand.cpp">
+      <Filter>소스 파일\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="UpdateCommand.cpp">
+      <Filter>소스 파일\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="TestScript2.cpp">
+      <Filter>소스 파일\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="TestScript.cpp">
+      <Filter>소스 파일\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="Script.cpp">
+      <Filter>소스 파일\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelData.cpp">
+      <Filter>소스 파일\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>소스 파일\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="TestScript3.cpp">
+      <Filter>소스 파일\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelLoader.cpp">
+      <Filter>소스 파일\Level</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
