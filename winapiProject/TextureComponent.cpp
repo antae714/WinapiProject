@@ -5,6 +5,7 @@
 #include "E_Component.h"
 #include "TransformComponent.h"
 #include "WindowMsg.h"
+#include "BitmapManager.h"
 
 TextureComponent::TextureComponent()
 {
@@ -19,7 +20,7 @@ TextureComponent::TextureComponent(const string& p_str, const Rect& p_rect , int
 
 TextureComponent::~TextureComponent()
 {
-	DeleteBitmap();
+	//DeleteBitmap();
 	delete rect;
 } 
 
@@ -60,21 +61,24 @@ int TextureComponent::getySize()
 
 void TextureComponent::setbitmap(string p_str,int p_x,int p_y)
 {
-	DeleteBitmap();
+	//DeleteBitmap();
 	xSize = p_x;
 	ySize = p_y;
-	bitmap = (HBITMAP)LoadImage(NULL, p_str.c_str(), IMAGE_BITMAP, xSize, ySize, LR_LOADFROMFILE | LR_CREATEDIBSECTION);
+	_ASSERT(enumBitmap::conversion(p_str) < E_Bitmap::MAX);
+	if(enumBitmap::conversion(p_str) < E_Bitmap::MAX)
+		bitmap = BitmapManager::getInstance()->getBitmap(enumBitmap::conversion(p_str), p_x, p_y);
+	//bitmap = (HBITMAP)LoadImage(NULL, p_str.c_str(), IMAGE_BITMAP, xSize, ySize, LR_LOADFROMFILE | LR_CREATEDIBSECTION);
 }
 
 void TextureComponent::setrect(const Rect& p_rect)
 {
 	*rect = p_rect;
 }
-
-void TextureComponent::DeleteBitmap()
-{
-	if (bitmap) {
-		DeleteObject(bitmap);
-		bitmap = nullptr;
-	}
-}
+//
+//void TextureComponent::DeleteBitmap()
+//{
+//	if (bitmap) {
+//		DeleteObject(bitmap);
+//		bitmap = nullptr;
+//	}
+//}

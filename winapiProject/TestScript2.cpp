@@ -17,11 +17,11 @@ void TestScript2::play()
 {
 	if (isClicked) {
 		isClicked = false;
-		dynamic_cast<TextureComponent*>(owner->getcomponent(E_Component::TextureComponent))->setbitmap("./Resource/Image/Starbutton.bmp", 20, 20);
+		dynamic_cast<TextureComponent*>(owner->getcomponent(E_Component::TextureComponent))->setbitmap("Starbutton", 20, 20);
 	}
 	else {
 		isClicked = true;
-		dynamic_cast<TextureComponent*>(owner->getcomponent(E_Component::TextureComponent))->setbitmap("./Resource/Image/Starbutton_Selected.bmp", 20, 20);
+		dynamic_cast<TextureComponent*>(owner->getcomponent(E_Component::TextureComponent))->setbitmap("Starbutton_Selected", 20, 20);
 	}
 
 	return;

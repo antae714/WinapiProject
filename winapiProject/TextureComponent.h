@@ -32,6 +32,6 @@ public:
 	void setbitmap	(string, int, int);
 	void setrect	(const Rect&);
 private:
-	void DeleteBitmap();
+	//void DeleteBitmap();
 };
 

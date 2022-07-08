@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AllObject.h" />
+    <ClInclude Include="BitmapManager.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Cls.h" />
     <ClInclude Include="Command.h" />
@@ -150,6 +151,7 @@
     <ClInclude Include="EventMap.h" />
     <ClInclude Include="EventStruct.h" />
     <ClInclude Include="EventStruct2.h" />
+    <ClInclude Include="E_Bitmap.h" />
     <ClInclude Include="E_Component.h" />
     <ClInclude Include="E_Objtype.h" />
     <ClInclude Include="GameData.h" />
@@ -182,6 +184,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AllObject.cpp" />
+    <ClCompile Include="BitmapManager.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Cls.cpp" />
     <ClCompile Include="Command.cpp" />
@@ -192,6 +195,7 @@
     <ClCompile Include="EventMap.cpp" />
     <ClCompile Include="EventStruct.cpp" />
     <ClCompile Include="EventStruct2.cpp" />
+    <ClCompile Include="E_Bitmap.cpp" />
     <ClCompile Include="E_Component.cpp" />
     <ClCompile Include="E_Objtype.cpp" />
     <ClCompile Include="GameData.cpp" />
