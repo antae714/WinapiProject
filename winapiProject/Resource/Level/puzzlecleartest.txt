@@ -1,0 +1,1 @@
+Transform,Texture{Bitmap:./Resource/Image/puzzlecleartestimg.bmp,Width:200,Height:136}
