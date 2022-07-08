@@ -43,8 +43,8 @@ void Camera::beforeRender()
 	hOldBmp = (HBITMAP)SelectObject(MemDC, beforeBuffer);
 	PatBlt(MemDC, 0, 0, gameData->getwindowX(), gameData->getwindowY(), WHITENESS);
 
-	for (list<GameObject*>::iterator iter = allObject->objListbegin(); iter != allObject->objListend(); ++iter) {
-		const GameObject* obj = *iter;
+	for (ObjIter iter = allObject->allObjbegin(); iter != allObject->allObjend(); ++iter) {
+		const GameObject* obj = iter.operator*().second;
 		Component* temp = obj->getcomponent(E_Component::TextureComponent);
 		if (temp) {
 			TextureComponent* texture = dynamic_cast<TextureComponent*>(temp);

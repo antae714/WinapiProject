@@ -5,9 +5,9 @@
 void UpdateManager::Updating()
 {
 	AllObject* allObject = AllObject::getInstance();
-	for (list<GameObject*>::iterator iter = allObject->objListbegin(); iter != allObject->objListend(); ++iter)
+	for (ObjIter iter = allObject->allObjbegin(); iter != allObject->allObjend(); ++iter)
 	{
-		GameObject* obj = *iter;
+		GameObject* obj = iter.operator*().second;
 		obj->Update();
 	}
 }

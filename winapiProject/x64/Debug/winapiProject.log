@@ -1,16 +1,9 @@
-﻿  AllObject.cpp
-  Camera.cpp
-D:\gamemake\visualStudio2022\winapiProject\winapiProject\Camera.cpp(144,77): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\gamemake\visualStudio2022\winapiProject\winapiProject\Camera.cpp(148,66): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\gamemake\visualStudio2022\winapiProject\winapiProject\Camera.cpp(152,35): warning C4267: '인수': 'size_t'에서 'const int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  InputManager.cpp
+﻿  InputManager.cpp
   LevelData.cpp
-  LevelLoader.cpp
-D:\gamemake\visualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(178,43): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\gamemake\visualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(178,40): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Main.cpp
-  TestScript2.cpp
-  TestScript3.cpp
   UpdateManager.cpp
+  Vector2.cpp
+D:\gamemake\visualStudio2022\winapiProject\winapiProject\Vector2.cpp(86,20): warning C4244: '=': 'const float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\gamemake\visualStudio2022\winapiProject\winapiProject\Vector2.cpp(87,20): warning C4244: '=': 'const float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  WindowMsg.cpp
   코드를 생성하고 있습니다...
   winapiProject.vcxproj -> D:\gamemake\visualStudio2022\winapiProject\x64\Debug\winapiProject.exe

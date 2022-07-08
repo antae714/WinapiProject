@@ -7,10 +7,11 @@
 
 using namespace std;
 class GameObject;
+enum class E_Objtype;
 class LevelLoader
 {
 public:
-	static void LoadLevel(string);
+	static void LoadLevel(E_Objtype);
 
 private:
 	static void Parse(vector<string>*, map<string, map<string, string>>*, string);

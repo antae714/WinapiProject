@@ -11,11 +11,12 @@
 #include "TestScript2.h"
 #include "TestScript3.h"
 #include "InputComponenet.h"
+#include "E_Objtype.h"
 
-void LevelLoader::LoadLevel(string p_file)
+void LevelLoader::LoadLevel(E_Objtype p_file)
 {
     ifstream file;
-    file.open(p_file);
+    file.open(enumObj::toFile(p_file));
 
     if (file.fail())
     {

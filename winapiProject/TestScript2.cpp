@@ -6,6 +6,7 @@
 #include "TextureComponent.h"
 #include "AllObject.h"
 #include "LevelLoader.h"
+#include "E_Objtype.h"
 
 TestScript2::TestScript2()
 {
@@ -27,14 +28,14 @@ void TestScript2::play()
 
 	// 정답 판정이 필요할 경우
 	AllObject* allObject = AllObject::getInstance();
-	pair<ObjGroup::iterator, ObjGroup::iterator> temp = allObject->getobjGroup("./Resource/Level/testPuzzle.txt");
+	pair<ObjIter, ObjIter> temp = allObject->getallObj(E_Objtype::testPuzzel);
 
 	int count = 0;
 	bool stagesw[81] = { 0, };
 	
-	for (ObjGroup::iterator iter = temp.first; iter != temp.second; ++iter)
+	for (ObjIter iter = temp.first; iter != temp.second; ++iter)
 	{
-		GameObject* obj = *iter.operator*().second;
+		GameObject* obj = iter.operator*().second;
 		TestScript2* temp = dynamic_cast<TestScript2*>(obj->getscriptptr());
 		if (!temp) continue;
 

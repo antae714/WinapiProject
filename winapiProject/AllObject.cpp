@@ -11,45 +11,39 @@ AllObject::~AllObject()
     clear();
 }
 
-list<GameObject*>::iterator AllObject::objListbegin()
+ObjIter AllObject::allObjbegin()
 {
-    return objList.begin();
+    return allObj.begin();
 }
 
-list<GameObject*>::iterator AllObject::objListend()
+ObjIter AllObject::allObjend()
 {
-    return objList.end();
+    return allObj.end();
 }
 
-pair<ObjGroup::iterator, ObjGroup::iterator> AllObject::getobjGroup(string p_str)
+pair<ObjIter, ObjIter> AllObject::getallObj(const E_Objtype& p_key)
 {
-    return  objGroup.equal_range(p_str);
+    return allObj.equal_range(p_key);
 }
 
-void AllObject::push(GameObject* p_obj)
+void AllObject::push(const E_Objtype& p_key, GameObject* p_obj)
 {
-    objList.push_back(p_obj);
-}
-void AllObject::push(string p_group, GameObject* p_obj) 
-{
-    objList.push_back(p_obj);
-    objGroup.emplace(p_group, --objList.end());
+    allObj.emplace(p_key, p_obj);
 }
 
 void AllObject::clear()
 {
-    for (GameObject* item : objList) {
-        delete item;
+    for (pair< E_Objtype, GameObject*> item : allObj) {
+        delete item.second;
     }
-    objList.clear();
+    allObj.clear();
 }
 
-void AllObject::deleteGroup(string p_str)
+void AllObject::deleteGroup(const E_Objtype& p_key)
 {
-    pair<ObjGroup::iterator, ObjGroup::iterator> tempiter = objGroup.equal_range(p_str);
-    for (ObjGroup::iterator iter = tempiter.first; iter != tempiter.second; ++iter) {
-        delete *iter.operator*().second;
-        objList.erase(iter.operator*().second);
+    pair<ObjIter, ObjIter> tempiter = allObj.equal_range(p_key);
+    for (ObjIter iter = tempiter.first; iter != tempiter.second; ++iter) {
+        delete iter.operator*().second;
     }
-    objGroup.erase(tempiter.first, tempiter.second);
+    allObj.erase(tempiter.first, tempiter.second);
 }

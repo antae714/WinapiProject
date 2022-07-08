@@ -151,6 +151,7 @@
     <ClInclude Include="EventStruct.h" />
     <ClInclude Include="EventStruct2.h" />
     <ClInclude Include="E_Component.h" />
+    <ClInclude Include="E_Objtype.h" />
     <ClInclude Include="GameData.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="InputCommand.h" />
@@ -192,6 +193,7 @@
     <ClCompile Include="EventStruct.cpp" />
     <ClCompile Include="EventStruct2.cpp" />
     <ClCompile Include="E_Component.cpp" />
+    <ClCompile Include="E_Objtype.cpp" />
     <ClCompile Include="GameData.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="InputCommand.cpp" />

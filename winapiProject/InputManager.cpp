@@ -11,9 +11,9 @@ void InputManager::InputLogic()
 	if (windowMsg->getiMessage() != WM_LBUTTONDOWN) return;
 	windowMsg->settingMsg(windowMsg->gethWnd(), 0, 0, 0);
 	AllObject* allObject = AllObject::getInstance();
-	for (list<GameObject*>::iterator iter = allObject->objListbegin(); iter != allObject->objListend(); ++iter)
+	for (ObjIter iter = allObject->allObjbegin(); iter != allObject->allObjend(); ++iter)
 	{
-		GameObject* obj = *iter;
+		GameObject* obj = iter.operator*().second;
 		InputComponenet* tempcom2 = dynamic_cast<InputComponenet*>(obj->getcomponent(E_Component::InputComponenet));
 		if (!tempcom2) continue;
 		if (tempcom2->isClicked()) {

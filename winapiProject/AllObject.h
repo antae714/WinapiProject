@@ -9,27 +9,24 @@
 using namespace std;
 
 class GameObject;
-typedef list<GameObject*>::iterator ObjIter;
-typedef multimap<string, ObjIter> ObjGroup;
+enum class E_Objtype;
+typedef multimap< E_Objtype, GameObject*>::iterator ObjIter;
 class AllObject : public SingletonCls<AllObject>
 {
 private:
-	list<GameObject*> objList;
-
-	ObjGroup objGroup;
+	multimap< E_Objtype, GameObject*> allObj;
 public:
 	AllObject();
 	virtual ~AllObject();
 public:
-	list<GameObject*>::iterator objListbegin();
-	list<GameObject*>::iterator objListend();
 
-	pair<ObjGroup::iterator, ObjGroup::iterator> getobjGroup(string);
+	ObjIter allObjbegin();
+	ObjIter allObjend();
 
-	void push(GameObject*);
-	void push(string p_group, GameObject* p_obj);
+
+	pair<ObjIter, ObjIter> getallObj(const E_Objtype&);
+	void push(const E_Objtype& p_key, GameObject* p_obj);
 	void clear();
-
-	void deleteGroup(string);
+	void deleteGroup(const E_Objtype& p_key);
 };
 

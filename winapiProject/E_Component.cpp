@@ -1,7 +1,7 @@
 #include "E_Component.h"
 
 
-string enumCom::conversion(E_Component p_enum) {
+string enumCom::conversion(const E_Component& p_enum) {
 	switch (p_enum)
 	{
 	case E_Component::TransformComponent:
@@ -16,7 +16,7 @@ string enumCom::conversion(E_Component p_enum) {
 }
 
 
-E_Component enumCom::conversion(string p_str) {
+E_Component enumCom::conversion(const string& p_str) {
 	
 	if ("TransformComponent" == p_str) {
 		return E_Component::TransformComponent;

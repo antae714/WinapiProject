@@ -15,8 +15,8 @@ enum class E_Component
 //컴포넌트 이넘의 스트링변환 함수입니다
 namespace enumCom {;
 
-string conversion(E_Component);
+string conversion(const E_Component&);
 
-E_Component conversion(string);
+E_Component conversion(const string&);
 
 }
