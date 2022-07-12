@@ -4,6 +4,8 @@
 #include <vector>
 #include <map>
 #include <fstream>
+#include "Script.h"
+#include "E_Script.h"
 
 using namespace std;
 class GameObject;
@@ -17,5 +19,6 @@ private:
 	static void Parse(vector<string>*, map<string, map<string, string>>*, string);
 	static string Layer2(string, map<string, map<string, string>>*, string);
 	static GameObject* Initialize(vector<string>*, map<string, map<string, string>>*);
+	static Script* AllocScript(const E_Script&);
 };
 

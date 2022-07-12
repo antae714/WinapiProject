@@ -7,9 +7,6 @@
 #include "AllObject.h"
 #include "Rect.h"
 #include "Vector2.h"
-#include "TestScript.h"
-#include "TestScript2.h"
-#include "TestScript3.h"
 #include "InputComponenet.h"
 #include "E_Objtype.h"
 
@@ -142,19 +139,12 @@ GameObject* LevelLoader::Initialize(vector<string>* comp, map<string, map<string
             {
                 temp = tempmap.find("Value")->second;
             }
+            else
+            {
+                continue;
+            }
 
-            if (temp == "TestScript")
-            {
-                tempobj->setscript(new TestScript());
-            }
-            if (temp == "TestScript2")
-            {
-                tempobj->setscript(new TestScript2());
-            }
-            if (temp == "TestScript3")
-            {
-                tempobj->setscript(new TestScript3());
-            }
+            tempobj->setscript(AllocScript(enumScr::conversion(temp)));
         }
 
         if (key == "Transform")

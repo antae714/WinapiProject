@@ -29,7 +29,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdPa
 	GameData* gameData = GameData::getInstance();
 	hWnd = CreateWindow("winapi", "winapi",			//윈도우를 생성
 		WS_OVERLAPPEDWINDOW ^ WS_THICKFRAME ^ WS_CAPTION | WS_VISIBLE, 0,
-		0, gameData->getwindowX(), gameData->getwindowY()
+		0, 16 + gameData->getwindowX(), 39 + gameData->getwindowY()
 		, NULL, (HMENU)NULL, hInstance, NULL);
 
 	ShowWindow(hWnd, nCmdShow);

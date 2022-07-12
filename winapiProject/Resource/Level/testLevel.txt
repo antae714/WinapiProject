@@ -1,3 +1,3 @@
-Transform,Texture{Bitmap:background,Width:900,Height:600}
+Transform,Texture{Bitmap:background,Width:1280,Height:720}
 Transform{X:-400},Texture{Bitmap:character2,Width:100,Height:150},Script{TestScript}
 Transform{X:-425,Y:275},Texture{Bitmap:puzzlebutton,Width:50,Height:50},Input,Script{TestScript3}

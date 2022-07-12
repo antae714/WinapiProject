@@ -154,6 +154,7 @@
     <ClInclude Include="E_Bitmap.h" />
     <ClInclude Include="E_Component.h" />
     <ClInclude Include="E_Objtype.h" />
+    <ClInclude Include="E_Script.h" />
     <ClInclude Include="GameData.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="InputCommand.h" />
@@ -198,6 +199,7 @@
     <ClCompile Include="E_Bitmap.cpp" />
     <ClCompile Include="E_Component.cpp" />
     <ClCompile Include="E_Objtype.cpp" />
+    <ClCompile Include="E_Script.cpp" />
     <ClCompile Include="GameData.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="InputCommand.cpp" />

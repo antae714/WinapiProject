@@ -14,7 +14,7 @@ void TestScript3::play()
 	}
 	else {
 		togle = true;
-		LevelData::DeleteLevel("testPuzzel");
+		LevelData::LevelLode("testPuzzel");
 	}
 
 }

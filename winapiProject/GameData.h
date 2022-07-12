@@ -2,8 +2,8 @@
 
 #include "SingletonCls.h"
 
-#define WINDOWX 900
-#define WINDOWY 600
+#define WINDOWX 1280
+#define WINDOWY 720
 class Vector2;
 
 class GameData : public SingletonCls<GameData>

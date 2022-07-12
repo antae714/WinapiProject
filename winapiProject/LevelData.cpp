@@ -9,7 +9,7 @@ void LevelData::LevelLode(const string& p_str)
 	LevelLode(objtype);
 }
 
-static void LevelLode(const E_Objtype& p_objtype) {
+void LevelData::LevelLode(const E_Objtype& p_objtype) {
 
 	LevelLoader::LoadLevel(p_objtype);
 }
@@ -20,7 +20,7 @@ void LevelData::DeleteLevel(const string& p_str)
 	DeleteLevel(objtype);
 }
 
-static void DeleteLevel(const E_Objtype& p_objtype) {
+void LevelData::DeleteLevel(const E_Objtype& p_objtype) {
 
 	AllObject* allObject = AllObject::getInstance();
 	allObject->deleteGroup(p_objtype);
