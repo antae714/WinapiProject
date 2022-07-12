@@ -16,7 +16,6 @@
 Camera::Camera()
 {
 }
-
 Camera::~Camera()
 {
 }
@@ -84,15 +83,18 @@ void Camera::beforeRender()
 			HDC MemDC3 = CreateCompatibleDC(hdc);
 			HDC GreenDc = CreateCompatibleDC(hdc);
 			HBITMAP tempBitmap1_1 = CreateCompatibleBitmap(hdc, xSize, ySize);
-			HBITMAP greenBitmap = (HBITMAP)LoadImage(NULL, "./Resource/Image/System/Green.bmp", IMAGE_BITMAP, rectWeight, rectHeight, LR_LOADFROMFILE | LR_CREATEDIBSECTION);
+			HBITMAP greenBitmap = CreateCompatibleBitmap(hdc, rectWeight, rectHeight);
+			//HBITMAP greenBitmap = (HBITMAP)LoadImage(NULL, "./Resource/Image/System/Green.bmp", IMAGE_BITMAP, rectWeight, rectHeight, LR_LOADFROMFILE | LR_CREATEDIBSECTION);
 			HBITMAP holdBmp2 = (HBITMAP)SelectObject(MemDC2, tempBitmap1_1);
 			HBITMAP holdBmp3 = (HBITMAP)SelectObject(MemDC3, texture->getbitmap());
 			HBITMAP holdBmp4 = (HBITMAP)SelectObject(GreenDc, greenBitmap);
+
+			StretchBlt(MemDC2, 0, 0, xSize, ySize, GreenDc, 0, 0, rectWeight, rectHeight, SRCCOPY);
 			StretchBlt(MemDC2, 0, 0, xSize, ySize, GreenDc, 0, 0, rectWeight, rectHeight, SRCCOPY);
 			StretchBlt(GreenDc, 0, 0, rectWeight, rectHeight, MemDC3, 0, 0, texture->getxSize(), texture->getySize(), SRCCOPY);
 			PlgBlt(MemDC2, pointarr, GreenDc, 0, 0, rectWeight, rectHeight, 0, 0, 0);
 			transparentBlt(MemDC, min.x, min.y, xSize, ySize, MemDC2);
-			debugRender(MemDC, obj);
+			//debugRender(MemDC, obj);
 
 			SelectObject(MemDC2, holdBmp2);
 			DeleteDC(MemDC2);

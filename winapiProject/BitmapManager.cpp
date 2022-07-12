@@ -27,6 +27,8 @@ HBITMAP BitmapManager::getBitmap(const E_Bitmap& p_enum, const int& p_x, const i
 	}
 }
 
+
+
 HBITMAP BitmapManager::Loadbmp(const E_Bitmap& p_enum, const int& p_x, const int& p_y)
 {
 	HBITMAP tempbit = (HBITMAP)LoadImage(NULL, enumBitmap::toFile(p_enum).c_str(), IMAGE_BITMAP, p_x, p_y, LR_LOADFROMFILE | LR_CREATEDIBSECTION);

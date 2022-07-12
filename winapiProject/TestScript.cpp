@@ -27,10 +27,10 @@ void TestScript::play()
 			++x;
 
 		}
-		else if (wparam == VK_UP || wparam == VK_S) {
+		else if (wparam == VK_UP || wparam == VK_W) {
 			++y;
 		}
-		else if (wparam == VK_DOWN || wparam == VK_W) {
+		else if (wparam == VK_DOWN || wparam == VK_S) {
 			--y;
 		}
 		float reotate = 0;

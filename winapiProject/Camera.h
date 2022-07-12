@@ -11,6 +11,7 @@ class Camera : public SingletonCls<Camera>
 {
 private:
 	HBITMAP beforeBuffer;
+	HBITMAP green;
 
 public:
 	Camera();
