@@ -83,6 +83,7 @@ void Camera::beforeRender()
 			HDC MemDC3 = CreateCompatibleDC(hdc);
 			HDC GreenDc = CreateCompatibleDC(hdc);
 			HBITMAP tempBitmap1_1 = CreateCompatibleBitmap(hdc, xSize, ySize);
+
 			HBITMAP greenBitmap = CreateCompatibleBitmap(hdc, rectWeight, rectHeight);
 			//HBITMAP greenBitmap = (HBITMAP)LoadImage(NULL, "./Resource/Image/System/Green.bmp", IMAGE_BITMAP, rectWeight, rectHeight, LR_LOADFROMFILE | LR_CREATEDIBSECTION);
 			HBITMAP holdBmp2 = (HBITMAP)SelectObject(MemDC2, tempBitmap1_1);

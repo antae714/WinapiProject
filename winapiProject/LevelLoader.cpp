@@ -161,7 +161,7 @@ GameObject* LevelLoader::Initialize(vector<string>* comp, map<string, map<string
             {
                 y = stoi(tempmap.find("Y")->second);
             }
-            if (tempmap.find("Rotate") != tempmap.end())
+            if (tempmap.find("Rotate") != tempmap.end())    
             {
                 rotate = stof(tempmap.find("Rotate")->second);
             }
