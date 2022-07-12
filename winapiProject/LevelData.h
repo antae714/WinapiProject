@@ -4,10 +4,12 @@
 
 using namespace std;
 
+enum class E_Objtype;
 class LevelData
 {
 public:
-	static void level1();
-	static void Puzzle1();
-	static void DeletePuzzle1();
+	static void LevelLode(const string&);
+	static void LevelLode(const E_Objtype&);
+	static void DeleteLevel(const string&);
+	static void DeleteLevel(const E_Objtype&);
 };

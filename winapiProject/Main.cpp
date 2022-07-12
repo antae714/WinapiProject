@@ -65,7 +65,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 		GameData::getInstance()->setisgaming(false);
 	}
 	else if (WM_CREATE == iMessage) {
-		LevelData::level1();
+		LevelData::LevelLode("testLevel");
 	}
 	return(DefWindowProc(hWnd, iMessage, wParam, lParam));
 }

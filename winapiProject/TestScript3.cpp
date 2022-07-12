@@ -10,11 +10,11 @@ void TestScript3::play()
 {
 	if (togle) {
 		togle = false;
-		LevelData::DeletePuzzle1();
+		LevelData::DeleteLevel("testPuzzel");
 	}
 	else {
 		togle = true;
-		LevelData::Puzzle1();
+		LevelData::DeleteLevel("testPuzzel");
 	}
 
 }

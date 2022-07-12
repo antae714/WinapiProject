@@ -3,20 +3,25 @@
 #include "LevelLoader.h"
 #include "E_Objtype.h"
 
-void LevelData::level1()
+void LevelData::LevelLode(const string& p_str)
 {
-	AllObject::getInstance()->clear();
-
-	LevelLoader::LoadLevel(E_Objtype::testLevel);
+	E_Objtype objtype = enumObj::conversion(p_str);
+	LevelLode(objtype);
 }
 
-void LevelData::Puzzle1()
-{
-	LevelLoader::LoadLevel(E_Objtype::testPuzzel);
+static void LevelLode(const E_Objtype& p_objtype) {
+
+	LevelLoader::LoadLevel(p_objtype);
 }
 
-void LevelData::DeletePuzzle1()
+void LevelData::DeleteLevel(const string& p_str)
 {
+	E_Objtype objtype = enumObj::conversion(p_str);
+	DeleteLevel(objtype);
+}
+
+static void DeleteLevel(const E_Objtype& p_objtype) {
+
 	AllObject* allObject = AllObject::getInstance();
-	allObject->deleteGroup(E_Objtype::testPuzzel);
+	allObject->deleteGroup(p_objtype);
 }
