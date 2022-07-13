@@ -39,6 +39,14 @@ void AllObject::clear()
     allObj.clear();
 }
 
+void AllObject::setActiveGroup(const E_Objtype& p_key, bool p_bool)
+{
+    pair<ObjIter, ObjIter> tempiter = allObj.equal_range(p_key);
+    for (ObjIter iter = tempiter.first; iter != tempiter.second; ++iter) {
+        iter.operator*().second->setisActive(p_bool);
+    }
+}
+
 void AllObject::deleteGroup(const E_Objtype& p_key)
 {
     pair<ObjIter, ObjIter> tempiter = allObj.equal_range(p_key);

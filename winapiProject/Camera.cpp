@@ -9,15 +9,19 @@
 #include "TextureComponent.h"
 #include "Rect.h"
 #include "Math.h"
+#include "MemDc.h"
+#include "MyBitmap.h"
 
 
 #pragma warning(disable: 4244)
 
 Camera::Camera()
 {
+	green = (HBITMAP)LoadImage(NULL, "./Resource/Image/System/Green.bmp", IMAGE_BITMAP, 256, 256, LR_LOADFROMFILE | LR_CREATEDIBSECTION);
 }
 Camera::~Camera()
 {
+	DeleteObject(green);
 }
 
 void Camera::Render()
@@ -28,19 +32,17 @@ void Camera::Render()
 
 void Camera::beforeRender()
 {
-	HBITMAP hOldBmp;
-	HDC hdc, MemDC;
+	HDC hdc;
 	WindowMsg* windowMsg = WindowMsg::getInstance();
 	GameData* gameData = GameData::getInstance();
 	AllObject* allObject = AllObject::getInstance();
 
-
 	hdc = GetDC(WindowMsg::getInstance()->gethWnd());
 	if (beforeBuffer) DeleteObject(beforeBuffer);
 	beforeBuffer = CreateCompatibleBitmap(hdc, gameData->getwindowX(), gameData->getwindowY());
-	MemDC = CreateCompatibleDC(hdc);
-	hOldBmp = (HBITMAP)SelectObject(MemDC, beforeBuffer);
-	PatBlt(MemDC, 0, 0, gameData->getwindowX(), gameData->getwindowY(), WHITENESS);
+	MemDc MemDC(hdc, beforeBuffer);
+
+	PatBlt(MemDC(), 0, 0, gameData->getwindowX(), gameData->getwindowY(), WHITENESS);
 
 	for (ObjIter iter = allObject->allObjbegin(); iter != allObject->allObjend(); ++iter) {
 		const GameObject* obj = iter.operator*().second;
@@ -79,58 +81,38 @@ void Camera::beforeRender()
 			}
 			int rectWeight = (int)temprect.getweight();
 			int rectHeight = (int)temprect.getweight();
-			HDC MemDC2 = CreateCompatibleDC(hdc);
-			HDC MemDC3 = CreateCompatibleDC(hdc);
-			HDC GreenDc = CreateCompatibleDC(hdc);
-			HBITMAP tempBitmap1_1 = CreateCompatibleBitmap(hdc, xSize, ySize);
 
-			HBITMAP greenBitmap = CreateCompatibleBitmap(hdc, rectWeight, rectHeight);
-			//HBITMAP greenBitmap = (HBITMAP)LoadImage(NULL, "./Resource/Image/System/Green.bmp", IMAGE_BITMAP, rectWeight, rectHeight, LR_LOADFROMFILE | LR_CREATEDIBSECTION);
-			HBITMAP holdBmp2 = (HBITMAP)SelectObject(MemDC2, tempBitmap1_1);
-			HBITMAP holdBmp3 = (HBITMAP)SelectObject(MemDC3, texture->getbitmap());
-			HBITMAP holdBmp4 = (HBITMAP)SelectObject(GreenDc, greenBitmap);
+			MyBitmap tempBitmap(hdc, xSize, ySize);
+			MyBitmap BackBitmap(hdc, rectWeight, rectHeight);
 
-			StretchBlt(MemDC2, 0, 0, xSize, ySize, GreenDc, 0, 0, rectWeight, rectHeight, SRCCOPY);
-			StretchBlt(MemDC2, 0, 0, xSize, ySize, GreenDc, 0, 0, rectWeight, rectHeight, SRCCOPY);
-			StretchBlt(GreenDc, 0, 0, rectWeight, rectHeight, MemDC3, 0, 0, texture->getxSize(), texture->getySize(), SRCCOPY);
-			PlgBlt(MemDC2, pointarr, GreenDc, 0, 0, rectWeight, rectHeight, 0, 0, 0);
-			transparentBlt(MemDC, min.x, min.y, xSize, ySize, MemDC2);
+			MemDc BackDc(hdc, tempBitmap());
+			MemDc ObjDc(hdc, texture->getbitmap());
+			MemDc tempObjDc(hdc, BackBitmap());
+			MemDc greenDc(hdc, green);
+
+			StretchBlt(BackDc(), 0, 0, xSize, ySize, greenDc(), 0, 0, 256, 256, SRCCOPY);
+			StretchBlt(tempObjDc(), 0, 0, rectWeight, rectHeight, ObjDc(), 0, 0, texture->getxSize(), texture->getySize(), SRCCOPY);
+			PlgBlt(BackDc(), pointarr, tempObjDc(), 0, 0, rectWeight, rectHeight, 0, 0, 0);
+			transparentBlt(MemDC(), min.x, min.y, xSize, ySize, BackDc());
 			//debugRender(MemDC, obj);
-
-			SelectObject(MemDC2, holdBmp2);
-			DeleteDC(MemDC2);
-			SelectObject(MemDC3, holdBmp3);
-			DeleteDC(MemDC3);
-			SelectObject(GreenDc, holdBmp4);
-			DeleteDC(GreenDc);
-			DeleteObject(tempBitmap1_1);
-			DeleteObject(greenBitmap);
 		}
 	}
 
-	SelectObject(MemDC, hOldBmp);
-	DeleteDC(MemDC);
 	ReleaseDC(WindowMsg::getInstance()->gethWnd(), hdc);
 }
 
 void Camera::realRender()
 {
 	PAINTSTRUCT ps;
-	HDC MemDC;
-	HBITMAP OldBitmap;
 	HWND hWnd = WindowMsg::getInstance()->gethWnd();
 	GameData* gameData = GameData::getInstance();
 	InvalidateRect(hWnd, NULL, FALSE);
 
 	HDC hdc = BeginPaint(hWnd, &ps);
 
-	MemDC = CreateCompatibleDC(hdc);
-	OldBitmap = (HBITMAP)SelectObject(MemDC, beforeBuffer);
+	MemDc MemDC(hdc, beforeBuffer);
 
-	BitBlt(hdc, 0, 0, gameData->getwindowX(), gameData->getwindowY(), MemDC, 0, 0, SRCCOPY);
-
-	SelectObject(MemDC, OldBitmap);
-	DeleteDC(MemDC);
+	BitBlt(hdc, 0, 0, gameData->getwindowX(), gameData->getwindowY(), MemDC(), 0, 0, SRCCOPY);
 
 	EndPaint(hWnd, &ps);
 }
@@ -164,21 +146,16 @@ void Camera::debugRender(const HDC MemDC, const GameObject* obj)
 void Camera::transparentBlt(const HDC& backdc, const int& xdest, const int& ydest,
 	const int& wdest, const int& hdest, const HDC& ObjDC)
 {
-	HDC maskDC;
-	HBITMAP maskbimap, oldbitmap;
-	maskDC = CreateCompatibleDC(backdc);
-	maskbimap = CreateBitmap(wdest, hdest, 1, 1, NULL);
-	oldbitmap = (HBITMAP)SelectObject(maskDC, maskbimap);
+	HBITMAP maskbimap = CreateBitmap(wdest, hdest, 1, 1, NULL);
 
+	MemDc maskDC(backdc, maskbimap);
 	COLORREF tempcol = SetBkColor(ObjDC, MaskColor);
-	BitBlt(maskDC, 0, 0, wdest, hdest, ObjDC, 0, 0, SRCCOPY);
+	BitBlt(maskDC(), 0, 0, wdest, hdest, ObjDC, 0, 0, SRCCOPY);
 	SetBkColor(ObjDC, tempcol);
 
 	BitBlt(backdc, xdest, ydest, wdest, hdest, ObjDC, 0, 0, SRCINVERT);
-	BitBlt(backdc, xdest, ydest, wdest, hdest, maskDC, 0, 0, SRCAND);
+	BitBlt(backdc, xdest, ydest, wdest, hdest, maskDC(), 0, 0, SRCAND);
 	BitBlt(backdc, xdest, ydest, wdest, hdest, ObjDC, 0, 0, SRCINVERT);
 
-	SelectObject(maskDC, oldbitmap);
-	DeleteDC(maskDC);
 	DeleteObject(maskbimap);
 }

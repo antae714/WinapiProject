@@ -167,6 +167,8 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="Matrix3x3.h" />
+    <ClInclude Include="MemDc.h" />
+    <ClInclude Include="MyBitmap.h" />
     <ClInclude Include="OnTriggerEvent.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="ScreenPoint.h" />
@@ -207,10 +209,13 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="LevelData.cpp" />
     <ClCompile Include="LevelLoader.cpp" />
+    <ClCompile Include="LevelLoader_Script.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Math.cpp" />
     <ClCompile Include="Matrix3x3.cpp" />
+    <ClCompile Include="MemDc.cpp" />
+    <ClCompile Include="MyBitmap.cpp" />
     <ClCompile Include="OnTriggerEvent.cpp" />
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="ScreenPoint.cpp" />

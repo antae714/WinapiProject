@@ -27,6 +27,7 @@ public:
 	pair<ObjIter, ObjIter> getallObj(const E_Objtype&);
 	void push(const E_Objtype& p_key, GameObject* p_obj);
 	void clear();
+	void setActiveGroup(const E_Objtype& p_key, bool p_bool);
 	void deleteGroup(const E_Objtype& p_key);
 };
 
