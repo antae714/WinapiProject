@@ -33,6 +33,11 @@ float TransformComponent::getrotate()
     return rotate;
 }
 
+void TransformComponent::addpivot(const Vector2& p_pivot)
+{
+    *pivot += p_pivot;
+}
+
 void TransformComponent::setpivot(const Vector2& p_pivot)
 {
     *pivot = p_pivot;

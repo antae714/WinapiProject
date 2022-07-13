@@ -10,7 +10,6 @@
 #define VK_D 0x44
 #define VK_W 0x57
 
-
 TestScript::TestScript()
 {
 	x = 0;

@@ -17,6 +17,7 @@ public:
 	const Vector2* getpivotptr();
 	const float* getrotateptr();
 	float	getrotate	();
+	void	addpivot	(const Vector2&);
 	void	setpivot	(const Vector2&);
 	void	setrotate	(const float&);
 };
