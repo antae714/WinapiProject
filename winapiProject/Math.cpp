@@ -79,7 +79,7 @@ float Math::InvSqrt(float p_float)
     x2 = p_float * 0.5F;
     y = p_float;
     i = *(long*)&y;
-    i = 0x5fe6eb50c7b537a9 - (i >> 1);
+    i = 0x5f375a86 - (i >> 1);
     y = *(float*)&i;
     y = y * (threehalfs - (x2 * y * y));
     y = y * (threehalfs - (x2 * y * y));;

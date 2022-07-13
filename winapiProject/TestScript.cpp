@@ -9,40 +9,92 @@
 #define VK_S 0x53
 #define VK_D 0x44
 #define VK_W 0x57
-#define VK_Q 0x51
-#define VK_E 0x45
 
+
+TestScript::TestScript()
+{
+	x = 0;
+	y = 0;
+	speed = 2;
+}
 
 void TestScript::play()
+{
+	InputLogic();
+	Logic();
+}
+
+void TestScript::InputLogic()
 {
 	WindowMsg* windowMsg = WindowMsg::getInstance();
 	const UINT& imsg = windowMsg->getiMessage();
 	const WPARAM& wparam = windowMsg->getwParam();
+
 	if (imsg == WM_KEYDOWN) {
-		int x = 0, y = 0;
 		if (wparam == VK_LEFT || wparam == VK_A) {
-			--x;
+			Fnptrplay.emplace(VK_LEFT, &TestScript::xminus);
 		}
 		else if (wparam == VK_RIGHT || wparam == VK_D) {
-			++x;
-
+			Fnptrplay.emplace(VK_RIGHT, &TestScript::xplus);
 		}
 		else if (wparam == VK_UP || wparam == VK_W) {
-			++y;
+			Fnptrplay.emplace(VK_UP, &TestScript::yplus);
 		}
 		else if (wparam == VK_DOWN || wparam == VK_S) {
-			--y;
+			Fnptrplay.emplace(VK_DOWN, &TestScript::yminus);
 		}
-		float reotate = 0;
-		if (wparam == VK_Q) {
-			reotate -= 0.1;
+		else if (wparam == VK_SHIFT) {
+			speed = 6;
 		}
-		else if (wparam == VK_E) {
-			reotate += 0.1;
-		}
-		TransformComponent* tempcom = dynamic_cast<TransformComponent*>(owner->getcomponent(E_Component::TransformComponent));
-		tempcom->setpivot(tempcom->getpivot() + Vector2(x, y).GetNormalize()*2);
-		tempcom->setrotate(tempcom->getrotate() + reotate);
 	}
+	else if (imsg == WM_KEYUP) {
+		if (wparam == VK_LEFT || wparam == VK_A) {
+			Fnptrplay.erase(VK_LEFT);
+		}
+		else if (wparam == VK_RIGHT || wparam == VK_D) {
+			Fnptrplay.erase(VK_RIGHT);
+		}
+		else if (wparam == VK_UP || wparam == VK_W) {
+			Fnptrplay.erase(VK_UP);
+		}
+		else if (wparam == VK_DOWN || wparam == VK_S) {
+			Fnptrplay.erase(VK_DOWN);
+		}
+		else if (wparam == VK_SHIFT) {
+			speed = 2;
+		}
+	}
+}
+
+void TestScript::Logic()
+{
+	for (const pair<int, void(TestScript::*)()>& item : Fnptrplay) {
+		(this->*item.second)();
+	}
+	TransformComponent* tempcom = dynamic_cast<TransformComponent*>(owner->getcomponent(E_Component::TransformComponent));
+
+	tempcom->setpivot(tempcom->getpivot() + Vector2(x, y).GetNormalize() * speed);
+	x = 0;
+	y = 0;
+}
+
+void TestScript::xplus()
+{
+	++x;
+}
+
+void TestScript::xminus()
+{
+	--x;
+}
+
+void TestScript::yplus()
+{
+	++y;
+}
+
+void TestScript::yminus()
+{
+	--y;
 }
 
