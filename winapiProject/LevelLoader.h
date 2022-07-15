@@ -18,7 +18,7 @@ public:
 private:
 	static void Parse(vector<string>*, map<string, map<string, string>>*, string);
 	static string Layer2(string, map<string, map<string, string>>*, string);
-	static GameObject* Initialize(vector<string>*, map<string, map<string, string>>*);
+	static GameObject* Initialize(E_Objtype, vector<string>*, map<string, map<string, string>>*);
 	static Script* AllocScript(const E_Script&);
 };
 

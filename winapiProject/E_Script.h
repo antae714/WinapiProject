@@ -9,6 +9,9 @@ enum class E_Script
 	TestScript,
 	TestScript2,
 	TestScript3,
+	GameStart,
+	GameExit,
+	MoveMap,
 
 	MAX
 };

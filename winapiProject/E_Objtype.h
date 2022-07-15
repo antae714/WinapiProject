@@ -7,7 +7,12 @@ using namespace std;
 enum class E_Objtype
 {
 	testLevel = 0,
+	testLevel2,
 	testPuzzel,
+	titlescreen,
+	puzzlecleartest,
+	character,
+	background,
 
 	MAX
 };

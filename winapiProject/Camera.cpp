@@ -17,7 +17,7 @@
 
 Camera::Camera()
 {
-	green = (HBITMAP)LoadImage(NULL, "./Resource/Image/System/Green.bmp", IMAGE_BITMAP, 256, 256, LR_LOADFROMFILE | LR_CREATEDIBSECTION);
+	green = (HBITMAP)LoadImage(NULL, "./Resource/Image/System/Green.bmp", IMAGE_BITMAP, 1, 1, LR_LOADFROMFILE | LR_CREATEDIBSECTION);
 }
 Camera::~Camera()
 {
@@ -80,7 +80,7 @@ void Camera::beforeRender()
 				pointarr[i].y = abs(pointarr[i].y - min.y - ySize);
 			}
 			int rectWeight = (int)temprect.getweight();
-			int rectHeight = (int)temprect.getweight();
+			int rectHeight = (int)temprect.getheight();
 
 			MyBitmap tempBitmap(hdc, xSize, ySize);
 			MyBitmap BackBitmap(hdc, rectWeight, rectHeight);

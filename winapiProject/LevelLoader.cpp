@@ -8,7 +8,9 @@
 #include "Rect.h"
 #include "Vector2.h"
 #include "InputComponenet.h"
+#include "KeyInputComponent.h"
 #include "E_Objtype.h"
+#include "MoveMap.h"
 
 void LevelLoader::LoadLevel(E_Objtype p_file)
 {
@@ -28,10 +30,11 @@ void LevelLoader::LoadLevel(E_Objtype p_file)
 
         getline(file, line);
         if ('\0' == line[0]) continue;
+        if ('/' == line[0]) continue;
 
         Parse(&comp, &object, line);
 
-        AllObject::getInstance()->push(p_file, Initialize(&comp, &object));
+        AllObject::getInstance()->push(p_file, Initialize(p_file, &comp, &object));
     }
 
     file.close();
@@ -119,7 +122,7 @@ string LevelLoader::Layer2(string key, map<string, map<string, string>>* object,
 }
 
 // 수정 필요
-GameObject* LevelLoader::Initialize(vector<string>* comp, map<string, map<string, string>>* object)
+GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<string, map<string, string>>* object)
 {
     GameObject* tempobj = new GameObject();
     map<string, string> tempmap;
@@ -145,9 +148,35 @@ GameObject* LevelLoader::Initialize(vector<string>* comp, map<string, map<string
             }
 
             tempobj->setscript(AllocScript(enumScr::conversion(temp)));
+
+            if ("MoveMap" == temp)
+            {
+                string src = enumObj::conversion(p_file), dest = "";
+                int x = 0, y = 0;
+
+                if (tempmap.find("Src") != tempmap.end())
+                {
+                    src = tempmap.find("Src")->second;
+                }
+                if (tempmap.find("Dest") != tempmap.end())
+                {
+                    dest = tempmap.find("Dest")->second;
+                }
+                if (tempmap.find("X") != tempmap.end())
+                {
+                    x = stoi(tempmap.find("X")->second);
+                }
+                if (tempmap.find("Y") != tempmap.end())
+                {
+                    y = stoi(tempmap.find("Y")->second);
+                }
+
+                MoveMap* temp = dynamic_cast<MoveMap*>(tempobj->getscriptptr());
+                temp->Set(src, dest, x, y);
+            }
         }
 
-        if (key == "Transform")
+        else if (key == "Transform")
         {
             TransformComponent* tempcomp = new TransformComponent();
             int x = 0, y = 0;
@@ -161,7 +190,7 @@ GameObject* LevelLoader::Initialize(vector<string>* comp, map<string, map<string
             {
                 y = stoi(tempmap.find("Y")->second);
             }
-            if (tempmap.find("Rotate") != tempmap.end())    
+            if (tempmap.find("Rotate") != tempmap.end())
             {
                 rotate = stof(tempmap.find("Rotate")->second);
             }
@@ -172,7 +201,7 @@ GameObject* LevelLoader::Initialize(vector<string>* comp, map<string, map<string
             tempobj->pushcomponent(E_Component::TransformComponent, tempcomp);
         }
 
-        if (key == "Texture")
+        else if (key == "Texture")
         {
             TextureComponent* tempcomp = new TextureComponent();
             string bitmap;
@@ -220,10 +249,16 @@ GameObject* LevelLoader::Initialize(vector<string>* comp, map<string, map<string
             tempobj->pushcomponent(E_Component::TextureComponent, tempcomp);
         }
 
-        if (key == "Input")
+        else if (key == "Input")
         {
             InputComponenet* tempcomp = new InputComponenet();
             tempobj->pushcomponent(E_Component::InputComponenet, tempcomp);
+        }
+
+        else if (key == "KeyInput")
+        {
+            KeyInputComponenet* tempcomp = new KeyInputComponenet();
+            tempobj->pushcomponent(E_Component::KeyInputComponenet, tempcomp);
         }
     }
 

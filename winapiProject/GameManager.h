@@ -2,12 +2,14 @@
 
 class UpdateManager;
 class InputManager;
+class KeyInputManager;
 class Camera;
 class GameManager
 {
 private:
 	UpdateManager* updateManager;
 	InputManager* inputManager;
+	KeyInputManager* keyinputManager;
 	Camera* camera;
 public:
 	GameManager();

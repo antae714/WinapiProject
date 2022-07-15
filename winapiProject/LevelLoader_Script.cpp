@@ -4,6 +4,9 @@
 #include "TestScript.h"
 #include "TestScript2.h"
 #include "TestScript3.h"
+#include "GameStart.h"
+#include "GameExit.h"
+#include "MoveMap.h"
 
 Script* LevelLoader::AllocScript(const E_Script& p_enum)
 {
@@ -15,6 +18,12 @@ Script* LevelLoader::AllocScript(const E_Script& p_enum)
 		return new TestScript2();
 	case E_Script::TestScript3:
 		return new TestScript3();
+	case E_Script::GameStart:
+		return new GameStart();
+	case E_Script::GameExit:
+		return new GameExit();
+	case E_Script::MoveMap:
+		return new MoveMap();
 
 	default:
 		return nullptr;

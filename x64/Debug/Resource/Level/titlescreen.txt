@@ -1,0 +1,11 @@
+// 배경 화면
+Transform,Texture{Bitmap:background,Width:1280,Height:720}
+
+// 로고
+Transform{Y:100},Texture{Bitmap:logo,Width:246,Height:152}
+
+// 게임 시작 버튼
+Transform{X:-200,Y:-200},Texture{Bitmap:start,Width:250,Height:100},Input,Script{GameStart}
+
+// 종료 버튼
+Transform{X:200,Y:-200},Texture{Bitmap:exit,Width:250,Height:100},Input,Script{GameExit}

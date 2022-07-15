@@ -156,10 +156,15 @@
     <ClInclude Include="E_Objtype.h" />
     <ClInclude Include="E_Script.h" />
     <ClInclude Include="GameData.h" />
+    <ClInclude Include="GameExit.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="GameStart.h" />
     <ClInclude Include="InputCommand.h" />
     <ClInclude Include="InputComponenet.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="KeyInputCommand.h" />
+    <ClInclude Include="KeyInputComponent.h" />
+    <ClInclude Include="KeyInputManager.h" />
     <ClInclude Include="LevelData.h" />
     <ClInclude Include="LevelLoader.h" />
     <ClInclude Include="Macro.h" />
@@ -168,6 +173,7 @@
     <ClInclude Include="Math.h" />
     <ClInclude Include="Matrix3x3.h" />
     <ClInclude Include="MemDc.h" />
+    <ClInclude Include="MoveMap.h" />
     <ClInclude Include="MyBitmap.h" />
     <ClInclude Include="OnTriggerEvent.h" />
     <ClInclude Include="Rect.h" />
@@ -203,10 +209,15 @@
     <ClCompile Include="E_Objtype.cpp" />
     <ClCompile Include="E_Script.cpp" />
     <ClCompile Include="GameData.cpp" />
+    <ClCompile Include="GameExit.cpp" />
     <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="GameStart.cpp" />
     <ClCompile Include="InputCommand.cpp" />
     <ClCompile Include="InputComponenet.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="KeyInputCommand.cpp" />
+    <ClCompile Include="KeyInputComponent.cpp" />
+    <ClCompile Include="KeyInputManager.cpp" />
     <ClCompile Include="LevelData.cpp" />
     <ClCompile Include="LevelLoader.cpp" />
     <ClCompile Include="LevelLoader_Script.cpp" />
@@ -215,6 +226,7 @@
     <ClCompile Include="Math.cpp" />
     <ClCompile Include="Matrix3x3.cpp" />
     <ClCompile Include="MemDc.cpp" />
+    <ClCompile Include="MoveMap.cpp" />
     <ClCompile Include="MyBitmap.cpp" />
     <ClCompile Include="OnTriggerEvent.cpp" />
     <ClCompile Include="Rect.cpp" />

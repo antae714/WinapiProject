@@ -10,6 +10,8 @@ string enumCom::conversion(const E_Component& p_enum) {
 		return "TextureComponent";
 	case E_Component::InputComponenet:
 		return "InputComponenet";
+	case E_Component::KeyInputComponenet:
+		return "KeyInputComponenet";
 	case E_Component::MAX:
 		return "";
 	}
@@ -26,6 +28,10 @@ E_Component enumCom::conversion(const string& p_str) {
 	}
 	else if ("InputComponenet" == p_str) {
 		return E_Component::InputComponenet;
+	}
+	else if ("KeyInputComponenet" == p_str)
+	{
+		return E_Component::KeyInputComponenet;
 	}
 	return E_Component::MAX;
 }

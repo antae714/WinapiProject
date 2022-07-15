@@ -5,6 +5,7 @@ using namespace std;
 enum class E_Bitmap
 {
 	background,
+	background_2,
 	backgroundpuzzle,
 	character2,
 	puzzlebutton,
@@ -14,6 +15,11 @@ enum class E_Bitmap
 	Blue,
 	Green,
 	Red,
+	logo,
+	npc,
+	npc2,
+	start,
+	exit,
 
 	MAX
 };

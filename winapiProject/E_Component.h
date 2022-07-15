@@ -9,6 +9,7 @@ enum class E_Component
 	TransformComponent,
 	TextureComponent,
 	InputComponenet,
+	KeyInputComponenet,
 
 	MAX
 };

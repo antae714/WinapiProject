@@ -5,6 +5,8 @@ string enumBitmap::conversion(const E_Bitmap& p_enum) {
 	{
 	case E_Bitmap::background:
 		return "background";
+	case E_Bitmap::background_2:
+		return "background_2";
 	case E_Bitmap::backgroundpuzzle:
 		return "backgroundpuzzle";
 	case E_Bitmap::character2:
@@ -23,6 +25,16 @@ string enumBitmap::conversion(const E_Bitmap& p_enum) {
 		return "Green";
 	case E_Bitmap::Red:
 		return "Red";
+	case E_Bitmap::logo:
+		return "logo";
+	case E_Bitmap::npc:
+		return "npc";
+	case E_Bitmap::npc2:
+		return "npc2";
+	case E_Bitmap::start:
+		return "start";
+	case E_Bitmap::exit:
+		return "exit";
 	case E_Bitmap::MAX:
 		return "";
 	}
@@ -30,6 +42,10 @@ string enumBitmap::conversion(const E_Bitmap& p_enum) {
 E_Bitmap enumBitmap::conversion(const string& p_str) {
 	if ("background" == p_str) {
 		return E_Bitmap::background;
+	}
+	else if ("background_2" == p_str)
+	{
+		return E_Bitmap::background_2;
 	}
 	else if ("backgroundpuzzle" == p_str) {
 		return E_Bitmap::backgroundpuzzle;
@@ -57,6 +73,26 @@ E_Bitmap enumBitmap::conversion(const string& p_str) {
 	}
 	else if ("Green" == p_str) {
 		return E_Bitmap::Green;
+	}
+	else if ("logo" == p_str)
+	{
+		return E_Bitmap::logo;
+	}
+	else if ("npc" == p_str)
+	{
+		return E_Bitmap::npc;
+	}
+	else if ("npc2" == p_str)
+	{
+		return E_Bitmap::npc2;
+	}
+	else if ("start" == p_str)
+	{
+		return E_Bitmap::start;
+	}
+	else if ("exit" == p_str)
+	{
+		return E_Bitmap::exit;
 	}
 	return E_Bitmap::MAX;
 }
