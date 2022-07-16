@@ -6,6 +6,13 @@
 TransformComponent::TransformComponent()
 {
     pivot = new Vector2();
+    rotate = 0;
+}
+
+TransformComponent::TransformComponent(const Vector2& p_vec, const float& p_rot)
+{
+    pivot = new Vector2(p_vec);
+    rotate = p_rot;
 }
 
 TransformComponent::~TransformComponent()

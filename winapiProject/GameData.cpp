@@ -6,6 +6,9 @@ GameData::GameData()
 	isgaming = true;
 	windowX = WINDOWX;
 	windowY = WINDOWY;
+	backSound = BACKSOUND;
+	effectSound = EFFECTSOUND;
+
 	cameraPivot = new Vector2(0,0);
 }
 
@@ -22,6 +25,16 @@ int GameData::getwindowX()
 int GameData::getwindowY()
 {
 	return windowY;
+}
+
+int GameData::getbackSound()
+{
+	return backSound;
+}
+
+int GameData::geteffectSound()
+{
+	return effectSound;
 }
 
 const Vector2& GameData::getcameraPivot()
@@ -42,6 +55,16 @@ void GameData::setwindowX(int p_windowX)
 void GameData::setwindowY(int p_windowY)
 {
 	windowY = p_windowY;
+}
+
+void GameData::setbackSound(int p_val)
+{
+	backSound = p_val;
+}
+
+void GameData::seteffectSound(int p_val)
+{
+	effectSound = p_val;
 }
 
 void GameData::setcameraPivot(const Vector2& p_pivot)

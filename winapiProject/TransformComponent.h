@@ -1,7 +1,6 @@
 #pragma once
 #include "Component.h"
 
-template <typename T> class EventList1;
 class Vector2;
 class TransformComponent : public Component
 {
@@ -10,7 +9,8 @@ private:
 	float rotate;
 public:
 	TransformComponent();
-	virtual ~TransformComponent();
+	TransformComponent(const Vector2&, const float&);
+	virtual ~TransformComponent( );
 public:
 
 	Vector2	getpivot();

@@ -41,7 +41,28 @@ bool KeyInputComponenet::isPressed()
 		break;
 	}
 
+	/*
+	if(temp.first == temp.second) return;
+	GameObject* obj = temp.first.operator*().second;
+	TransformComponent* tempcom = dynamic_cast<TransformComponent*>(obj->getcomponent(E_Component::TransformComponent));
+
+	return Math::isin(tempcom2->getrectptr(), tempcom->getpivot());*/
 	return Math::isin(tempcom2->getrectptr(), Math::ScreentoCart(Vector2(tempPoint.x, tempPoint.y)));
+}
+
+bool KeyInputComponenet::isPressed2()
+{
+	TextureComponent* tempcom2 = dynamic_cast<TextureComponent*>(owner->getcomponent(E_Component::TextureComponent));
+	if (!tempcom2) return false;
+
+	AllObject* allObject = AllObject::getInstance();
+	pair<ObjIter, ObjIter> temp = allObject->getallObj(E_Objtype::character);
+
+	if(temp.first == temp.second) return false;
+	GameObject* obj = temp.first.operator*().second;
+	TransformComponent* tempcom = dynamic_cast<TransformComponent*>(obj->getcomponent(E_Component::TransformComponent));
+
+	return Math::isin(tempcom2->getrectptr(), tempcom->getpivot());
 }
 
 void KeyInputComponenet::OnPressed()

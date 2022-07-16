@@ -228,6 +228,15 @@
     <ClInclude Include="GameStart.h">
       <Filter>헤더 파일\Script</Filter>
     </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TextComponent.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="E_Sound.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AllObject.cpp">
@@ -368,12 +377,6 @@
     <ClCompile Include="KeyInputManager.cpp">
       <Filter>소스 파일\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="GameExit.cpp">
-      <Filter>소스 파일\Script</Filter>
-    </ClCompile>
-    <ClCompile Include="GameStart.cpp">
-      <Filter>소스 파일\Script</Filter>
-    </ClCompile>
     <ClCompile Include="MoveMap.cpp">
       <Filter>소스 파일\Script</Filter>
     </ClCompile>
@@ -382,6 +385,21 @@
     </ClCompile>
     <ClCompile Include="KeyInputComponent.cpp">
       <Filter>소스 파일\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="GameExit.cpp">
+      <Filter>소스 파일\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStart.cpp">
+      <Filter>소스 파일\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TextComponent.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="E_Sound.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
