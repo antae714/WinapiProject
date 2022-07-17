@@ -3,6 +3,7 @@
 #include "Camera.h"
 #include "InputManager.h"
 #include "KeyInputManager.h"
+#include "SoundManager.h"
 
 GameManager::GameManager()
 {
@@ -10,6 +11,7 @@ GameManager::GameManager()
 	camera = new Camera();
 	inputManager = new InputManager();
 	keyinputManager = new KeyInputManager();
+	SoundManager::getInstance()->PlaySound_(E_Sound::BackGround);
 }
 
 GameManager::~GameManager()

@@ -4,11 +4,13 @@
 #include "E_Component.h"
 #include "InputComponenet.h"
 #include "WindowMsg.h"
+#include "SoundManager.h"
 
 void InputManager::InputLogic()
 {
 	WindowMsg* windowMsg = WindowMsg::getInstance();
 	if (windowMsg->getiMessage() != WM_LBUTTONDOWN) return;
+	SoundManager::getInstance()->PlaySound_(E_Sound::Click);
 	windowMsg->settingMsg(windowMsg->gethWnd(), 0, 0, 0);
 	AllObject* allObject = AllObject::getInstance();
 	for (ObjIter iter = allObject->allObjbegin(); iter != allObject->allObjend(); ++iter)

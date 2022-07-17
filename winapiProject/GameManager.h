@@ -4,6 +4,7 @@ class UpdateManager;
 class InputManager;
 class KeyInputManager;
 class Camera;
+class SoundManager;
 class GameManager
 {
 private:

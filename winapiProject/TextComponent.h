@@ -9,6 +9,7 @@ private:
 	int nowLine;
 	int fontHeight;
 	string fontName;
+
 public:
 	TextComponent();
 	TextComponent(const string&, const int&, const string&);
