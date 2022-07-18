@@ -8,6 +8,8 @@ string enumCom::conversion(const E_Component& p_enum) {
 		return "TransformComponent";
 	case E_Component::TextureComponent:
 		return "TextureComponent";
+	case E_Component::TextComponent:
+		return "TextComponent";
 	case E_Component::InputComponenet:
 		return "InputComponenet";
 	case E_Component::KeyInputComponenet:
@@ -25,6 +27,9 @@ E_Component enumCom::conversion(const string& p_str) {
 	}
 	else if ("TextureComponent" == p_str) {
 		return E_Component::TextureComponent;
+	}
+	else if ("TextComponent" == p_str) {
+		return E_Component::TextComponent;
 	}
 	else if ("InputComponenet" == p_str) {
 		return E_Component::InputComponenet;

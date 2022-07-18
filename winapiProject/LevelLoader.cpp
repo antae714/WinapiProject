@@ -11,6 +11,7 @@
 #include "KeyInputComponent.h"
 #include "E_Objtype.h"
 #include "MoveMap.h"
+#include "TestScript2.h"
 
 void LevelLoader::LoadLevel(E_Objtype p_file)
 {
@@ -173,6 +174,18 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
 
                 MoveMap* temp = dynamic_cast<MoveMap*>(tempobj->getscriptptr());
                 temp->Set(src, dest, x, y);
+            }
+
+            if ("TestScript2" == temp)
+            {
+                if (tempmap.find("Activate") != tempmap.end())
+                {
+                    if (1 == stoi(tempmap.find("Activate")->second))
+                    {
+                        TestScript2* temp = dynamic_cast<TestScript2*>(tempobj->getscriptptr());
+                        temp->Activate();
+                    }
+                }
             }
         }
 

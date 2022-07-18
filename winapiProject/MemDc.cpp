@@ -23,10 +23,11 @@ void MemDc::SelectObject_(HBITMAP p_bit)
 	oldbitmap = (HBITMAP)SelectObject(memDc, p_bit);
 }
 
-HDC MemDc::getMemDC()
+HDC MemDc::getMemDC() const
 {
 	return memDc;
 }
-HDC MemDc::operator()() {
+HDC MemDc::operator()() const 
+{
 	return memDc;
 }

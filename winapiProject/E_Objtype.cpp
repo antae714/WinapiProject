@@ -11,6 +11,8 @@ string enumObj::conversion(const E_Objtype& p_enum) {
 		return "testPuzzel";
 	case E_Objtype::titlescreen:
 		return "titlescreen";
+	case E_Objtype::puzzleliner:
+		return "puzzleliner";
 	case E_Objtype::puzzlecleartest:
 		return "puzzlecleartest";
 	case E_Objtype::character:
@@ -24,11 +26,13 @@ E_Objtype enumObj::conversion(const string& p_str) {
 	if ("testLevel" == p_str)
 		return E_Objtype::testLevel;
 	else if ("testLevel2" == p_str)
-			return E_Objtype::testLevel2;
+		return E_Objtype::testLevel2;
 	else if ("testPuzzel" == p_str)
 		return E_Objtype::testPuzzel;
 	else if ("titlescreen" == p_str)
 		return E_Objtype::titlescreen;
+	else if ("puzzleliner" == p_str)
+		return E_Objtype::puzzleliner;
 	else if ("puzzlecleartest" == p_str)
 		return E_Objtype::puzzlecleartest;
 	else if ("character" == p_str)

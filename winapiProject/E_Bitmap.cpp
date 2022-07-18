@@ -9,6 +9,10 @@ string enumBitmap::conversion(const E_Bitmap& p_enum) {
 		return "background_2";
 	case E_Bitmap::backgroundpuzzle:
 		return "backgroundpuzzle";
+	case E_Bitmap::puzzlehint:
+		return "puzzlehint";
+	case E_Bitmap::character:
+		return "character";
 	case E_Bitmap::character2:
 		return "character2";
 	case E_Bitmap::puzzlebutton:
@@ -19,6 +23,8 @@ string enumBitmap::conversion(const E_Bitmap& p_enum) {
 		return "Starbutton";
 	case E_Bitmap::Starbutton_Selected:
 		return "Starbutton_Selected";
+	case E_Bitmap::Line:
+		return "Line";
 	case E_Bitmap::Blue:
 		return "Blue";
 	case E_Bitmap::Green:
@@ -50,6 +56,14 @@ E_Bitmap enumBitmap::conversion(const string& p_str) {
 	else if ("backgroundpuzzle" == p_str) {
 		return E_Bitmap::backgroundpuzzle;
 	}
+	else if ("puzzlehint" == p_str)
+	{
+		return E_Bitmap::puzzlehint;
+	}
+	else if ("character" == p_str)
+	{
+		return E_Bitmap::character;
+	}
 	else if ("character2" == p_str) {
 		return E_Bitmap::character2;
 	}
@@ -64,6 +78,10 @@ E_Bitmap enumBitmap::conversion(const string& p_str) {
 	}
 	else if ("Starbutton_Selected" == p_str) {
 		return E_Bitmap::Starbutton_Selected;
+	}
+	else if ("Line" == p_str)
+	{
+		return E_Bitmap::Line;
 	}
 	else if ("Blue" == p_str) {
 		return E_Bitmap::Blue;

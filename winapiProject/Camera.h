@@ -7,6 +7,9 @@
 
 class Vector2;
 class GameObject;
+class TextureComponent;
+class TextComponent;
+class MemDc;
 class Camera : public SingletonCls<Camera>
 {
 private:
@@ -20,12 +23,11 @@ public:
 	void Render();
 
 private:
-
 	void beforeRender();
 	void realRender();
 
-
+	void TextureRender(const MemDc&, const TextureComponent*);
+	void TextRender(const MemDc&, const TextComponent*);
 	void transparentBlt(const HDC& backdc, const int& xdest, const int& ydest, const int& wdest, const int& hdest, const HDC& ObjDC);
-	void debugRender(const HDC MemDC, const GameObject* obj);
 };
 

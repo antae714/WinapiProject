@@ -48,53 +48,7 @@ void Camera::beforeRender()
 		const GameObject* obj = iter.operator*().second;
 		Component* temp = obj->getcomponent(E_Component::TextureComponent);
 		if (temp) {
-			TextureComponent* texture = dynamic_cast<TextureComponent*>(temp);
-			const Rect& temprect = dynamic_cast<TextureComponent*>(texture)->getrectptr();
-			vector<Vector2> vec2vec = temprect.getVectors();
-			POINT pointarr[4];
-
-			POINT min, max;
-			min.x = LONG_MAX;
-			min.y = LONG_MAX;
-			max.x = LONG_MIN;
-			max.y = LONG_MIN;
-			for (int i = 0; i < 4; i++)
-			{
-				pointarr[i] = Math::CarttoScreen(vec2vec.at(i)).toPOINT();
-				if (min.x > pointarr[i].x) {
-					min.x = pointarr[i].x;
-				}
-				if (max.x < pointarr[i].x) {
-					max.x = pointarr[i].x;
-				}
-				if (min.y > pointarr[i].y) {
-					min.y = pointarr[i].y;
-				}
-				if (max.y < pointarr[i].y) {
-					max.y = pointarr[i].y;
-				}
-			}
-			int xSize = max.x - min.x, ySize = max.y - min.y;
-			for (int i = 0; i < 4; i++) {
-				pointarr[i].x -= min.x;
-				pointarr[i].y = abs(pointarr[i].y - min.y - ySize);
-			}
-			int rectWeight = (int)temprect.getweight();
-			int rectHeight = (int)temprect.getheight();
-
-			MyBitmap tempBitmap(hdc, xSize, ySize);
-			MyBitmap BackBitmap(hdc, rectWeight, rectHeight);
-
-			MemDc BackDc(hdc, tempBitmap());
-			MemDc ObjDc(hdc, texture->getbitmap());
-			MemDc tempObjDc(hdc, BackBitmap());
-			MemDc greenDc(hdc, green);
-
-			StretchBlt(BackDc(), 0, 0, xSize, ySize, greenDc(), 0, 0, 256, 256, SRCCOPY);
-			StretchBlt(tempObjDc(), 0, 0, rectWeight, rectHeight, ObjDc(), 0, 0, texture->getxSize(), texture->getySize(), SRCCOPY);
-			PlgBlt(BackDc(), pointarr, tempObjDc(), 0, 0, rectWeight, rectHeight, 0, 0, 0);
-			transparentBlt(MemDC(), min.x, min.y, xSize, ySize, BackDc());
-			//debugRender(MemDC, obj);
+			TextureRender(MemDC, (TextureComponent*)temp);
 		}
 	}
 
@@ -117,30 +71,57 @@ void Camera::realRender()
 	EndPaint(hWnd, &ps);
 }
 
-void Camera::debugRender(const HDC MemDC, const GameObject* obj)
+void Camera::TextureRender(const MemDc& p_memdc, const TextureComponent* p_texture)
 {
-	Component* temp = obj->getcomponent(E_Component::TextureComponent);
-	if (temp) {
-		TextureComponent* texture = dynamic_cast<TextureComponent*>(temp);
-		const Rect& temprect = dynamic_cast<TextureComponent*>(texture)->getrectptr();
-		POINT rectp = Math::CarttoScreen(temprect.getpivot()).toPOINT();
-		string tempstr1 = string("x : ") + to_string((int)temprect.getpivot().getx()) + ", y :" + to_string((int)temprect.getpivot().gety());
-		HDC Memdc2 = CreateCompatibleDC(MemDC);
-		HBITMAP tempbitmap = CreateCompatibleBitmap(MemDC, tempstr1.size() * 6, 16);
-		HBITMAP OldBitmap = (HBITMAP)SelectObject(Memdc2, tempbitmap);
+	const Rect& temprect = p_texture->getrectptr();
+	vector<Vector2> vec2vec = temprect.getVectors();
+	POINT pointarr[4];
 
-		COLORREF oldcolor = SetBkColor(Memdc2, MaskColor);
-		TextOut(Memdc2, 0, 0, (LPCSTR)tempstr1.c_str(), tempstr1.size());
-		SetBkColor(Memdc2, oldcolor);
-
-		transparentBlt(MemDC, rectp.x - temprect.gethalfweight(), rectp.y + temprect.gethalfheight(),
-			tempstr1.size() * 6, 16, Memdc2);
-
-		SelectObject(Memdc2, OldBitmap);
-		DeleteDC(Memdc2);
-
-		DeleteObject(tempbitmap);
+	POINT min, max;
+	min.x = LONG_MAX;
+	min.y = LONG_MAX;
+	max.x = LONG_MIN;
+	max.y = LONG_MIN;
+	for (int i = 0; i < 4; i++)
+	{
+		pointarr[i] = Math::CarttoScreen(vec2vec.at(i)).toPOINT();
+		if (min.x > pointarr[i].x) {
+			min.x = pointarr[i].x;
+		}
+		if (max.x < pointarr[i].x) {
+			max.x = pointarr[i].x;
+		}
+		if (min.y > pointarr[i].y) {
+			min.y = pointarr[i].y;
+		}
+		if (max.y < pointarr[i].y) {
+			max.y = pointarr[i].y;
+		}
 	}
+	int xSize = max.x - min.x, ySize = max.y - min.y;
+	for (int i = 0; i < 4; i++) {
+		pointarr[i].x -= min.x;
+		pointarr[i].y = abs(pointarr[i].y - min.y - ySize);
+	}
+	int rectWeight = (int)temprect.getweight();
+	int rectHeight = (int)temprect.getheight();
+
+	MyBitmap tempBitmap(p_memdc(), xSize, ySize);
+	MyBitmap BackBitmap(p_memdc(), rectWeight, rectHeight);
+
+	MemDc BackDc(p_memdc(), tempBitmap());
+	MemDc ObjDc(p_memdc(), p_texture->getbitmap());
+	MemDc tempObjDc(p_memdc(), BackBitmap());
+	MemDc greenDc(p_memdc(), green);
+
+	StretchBlt(BackDc(), 0, 0, xSize, ySize, greenDc(), 0, 0, 1, 1, SRCCOPY);
+	StretchBlt(tempObjDc(), 0, 0, rectWeight, rectHeight, ObjDc(), 0, 0, p_texture->getxSize(), p_texture->getySize(), SRCCOPY);
+	PlgBlt(BackDc(), pointarr, tempObjDc(), 0, 0, rectWeight, rectHeight, 0, 0, 0);
+	transparentBlt(p_memdc(), min.x, min.y, xSize, ySize, BackDc());
+}
+
+void Camera::TextRender(const MemDc&, const TextComponent*)
+{
 }
 
 void Camera::transparentBlt(const HDC& backdc, const int& xdest, const int& ydest,

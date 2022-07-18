@@ -22,12 +22,11 @@ public:
 public:
 	virtual void Start();
 
-
-	HBITMAP	getbitmap();
-	Rect getrect();
-	const Rect& getrectptr();
-	int getxSize();
-	int getySize();
+	HBITMAP	getbitmap() const;
+	Rect getrect() const;
+	const Rect& getrectptr() const;
+	int getxSize() const;
+	int getySize() const;
 
 	void setbitmap	(string, int, int);
 	void setrect	(const Rect&);

@@ -10,6 +10,7 @@ enum class E_Objtype
 	testLevel2,
 	testPuzzel,
 	titlescreen,
+	puzzleliner,
 	puzzlecleartest,
 	character,
 	background,

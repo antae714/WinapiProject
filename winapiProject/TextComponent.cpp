@@ -1,18 +1,19 @@
 #include "TextComponent.h"
+#include "Vector2.h"
 
 TextComponent::TextComponent() :
-	Text(""), nowLine(0), fontHeight(0), fontName("")
+	point(new Vector2()), Text(""), nowLine(0), fontHeight(0), fontName("")
 {
 }
 
-TextComponent::TextComponent(const string& p_text, const int& p_height, const string& p_fontName) :
-	Text(p_text), nowLine(0), fontHeight(p_height), fontName(p_fontName)
+TextComponent::TextComponent(const Vector2& p_pint, const string& p_text, const int& p_height, const string& p_fontName) :
+	point(new Vector2(p_pint)), Text(p_text), nowLine(0), fontHeight(p_height), fontName(p_fontName)
 {
 }
 
 TextComponent::~TextComponent()
 {
-
+	delete point;
 }
 
 void TextComponent::nextLine()
@@ -25,25 +26,35 @@ void TextComponent::beforeLine()
 	--nowLine;
 }
 
-string TextComponent::getText()
+Vector2 TextComponent::getpoint() const
+{
+	return *point;
+}
+
+string TextComponent::getText() const
 {
 	//라인 정보에맞게 출력
 	return Text;
 }
 
-int TextComponent::getnowLine()
+int TextComponent::getnowLine() const
 {
 	return nowLine;
 }
 
-int TextComponent::getfontHeight()
+int TextComponent::getfontHeight() const
 {
 	return fontHeight;
 }
 
-string TextComponent::getfontName()
+string TextComponent::getfontName() const
 {
 	return fontName;
+}
+
+void TextComponent::setpoint(const Vector2& p_point)
+{
+	*point = p_point;
 }
 
 void TextComponent::setText(const string& p_Text)

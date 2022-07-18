@@ -9,7 +9,7 @@ SoundManager::SoundManager()
     for (int i = 0; i < (int)E_Sound::MAX; ++i) {
         system->createSound(enumSound::toFile((E_Sound)i).c_str(), FMOD_DEFAULT, 0, &soundarr.at(i));
     }
-    soundarr.at(0)->setMode(FMOD_LOOP_NORMAL);
+    soundarr.at((int)E_Sound::BackGround)->setMode(FMOD_LOOP_NORMAL);
 }
 
 SoundManager::~SoundManager() {

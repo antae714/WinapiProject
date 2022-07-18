@@ -12,8 +12,8 @@ public:
 
 public:
 	void SelectObject_(HBITMAP);
-	HDC getMemDC();
+	HDC getMemDC() const;
 
-	HDC operator()();
+	HDC operator()() const;
 };
 

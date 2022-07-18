@@ -1,2 +1,2 @@
 // 캐릭터
-Transform{X:-400},Texture{Bitmap:character2,Width:100,Height:150},Script{TestScript}
+Transform{X:-400},Texture{Bitmap:character,Width:100,Height:150},Script{TestScript}
