@@ -4,6 +4,7 @@
 #include "E_Component.h"
 #include "TransformComponent.h"
 #include "Vector2.h"
+#include "GameObject.h"
 
 #define VK_A 0x41
 #define VK_S 0x53
@@ -20,7 +21,7 @@ TestScript::TestScript()
 void TestScript::play()
 {
 	InputLogic();
-	Logic();
+	MoveLogic();
 }
 
 void TestScript::InputLogic()
@@ -65,7 +66,7 @@ void TestScript::InputLogic()
 	}
 }
 
-void TestScript::Logic()
+void TestScript::MoveLogic()
 {
 	for (const pair<int, void(TestScript::*)()>& item : Fnptrplay) {
 		(this->*item.second)();
@@ -75,6 +76,10 @@ void TestScript::Logic()
 	tempcom->setpivot(tempcom->getpivot() + Vector2(x, y).GetNormalize() * speed);
 	x = 0;
 	y = 0;
+}
+
+void TestScript::PuzzleLogic()
+{
 }
 
 void TestScript::xplus()

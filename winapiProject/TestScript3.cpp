@@ -36,8 +36,10 @@ void TestScript3::play()
 	}
 	else {
 		togle = true;
-		LevelData::LevelLode("testPuzzel");
-		TestScript2::AnswerFn();
+		LevelData::LevelLode("PuzzleBoard");
+		LevelData::LevelLode("puzzleType");
+		LevelData::LevelLode("puzzleDot");
+		//TestScript2::AnswerFn();
 
 		AllObject* allObject = AllObject::getInstance();
 		pair<ObjIter, ObjIter> temp = allObject->getallObj(E_Objtype::character);

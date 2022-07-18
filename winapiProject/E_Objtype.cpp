@@ -1,44 +1,35 @@
 #include "E_Objtype.h"
+#include "Macro.h"
 
 string enumObj::conversion(const E_Objtype& p_enum) {
 	switch (p_enum)
 	{
-	case E_Objtype::testLevel:
-		return "testLevel";
-	case E_Objtype::testLevel2:
-		return "testLevel2";
-	case E_Objtype::testPuzzel:
-		return "testPuzzel";
-	case E_Objtype::titlescreen:
-		return "titlescreen";
-	case E_Objtype::puzzleliner:
-		return "puzzleliner";
-	case E_Objtype::puzzlecleartest:
-		return "puzzlecleartest";
-	case E_Objtype::character:
-		return "character";
-	case E_Objtype::background:
-		return "background";
+		ENUMTOSTRING(E_Objtype, testLevel)
+		ENUMTOSTRING(E_Objtype, testLevel2)
+		ENUMTOSTRING(E_Objtype, testPuzzel)
+		ENUMTOSTRING(E_Objtype, titlescreen)
+		ENUMTOSTRING(E_Objtype, puzzleliner)
+		ENUMTOSTRING(E_Objtype, puzzlecleartest)
+		ENUMTOSTRING(E_Objtype, character)
+		ENUMTOSTRING(E_Objtype, background)
+		ENUMTOSTRING(E_Objtype, PuzzleBoard)
+		ENUMTOSTRING(E_Objtype, puzzleType)
+		ENUMTOSTRING(E_Objtype, puzzleDot)
 	}
 }
 
 E_Objtype enumObj::conversion(const string& p_str) {
-	if ("testLevel" == p_str)
-		return E_Objtype::testLevel;
-	else if ("testLevel2" == p_str)
-		return E_Objtype::testLevel2;
-	else if ("testPuzzel" == p_str)
-		return E_Objtype::testPuzzel;
-	else if ("titlescreen" == p_str)
-		return E_Objtype::titlescreen;
-	else if ("puzzleliner" == p_str)
-		return E_Objtype::puzzleliner;
-	else if ("puzzlecleartest" == p_str)
-		return E_Objtype::puzzlecleartest;
-	else if ("character" == p_str)
-		return E_Objtype::character;
-	else if ("background" == p_str)
-		return E_Objtype::background;
+	STRINGTOENUM(testLevel, E_Objtype)
+		STRINGTOENUM(testLevel2, E_Objtype)
+		STRINGTOENUM(testPuzzel, E_Objtype)
+		STRINGTOENUM(titlescreen, E_Objtype)
+		STRINGTOENUM(puzzleliner, E_Objtype)
+		STRINGTOENUM(puzzlecleartest, E_Objtype)
+		STRINGTOENUM(character, E_Objtype)
+		STRINGTOENUM(background, E_Objtype)
+		STRINGTOENUM(PuzzleBoard, E_Objtype)
+		STRINGTOENUM(puzzleType, E_Objtype)
+		STRINGTOENUM(puzzleDot, E_Objtype)
 }
 
 string enumObj::toFile(const E_Objtype& p_enum) {

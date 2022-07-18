@@ -3,11 +3,14 @@
 
 #include "Script.h"
 #include "UpdateCommand.h"
+
 using namespace std;
+class GameObject;
 class TestScript : public Script, public UpdateCommand
 {
 private:
 	map<int, void(TestScript::*)()> Fnptrplay;
+	GameObject* line;
 	int x;
 	int y;
 	int speed;
@@ -18,7 +21,8 @@ public:
 
 private:
 	void InputLogic();
-	void Logic();
+	void MoveLogic();
+	void PuzzleLogic();
 
 	void xplus();
 	void xminus();

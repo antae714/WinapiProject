@@ -12,6 +12,9 @@ enum class E_Script
 	GameStart,
 	GameExit,
 	MoveMap,
+	PuzzleBoardScript,
+	PuzzleDotScript,
+	LineScript,
 
 	MAX
 };

@@ -7,6 +7,9 @@
 #include "GameStart.h"
 #include "GameExit.h"
 #include "MoveMap.h"
+#include "PuzzleBoardScript.h"
+#include "PuzzleDotScript.h"
+#include "LineScript.h"
 
 Script* LevelLoader::AllocScript(const E_Script& p_enum)
 {
@@ -24,8 +27,13 @@ Script* LevelLoader::AllocScript(const E_Script& p_enum)
 		return new GameExit();
 	case E_Script::MoveMap:
 		return new MoveMap();
+	case E_Script::PuzzleBoardScript:
+		return new PuzzleBoardScript();
+	case E_Script::PuzzleDotScript:
+		return new PuzzleDotScript();
 
 	default:
+		_ASSERT(0 && "존재하지않는 스크립트");
 		return nullptr;
 	}
 }

@@ -66,3 +66,9 @@ void AllObject::deleteGroup(const E_Objtype& p_key)
     }
     allObj.erase(tempiter.first, tempiter.second);
 }
+
+void AllObject::deleteObj(ObjIter iter)
+{
+    delete iter.operator*().second;
+    allObj.erase(iter);
+}

@@ -8,9 +8,12 @@ enum class E_Objtype
 {
 	testLevel = 0,
 	testLevel2,
-	testPuzzel,
 	titlescreen,
+	PuzzleBoard,
+	puzzleType,
+	testPuzzel,
 	puzzleliner,
+	puzzleDot,
 	puzzlecleartest,
 	character,
 	background,

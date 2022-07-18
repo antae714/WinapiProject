@@ -19,12 +19,14 @@ void TestScript2::play()
 	if (isClicked)
 	{
 		isClicked = false;
-		dynamic_cast<TextureComponent*>(owner->getcomponent(E_Component::TextureComponent))->setbitmap("Starbutton", 50, 50);
+		TextureComponent* texture = dynamic_cast<TextureComponent*>(owner->getcomponent(E_Component::TextureComponent));
+		texture->setbitmap("Starbutton", texture->getxSize(), texture->getySize());
 	}
 	else
 	{
 		isClicked = true;
-		dynamic_cast<TextureComponent*>(owner->getcomponent(E_Component::TextureComponent))->setbitmap("Starbutton_Selected", 50, 50);
+		TextureComponent* texture = dynamic_cast<TextureComponent*>(owner->getcomponent(E_Component::TextureComponent));
+		texture->setbitmap("Starbutton_Selected", texture->getxSize(), texture->getySize());
 	}
 
 	AnswerFn();
@@ -36,7 +38,7 @@ void TestScript2::AnswerFn()
 	LevelData::DeleteLevel(E_Objtype::puzzleliner);
 
 	AllObject* allObject = AllObject::getInstance();
-	pair<ObjIter, ObjIter> temp = allObject->getallObj(E_Objtype::testPuzzel);
+	pair<ObjIter, ObjIter> temp = allObject->getallObj(E_Objtype::puzzleDot);
 
 	int count = 0;
 	bool stagesw[81] = { 0, };
@@ -133,7 +135,7 @@ void TestScript2::AddLine(Vector2 p_begin, Vector2 p_end)
 	tempobj->pushcomponent(E_Component::TextureComponent, tempcomp2);
 
 	tempobj->Start();
-	AllObject::getInstance()->push(E_Objtype::puzzleliner, tempobj);
+	AllObject::getInstance()->push(E_Objtype::puzzleliner, tempobj);	
 }
 
 void TestScript2::Activate()

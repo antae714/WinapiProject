@@ -15,7 +15,7 @@ typedef multimap< E_Objtype, GameObject*>::iterator ObjIter;
 class AllObject : public SingletonCls<AllObject>
 {
 private:
-	multimap< E_Objtype, GameObject*> allObj;
+	multimap<E_Objtype, GameObject*> allObj;
 public:
 	AllObject();
 	virtual ~AllObject();
@@ -31,5 +31,7 @@ public:
 	void setActiveGroup(const E_Objtype& p_key, bool p_bool);
 	void addPivotGroup(const E_Objtype& p_key, const Vector2& p_vec);
 	void deleteGroup(const E_Objtype& p_key);
+
+	void deleteObj(ObjIter);
 };
 
