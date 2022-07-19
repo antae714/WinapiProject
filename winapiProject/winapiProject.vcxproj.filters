@@ -249,6 +249,12 @@
     <ClInclude Include="PuzzleBoardScript.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="PuzzleExit.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="PuzzleEntry.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AllObject.cpp">
@@ -424,6 +430,12 @@
     </ClCompile>
     <ClCompile Include="PuzzleBoardScript.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="PuzzleExit.cpp">
+      <Filter>헤더 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="PuzzleEntry.cpp">
+      <Filter>헤더 파일</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

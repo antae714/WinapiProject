@@ -13,7 +13,10 @@ string enumScr::conversion(const E_Script& p_enum)
 			ENUMTOSTRING(E_Script, MoveMap)
 			ENUMTOSTRING(E_Script, PuzzleBoardScript)
 			ENUMTOSTRING(E_Script, PuzzleDotScript)
+			ENUMTOSTRING(E_Script, PuzzleEntry)
+			ENUMTOSTRING(E_Script, PuzzleExit)
 			ENUMTOSTRING(E_Script, LineScript)
+			ENUMTOSTRING(E_Script, PlayerScript)
 	}
 }
 
@@ -27,5 +30,8 @@ E_Script enumScr::conversion(const string& p_str)
 		STRINGTOENUM(MoveMap, E_Script)
 		STRINGTOENUM(PuzzleBoardScript, E_Script)
 		STRINGTOENUM(PuzzleDotScript, E_Script)
+		STRINGTOENUM(PuzzleEntry, E_Script)
+		STRINGTOENUM(PuzzleExit, E_Script)
 		STRINGTOENUM(LineScript, E_Script)
+		STRINGTOENUM(PlayerScript, E_Script)
 }

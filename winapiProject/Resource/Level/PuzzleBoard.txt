@@ -2,3 +2,7 @@
 Transform{X:-3},Texture{Bitmap:backgroundpuzzle,Width:787,Height:787},Script{PuzzleBoardScript}
 
 
+
+
+// 퍼즐 닫기
+Transform{X:500,Y:-300},Texture{Bitmap:exit,Width:250,Height:100},Input,Script{PuzzleExit}

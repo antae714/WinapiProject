@@ -14,7 +14,10 @@ enum class E_Script
 	MoveMap,
 	PuzzleBoardScript,
 	PuzzleDotScript,
+	PuzzleEntry,
+	PuzzleExit,
 	LineScript,
+	PlayerScript,
 
 	MAX
 };

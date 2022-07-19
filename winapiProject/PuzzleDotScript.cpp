@@ -68,7 +68,6 @@ void PuzzleDotScript::clickLogic()
 				GETSCRIPT(line->getfirstptr(), PuzzleDotScript)->setisClicked(false);
 				setisClicked(false);
 				allObject->deleteObj(iter);
-
 			}
 			break;
 			//정답 판정후	아니면 라인지우고 islining 변경

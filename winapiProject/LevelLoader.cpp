@@ -1,4 +1,5 @@
 #include "LevelLoader.h"
+#include "GameData.h"
 #include "GameObject.h"
 #include "E_Component.h"
 #include "CompanentManager.h"
@@ -11,7 +12,7 @@
 #include "KeyInputComponent.h"
 #include "E_Objtype.h"
 #include "MoveMap.h"
-#include "TestScript2.h"
+#include "PlayerScript.h"
 #include "LineScript.h"
 
 void LevelLoader::LoadLevel(E_Objtype p_file)
@@ -173,20 +174,38 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
                     y = stoi(tempmap.find("Y")->second);
                 }
 
-                MoveMap* temp = dynamic_cast<MoveMap*>(tempobj->getscriptptr());
-                temp->Set(src, dest, x, y);
+                MoveMap* tempscr = dynamic_cast<MoveMap*>(tempobj->getscriptptr());
+                tempscr->Set(src, dest, x, y);
             }
 
-            if ("TestScript2" == temp)
+            if ("PlayerScript" == temp)
             {
-                if (tempmap.find("Activate") != tempmap.end())
+                TextureComponent* tempcom = dynamic_cast<TextureComponent*>(tempobj->getcomponent(E_Component::TextureComponent));
+                
+                int top = WINDOWY / 2 - tempcom->getySize() / 2;
+                int bottom = WINDOWY / -2 + tempcom->getySize() / 2;
+                int left = WINDOWX / -2 + tempcom->getxSize() / 2;
+                int right = WINDOWX / 2 - tempcom->getxSize() / 2;
+
+                if (tempmap.find("Top") != tempmap.end())
                 {
-                    if (1 == stoi(tempmap.find("Activate")->second))
-                    {
-                        TestScript2* temp = dynamic_cast<TestScript2*>(tempobj->getscriptptr());
-                        temp->Activate();
-                    }
+                    top = stoi(tempmap.find("Top")->second);
                 }
+                if (tempmap.find("Bottom") != tempmap.end())
+                {
+                    bottom = stoi(tempmap.find("Bottom")->second);
+                }
+                if (tempmap.find("Left") != tempmap.end())
+                {
+                    left = stoi(tempmap.find("Left")->second);
+                }
+                if (tempmap.find("Right") != tempmap.end())
+                {
+                    right = stoi(tempmap.find("Right")->second);
+                }
+
+                PlayerScript* tempscr = dynamic_cast<PlayerScript*>(tempobj->getscriptptr());
+                tempscr->SetMovableArea(top, bottom, left, right);
             }
 
             if ("LineScript" == temp)
@@ -202,8 +221,8 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
                 }
                 _ASSERT(first && "미할당");
                 _ASSERT(second && "미할당");
-                LineScript* temp = dynamic_cast<LineScript*>(tempobj->getscriptptr());
-                temp->Set(first, second, true);
+                LineScript* tempscr = dynamic_cast<LineScript*>(tempobj->getscriptptr());
+                tempscr->Set(first, second, true);
             }
         }
 

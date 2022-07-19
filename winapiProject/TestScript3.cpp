@@ -18,7 +18,9 @@ void TestScript3::play()
 {
 	if (togle) {
 		togle = false;
-		LevelData::DeleteLevel("testPuzzel");
+		LevelData::DeleteLevel("PuzzleBoard");
+		LevelData::DeleteLevel("puzzleDot");
+		LevelData::DeleteLevel("puzzleHint");
 		LevelData::DeleteLevel(E_Objtype::puzzleliner);
 		LevelData::DeleteLevel(E_Objtype::puzzlecleartest);
 

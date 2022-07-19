@@ -5,7 +5,19 @@ Transform,Texture{Bitmap:background,Width:1280,Height:720}
 Transform{Y:100},Texture{Bitmap:logo,Width:246,Height:152}
 
 // 게임 시작 버튼
-Transform{X:-200,Y:-200},Texture{Bitmap:start,Width:250,Height:100},Input,Script{GameStart}
+Transform{X:-450,Y:-250},Texture{Bitmap:start,Width:250,Height:100},Input,Script{GameStart}
 
 // 종료 버튼
-Transform{X:200,Y:-200},Texture{Bitmap:exit,Width:250,Height:100},Input,Script{GameExit}
+Transform{X:450,Y:-250},Texture{Bitmap:exit,Width:250,Height:100},Input,Script{GameExit}
+
+
+
+
+
+
+
+
+
+
+Transform{X:150,Y:-250},Texture{Bitmap:Blue,Width:250,Height:100}
+Transform{X:-150,Y:-250},Texture{Bitmap:Blue,Width:250,Height:100}
