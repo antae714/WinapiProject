@@ -37,8 +37,8 @@ void TestScript3::play()
 	else {
 		togle = true;
 		LevelData::LevelLode("PuzzleBoard");
-		LevelData::LevelLode("puzzleType");
 		LevelData::LevelLode("puzzleDot");
+		LevelData::LevelLode("puzzleHint");
 		//TestScript2::AnswerFn();
 
 		AllObject* allObject = AllObject::getInstance();

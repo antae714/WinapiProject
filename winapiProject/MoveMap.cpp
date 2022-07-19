@@ -22,7 +22,6 @@ void MoveMap::Set(string p_src, string p_dest, int p_x, int p_y)
 
 void MoveMap::play()
 {
-	SoundManager::getInstance()->PlaySound_(E_Sound::Click);
 	string src = m_src,	dest = m_dest;
 	int x = m_pos_x, y = m_pos_y;
 

@@ -12,9 +12,12 @@ private:
 	const GameObject* second;
 	bool isend;
 public:
+	LineScript();
 	LineScript(GameObject*, const GameObject*);
-
+	LineScript(GameObject*, const GameObject*, bool);
+	virtual ~LineScript();
 public:
+	void Set(int, int, bool);
 	virtual void Awake(GameObject* p_owner);
 	virtual void play();
 	void Setting();
@@ -27,4 +30,3 @@ public:
 	void setsecond(const GameObject*);
 	void setisend(bool);
 };
-

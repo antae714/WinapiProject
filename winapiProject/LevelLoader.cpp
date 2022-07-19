@@ -12,6 +12,7 @@
 #include "E_Objtype.h"
 #include "MoveMap.h"
 #include "TestScript2.h"
+#include "LineScript.h"
 
 void LevelLoader::LoadLevel(E_Objtype p_file)
 {
@@ -186,6 +187,23 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
                         temp->Activate();
                     }
                 }
+            }
+
+            if ("LineScript" == temp)
+            {
+                int first = 0, second = 0;
+                if (tempmap.find("first") != tempmap.end())
+                {
+                    first = stoi(tempmap.find("first").operator*().second);
+                }
+                if (tempmap.find("second") != tempmap.end())
+                {
+                    second = stoi(tempmap.find("second").operator*().second);
+                }
+                _ASSERT(first && "미할당");
+                _ASSERT(second && "미할당");
+                LineScript* temp = dynamic_cast<LineScript*>(tempobj->getscriptptr());
+                temp->Set(first, second, true);
             }
         }
 

@@ -12,6 +12,7 @@ enum class E_Objtype
 	PuzzleBoard,
 	puzzleType,
 	testPuzzel,
+	puzzleHint,
 	puzzleliner,
 	puzzleDot,
 	puzzlecleartest,

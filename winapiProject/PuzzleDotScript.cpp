@@ -18,9 +18,7 @@ void PuzzleDotScript::play()
 {
 	if (!isClicked)
 	{
-		isClicked = true;
-		TextureComponent* texture = GETCOMPONENT(owner, TextureComponent);
-		texture->setbitmap("Starbutton_Selected", texture->getxSize(), texture->getySize());
+		setisClicked(true);
 	}
 	clickLogic();
 }
@@ -33,7 +31,12 @@ bool PuzzleDotScript::getisClicked() const
 void PuzzleDotScript::setisClicked(bool p_isClicked)
 {
 	isClicked = p_isClicked;
-	if (!isClicked)
+	if (isClicked)
+	{
+		TextureComponent* texture = GETCOMPONENT(owner, TextureComponent);
+		texture->setbitmap("Starbutton_Selected", texture->getxSize(), texture->getySize());
+	}
+	else
 	{
 		TextureComponent* texture = GETCOMPONENT(owner, TextureComponent);
 		texture->setbitmap("Starbutton", texture->getxSize(), texture->getySize());
@@ -59,6 +62,7 @@ void PuzzleDotScript::clickLogic()
 			if (puzzle->isAnswer(owner, line->getfirstptr())) {
 				//정답이면 라인second 이거로 바꾸기
 				line->setsecond(owner);
+				line->Setting();
 			}
 			else {
 				GETSCRIPT(line->getfirstptr(), PuzzleDotScript)->setisClicked(false);

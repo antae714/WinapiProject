@@ -31,6 +31,8 @@ Script* LevelLoader::AllocScript(const E_Script& p_enum)
 		return new PuzzleBoardScript();
 	case E_Script::PuzzleDotScript:
 		return new PuzzleDotScript();
+	case E_Script::LineScript:
+		return new LineScript();
 
 	default:
 		_ASSERT(0 && "존재하지않는 스크립트");
