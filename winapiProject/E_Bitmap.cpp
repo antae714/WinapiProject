@@ -7,6 +7,8 @@ string enumBitmap::conversion(const E_Bitmap& p_enum) {
 		return "background";
 	case E_Bitmap::background_2:
 		return "background_2";
+	case E_Bitmap::background_Title:
+		return "background_Title";
 	case E_Bitmap::backgroundpuzzle:
 		return "backgroundpuzzle";
 	case E_Bitmap::puzzlehint:
@@ -52,6 +54,10 @@ E_Bitmap enumBitmap::conversion(const string& p_str) {
 	else if ("background_2" == p_str)
 	{
 		return E_Bitmap::background_2;
+	}
+	else if ("background_Title" == p_str)
+	{
+		return E_Bitmap::background_Title;
 	}
 	else if ("backgroundpuzzle" == p_str) {
 		return E_Bitmap::backgroundpuzzle;

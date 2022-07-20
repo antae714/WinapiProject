@@ -73,6 +73,9 @@
     <Filter Include="헤더 파일\Level">
       <UniqueIdentifier>{d148e5db-e332-45ad-a199-e71e222efe20}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TrashCan">
+      <UniqueIdentifier>{b9e18dea-fdef-4b73-9028-5203692a4fc6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SingletonCls.h">
@@ -156,9 +159,6 @@
     <ClInclude Include="ScreenPoint.h">
       <Filter>헤더 파일\BaseData</Filter>
     </ClInclude>
-    <ClInclude Include="Macro.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="InputComponenet.h">
       <Filter>헤더 파일\Component</Filter>
     </ClInclude>
@@ -174,12 +174,6 @@
     <ClInclude Include="Script.h">
       <Filter>헤더 파일\Script</Filter>
     </ClInclude>
-    <ClInclude Include="TestScript.h">
-      <Filter>헤더 파일\Script</Filter>
-    </ClInclude>
-    <ClInclude Include="TestScript2.h">
-      <Filter>헤더 파일\Script</Filter>
-    </ClInclude>
     <ClInclude Include="LevelData.h">
       <Filter>헤더 파일\Level</Filter>
     </ClInclude>
@@ -188,9 +182,6 @@
     </ClInclude>
     <ClInclude Include="InputManager.h">
       <Filter>헤더 파일\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="TestScript3.h">
-      <Filter>헤더 파일\Script</Filter>
     </ClInclude>
     <ClInclude Include="E_Objtype.h">
       <Filter>헤더 파일\Enum</Filter>
@@ -237,23 +228,35 @@
     <ClInclude Include="TextComponent.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerScript.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="LineScript.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="PuzzleDotScript.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="PuzzleBoardScript.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="Macro.h">
+      <Filter>헤더 파일\Manager</Filter>
     </ClInclude>
     <ClInclude Include="PuzzleExit.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="LineScript.h">
+      <Filter>헤더 파일\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerScript.h">
+      <Filter>헤더 파일\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="PuzzleBoardScript.h">
+      <Filter>헤더 파일\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="PuzzleDotScript.h">
+      <Filter>헤더 파일\Script</Filter>
     </ClInclude>
     <ClInclude Include="PuzzleEntry.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScript3.h">
+      <Filter>TrashCan</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScript2.h">
+      <Filter>TrashCan</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScript.h">
+      <Filter>TrashCan</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -350,12 +353,6 @@
     <ClCompile Include="UpdateCommand.cpp">
       <Filter>소스 파일\Command</Filter>
     </ClCompile>
-    <ClCompile Include="TestScript2.cpp">
-      <Filter>소스 파일\Script</Filter>
-    </ClCompile>
-    <ClCompile Include="TestScript.cpp">
-      <Filter>소스 파일\Script</Filter>
-    </ClCompile>
     <ClCompile Include="Script.cpp">
       <Filter>소스 파일\Script</Filter>
     </ClCompile>
@@ -364,9 +361,6 @@
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
       <Filter>소스 파일\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="TestScript3.cpp">
-      <Filter>소스 파일\Script</Filter>
     </ClCompile>
     <ClCompile Include="LevelLoader.cpp">
       <Filter>소스 파일\Level</Filter>
@@ -419,23 +413,32 @@
     <ClCompile Include="SoundManager.cpp">
       <Filter>소스 파일\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerScript.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="PuzzleExit.cpp">
+      <Filter>소스 파일\Script</Filter>
     </ClCompile>
     <ClCompile Include="LineScript.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\Script</Filter>
     </ClCompile>
-    <ClCompile Include="PuzzleDotScript.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="PlayerScript.cpp">
+      <Filter>소스 파일\Script</Filter>
     </ClCompile>
     <ClCompile Include="PuzzleBoardScript.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\Script</Filter>
     </ClCompile>
-    <ClCompile Include="PuzzleExit.cpp">
-      <Filter>헤더 파일</Filter>
+    <ClCompile Include="PuzzleDotScript.cpp">
+      <Filter>소스 파일\Script</Filter>
     </ClCompile>
     <ClCompile Include="PuzzleEntry.cpp">
-      <Filter>헤더 파일</Filter>
+      <Filter>소스 파일\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="TestScript3.cpp">
+      <Filter>TrashCan</Filter>
+    </ClCompile>
+    <ClCompile Include="TestScript2.cpp">
+      <Filter>TrashCan</Filter>
+    </ClCompile>
+    <ClCompile Include="TestScript.cpp">
+      <Filter>TrashCan</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

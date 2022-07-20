@@ -6,6 +6,7 @@ enum class E_Bitmap
 {
 	background,
 	background_2,
+	background_Title,
 	backgroundpuzzle,
 	puzzlehint,
 	character,

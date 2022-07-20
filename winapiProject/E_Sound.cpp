@@ -29,7 +29,7 @@ string enumSound::toFile(const E_Sound& p_enum) {
 	}*/
 	switch (p_enum) {
 	case E_Sound::BackGround:
-		return string("./Resource/Sound/MP_Refreshing_Day.mp3");
+		return string("./Resource/Sound/Rinne - Aqua.mp3");
 	case E_Sound::Click:
 		return string("./Resource/Sound/MP_Pling.mp3");
 	}
