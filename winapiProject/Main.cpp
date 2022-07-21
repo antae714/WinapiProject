@@ -3,9 +3,6 @@
 #include "GameData.h"
 #include "GameManager.h"
 #include "LevelData.h"
-#include "AllObject.h"
-
-AllObject* allObject = AllObject::getInstance();
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdParam, int nCmdShow)
 {
@@ -46,6 +43,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdPa
 		}
 		gameManager.logicUpdate();
 	}
+
+
 	return (int)Message.wParam;							//탈출 코드. 프로그램 종료
 }
 

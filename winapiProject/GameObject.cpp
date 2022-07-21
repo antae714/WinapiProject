@@ -15,7 +15,6 @@ GameObject::~GameObject()
 	if (script) {
 		delete script;
 		script = nullptr;
-
 	}
 	for (pair<E_Component, Component*> item : componentMap) {
 		delete item.second;
@@ -26,6 +25,9 @@ void GameObject::Start()
 {
 	for (pair<E_Component, Component*> item : componentMap) {
 		item.second->Start();
+	}
+	if (script) {
+		script->Start();
 	}
 }
 

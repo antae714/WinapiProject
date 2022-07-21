@@ -6,6 +6,7 @@
 #include "TransformComponent.h"
 #include "TextureComponent.h"
 #include "Vector2.h"
+#include "Math.h"
 
 #define VK_A 0x41
 #define VK_S 0x53
@@ -16,7 +17,8 @@ PlayerScript::PlayerScript()
 {
 	x = 0;
 	y = 0;
-	speed = 2;
+	speed = PLAYERSPEED;
+	moveState = E_PlayerState::Nomal;
 
 	top = 0;
 	bottom = 0;
@@ -51,7 +53,7 @@ void PlayerScript::InputLogic()
 			Fnptrplay.emplace(VK_DOWN, &PlayerScript::yminus);
 		}
 		else if (wparam == VK_SHIFT) {
-			speed = 6;
+			speed = PLAYERSPEED * 3;
 		}
 	}
 	else if (imsg == WM_KEYUP) {
@@ -68,7 +70,7 @@ void PlayerScript::InputLogic()
 			Fnptrplay.erase(VK_DOWN);
 		}
 		else if (wparam == VK_SHIFT) {
-			speed = 2;
+			speed = PLAYERSPEED;
 		}
 	}
 }
@@ -78,6 +80,18 @@ void PlayerScript::MoveLogic()
 	for (const pair<int, void(PlayerScript::*)()>& item : Fnptrplay) {
 		(this->*item.second)();
 	}
+	if (E_PlayerState::Nomal == moveState) {
+		NomalMove();
+	}
+	else if (E_PlayerState::Puzzle == moveState) {
+		PuzzleMove();
+	}
+	x = 0;
+	y = 0;
+}
+
+void PlayerScript::NomalMove()
+{
 	TransformComponent* tempcom = dynamic_cast<TransformComponent*>(owner->getcomponent(E_Component::TransformComponent));
 
 	if ((tempcom->getpivot().getx() - speed >= left || x > 0) &&
@@ -90,9 +104,22 @@ void PlayerScript::MoveLogic()
 	{
 		tempcom->setpivot(tempcom->getpivot() + Vector2(0, y).GetNormalize() * speed);
 	}
+}
 
-	x = 0;
-	y = 0;
+void PlayerScript::PuzzleMove()
+{
+	TransformComponent* tempcom = dynamic_cast<TransformComponent*>(owner->getcomponent(E_Component::TransformComponent));
+
+	for (int i = 0; i < 9; i++)
+	{
+		if (Math::Betwwen((i - 4) * GRIDSIZE - 20, (i - 4) * GRIDSIZE + 20, tempcom->getpivot().getx())) {
+			tempcom->setpivot(tempcom->getpivot() + Vector2(0, y).GetNormalize() * speed);
+		}
+		if (Math::Betwwen((i - 4) * GRIDSIZE - 20, (i - 4) * GRIDSIZE + 20, tempcom->getpivot().gety())) {
+			tempcom->setpivot(tempcom->getpivot() + Vector2(x, 0).GetNormalize() * speed);
+		}
+
+	}
 }
 
 void PlayerScript::SetMovableArea()
@@ -131,4 +158,9 @@ void PlayerScript::yplus()
 void PlayerScript::yminus()
 {
 	--y;
+}
+
+void PlayerScript::setmoveState(E_PlayerState p_moveState)
+{
+	moveState = p_moveState;
 }

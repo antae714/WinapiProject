@@ -24,9 +24,12 @@ Vector2 Math::ScreentoCart(const Vector2& p_vec)
     float windowY = gameData->getwindowY();
     Vector2 pivot = gameData->getcameraPivot();
 
-    Vector2 tempVec = p_vec + pivot;
+    Vector2 tempVec;
+    tempVec.setx(p_vec.getx() + pivot.getx());
+    tempVec.sety(p_vec.gety() - pivot.gety());
     tempVec.addx(-windowX / 2);
-    tempVec.sety(-tempVec.gety() + windowY / 2 - pivot.gety() * 2);
+    tempVec.sety(-tempVec.gety() + windowY / 2);
+    //tempVec.sety(-tempVec.gety() + windowY / 2);
     return tempVec;
 }
 Matrix3x3 Math::affinTransform(float weight, float height, float Degree, Vector2 Position)

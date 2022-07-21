@@ -68,7 +68,7 @@ Vector2 Rect::getpivot() const
 	return Vector2();
 }
 
-float Rect::getrotate()
+float Rect::getrotate() const
 {
 	return *rotate;
 }
@@ -103,14 +103,28 @@ Triange Rect::getTriangle(int p_index) const
 	return returnarr;
 }
 
-void Rect::setpivotptr(const Vector2* p_pivot)
+Rect* Rect::setpivotptr(const Vector2* p_pivot)
 {
 	pivot = p_pivot;
+	return this;
 }
 
-void Rect::setrotateptr(const float* p_rotate)
+Rect* Rect::setrotateptr(const float* p_rotate)
 {
 	rotate = p_rotate;
+	return this;
+}
+
+Rect* Rect::setheight(float p_height)
+{
+	height = p_height;
+	return this;
+}
+
+Rect* Rect::setweight(float p_weight)
+{
+	weight = p_weight;
+	return this;
 }
 
 void Rect::operator=(const Rect& other)

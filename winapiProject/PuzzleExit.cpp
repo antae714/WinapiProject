@@ -17,11 +17,12 @@ PuzzleExit::PuzzleExit()
 
 void PuzzleExit::play()
 {
+	//버튼이 먼저 지워지면 에러
+	LevelData::DeleteLevel(E_Objtype::puzzleliner);
+	LevelData::DeleteLevel("puzzleHint");
 	LevelData::DeleteLevel("PuzzleBoard");
 	LevelData::DeleteLevel("puzzleDot");
-	LevelData::DeleteLevel("puzzleHint");
 	LevelData::DeleteLevel(E_Objtype::puzzlecleartest);
-	LevelData::DeleteLevel(E_Objtype::puzzleliner);
 
 	AllObject* allObject = AllObject::getInstance();
 	pair<ObjIter, ObjIter> temp = allObject->getallObj(E_Objtype::character);

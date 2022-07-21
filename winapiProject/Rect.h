@@ -33,7 +33,7 @@ private:
 public:
 	vector<Vector2> getVectors() const;
 	Vector2 getpivot() const;
-	float getrotate();
+	float getrotate() const;
 	float getheight() const;
 	float gethalfheight() const;
 	float getweight() const;
@@ -41,8 +41,10 @@ public:
 
 	Triange getTriangle(int) const;
 
-	void setpivotptr(const Vector2*);
-	void setrotateptr(const float*);
+	Rect* setpivotptr(const Vector2*);
+	Rect* setrotateptr(const float*);
+	Rect* setheight(float);
+	Rect* setweight(float);
 
 	void operator=(const Rect& other);
 

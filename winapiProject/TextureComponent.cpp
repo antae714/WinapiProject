@@ -13,8 +13,10 @@ TextureComponent::TextureComponent()
 	rect = new Rect();
 }
 
-TextureComponent::TextureComponent(const string& p_str, const Rect& p_rect , int p_x, int p_y) : rect(new Rect(p_rect))
+TextureComponent::TextureComponent(const string& p_str, const Rect& p_rect , int p_x, int p_y)
 {
+	rect = new Rect();
+	*rect = p_rect;
 	setbitmap(p_str, p_x, p_y);
 }
 

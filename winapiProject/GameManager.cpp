@@ -4,6 +4,7 @@
 #include "InputManager.h"
 #include "KeyInputManager.h"
 #include "SoundManager.h"
+#include "AllObject.h"
 
 GameManager::GameManager()
 {
@@ -20,6 +21,7 @@ GameManager::~GameManager()
 	delete camera;
 	delete inputManager;
 	delete keyinputManager;
+	AllObject::deleteInstance();
 }
 
 void GameManager::logicUpdate()

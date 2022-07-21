@@ -11,33 +11,30 @@
 
 PuzzleDotScript::PuzzleDotScript()
 {
-	isClicked = false;
+	refCount = 0;
+}
+
+PuzzleDotScript::~PuzzleDotScript()
+{
 }
 
 void PuzzleDotScript::play()
 {
-	if (!isClicked)
-	{
-		setisClicked(true);
-	}
 	clickLogic();
 }
 
-bool PuzzleDotScript::getisClicked() const
+void PuzzleDotScript::plusrefCount()
 {
-	return isClicked;
-}
-
-void PuzzleDotScript::setisClicked(bool p_isClicked)
-{
-	isClicked = p_isClicked;
-	if (isClicked)
+	if (0 < ++refCount)
 	{
 		TextureComponent* texture = GETCOMPONENT(owner, TextureComponent);
 		texture->setbitmap("Starbutton_Selected", texture->getxSize(), texture->getySize());
 	}
-	else
-	{
+}
+
+void PuzzleDotScript::minusrefCount()
+{
+	if (0 >= --refCount) {
 		TextureComponent* texture = GETCOMPONENT(owner, TextureComponent);
 		texture->setbitmap("Starbutton", texture->getxSize(), texture->getySize());
 	}
@@ -60,17 +57,14 @@ void PuzzleDotScript::clickLogic()
 			PuzzleBoardScript* puzzle = GETSCRIPT(temp.first.operator*().second, PuzzleBoardScript);
 
 			if (puzzle->isAnswer(owner, line->getfirstptr())) {
-				//정답이면 라인second 이거로 바꾸기
 				line->setsecond(owner);
+				plusrefCount();
 				line->Setting();
 			}
 			else {
-				GETSCRIPT(line->getfirstptr(), PuzzleDotScript)->setisClicked(false);
-				setisClicked(false);
 				allObject->deleteObj(iter);
 			}
 			break;
-			//정답 판정후	아니면 라인지우고 islining 변경
 		}
 	}
 

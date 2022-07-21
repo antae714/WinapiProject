@@ -11,7 +11,7 @@ private:
 
 public:
 	MoveMap();
-	void Set(string, string, int, int);
+	virtual void Set(string, string, int, int);
 public:
 	virtual void play();
 };

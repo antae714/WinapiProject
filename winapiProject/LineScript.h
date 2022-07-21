@@ -17,8 +17,9 @@ public:
 	LineScript(GameObject*, const GameObject*, bool);
 	virtual ~LineScript();
 public:
-	void Set(int, int, bool);
+	virtual void Set(int, int, bool);
 	virtual void Awake(GameObject* p_owner);
+	virtual void Start();
 	virtual void play();
 	void Setting();
 

@@ -20,7 +20,7 @@ LineScript::LineScript() :
 LineScript::LineScript(GameObject* p_first, const GameObject* p_second) :
 	first(p_first), second(p_second), isend(false)
 {
-	GETSCRIPT(first, PuzzleDotScript)->setisClicked(true);
+	GETSCRIPT(first, PuzzleDotScript)->plusrefCount();
 }
 
 LineScript::LineScript(GameObject* p_first, const GameObject* p_second, bool p_isend) :
@@ -31,7 +31,12 @@ LineScript::LineScript(GameObject* p_first, const GameObject* p_second, bool p_i
 
 LineScript::~LineScript()
 {
-	GETSCRIPT(first, PuzzleDotScript)->setisClicked(false);
+	//버튼이 먼저 지워지면 에러
+	GETSCRIPT(first, PuzzleDotScript)->minusrefCount();
+	PuzzleDotScript* PuzzleDot = GETSCRIPT(second, PuzzleDotScript);
+	if (PuzzleDot) {
+		PuzzleDot->minusrefCount();
+	}
 }
 
 void LineScript::Set(int p_first, int p_second, bool p_isend = true)
@@ -44,15 +49,16 @@ void LineScript::Set(int p_first, int p_second, bool p_isend = true)
 		GameObject* obj = iter.operator*().second;
 		if (i == p_first) {
 			first = obj;
+			GETSCRIPT(first, PuzzleDotScript)->plusrefCount();
 		}
 		else if (i == p_second) {
 			second = obj;
+			GETSCRIPT(second, PuzzleDotScript)->plusrefCount();
 		}
 	}
 
 	_ASSERT(first && "할당되지않음");
 	_ASSERT(second && "할당되지않음");
-	Setting();
 	GETSCRIPT(allObject->getallObj(E_Objtype::PuzzleBoard).first.operator*().second, PuzzleBoardScript)->answer();
 }
 
@@ -61,14 +67,15 @@ void LineScript::Awake(GameObject* p_owner)
 	Script::Awake(p_owner);
 }
 
+void LineScript::Start()
+{
+	Setting();
+}
+
 void LineScript::play()
 {
 	if (!isend) {
 		Setting();
-	}
-	else {
-		GETSCRIPT(first, PuzzleDotScript)->setisClicked(true);
-		GETSCRIPT(second, PuzzleDotScript)->setisClicked(true);
 	}
 }
 
@@ -94,6 +101,7 @@ void LineScript::Setting()
 	tempcomp->setrotate(line_atan);
 
 	TextureComponent* tempcomp2 = (TextureComponent*)owner->getcomponent(E_Component::TextureComponent);
+	//tempcomp2->setrect(*tempcomp2->getrect().setweight(line_length));
 	tempcomp2->setbitmap("Line", 100, 5);
 	tempcomp2->setrect(Rect(0, line_length, 5));
 

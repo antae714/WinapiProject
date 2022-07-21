@@ -11,6 +11,8 @@ class Component
 protected:
 	GameObject* owner;
 public:
+	virtual ~Component();
+public:
 	virtual void Awake(GameObject* p_owner);
 	virtual void Start();
 };
