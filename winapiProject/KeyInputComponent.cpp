@@ -36,12 +36,13 @@ bool KeyInputComponenet::isPressed()
 		GameObject* obj = iter.operator*().second;
 		TransformComponent* tempcom = dynamic_cast<TransformComponent*>(obj->getcomponent(E_Component::TransformComponent));
 
-		tempPoint.x = tempcom->getpivot().getx() + WINDOWX / 2;
-		tempPoint.y = WINDOWY - (tempcom->getpivot().gety() + WINDOWY / 2);
+		//tempPoint.x = tempcom->getpivot().getx() + WINDOWX / 2;
+		//tempPoint.y = WINDOWY - (tempcom->getpivot().gety() + WINDOWY / 2);
+		return Math::isin(tempcom2->getrectptr(), tempcom->getpivot());
 		break;
 	}
 
-	return Math::isin(tempcom2->getrectptr(), Math::ScreentoCart(Vector2(tempPoint.x, tempPoint.y)));
+	//return Math::isin(tempcom2->getrectptr(), Math::ScreentoCart(Vector2(tempPoint.x, tempPoint.y)));
 }
 
 void KeyInputComponenet::OnPressed()

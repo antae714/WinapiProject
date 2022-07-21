@@ -84,7 +84,7 @@ void LineScript::Setting()
 	px -= lx / 2;
 	py -= ly / 2;
 
-	float line_atan = atan2(ly, -lx);
+	float line_atan = atan2(ly, lx);
 	int line_length = sqrt(lx * lx + ly * ly);
 
 	GameObject* tempobj = new GameObject();

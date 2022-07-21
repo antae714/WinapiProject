@@ -101,7 +101,8 @@ void Camera::TextureRender(const MemDc& p_memdc, const TextureComponent* p_textu
 	int xSize = max.x - min.x, ySize = max.y - min.y;
 	for (int i = 0; i < 4; i++) {
 		pointarr[i].x -= min.x;
-		pointarr[i].y = abs(pointarr[i].y - min.y - ySize);
+		pointarr[i].y -= min.y;
+		//pointarr[i].y = abs(pointarr[i].y - min.y - ySize);
 	}
 	int rectWeight = (int)temprect.getweight();
 	int rectHeight = (int)temprect.getheight();

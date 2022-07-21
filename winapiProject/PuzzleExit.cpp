@@ -9,6 +9,7 @@
 #include "Vector2.h"
 #include "TestScript2.h"
 #include "PlayerScript.h"
+#include "GameData.h"
 
 PuzzleExit::PuzzleExit()
 {
@@ -32,6 +33,8 @@ void PuzzleExit::play()
 
 		TransformComponent* tempcom = dynamic_cast<TransformComponent*>(obj->getcomponent(E_Component::TransformComponent));
 		tempcom->setpivot(Vector2(350, -200));
+		GameData* gameData = GameData::getInstance();
+		gameData->setcameraPivot(nullptr);
 
 		PlayerScript* tempscr = dynamic_cast<PlayerScript*>(obj->getscriptptr());
 		tempscr->SetMovableArea(-150, -250, -590, 590);

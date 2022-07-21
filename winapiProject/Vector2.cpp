@@ -114,3 +114,9 @@ Vector2 Vector2::operator*(const float& p_scalar)
 	return Vector2(x * p_scalar, y * p_scalar);
 }
 
+void Vector2::operator*=(const Vector2& p_scalar)
+{
+	this->x *= p_scalar.x;
+	this->y *= p_scalar.y;
+}
+

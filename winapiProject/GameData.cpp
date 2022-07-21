@@ -9,7 +9,11 @@ GameData::GameData()
 	backSound = BACKSOUND;
 	effectSound = EFFECTSOUND;
 
-	cameraPivot = new Vector2(0,0);
+	cameraPivot = nullptr;
+}
+
+GameData::~GameData()
+{
 }
 
 bool GameData::getisgaming()
@@ -39,7 +43,13 @@ int GameData::geteffectSound()
 
 const Vector2& GameData::getcameraPivot()
 {
-	return *cameraPivot;
+	if (cameraPivot) {
+		return *cameraPivot;
+	}
+	else {
+		return Vector2(0, 0);
+	}
+
 }
 
 void GameData::setisgaming(bool p_bool)
@@ -67,7 +77,7 @@ void GameData::seteffectSound(int p_val)
 	effectSound = p_val;
 }
 
-void GameData::setcameraPivot(const Vector2& p_pivot)
+void GameData::setcameraPivot(const Vector2* p_pivot)
 {
-	*cameraPivot = p_pivot;
+	cameraPivot = p_pivot;
 }

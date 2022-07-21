@@ -41,5 +41,6 @@ public:
 	Vector2 operator+(const Vector2&) const;
 	void operator+=(const Vector2&);
 	Vector2 operator*(const float&);
+	void operator*=(const Vector2&);
 
 };

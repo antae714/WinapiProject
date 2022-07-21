@@ -17,10 +17,11 @@ private:
 	int windowY;
 	int backSound;
 	int effectSound;
-	Vector2* cameraPivot;
+	const Vector2* cameraPivot;
 
 public:
 	GameData();
+	virtual ~GameData();
 
 public:
 	bool getisgaming();
@@ -35,6 +36,6 @@ public:
 	void setwindowY(int);
 	void setbackSound(int);
 	void seteffectSound(int);
-	void setcameraPivot(const Vector2&);
+	void setcameraPivot(const Vector2*);
 };
 

@@ -36,10 +36,10 @@ void Rect::Awake()
 	scale = 1;
 	float hlafHe = height / 2;
 	float hlafWe = weight / 2;
-	Vectors.at(0) = new Vector2(-hlafWe, -hlafHe);
-	Vectors.at(1) = new Vector2(hlafWe, -hlafHe);
-	Vectors.at(2) = new Vector2(-hlafWe, hlafHe);
-	Vectors.at(3) = new Vector2(hlafWe, hlafHe);
+	Vectors.at(0) = new Vector2(-hlafWe, hlafHe);
+	Vectors.at(1) = new Vector2(hlafWe, hlafHe);
+	Vectors.at(2) = new Vector2(-hlafWe, -hlafHe);
+	Vectors.at(3) = new Vector2(hlafWe, -hlafHe);
 
 	index.at(0) = 0;
 	index.at(1) = 1;
