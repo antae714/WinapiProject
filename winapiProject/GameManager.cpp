@@ -6,7 +6,6 @@
 #include "SoundManager.h"
 #include "GameTime.h"
 #include "AllObject.h"
-#include "CollisonLogic.h"
 
 GameManager::GameManager()
 {
@@ -14,7 +13,6 @@ GameManager::GameManager()
 	camera = new Camera();
 	inputManager = new InputManager();
 	keyinputManager = new KeyInputManager();
-	collisonLogic = new CollisonLogic();
 	SoundManager::getInstance()->PlaySound_(E_Sound::BackGround);
 }
 
@@ -32,7 +30,6 @@ void GameManager::logicUpdate()
 	GameTime::getInstance()->TimeUpdate();
 	inputManager->InputLogic();
 	keyinputManager->InputLogic();
-	collisonLogic->Update();
 	updateManager->Updating();
 	camera->Render();
 }

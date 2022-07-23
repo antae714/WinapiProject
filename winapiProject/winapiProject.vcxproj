@@ -151,7 +151,6 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Cls.h" />
     <ClInclude Include="CollisonCompoenet.h" />
-    <ClInclude Include="CollisonLogic.h" />
     <ClInclude Include="CompanentManager.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="EventList.h" />
@@ -215,7 +214,6 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Cls.cpp" />
     <ClCompile Include="CollisonCompoenet.cpp" />
-    <ClCompile Include="CollisonLogic.cpp" />
     <ClCompile Include="CompanentManager.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="EventList.cpp" />

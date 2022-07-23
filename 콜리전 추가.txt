@@ -1,0 +1,13 @@
+퍼즐 격자 이동제한을 콜리전으로햇습니다
+
+벽을만나면 이동하기전 자리로가기때문에 지금은 많이 부자연스럽지만 나중에 쉽게바꿀수있으니 이방식으로
+하면 좋을거같습니다
+(추가)
+CollisonCompoenet.cpp
+CollisonCompoenet.h
+
+
+(수정)
+Camera.cpp
+Camera.h
+파라미터 const제거와 윈도우배경색 바꿧습니다
