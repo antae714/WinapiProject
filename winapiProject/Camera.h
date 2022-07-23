@@ -26,7 +26,7 @@ private:
 	void beforeRender();
 	void realRender();
 
-	void TextureRender(const MemDc&, const TextureComponent*);
+	void TextureRender(MemDc&, const TextureComponent*);
 	void TextRender(const MemDc&, const TextComponent*);
 	void transparentBlt(const HDC& backdc, const int& xdest, const int& ydest, const int& wdest, const int& hdest, const HDC& ObjDC);
 };

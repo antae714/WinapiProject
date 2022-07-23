@@ -1,9 +1,9 @@
 #pragma once
 
 #include "Script.h"
-#include "InputCommand.h"
+#include "InputFunction.h"
 
-class PuzzleExit : public Script, public InputCommand
+class PuzzleExit : public Script, public InputFunction
 {
 public:
 	PuzzleExit();

@@ -1,9 +1,9 @@
 #pragma once
 #include "Script.h"
-#include "KeyInputCommand.h"
+#include "KeyInputFunction.h"
 #include <string>
 
-class MoveMap : public Script, public KeyInputCommand
+class MoveMap : public Script, public KeyInputFunction
 {
 private:
 	string m_src, m_dest;

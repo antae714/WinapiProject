@@ -4,6 +4,7 @@
 #include "Vector2.h"
 #include "Rect.h"
 #include "GameData.h"
+#include <algorithm>
 
 Vector2 Math::CarttoScreen(const Vector2& p_vec)
 {
@@ -96,6 +97,25 @@ bool Math::Betwwen(float left, float right, float standard)
     return left <= standard ? (standard <= right) : false;
 }
 
+bool Math::isin(const Rect& p_firstRect, const Rect& p_secondRect)
+{
+    Vector2 distanceVec = p_firstRect.getpivot() - p_secondRect.getpivot();
+    array<Vector2, 4> axisVector;
+    axisVector.at(0) = ((p_firstRect.at(0) + p_firstRect.at(1)));
+    axisVector.at(1) = ((p_firstRect.at(1) + p_firstRect.at(3)));
+    axisVector.at(2) = ((p_secondRect.at(0) + p_secondRect.at(1)));
+    axisVector.at(3) = ((p_secondRect.at(1) + p_secondRect.at(3)));
+
+    for (Vector2 item : axisVector) {
+        //if (OBBtest(item, p_firstRect.at(0), p_secondRect.at(0), distanceVec)) continue;
+        if (OBBtest(item, p_firstRect.at(0), p_secondRect.at(1), distanceVec)) continue;
+        if (OBBtest(item, p_firstRect.at(1), p_secondRect.at(0), distanceVec)) continue;
+        //if (OBBtest(item, p_firstRect.at(1), p_secondRect.at(1), distanceVec)) continue;
+        return false;
+    }
+    return true;
+}
+
 bool Math::isin(const Rect& p_rect, const Vector2& p_point) {
     for (int i = 0; i < 2; ++i) {
         if (isin(p_rect.getTriangle(i), p_point - p_rect.getpivot())) return true;
@@ -132,6 +152,24 @@ bool Math::isin(const Triange& p_Tri, const Vector2& p_point)
     return (Betwwen(0, 1, s) && Betwwen(0, 1, t) && Betwwen(0, 1, oneMinusST));
 }
 
+bool Math::OBBtest(const Vector2& unit, const Vector2& axisvec, const Vector2& othervec, const Vector2& bitweenvec)
+{
+    float length1 = axisvec.Dot(unit);
+    float length2 = othervec.Dot(unit);
+    float distancelength = bitweenvec.Dot(unit);
+
+    return abs(length1) + abs(length2) > abs(distancelength);
+}
+
+float Math::Distance(const Vector2& first, const Vector2& second)
+{
+    return sqrt(first.getx() * second.getx() + first.gety() * second.gety());
+}
+
+bool Math::iscolose(const Vector2& first, const Vector2& second, float distance)
+{
+    return first.getx() * second.getx() + first.gety() * second.gety() <= distance * distance;
+}
 
 
 

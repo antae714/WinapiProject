@@ -7,76 +7,87 @@
 #include "TransformComponent.h"
 #include "E_Component.h"
 #include "GameObject.h"
+#include "TextureComponent.h"
+#include "LineScript.h"
+#include "Macro.h"
+#include "Math.h"
+#include <fstream>
 
 PuzzleBoardScript::PuzzleBoardScript()
 {
-	answercheck = 0;
+	ifstream file;
+	//Set()에서 파일별로 스트링으로 받으면 정답,힌트바리에이션 가능 
+	file.open("./Resource/Level/balance.txt");
+	_ASSERT(!file.fail() && "에러");
+
+	while (!file.eof())
+	{
+		string line;
+		getline(file, line);
+		if ('\0' == line[0]) continue;
+		if ('/' == line[0]) continue;
+		string value;
+		vector<string> comp;
+		while (0 != line.length())
+		{
+			for (int i = 0; i < line.length(); ++i)
+			{
+				if (',' == line[i])
+				{
+					value = line.substr(0, i);
+					comp.push_back(value);
+					line = line.substr(i + 1);
+					break;
+				}
+			}
+		}
+		answerVec.emplace_back(stoi(comp.at(0)), stoi(comp.at(1)));
+		answercheck.push_back(stoi(comp.at(2)));
+	}
+	answerVec.resize(answerVec.size());
+	answercheck.resize(answercheck.size());
+	file.close();
 }
 
 bool PuzzleBoardScript::isAnswer(const GameObject* p_first, const GameObject* p_second)
 {
-	AllObject* allObject = AllObject::getInstance();
-	pair<ObjIter, ObjIter> temp = allObject->getallObj(E_Objtype::puzzleDot);
-
-	int count = 0;
-	bool stagesw[81] = { 0, };
-	pair<int, int> pair(-1, -1);
-	for (ObjIter iter = temp.first; iter != temp.second; ++iter, ++count)
-	{
-		GameObject* obj = iter.operator*().second;
-		if (obj == p_first || obj == p_second) {
-			if (-1 == pair.first) {
-				pair.first = count;
-			}
-			else {
-				pair.second = count;
-			}
+	int first = GETSCRIPT(p_first, PuzzleDotScript)->getnumber();
+	int second = GETSCRIPT(p_second, PuzzleDotScript)->getnumber();
+	if (first > second) Math::Swap(first, second);
+	pair<int, int> temppair(first, second);
+	
+	for (int i = 0; i < answerVec.size(); ++i) {
+		if (temppair == answerVec.at(i)) {
+			answer(i);
+			return true;
 		}
 	}
-
-	if (pair.first == 13 && pair.second == 30) {
-		answer();
-		return true;
-	}
-	if (pair.first == 30 && pair.second == 38) {
-		answer();
-		return true;
-	}
-	if (pair.first == 38 && pair.second == 45) {
-		answer();
-		return true;
-	}
-	if (pair.first == 13 && pair.second == 60) {
-		answer();
-		return true;
-	}
-	if (pair.first == 13 && pair.second == 34) {
-		answer();
-		return true;
-	}
-	if (pair.first == 34 && pair.second == 60) {
-		answer();
-		return true;
-	}
-	if (pair.first == 60 && pair.second == 66) {
-		answer();
-		return true;
-	}
-	if (pair.first == 66 && pair.second == 75) {
-		answer();
-		return true;
-	}
-
 	return false;
 
 }
 
-
-void PuzzleBoardScript::answer()
+void PuzzleBoardScript::Start()
 {
-	++answercheck;
-	if (8 == answercheck)
-	{
-		LevelData::LevelLode(E_Objtype::puzzlecleartest);
+	for (int i = 0; i < answercheck.size(); ++i) {
+		if (answercheck.at(i)) {
+			GameObject* tempobj = new GameObject();
+			tempobj->pushcomponent(E_Component::TransformComponent, new TransformComponent());
+			tempobj->pushcomponent(E_Component::TextureComponent, new TextureComponent());
+			LineScript* line = new LineScript();
+			line->Set(answerVec.at(i).first, answerVec.at(i).second, true);
+			tempobj->setscript(line);
+			tempobj->Start();
+			AllObject::getInstance()->push(E_Objtype::puzzleliner, tempobj);
+		}
 	}
+}
+
+
+void PuzzleBoardScript::answer(int p_val)
+{
+	answercheck.at(p_val) = true;
+	for (bool item : answercheck) {
+		if (!item) return;
+	}
+	LevelData::LevelLode(E_Objtype::puzzlecleartest);
 }

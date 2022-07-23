@@ -3,7 +3,7 @@
 #include <array>
 
 #include "Script.h"
-#include "UpdateCommand.h"
+#include "UpdateFunction.h"
 
 using namespace std;
 #define PLAYERSPEED 2
@@ -15,7 +15,7 @@ enum class E_PlayerState {
 
 	MAX
 };
-class PlayerScript : public Script, public UpdateCommand
+class PlayerScript : public Script, public UpdateFunction
 {
 private:
 	map<int, void(PlayerScript::*)()> Fnptrplay;
@@ -40,8 +40,8 @@ private:
 	void InputLogic();
 	void MoveLogic();
 
-	void NomalMove();
-	void PuzzleMove();
+	void LimitArea();
+
 	void xplus();
 	void xminus();
 	void yplus();

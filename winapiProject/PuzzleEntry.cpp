@@ -12,6 +12,7 @@
 #include "GameData.h"
 #include "PuzzleDotScript.h"
 #include "KeyInputComponent.h"
+#include "CollisonCompoenet.h"
 #include "Rect.h"
 
 PuzzleEntry::PuzzleEntry()
@@ -20,7 +21,7 @@ PuzzleEntry::PuzzleEntry()
 
 void PuzzleEntry::play()
 {
-	//testplay(); return;
+	testplay(); return;
 	
 	LevelData::LevelLode("PuzzleBoard");
 	LevelData::LevelLode("puzzleDot");
@@ -49,7 +50,6 @@ void PuzzleEntry::play()
 void PuzzleEntry::testplay()
 {
 	//PuzzleBoardTest 를 PuzzleBoard로 변경후 사용
-	LevelData::LevelLode("PuzzleBoard");
 	AllObject* allObject = AllObject::getInstance();
 
 	for (int i = 0; i < 9; ++i)
@@ -57,15 +57,26 @@ void PuzzleEntry::testplay()
 		for (int j = 0; j < 9; ++j) {
 
 			GameObject* gameObject = new GameObject();
-			gameObject->pushcomponent(E_Component::TransformComponent, new TransformComponent(Vector2((i - 4) * GRIDSIZE, (j - 4) * GRIDSIZE), 0));
+			gameObject->pushcomponent(E_Component::TransformComponent, new TransformComponent(Vector2((j - 4) * GRIDSIZE, (4 - i) * GRIDSIZE), 0));
 			gameObject->pushcomponent(E_Component::TextureComponent, new TextureComponent("Starbutton", Rect(0.f, 50.f, 50.f), 50, 50));
 			gameObject->pushcomponent(E_Component::KeyInputComponenet, new KeyInputComponenet());
-			gameObject->setscript(new PuzzleDotScript());
+			gameObject->setscript(new PuzzleDotScript(i * 9 + j));
 			gameObject->Start();
 			allObject->push(E_Objtype::puzzleDot, gameObject);
 		}
-
 	}
+
+	for (int i = 0; i < 10; ++i)
+	{
+		for (int j = 0; j < 10; ++j) {
+			GameObject* gameObject = new GameObject();
+			gameObject->pushcomponent(E_Component::TransformComponent, new TransformComponent(Vector2((j - 4.5f) * GRIDSIZE, (4.5f - i) * GRIDSIZE), 0));
+			gameObject->pushcomponent(E_Component::CollisonCompoenet, new CollisonCompoenet(Rect(0, 80.f, 40.f)));
+			gameObject->Start();
+			allObject->push(E_Objtype::empty, gameObject);
+		}
+	}
+	LevelData::LevelLode("PuzzleBoard");
 
 	pair<ObjIter, ObjIter> temp = allObject->getallObj(E_Objtype::character);
 	for (ObjIter iter = temp.first; iter != temp.second; ++iter)

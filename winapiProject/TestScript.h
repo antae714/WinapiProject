@@ -2,11 +2,11 @@
 #include <map>
 
 #include "Script.h"
-#include "UpdateCommand.h"
+#include "UpdateFunction.h"
 
 using namespace std;
 class GameObject;
-class TestScript : public Script, public UpdateCommand
+class TestScript : public Script, public UpdateFunction
 {
 private:
 	map<int, void(TestScript::*)()> Fnptrplay;

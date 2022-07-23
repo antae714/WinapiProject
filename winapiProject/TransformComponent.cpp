@@ -2,6 +2,11 @@
 #include "Vector2.h"
 #include "EventList1.h"
 #include "Rect.h"
+#include "GameObject.h"
+#include "Macro.h"
+#include "CollisonCompoenet.h"
+#include "E_Component.h"
+#include "Math.h"
 
 TransformComponent::TransformComponent()
 {
@@ -53,4 +58,17 @@ void TransformComponent::setpivot(const Vector2& p_pivot)
 void TransformComponent::setrotate(const float& p_rotate)
 {
     rotate = p_rotate;
+}
+
+void TransformComponent::move(const Vector2& p_vec)
+{
+    *pivot += p_vec;
+    CollisonCompoenet* collison = GETCOMPONENT(owner, CollisonCompoenet);
+    if (collison) {
+        GameObject* obj = collison->CollisonLogic();
+        if (obj) {
+            *pivot -= p_vec;
+            
+        }
+    }
 }

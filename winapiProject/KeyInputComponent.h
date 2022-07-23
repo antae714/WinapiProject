@@ -11,7 +11,6 @@ public:
 
 public:
 	bool isPressed();
-	bool isPressed2();
 	void OnPressed();
 };
 

@@ -3,6 +3,5 @@ Transform,Texture{Bitmap:background,Width:1280,Height:720}
 
 // NPC (퍼즐)
 Transform{X:400,Y:-210},Texture{Bitmap:npc,Width:100,Height:170},KeyInput,Script{PuzzleEntry}
-
 // NPC (1번 맵에서 2번 맵으로 이동)
 Transform{X:550,Y:-210},Texture{Bitmap:npc2,Width:100,Height:170},KeyInput,Script{MoveMap,Dest:testLevel2,X:-500,Y:-200}

@@ -1,8 +1,8 @@
 // 배경
-Transform{X:-3},Texture{Bitmap:backgroundpuzzle,Width:787,Height:787},Script{PuzzleBoardScript}
+Transform{X:-3},Texture{Bitmap:backgroundpuzzle,Width:2361,Height:2361},Script{PuzzleBoardScript}
 
 
 
 
 // 퍼즐 닫기
-Transform{X:500,Y:-300},Texture{Bitmap:exit,Width:250,Height:100},Input,Script{PuzzleExit}
+Transform{X:1300,Y:-0},Texture{Bitmap:exit,Width:250,Height:100},Input,Script{PuzzleExit}

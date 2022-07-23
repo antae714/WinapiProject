@@ -31,7 +31,8 @@ public:
 private:
 	void Awake();
 public:
-	vector<Vector2> getVectors() const;
+	vector<Vector2> getVertexes() const;
+	vector<Vector2> getVectorS() const;
 	Vector2 getpivot() const;
 	float getrotate() const;
 	float getheight() const;
@@ -46,6 +47,7 @@ public:
 	Rect* setheight(float);
 	Rect* setweight(float);
 
+	Vector2 at(int) const;
 	void operator=(const Rect& other);
 
 private:

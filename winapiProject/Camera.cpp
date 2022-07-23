@@ -42,7 +42,7 @@ void Camera::beforeRender()
 	beforeBuffer = CreateCompatibleBitmap(hdc, gameData->getwindowX(), gameData->getwindowY());
 	MemDc MemDC(hdc, beforeBuffer);
 
-	PatBlt(MemDC(), 0, 0, gameData->getwindowX(), gameData->getwindowY(), WHITENESS);
+	PatBlt(MemDC(), 0, 0, gameData->getwindowX(), gameData->getwindowY(), BLACKNESS);
 
 	for (ObjIter iter = allObject->allObjbegin(); iter != allObject->allObjend(); ++iter) {
 		const GameObject* obj = iter.operator*().second;
@@ -71,10 +71,10 @@ void Camera::realRender()
 	EndPaint(hWnd, &ps);
 }
 
-void Camera::TextureRender(const MemDc& p_memdc, const TextureComponent* p_texture)
+void Camera::TextureRender(MemDc& p_memdc, const TextureComponent* p_texture)
 {
 	const Rect& temprect = p_texture->getrectptr();
-	vector<Vector2> vec2vec = temprect.getVectors();
+	vector<Vector2> vec2vec = temprect.getVertexes();
 	POINT pointarr[4];
 
 	POINT min, max;

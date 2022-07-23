@@ -14,6 +14,7 @@
 #include "MoveMap.h"
 #include "PlayerScript.h"
 #include "LineScript.h"
+#include "CollisonCompoenet.h"
 
 void LevelLoader::LoadLevel(E_Objtype p_file)
 {
@@ -309,6 +310,21 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
         {
             KeyInputComponenet* tempcomp = new KeyInputComponenet();
             tempobj->pushcomponent(E_Component::KeyInputComponenet, tempcomp);
+        }
+
+        else if (key == "Collison")
+        {
+        int width = 0, height = 0;
+        if (tempmap.find("Width") != tempmap.end())
+        {
+            width = stoi(object->find(key)->second.find("Width")->second);
+        }
+        if (tempmap.find("Height") != tempmap.end())
+        {
+            height = stoi(object->find(key)->second.find("Height")->second);
+        }
+        CollisonCompoenet* tempcomp = new CollisonCompoenet(Rect(0, width, height));
+        tempobj->pushcomponent(E_Component::CollisonCompoenet, tempcomp);
         }
     }
 

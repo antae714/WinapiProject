@@ -2,7 +2,7 @@
 #include "Component.h"
 #include "E_Component.h"
 #include "Script.h"
-#include "UpdateCommand.h"
+#include "UpdateFunction.h"
 
 GameObject::GameObject()
 {
@@ -35,8 +35,8 @@ void GameObject::Update()
 {
 	/*for (pair<E_Component, Component*> item : componentMap) {
 	}*/
-	if (dynamic_cast<UpdateCommand*>(script))
-		dynamic_cast<UpdateCommand*>(script)->play();
+	if (dynamic_cast<UpdateFunction*>(script))
+		dynamic_cast<UpdateFunction*>(script)->play();
 }
 
 void GameObject::pushcomponent(E_Component p_key, Component* p_com)

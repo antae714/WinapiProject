@@ -11,6 +11,7 @@ enum class E_Component
 	TextComponent,
 	InputComponenet,
 	KeyInputComponenet,
+	CollisonCompoenet,
 
 	MAX
 };

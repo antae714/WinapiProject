@@ -29,18 +29,26 @@ public:
 
 	void addx(float);
 	void addy(float);
+	float at(int);
 
-	Vector2 GetNormalize();
+	Vector2 GetRotate(float rad) const;
+	Vector2 Getabs() const;
+	Vector2 GetNormalize() const;
 	void Normalize();
-	float SizeSquared();
+	float SizeSquared() const;
+	//벡터사이의 cos(각도)
 	float Dot(const Vector2&) const;
 	POINT toPOINT() const;
 public:
 	bool operator==(const Vector2&);
 	Vector2 operator-(const Vector2&) const;
 	Vector2 operator+(const Vector2&) const;
+	Vector2 operator*(const float&) const;
+	Vector2 operator/(const float&) const;
+	void operator-=(const Vector2&);
 	void operator+=(const Vector2&);
-	Vector2 operator*(const float&);
 	void operator*=(const Vector2&);
+	bool operator>(const Vector2&) const;
+	bool operator<(const Vector2&) const;
 
 };

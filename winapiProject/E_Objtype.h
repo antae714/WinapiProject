@@ -6,7 +6,8 @@ using namespace std;
 
 enum class E_Objtype
 {
-	testLevel = 0,
+	empty = 0,
+	testLevel,
 	testLevel2,
 	titlescreen,
 	PuzzleBoard,
@@ -18,6 +19,10 @@ enum class E_Objtype
 	puzzlecleartest,
 	character,
 	background,
+
+	UI,
+
+
 
 	MAX
 };

@@ -49,7 +49,24 @@ void Vector2::addy(float p_y)
 	y = p_y;
 }
 
-Vector2 Vector2::GetNormalize()
+float Vector2::at(int p_val)
+{
+	return scalar.at(p_val);
+}
+
+Vector2 Vector2::GetRotate(float rad) const
+{
+	float sin, cos;
+	Math::GetSinCos(sin, cos, rad);
+	return Vector2(x * cos - y * sin, x * sin + y * cos);
+}
+
+Vector2 Vector2::Getabs() const
+{
+	return Vector2(abs(x), abs(y));
+}
+
+Vector2 Vector2::GetNormalize() const
 {
 	float squareSum = SizeSquared();
 	if (squareSum == 1.f)
@@ -70,11 +87,12 @@ void Vector2::Normalize()
 	*this =  GetNormalize();
 }
 
-float Vector2::SizeSquared()
+float Vector2::SizeSquared() const
 {
 	return x * x + y * y;
 }
 
+//벡터사이의 cos(각도)
 float Vector2::Dot(const Vector2& other) const
 {
 	return x * other.x + y * other.y;
@@ -109,14 +127,35 @@ void Vector2::operator+=(const Vector2& other)
 }
 
 
-Vector2 Vector2::operator*(const float& p_scalar)
+Vector2 Vector2::operator*(const float& p_scalar) const
 {
 	return Vector2(x * p_scalar, y * p_scalar);
+}
+
+Vector2 Vector2::operator/(const float& p_val) const
+{
+	return Vector2(x / p_val, y / p_val);
+}
+
+void Vector2::operator-=(const Vector2& other)
+{
+	x -= other.x;
+	y -= other.y;
 }
 
 void Vector2::operator*=(const Vector2& p_scalar)
 {
 	this->x *= p_scalar.x;
 	this->y *= p_scalar.y;
+}
+
+bool Vector2::operator>(const Vector2& other) const
+{
+	return x * x + y * y > other.x * other.x + other.y * other.y;
+}
+
+bool Vector2::operator<(const Vector2& other) const
+{
+	return x * x + y * y < other.x * other.x + other.y * other.y;
 }
 

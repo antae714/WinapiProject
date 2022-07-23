@@ -4,6 +4,7 @@
 #include "GameObject.h"
 #include "E_Component.h"
 #include "TransformComponent.h"
+#include "GameTime.h"
 #include "TextureComponent.h"
 #include "Vector2.h"
 #include "Math.h"
@@ -12,6 +13,8 @@
 #define VK_S 0x53
 #define VK_D 0x44
 #define VK_W 0x57
+#define VK_Q 0x51
+#define VK_E 0x45
 
 PlayerScript::PlayerScript()
 {
@@ -55,6 +58,14 @@ void PlayerScript::InputLogic()
 		else if (wparam == VK_SHIFT) {
 			speed = PLAYERSPEED * 3;
 		}
+		else if (wparam == VK_Q) {
+			TransformComponent* tempcom = dynamic_cast<TransformComponent*>(owner->getcomponent(E_Component::TransformComponent));
+			tempcom->setrotate(tempcom->getrotate() + 0.1);
+		}
+		else if (wparam == VK_E) {
+			TransformComponent* tempcom = dynamic_cast<TransformComponent*>(owner->getcomponent(E_Component::TransformComponent));
+			tempcom->setrotate(tempcom->getrotate() - 0.1);
+		}
 	}
 	else if (imsg == WM_KEYUP) {
 		if (wparam == VK_LEFT || wparam == VK_A) {
@@ -80,46 +91,35 @@ void PlayerScript::MoveLogic()
 	for (const pair<int, void(PlayerScript::*)()>& item : Fnptrplay) {
 		(this->*item.second)();
 	}
-	if (E_PlayerState::Nomal == moveState) {
-		NomalMove();
-	}
-	else if (E_PlayerState::Puzzle == moveState) {
-		PuzzleMove();
-	}
+	GameTime* gameTime = GameTime::getInstance();
+	TransformComponent* tempcom = dynamic_cast<TransformComponent*>(owner->getcomponent(E_Component::TransformComponent));
+
+	tempcom->move(Vector2(x, y).GetNormalize() * speed * gameTime->getdeltaTime() * 100);
+
+	LimitArea();
 	x = 0;
 	y = 0;
 }
 
-void PlayerScript::NomalMove()
+void PlayerScript::LimitArea()
 {
 	TransformComponent* tempcom = dynamic_cast<TransformComponent*>(owner->getcomponent(E_Component::TransformComponent));
-
-	if ((tempcom->getpivot().getx() - speed >= left || x > 0) &&
-		(tempcom->getpivot().getx() + speed <= right || x < 0))
+	Vector2 temppivot = tempcom->getpivot();
+	if (temppivot.getx() <= left)
 	{
-		tempcom->setpivot(tempcom->getpivot() + Vector2(x, 0).GetNormalize() * speed);
+		temppivot.setx(left);
 	}
-	if ((tempcom->getpivot().gety() + speed <= top || y < 0) &&
-		(tempcom->getpivot().gety() - speed >= bottom || y > 0))
+	else if (temppivot.getx() >= right) {
+		temppivot.setx(right);
+	}
+	if (temppivot.gety() >= top)
 	{
-		tempcom->setpivot(tempcom->getpivot() + Vector2(0, y).GetNormalize() * speed);
+		temppivot.sety(top);
 	}
-}
-
-void PlayerScript::PuzzleMove()
-{
-	TransformComponent* tempcom = dynamic_cast<TransformComponent*>(owner->getcomponent(E_Component::TransformComponent));
-
-	for (int i = 0; i < 9; i++)
-	{
-		if (Math::Betwwen((i - 4) * GRIDSIZE - 20, (i - 4) * GRIDSIZE + 20, tempcom->getpivot().getx())) {
-			tempcom->setpivot(tempcom->getpivot() + Vector2(0, y).GetNormalize() * speed);
-		}
-		if (Math::Betwwen((i - 4) * GRIDSIZE - 20, (i - 4) * GRIDSIZE + 20, tempcom->getpivot().gety())) {
-			tempcom->setpivot(tempcom->getpivot() + Vector2(x, 0).GetNormalize() * speed);
-		}
-
+	else if (temppivot.gety() <= bottom) {
+		temppivot.sety(bottom);
 	}
+	tempcom->setpivot(temppivot);
 }
 
 void PlayerScript::SetMovableArea()

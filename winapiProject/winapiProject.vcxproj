@@ -150,7 +150,8 @@
     <ClInclude Include="BitmapManager.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Cls.h" />
-    <ClInclude Include="Command.h" />
+    <ClInclude Include="CollisonCompoenet.h" />
+    <ClInclude Include="CollisonLogic.h" />
     <ClInclude Include="CompanentManager.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="EventList.h" />
@@ -167,10 +168,11 @@
     <ClInclude Include="GameExit.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameStart.h" />
-    <ClInclude Include="InputCommand.h" />
+    <ClInclude Include="GameTime.h" />
+    <ClInclude Include="InputFunction.h" />
     <ClInclude Include="InputComponenet.h" />
     <ClInclude Include="InputManager.h" />
-    <ClInclude Include="KeyInputCommand.h" />
+    <ClInclude Include="KeyInputFunction.h" />
     <ClInclude Include="KeyInputComponent.h" />
     <ClInclude Include="KeyInputManager.h" />
     <ClInclude Include="LevelData.h" />
@@ -201,7 +203,7 @@
     <ClInclude Include="TextComponent.h" />
     <ClInclude Include="TextureComponent.h" />
     <ClInclude Include="TransformComponent.h" />
-    <ClInclude Include="UpdateCommand.h" />
+    <ClInclude Include="UpdateFunction.h" />
     <ClInclude Include="UpdateManager.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />
@@ -212,7 +214,8 @@
     <ClCompile Include="BitmapManager.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Cls.cpp" />
-    <ClCompile Include="Command.cpp" />
+    <ClCompile Include="CollisonCompoenet.cpp" />
+    <ClCompile Include="CollisonLogic.cpp" />
     <ClCompile Include="CompanentManager.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="EventList.cpp" />
@@ -229,10 +232,11 @@
     <ClCompile Include="GameExit.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameStart.cpp" />
-    <ClCompile Include="InputCommand.cpp" />
+    <ClCompile Include="GameTime.cpp" />
+    <ClCompile Include="InputFunction.cpp" />
     <ClCompile Include="InputComponenet.cpp" />
     <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="KeyInputCommand.cpp" />
+    <ClCompile Include="KeyInputFunction.cpp" />
     <ClCompile Include="KeyInputComponent.cpp" />
     <ClCompile Include="KeyInputManager.cpp" />
     <ClCompile Include="LevelData.cpp" />
@@ -263,7 +267,7 @@
     <ClCompile Include="TextComponent.cpp" />
     <ClCompile Include="TextureComponent.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
-    <ClCompile Include="UpdateCommand.cpp" />
+    <ClCompile Include="UpdateFunction.cpp" />
     <ClCompile Include="UpdateManager.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="Vector3.cpp" />

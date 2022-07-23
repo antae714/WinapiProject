@@ -1,2 +1,2 @@
 // 캐릭터
-Transform{X:-400,Y:-200},Texture{Bitmap:character,Width:100,Height:150},Script{PlayerScript,Top:-150,Bottom:-250}
+Transform{X:-400,Y:-200},Texture{Bitmap:character,Width:100,Height:150},Script{PlayerScript,Top:-150,Bottom:-250},Collison{Width:100,Height:150}

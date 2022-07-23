@@ -20,5 +20,7 @@ public:
 	void	addpivot	(const Vector2&);
 	void	setpivot	(const Vector2&);
 	void	setrotate	(const float&);
+
+	void move(const Vector2&);
 };
 

@@ -55,12 +55,6 @@
     <Filter Include="소스 파일\Enum">
       <UniqueIdentifier>{e69fca2e-6751-4f08-8a5c-3bf89c0e7910}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일\Command">
-      <UniqueIdentifier>{8f891f7a-32b1-4f14-888e-1b68e86695eb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Command">
-      <UniqueIdentifier>{2b0e371b-3ff4-401b-a1a7-8e53f1d687f1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="헤더 파일\Script">
       <UniqueIdentifier>{1197f6a2-0ad8-4889-8bbe-84d4e5cf0289}</UniqueIdentifier>
     </Filter>
@@ -75,6 +69,12 @@
     </Filter>
     <Filter Include="TrashCan">
       <UniqueIdentifier>{b9e18dea-fdef-4b73-9028-5203692a4fc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Function">
+      <UniqueIdentifier>{2b0e371b-3ff4-401b-a1a7-8e53f1d687f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Function">
+      <UniqueIdentifier>{8f891f7a-32b1-4f14-888e-1b68e86695eb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -162,14 +162,11 @@
     <ClInclude Include="InputComponenet.h">
       <Filter>헤더 파일\Component</Filter>
     </ClInclude>
-    <ClInclude Include="UpdateCommand.h">
-      <Filter>헤더 파일\Command</Filter>
+    <ClInclude Include="UpdateFunction.h">
+      <Filter>헤더 파일\Function</Filter>
     </ClInclude>
-    <ClInclude Include="InputCommand.h">
-      <Filter>헤더 파일\Command</Filter>
-    </ClInclude>
-    <ClInclude Include="Command.h">
-      <Filter>헤더 파일\Command</Filter>
+    <ClInclude Include="InputFunction.h">
+      <Filter>헤더 파일\Function</Filter>
     </ClInclude>
     <ClInclude Include="Script.h">
       <Filter>헤더 파일\Script</Filter>
@@ -210,8 +207,8 @@
     <ClInclude Include="KeyInputComponent.h">
       <Filter>헤더 파일\Component</Filter>
     </ClInclude>
-    <ClInclude Include="KeyInputCommand.h">
-      <Filter>헤더 파일\Command</Filter>
+    <ClInclude Include="KeyInputFunction.h">
+      <Filter>헤더 파일\Function</Filter>
     </ClInclude>
     <ClInclude Include="GameExit.h">
       <Filter>헤더 파일\Script</Filter>
@@ -257,6 +254,15 @@
     </ClInclude>
     <ClInclude Include="TestScript.h">
       <Filter>TrashCan</Filter>
+    </ClInclude>
+    <ClInclude Include="GameTime.h">
+      <Filter>헤더 파일\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisonCompoenet.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisonLogic.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -344,14 +350,11 @@
     <ClCompile Include="InputComponenet.cpp">
       <Filter>소스 파일\Component</Filter>
     </ClCompile>
-    <ClCompile Include="Command.cpp">
-      <Filter>소스 파일\Command</Filter>
+    <ClCompile Include="InputFunction.cpp">
+      <Filter>소스 파일\Function</Filter>
     </ClCompile>
-    <ClCompile Include="InputCommand.cpp">
-      <Filter>소스 파일\Command</Filter>
-    </ClCompile>
-    <ClCompile Include="UpdateCommand.cpp">
-      <Filter>소스 파일\Command</Filter>
+    <ClCompile Include="UpdateFunction.cpp">
+      <Filter>소스 파일\Function</Filter>
     </ClCompile>
     <ClCompile Include="Script.cpp">
       <Filter>소스 파일\Script</Filter>
@@ -392,8 +395,8 @@
     <ClCompile Include="MoveMap.cpp">
       <Filter>소스 파일\Script</Filter>
     </ClCompile>
-    <ClCompile Include="KeyInputCommand.cpp">
-      <Filter>소스 파일\Command</Filter>
+    <ClCompile Include="KeyInputFunction.cpp">
+      <Filter>소스 파일\Function</Filter>
     </ClCompile>
     <ClCompile Include="KeyInputComponent.cpp">
       <Filter>소스 파일\Component</Filter>
@@ -439,6 +442,15 @@
     </ClCompile>
     <ClCompile Include="TestScript.cpp">
       <Filter>TrashCan</Filter>
+    </ClCompile>
+    <ClCompile Include="GameTime.cpp">
+      <Filter>소스 파일\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisonCompoenet.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisonLogic.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -49,7 +49,7 @@ void Rect::Awake()
 	index.at(5) = 3;
 }
 
-vector<Vector2> Rect::getVectors() const
+vector<Vector2> Rect::getVertexes() const
 {
 	vector<Vector2> returnVec;
 
@@ -58,6 +58,17 @@ vector<Vector2> Rect::getVectors() const
 		returnVec.push_back(Math::getaffinTransform(scale, *rotate, getpivot(), *item));
 	}
 
+	return returnVec;
+}
+
+vector<Vector2> Rect::getVectorS() const
+{
+	vector<Vector2> returnVec(4);
+
+	for (int i = 0 ; i < 4 ; ++i)
+	{
+		returnVec.at(i) = Rect::at(i);
+	}
 	return returnVec;
 }
 
@@ -125,6 +136,11 @@ Rect* Rect::setweight(float p_weight)
 {
 	weight = p_weight;
 	return this;
+}
+
+Vector2 Rect::at(int p_val) const
+{
+	return Vectors.at(p_val)->GetRotate(*rotate);
 }
 
 void Rect::operator=(const Rect& other)

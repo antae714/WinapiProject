@@ -9,9 +9,14 @@
 #include "LineScript.h"
 #include "PuzzleBoardScript.h"
 
-PuzzleDotScript::PuzzleDotScript()
+PuzzleDotScript::PuzzleDotScript() :
+	refCount(0), number(0)
 {
-	refCount = 0;
+}
+
+PuzzleDotScript::PuzzleDotScript(int p_number) :
+	refCount(0), number(p_number)
+{
 }
 
 PuzzleDotScript::~PuzzleDotScript()
@@ -38,6 +43,16 @@ void PuzzleDotScript::minusrefCount()
 		TextureComponent* texture = GETCOMPONENT(owner, TextureComponent);
 		texture->setbitmap("Starbutton", texture->getxSize(), texture->getySize());
 	}
+}
+
+int PuzzleDotScript::getnumber()
+{
+	return number;
+}
+
+void PuzzleDotScript::setnumber(int p_number)
+{
+	number = p_number;
 }
 
 void PuzzleDotScript::clickLogic()

@@ -26,6 +26,7 @@ LineScript::LineScript(GameObject* p_first, const GameObject* p_second) :
 LineScript::LineScript(GameObject* p_first, const GameObject* p_second, bool p_isend) :
 	first(p_first), second(p_second), isend(p_isend)
 {
+	GETSCRIPT(first, PuzzleDotScript)->plusrefCount();
 }
 
 
@@ -59,7 +60,7 @@ void LineScript::Set(int p_first, int p_second, bool p_isend = true)
 
 	_ASSERT(first && "할당되지않음");
 	_ASSERT(second && "할당되지않음");
-	GETSCRIPT(allObject->getallObj(E_Objtype::PuzzleBoard).first.operator*().second, PuzzleBoardScript)->answer();
+	//GETSCRIPT(allObject->getallObj(E_Objtype::PuzzleBoard).first.operator*().second, PuzzleBoardScript)->answer();
 }
 
 void LineScript::Awake(GameObject* p_owner)

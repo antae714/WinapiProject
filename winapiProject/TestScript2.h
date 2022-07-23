@@ -1,9 +1,9 @@
 #pragma once
 
 #include "Script.h"
-#include "KeyInputCommand.h"
+#include "KeyInputFunction.h"
 
-class TestScript2 : public Script, public KeyInputCommand
+class TestScript2 : public Script, public KeyInputFunction
 {
 private:
 	bool isClicked;

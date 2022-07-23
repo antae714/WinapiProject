@@ -1,8 +1,8 @@
 #pragma once
 #include "Script.h"
-#include "InputCommand.h"
+#include "InputFunction.h"
 
-class GameExit : public Script, public InputCommand
+class GameExit : public Script, public InputFunction
 {
 public:
 	GameExit();

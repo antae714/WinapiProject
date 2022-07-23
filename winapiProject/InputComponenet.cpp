@@ -1,7 +1,7 @@
 #include "InputComponenet.h"
 #include "TextureComponent.h"
 #include "GameObject.h"
-#include "InputCommand.h"
+#include "InputFunction.h"
 #include "Script.h"
 #include "E_Component.h"
 #include "Rect.h"
@@ -31,7 +31,7 @@ bool InputComponenet::isClicked()
 
 void InputComponenet::Onclicked()
 {
-	if (InputCommand* tempcommand = dynamic_cast<InputCommand*>(owner->getscriptptr())) {
+	if (InputFunction* tempcommand = dynamic_cast<InputFunction*>(owner->getscriptptr())) {
 		tempcommand->play();
 	}
 }

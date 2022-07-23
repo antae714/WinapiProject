@@ -2,7 +2,7 @@
 #include "TextureComponent.h"
 #include "TransformComponent.h"
 #include "GameObject.h"
-#include "KeyInputCommand.h"
+#include "KeyInputFunction.h"
 #include "Script.h"
 #include "E_Component.h"
 #include "Rect.h"
@@ -47,7 +47,7 @@ bool KeyInputComponenet::isPressed()
 
 void KeyInputComponenet::OnPressed()
 {
-	if (KeyInputCommand* tempcommand = dynamic_cast<KeyInputCommand*>(owner->getscriptptr()))
+	if (KeyInputFunction* tempcommand = dynamic_cast<KeyInputFunction*>(owner->getscriptptr()))
 	{
 		tempcommand->play();
 	}

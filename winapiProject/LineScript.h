@@ -1,11 +1,11 @@
 #pragma once
 #include "Script.h"
-#include "UpdateCommand.h"
+#include "UpdateFunction.h"
 
 using namespace std;
 class GameObject;
 class Vector2;
-class LineScript : public Script, public UpdateCommand
+class LineScript : public Script, public UpdateFunction
 {
 private:
 	GameObject* first;
