@@ -202,6 +202,7 @@
     <ClInclude Include="TextComponent.h" />
     <ClInclude Include="TextureComponent.h" />
     <ClInclude Include="TransformComponent.h" />
+    <ClInclude Include="UITransformComponent.h" />
     <ClInclude Include="UpdateFunction.h" />
     <ClInclude Include="UpdateManager.h" />
     <ClInclude Include="Vector2.h" />
@@ -265,6 +266,7 @@
     <ClCompile Include="TextComponent.cpp" />
     <ClCompile Include="TextureComponent.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
+    <ClCompile Include="UITransformComponent.cpp" />
     <ClCompile Include="UpdateFunction.cpp" />
     <ClCompile Include="UpdateManager.cpp" />
     <ClCompile Include="Vector2.cpp" />

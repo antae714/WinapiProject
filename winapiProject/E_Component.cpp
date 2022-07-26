@@ -13,9 +13,11 @@ string enumCom::conversion(const E_Component& p_enum) {
 	case E_Component::InputComponenet:
 		return "InputComponenet";
 	case E_Component::KeyInputComponenet:
-		return "KeyInputComponenet"; 
+		return "KeyInputComponenet";
 	case E_Component::CollisonCompoenet:
 		return "CollisonCompoenet";
+	case E_Component::UITransformComponent:
+		return "UITransformComponent";
 	case E_Component::MAX:
 		return "";
 	}
@@ -42,6 +44,10 @@ E_Component enumCom::conversion(const string& p_str) {
 	else if ("KeyInputComponenet" == p_str)
 	{
 		return E_Component::KeyInputComponenet;
+	}
+	else if ("UITransformComponent" == p_str)
+	{
+		return E_Component::UITransformComponent;
 	}
 	return E_Component::MAX;
 }

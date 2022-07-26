@@ -7,6 +7,7 @@ using namespace std;
 enum class E_Component
 {
 	TransformComponent,
+	UITransformComponent,
 	TextureComponent,
 	TextComponent,
 	InputComponenet,

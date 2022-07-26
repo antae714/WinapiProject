@@ -15,6 +15,7 @@
 #include "PlayerScript.h"
 #include "LineScript.h"
 #include "CollisonCompoenet.h"
+#include "UITransformComponent.h"
 
 void LevelLoader::LoadLevel(E_Objtype p_file)
 {
@@ -250,6 +251,23 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
             tempcomp->setrotate(rotate);
 
             tempobj->pushcomponent(E_Component::TransformComponent, tempcomp);
+        }
+
+        else if (key == "UITransform")
+        {
+        int x = 0, y = 0;
+
+        if (tempmap.find("X") != tempmap.end())
+        {
+            x = stoi(tempmap.find("X")->second);
+        }
+        if (tempmap.find("Y") != tempmap.end())
+        {
+            y = stoi(tempmap.find("Y")->second);
+        }
+
+        UITransformComponent* tempcomp = new UITransformComponent(Vector2(x, y), 0);
+        tempobj->pushcomponent(E_Component::UITransformComponent, tempcomp);
         }
 
         else if (key == "Texture")

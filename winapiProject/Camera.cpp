@@ -7,10 +7,12 @@
 #include "GameObject.h"
 #include "E_Component.h"
 #include "TextureComponent.h"
+#include "TextComponent.h"
 #include "Rect.h"
 #include "Math.h"
 #include "MemDc.h"
 #include "MyBitmap.h"
+#include "Macro.h"
 
 
 #pragma warning(disable: 4244)
@@ -46,9 +48,20 @@ void Camera::beforeRender()
 
 	for (ObjIter iter = allObject->allObjbegin(); iter != allObject->allObjend(); ++iter) {
 		const GameObject* obj = iter.operator*().second;
-		Component* temp = obj->getcomponent(E_Component::TextureComponent);
-		if (temp) {
-			TextureRender(MemDC, (TextureComponent*)temp);
+		
+		Component* transform = obj->getcomponent(E_Component::TransformComponent);
+		Component* ui = obj->getcomponent(E_Component::UITransformComponent);
+		TextureComponent* texture = GETCOMPONENT(obj, TextureComponent);
+		if (transform && texture) {
+			TextureRender(MemDC, texture);
+		}
+		else if (ui && texture) {
+			UIRender(MemDC, texture);
+		}
+
+		TextComponent* text = GETCOMPONENT(obj, TextComponent);
+		if (text) {
+			TextRender(MemDC, text);
 		}
 	}
 
@@ -102,7 +115,6 @@ void Camera::TextureRender(MemDc& p_memdc, const TextureComponent* p_texture)
 	for (int i = 0; i < 4; i++) {
 		pointarr[i].x -= min.x;
 		pointarr[i].y -= min.y;
-		//pointarr[i].y = abs(pointarr[i].y - min.y - ySize);
 	}
 	int rectWeight = (int)temprect.getweight();
 	int rectHeight = (int)temprect.getheight();
@@ -121,8 +133,35 @@ void Camera::TextureRender(MemDc& p_memdc, const TextureComponent* p_texture)
 	transparentBlt(p_memdc(), min.x, min.y, xSize, ySize, BackDc());
 }
 
-void Camera::TextRender(const MemDc&, const TextComponent*)
+void Camera::TextRender(MemDc&, const TextComponent*)
 {
+}
+
+void Camera::UIRender(MemDc& p_memdc, const TextureComponent* p_texture)
+{
+	const Rect& temprect = p_texture->getrectptr();
+	Vector2 pivot = temprect.getpivot();
+
+	int Weight = (int)temprect.getweight();
+	int halfWeight = (int)temprect.gethalfweight();
+	int Height = (int)temprect.getheight();
+	int halfHeight = (int)temprect.gethalfheight();
+	int xSize = (int)p_texture->getxSize();
+	int ySize = (int)p_texture->getySize();
+
+	MyBitmap tempBitmap(p_memdc(), Weight, Height);
+	MyBitmap BackBitmap(p_memdc(), xSize, ySize);
+
+	MemDc BackDc(p_memdc(), tempBitmap());
+	MemDc ObjDc(p_memdc(), p_texture->getbitmap());
+	MemDc tempObjDc(p_memdc(), BackBitmap());
+	MemDc greenDc(p_memdc(), green);
+
+	StretchBlt(BackDc(), 0, 0, Weight, Height, greenDc(), 0, 0, 1, 1, SRCCOPY);
+	StretchBlt(tempObjDc(), 0, 0, xSize, ySize, ObjDc(), 0, 0, xSize, ySize, SRCCOPY);
+
+	StretchBlt(BackDc(), 0, 0, Weight, Height, tempObjDc(), 0, 0, xSize, ySize, SRCCOPY);
+	transparentBlt(p_memdc(), pivot.getx() - halfWeight, pivot.gety() - halfHeight, Weight, Height, BackDc());
 }
 
 void Camera::transparentBlt(const HDC& backdc, const int& xdest, const int& ydest,

@@ -7,6 +7,7 @@
 #include "Rect.h"
 #include "Vector2.h"
 #include "Math.h"
+#include "Macro.h"
 #include "WindowMsg.h"
 
 InputComponenet::InputComponenet()
@@ -19,14 +20,17 @@ InputComponenet::~InputComponenet()
 
 bool InputComponenet::isClicked()
 {
-	TextureComponent* tempcom2 = dynamic_cast<TextureComponent*>(owner->getcomponent(E_Component::TextureComponent));
-	if (!tempcom2) return false;
+	TextureComponent* texture = dynamic_cast<TextureComponent*>(owner->getcomponent(E_Component::TextureComponent));
+	if (!texture) return false;
 
 	POINT tempPoint;
 	GetCursorPos(&tempPoint);
 	ScreenToClient(WindowMsg::getInstance()->gethWnd(), &tempPoint);
-
-	return Math::isin(tempcom2->getrectptr(), Math::ScreentoCart(Vector2(tempPoint.x, tempPoint.y)));
+	Vector2 tempVec(tempPoint.x, tempPoint.y);
+	if (owner->getcomponent(E_Component::TransformComponent)) {
+		tempVec = Math::ScreentoCart(tempVec);
+	}
+	return Math::isin(texture->getrectptr(), tempVec);
 }
 
 void InputComponenet::Onclicked()

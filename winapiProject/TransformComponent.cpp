@@ -68,7 +68,6 @@ void TransformComponent::move(const Vector2& p_vec)
         GameObject* obj = collison->CollisonLogic();
         if (obj) {
             *pivot -= p_vec;
-            
         }
     }
 }

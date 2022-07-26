@@ -1,0 +1,3 @@
+
+// 퍼즐 힌트
+Transform{X:490,Y:-200},Texture{Bitmap:puzzlehint,Width:173,Height:173}

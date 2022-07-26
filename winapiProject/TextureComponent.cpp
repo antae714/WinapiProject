@@ -4,8 +4,10 @@
 #include "GameObject.h"
 #include "E_Component.h"
 #include "TransformComponent.h"
+#include "UITransformComponent.h"
 #include "WindowMsg.h"
 #include "BitmapManager.h"
+#include "Macro.h"
 
 TextureComponent::TextureComponent()
 {
@@ -27,12 +29,16 @@ TextureComponent::~TextureComponent()
 
 void TextureComponent::Start()
 {
-	if (Component* tempcomponenet = owner->getcomponent(E_Component::TransformComponent)) {
-		TransformComponent* temp = dynamic_cast<TransformComponent*>(tempcomponenet);
-		rect->setpivotptr(temp->getpivotptr());
-		rect->setrotateptr(temp->getrotateptr());
+	TransformComponent* Transform = GETCOMPONENT(owner, TransformComponent);
+	if (Transform) {
+		rect->setpivotptr(Transform->getpivotptr());
+		rect->setrotateptr(Transform->getrotateptr());
 	}
-
+	UITransformComponent* UI = GETCOMPONENT(owner, UITransformComponent);
+	if (UI) {
+		rect->setpivotptr(UI->getpivotptr());
+		rect->setrotateptr(UI->getrotateptr());
+	}
 }
 
 HBITMAP TextureComponent::getbitmap() const

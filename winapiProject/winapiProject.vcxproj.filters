@@ -261,6 +261,9 @@
     <ClInclude Include="CollisonCompoenet.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="UITransformComponent.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AllObject.cpp">
@@ -444,6 +447,9 @@
       <Filter>소스 파일\Manager</Filter>
     </ClCompile>
     <ClCompile Include="CollisonCompoenet.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="UITransformComponent.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

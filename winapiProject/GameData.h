@@ -18,7 +18,6 @@ private:
 	int backSound;
 	int effectSound;
 	const Vector2* cameraPivot;
-
 public:
 	GameData();
 	virtual ~GameData();

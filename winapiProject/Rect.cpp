@@ -91,7 +91,7 @@ float Rect::getheight() const
 
 float Rect::gethalfheight() const
 {
-	return height / 2;
+	return height * 0.5f;
 }
 
 float Rect::getweight() const
@@ -101,7 +101,7 @@ float Rect::getweight() const
 
 float Rect::gethalfweight() const
 {
-	return weight / 2;
+	return weight * 0.5f;
 }
 
 Triange Rect::getTriangle(int p_index) const
