@@ -16,8 +16,9 @@
 PuzzleBoardScript::PuzzleBoardScript()
 {
 	ifstream file;
-	//Set()에서 파일별로 스트링으로 받으면 정답,힌트바리에이션 가능 
-	file.open("./Resource/Level/balance.txt");
+
+	file.open(string("./Resource/Level/") + "balance" + ".txt");
+	//file.open("./Resource/Level/balance.txt");
 	_ASSERT(!file.fail() && "에러");
 
 	while (!file.eof())

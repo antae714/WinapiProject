@@ -25,6 +25,8 @@ string enumBitmap::conversion(const E_Bitmap& p_enum) {
 		return "Starbutton";
 	case E_Bitmap::Starbutton_Selected:
 		return "Starbutton_Selected";
+	case E_Bitmap::Dialog:
+		return "Dialog";
 	case E_Bitmap::Line:
 		return "Line";
 	case E_Bitmap::Blue:
@@ -84,6 +86,9 @@ E_Bitmap enumBitmap::conversion(const string& p_str) {
 	}
 	else if ("Starbutton_Selected" == p_str) {
 		return E_Bitmap::Starbutton_Selected;
+	}
+	else if ("Dialog" == p_str) {
+		return E_Bitmap::Dialog;
 	}
 	else if ("Line" == p_str)
 	{

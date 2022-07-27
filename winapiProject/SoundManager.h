@@ -14,7 +14,6 @@ private:
     FMOD::System* system;
     array<FMOD::Sound*, (size_t)E_Sound::MAX> soundarr;
     FMOD::Channel* channel;
-    //void* extradriverdata;
 
 public:
     SoundManager();

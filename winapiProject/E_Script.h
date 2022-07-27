@@ -18,6 +18,7 @@ enum class E_Script
 	PuzzleExit,
 	LineScript,
 	PlayerScript,
+	TextScript,
 
 	MAX
 };

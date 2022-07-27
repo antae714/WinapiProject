@@ -1,6 +1,0 @@
-// 퍼즐 힌트
-Transform{X:490},Texture{Bitmap:puzzlehint,Width:173,Height:173}
-
-
-Transform,Texture{Bitmap:Line,Width:100,Height:5},Script{LineScript,first:13,second:30}
-Transform,Texture{Bitmap:Line,Width:100,Height:5},Script{LineScript,first:60,second:66}

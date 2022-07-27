@@ -15,6 +15,7 @@ enum class E_Bitmap
 	puzzlecleartestimg,
 	Starbutton, 
 	Starbutton_Selected,
+	Dialog,
 	Line,
 	Blue,
 	Green,

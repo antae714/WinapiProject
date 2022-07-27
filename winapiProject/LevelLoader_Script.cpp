@@ -13,6 +13,7 @@
 #include "PuzzleExit.h"
 #include "LineScript.h"
 #include "PlayerScript.h"
+#include "TextScript.h"
 
 Script* LevelLoader::AllocScript(const E_Script& p_enum)
 {
@@ -39,9 +40,11 @@ Script* LevelLoader::AllocScript(const E_Script& p_enum)
 	case E_Script::PuzzleExit:
 		return new PuzzleExit();
 	case E_Script::LineScript:
-		return new LineScript();
+		return new LineScript(); 
 	case E_Script::PlayerScript:
 		return new PlayerScript();
+	case E_Script::TextScript:
+		return new TextScript();
 
 	default:
 		_ASSERT(0 && "존재하지않는 스크립트");

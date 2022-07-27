@@ -1,2 +1,0 @@
-// 퍼즐 클리어 이미지
-Transform,Texture{Bitmap:puzzlecleartestimg,Width:200,Height:136}

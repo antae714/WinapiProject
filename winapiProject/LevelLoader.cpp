@@ -15,6 +15,7 @@
 #include "PlayerScript.h"
 #include "LineScript.h"
 #include "CollisonCompoenet.h"
+#include "TextComponent.h"
 #include "UITransformComponent.h"
 
 void LevelLoader::LoadLevel(E_Objtype p_file)
@@ -344,6 +345,26 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
         CollisonCompoenet* tempcomp = new CollisonCompoenet(Rect(0, width, height));
         tempobj->pushcomponent(E_Component::CollisonCompoenet, tempcomp);
         }
+
+        else if (key == "Text")
+        {
+        int x = 0, y = 0;
+        string filename;
+        if (tempmap.find("X") != tempmap.end())
+        {
+            x = stoi(tempmap.find("X")->second);
+        }
+        if (tempmap.find("Y") != tempmap.end())
+        {
+            y = stoi(tempmap.find("Y")->second);
+        }
+        if (tempmap.find("Filename") != tempmap.end())
+        {
+            filename = tempmap.find("Filename")->second;
+        }
+        TextComponent* tempcomp = new TextComponent(Vector2(x, y), filename);
+        tempobj->pushcomponent(E_Component::TextComponent, tempcomp);
+ }
     }
 
     //AllObject::getInstance()->push(tempobj);

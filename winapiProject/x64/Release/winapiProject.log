@@ -1,0 +1,136 @@
+﻿  AllObject.cpp
+  BitmapManager.cpp
+D:\VisualStudio2022\winapiProject\winapiProject\BitmapManager.cpp(32,142): error C2664: 'HANDLE LoadImageW(HINSTANCE,LPCWSTR,UINT,int,int,UINT)': 인수 2을(를) 'const _Elem *'에서 'LPCWSTR'(으)로 변환할 수 없습니다.
+          with
+          [
+              _Elem=char
+          ]
+D:\VisualStudio2022\winapiProject\winapiProject\BitmapManager.cpp(32,77): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 괄호가 있는 함수 스타일 캐스트가 필요합니다.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winuser.h(10824,1): message : 'LoadImageW' 선언을 참조하십시오.
+  Camera.cpp
+D:\VisualStudio2022\winapiProject\winapiProject\Camera.cpp(22,129): error C2664: 'HANDLE LoadImageW(HINSTANCE,LPCWSTR,UINT,int,int,UINT)': 인수 2을(를) 'const char [34]'에서 'LPCWSTR'(으)로 변환할 수 없습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\Camera.cpp(22,35): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 괄호가 있는 함수 스타일 캐스트가 필요합니다.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winuser.h(10824,1): message : 'LoadImageW' 선언을 참조하십시오.
+  Cls.cpp
+  CollisonCompoenet.cpp
+  CompanentManager.cpp
+  Component.cpp
+  EventList.cpp
+  EventList1.cpp
+  EventMap.cpp
+  EventStruct.cpp
+  EventStruct2.cpp
+  E_Bitmap.cpp
+  E_Component.cpp
+  E_Objtype.cpp
+  E_Script.cpp
+  E_Sound.cpp
+  GameData.cpp
+  GameExit.cpp
+  GameManager.cpp
+D:\VisualStudio2022\winapiProject\winapiProject\SoundManager.h(6,10): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  컴파일하고 있습니다...
+  GameStart.cpp
+  GameTime.cpp
+  InputFunction.cpp
+  InputComponenet.cpp
+D:\VisualStudio2022\winapiProject\winapiProject\InputComponenet.cpp(29,40): warning C4244: '인수': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\InputComponenet.cpp(29,27): warning C4244: '인수': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  InputManager.cpp
+D:\VisualStudio2022\winapiProject\winapiProject\SoundManager.h(6,10): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  KeyInputFunction.cpp
+  KeyInputComponent.cpp
+D:\VisualStudio2022\winapiProject\winapiProject\KeyInputComponent.cpp(29,8): warning C4101: 'tempPoint' :참조되지 않은 지역 변수입니다.
+  KeyInputManager.cpp
+D:\VisualStudio2022\winapiProject\winapiProject\SoundManager.h(6,10): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  LevelData.cpp
+  LevelLoader.cpp
+D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(250,43): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(250,40): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(269,78): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(269,75): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(344,76): warning C4244: '인수': 'int'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(344,69): warning C4244: '인수': 'int'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  LevelLoader_Script.cpp
+  LineScript.cpp
+D:\VisualStudio2022\winapiProject\winapiProject\LineScript.cpp(88,9): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LineScript.cpp(89,9): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LineScript.cpp(90,9): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LineScript.cpp(91,9): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LineScript.cpp(95,18): warning C4244: '초기화 중': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LineScript.cpp(96,18): warning C4244: '초기화 중': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LineScript.cpp(101,33): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LineScript.cpp(101,29): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LineScript.cpp(107,29): warning C4244: '인수': 'int'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Main.cpp
+D:\VisualStudio2022\winapiProject\winapiProject\Main.cpp(20,35): error C2440: '=': 'const char [7]'에서 'LPCWSTR'(으)로 변환할 수 없습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\Main.cpp(20,27): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 괄호가 있는 함수 스타일 캐스트가 필요합니다.
+D:\VisualStudio2022\winapiProject\winapiProject\Main.cpp(27,1): error C2664: 'HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)': 인수 2을(를) 'const char [7]'에서 'LPCWSTR'(으)로 변환할 수 없습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\Main.cpp(27,1): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 괄호가 있는 함수 스타일 캐스트가 필요합니다.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winuser.h(4432,1): message : 'CreateWindowExW' 선언을 참조하십시오.
+  GameObject.cpp
+  Math.cpp
+D:\VisualStudio2022\winapiProject\winapiProject\Math.cpp(12,19): warning C4244: '초기화 중': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\Math.cpp(13,19): warning C4244: '초기화 중': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\Math.cpp(24,19): warning C4244: '초기화 중': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\Math.cpp(25,19): warning C4244: '초기화 중': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\Math.cpp(74,18): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\Math.cpp(75,18): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\Math.cpp(166,16): warning C4244: 'return': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Matrix3x3.cpp
+  MemDc.cpp
+  MoveMap.cpp
+D:\VisualStudio2022\winapiProject\winapiProject\SoundManager.h(6,10): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  MyBitmap.cpp
+  OnTriggerEvent.cpp
+  컴파일하고 있습니다...
+  PlayerScript.cpp
+D:\VisualStudio2022\winapiProject\winapiProject\PlayerScript.cpp(63,44): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\PlayerScript.cpp(67,44): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\PlayerScript.cpp(97,27): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\PlayerScript.cpp(97,24): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\PlayerScript.cpp(97,47): warning C4244: '인수': 'int'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\PlayerScript.cpp(97,77): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\PlayerScript.cpp(110,18): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\PlayerScript.cpp(113,18): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\PlayerScript.cpp(117,18): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\PlayerScript.cpp(120,18): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  PuzzleDotScript.cpp
+  PuzzleBoardScript.cpp
+  PuzzleEntry.cpp
+D:\VisualStudio2022\winapiProject\winapiProject\PuzzleEntry.cpp(60,122): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\PuzzleEntry.cpp(60,102): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  PuzzleExit.cpp
+  Rect.cpp
+  ScreenPoint.cpp
+  Script.cpp
+  SingletonCls.cpp
+  SoundManager.cpp
+D:\VisualStudio2022\winapiProject\winapiProject\SoundManager.h(6,10): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  TestScript.cpp
+D:\VisualStudio2022\winapiProject\winapiProject\TestScript.cpp(76,53): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\TestScript.cpp(76,50): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\TestScript.cpp(76,73): warning C4244: '인수': 'int'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  TestScript2.cpp
+D:\VisualStudio2022\winapiProject\winapiProject\TestScript2.cpp(115,9): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\TestScript2.cpp(116,9): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\TestScript2.cpp(117,9): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\TestScript2.cpp(118,9): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\TestScript2.cpp(122,18): warning C4244: '초기화 중': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\TestScript2.cpp(123,18): warning C4244: '초기화 중': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\TestScript2.cpp(128,33): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\TestScript2.cpp(128,29): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\TestScript2.cpp(134,29): warning C4244: '인수': 'int'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  TestScript3.cpp
+  TextComponent.cpp
+  TextureComponent.cpp
+  TransformComponent.cpp
+  UITransformComponent.cpp
+  UpdateFunction.cpp
+  UpdateManager.cpp
+  Vector2.cpp
+D:\VisualStudio2022\winapiProject\winapiProject\Vector2.cpp(104,20): warning C4244: '=': 'const float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\Vector2.cpp(105,20): warning C4244: '=': 'const float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  컴파일하고 있습니다...
+  Vector3.cpp
+  WindowMsg.cpp
