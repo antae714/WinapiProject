@@ -267,6 +267,9 @@
     <ClInclude Include="TextScript.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="CollisonFunction.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AllObject.cpp">
@@ -456,6 +459,9 @@
       <Filter>소스 파일\Component</Filter>
     </ClCompile>
     <ClCompile Include="TextScript.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisonFunction.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

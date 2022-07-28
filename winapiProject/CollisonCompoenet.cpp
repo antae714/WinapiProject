@@ -1,5 +1,6 @@
 #include "CollisonCompoenet.h"
 #include "Rect.h"
+#include "Script.h"
 #include "GameObject.h"
 #include "TransformComponent.h"
 #include "E_Component.h"
@@ -7,6 +8,7 @@
 #include "Vector2.h"
 #include "Macro.h"
 #include "TextureComponent.h"
+#include "CollisonFunction.h"
 #include "AllObject.h"
 
 CollisonCompoenet::CollisonCompoenet() : rect(new Rect()), istriger(false)
@@ -14,7 +16,7 @@ CollisonCompoenet::CollisonCompoenet() : rect(new Rect()), istriger(false)
 }
 
 CollisonCompoenet::CollisonCompoenet(const Rect& p_rect) : istriger(false)
-{ 
+{
 	rect = new Rect();
 	*rect = p_rect;
 }
@@ -63,16 +65,29 @@ GameObject* CollisonCompoenet::CollisonLogic()
 
 void CollisonCompoenet::OnCollison(CollisonCompoenet* other)
 {
+	GameObject* otherobj = other->owner;
+	CollisonFunction* coll = dynamic_cast<CollisonFunction*>(other->owner->getscriptptr());
+	if (coll) {
+		coll->OnCollison(otherobj);
+	}
 }
 
 void CollisonCompoenet::OnCollisonEnter(CollisonCompoenet* other)
 {
-
+	GameObject* otherobj = other->owner;
+	CollisonFunction* coll = dynamic_cast<CollisonFunction*>(other->owner->getscriptptr());
+	if (coll) {
+		coll->OnCollisonEnter(otherobj);
+	}
 }
 
 void CollisonCompoenet::OnCollisonExit(CollisonCompoenet* other)
 {
-
+	GameObject* otherobj = other->owner;
+	CollisonFunction* coll = dynamic_cast<CollisonFunction*>(other->owner->getscriptptr());
+	if (coll) {
+		coll->OnCollisonExit(otherobj);
+	}
 }
 
 const Rect& CollisonCompoenet::getrect()

@@ -5,6 +5,8 @@
 
 class TextScript : public Script, public UpdateFunction
 {
+private:
+	double accumulateTime;
 public:
 	TextScript();
 public:

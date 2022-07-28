@@ -10,8 +10,7 @@ private:
 	Vector2* point;
 	vector<string> Text;
 	int nowLine;
-	/*int fontHeight;
-	string fontName;*/
+	int nownum;
 
 public:
 	TextComponent();
@@ -20,13 +19,15 @@ public:
 
 public:
 	//외부에서 텍스트 제어용 함수
-	void nextLine();
-	void beforeLine();
+	bool nextLine();
+	bool beforeLine();
+	void nextnownum();
 	void FileSet(const string&);
 	//겟셋
 	Vector2 getpoint() const;
 	string getText() const;
 	int getnowLine() const;
+	int getnownum() const;
 
 
 	void setpoint(const Vector2&);

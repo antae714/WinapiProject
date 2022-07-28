@@ -137,20 +137,18 @@ void Camera::TextRender(MemDc& p_memdc, const TextComponent* p_text)
 {
 	Vector2 point = p_text->getpoint();
 	string text = p_text->getText();
-	int strlength = text.size();
-	MyBitmap tempBitmap(p_memdc(), strlength * 10, 30);
+	int strlength = p_text->getnownum()+1;
+	MyBitmap tempBitmap(p_memdc(), strlength * 11, 30);
+	MemDc greenDc(p_memdc(), green);
 	MemDc tempdc(p_memdc(), tempBitmap());
-	HFONT font = CreateFont(30, 10, 0, 0, FW_NORMAL, 0, 0, 0, HANGEUL_CHARSET, 0, 0, 0, 0, 0);
 
+	HFONT font = CreateFont(30, 10, 0, 0, 0, 0, 0, 0, HANGEUL_CHARSET, 0, 0, NONANTIALIASED_QUALITY, 0, TEXT("±¼¸²"));
+
+	SetBkColor(tempdc(), MaskColor);
+	StretchBlt(tempdc(), 0, 0, strlength * 11, 30, greenDc(), 0, 0, 1, 1, SRCCOPY);
 	DeleteObject((HFONT)SelectObject(tempdc(), font));
-	COLORREF oldcolor = SetBkColor(tempdc(), MaskColor);
 	TextOut(tempdc(), 0, 0, text.c_str(), strlength);
-	SetBkColor(tempdc(), oldcolor);
-	transparentBlt(p_memdc(), point.getx(), point.gety(), strlength * 10, 30, tempdc());
-
-
-	//DeleteObject((HFONT)SelectObject(tempdc(), font));
-	//TextOut(p_memdc(), point.getx(), point.gety(), text.c_str(), strlength);
+	transparentBlt(p_memdc(), point.getx(), point.gety(), strlength * 11, 30, tempdc());
 }
 
 void Camera::UIRender(MemDc& p_memdc, const TextureComponent* p_texture)
