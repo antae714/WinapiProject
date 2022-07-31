@@ -18,7 +18,6 @@ enum class E_PlayerState {
 class PlayerScript : public Script, public UpdateFunction
 {
 private:
-	map<int, void(PlayerScript::*)()> Fnptrplay;
 	E_PlayerState moveState;
 	int x;
 	int y;
@@ -31,7 +30,7 @@ private:
 public:
 	PlayerScript();
 public:
-	virtual void play();
+	virtual void Update();
 	void SetMovableArea();
 	void SetMovableArea(int, int, int, int);
 	void setmoveState(E_PlayerState);
@@ -41,10 +40,4 @@ private:
 	void MoveLogic();
 
 	void LimitArea();
-
-	void xplus();
-	void xminus();
-	void yplus();
-	void yminus();
-
 };

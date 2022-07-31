@@ -18,6 +18,7 @@ void KeyInputManager::InputLogic()
 	for (ObjIter iter = allObject->allObjbegin(); iter != allObject->allObjend(); ++iter)
 	{
 		GameObject* obj = iter.operator*().second;
+		if (!obj->getisActive()) continue;
 		KeyInputComponenet* tempcom2 = dynamic_cast<KeyInputComponenet*>(obj->getcomponent(E_Component::KeyInputComponenet));
 		if (!tempcom2) continue;
 		if (tempcom2->isPressed())

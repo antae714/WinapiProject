@@ -14,6 +14,7 @@
 #include "KeyInputComponent.h"
 #include "CollisonCompoenet.h"
 #include "Rect.h"
+#include "Macro.h"
 
 PuzzleEntry::PuzzleEntry()
 {
@@ -21,39 +22,11 @@ PuzzleEntry::PuzzleEntry()
 
 void PuzzleEntry::play()
 {
-	LevelData::DeleteLevel("testLevel");
-
-	testplay(); return;
-	
-	LevelData::LevelLode("PuzzleBoard");
-	LevelData::LevelLode("puzzleDot");
-	LevelData::LevelLode("puzzleHint");
-
+	//LevelData::DeleteLevel("testLevel");
 	AllObject* allObject = AllObject::getInstance();
-	pair<ObjIter, ObjIter> temp = allObject->getallObj(E_Objtype::character);
-
-	for (ObjIter iter = temp.first; iter != temp.second; ++iter)
-	{
-		GameObject* obj = iter.operator*().second;
-		dynamic_cast<TextureComponent*>(obj->getcomponent(E_Component::TextureComponent))->setbitmap("character2", 100, 150);
-
-		TransformComponent* tempcom = dynamic_cast<TransformComponent*>(obj->getcomponent(E_Component::TransformComponent));
-		tempcom->setpivot(Vector2(0, 0));
-		GameData* gameData = GameData::getInstance();
-		gameData->setcameraPivot(tempcom->getpivotptr());
-
-		PlayerScript* tempscr = dynamic_cast<PlayerScript*>(obj->getscriptptr());
-		tempscr->SetMovableArea(300, -300, -300, 300);
-
-		return;
-	}
-}
-
-void PuzzleEntry::testplay()
-{
-	//PuzzleBoardTest 를 PuzzleBoard로 변경후 사용
-	AllObject* allObject = AllObject::getInstance();
-
+	allObject->setActiveGroup(E_Objtype::testLevel, false);
+	allObject->setActiveGroup(E_Objtype::testLevel2, false);
+	allObject->setActiveGroup(E_Objtype::text, false);
 	for (int i = 0; i < 9; ++i)
 	{
 		for (int j = 0; j < 9; ++j) {
@@ -81,15 +54,17 @@ void PuzzleEntry::testplay()
 	LevelData::LevelLode("PuzzleBoard");
 
 	pair<ObjIter, ObjIter> temp = allObject->getallObj(E_Objtype::character);
+	pair<ObjIter, ObjIter> temp2 = allObject->getallObj(E_Objtype::PuzzleBoard);
 	for (ObjIter iter = temp.first; iter != temp.second; ++iter)
 	{
+		TextureComponent* limittexture = GETCOMPONENT(temp2.first.operator*().second, TextureComponent);
 		GameObject* obj = iter.operator*().second;
 		dynamic_cast<TextureComponent*>(obj->getcomponent(E_Component::TextureComponent))->setbitmap("character2", 100, 150);
 
 		TransformComponent* tempcom = dynamic_cast<TransformComponent*>(obj->getcomponent(E_Component::TransformComponent));
 		tempcom->setpivot(Vector2(0, 0));
 		GameData* gameData = GameData::getInstance();
-		gameData->setcameraPivot(tempcom->getpivotptr());
+		gameData->setcameraPivot(tempcom->getpivotptr(), &limittexture->getrectptr());
 
 		PlayerScript* tempscr = dynamic_cast<PlayerScript*>(obj->getscriptptr());
 		tempscr->SetMovableArea(900, -900, -900, 900);

@@ -2,15 +2,17 @@
 #include <string>
 #include <vector>
 #include "Component.h"
+#include "UpdateFunction.h"
 
 class Vector2;
-class TextComponent : public Component
+class TextComponent : public Component, public UpdateFunction
 {
 private:
 	Vector2* point;
 	vector<string> Text;
 	int nowLine;
 	int nownum;
+	double accumulateTime;
 
 public:
 	TextComponent();
@@ -18,6 +20,7 @@ public:
 	virtual ~TextComponent();
 
 public:
+	virtual void Update();
 	//외부에서 텍스트 제어용 함수
 	bool nextLine();
 	bool beforeLine();

@@ -16,6 +16,7 @@ private:
 	Rect* rect;
 public:
 	TextureComponent();
+	TextureComponent(const string&, const Rect&);
 	TextureComponent(const string&, const Rect&, int, int);
 	virtual ~TextureComponent();
 

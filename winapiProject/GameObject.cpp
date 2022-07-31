@@ -33,10 +33,13 @@ void GameObject::Start()
 
 void GameObject::Update()
 {
-	/*for (pair<E_Component, Component*> item : componentMap) {
-	}*/
+	for (pair<E_Component, Component*> item : componentMap) {
+		if (dynamic_cast<UpdateFunction*>(item.second)) {
+			dynamic_cast<UpdateFunction*>(item.second)->Update();
+		}
+	}
 	if (dynamic_cast<UpdateFunction*>(script))
-		dynamic_cast<UpdateFunction*>(script)->play();
+		dynamic_cast<UpdateFunction*>(script)->Update();
 }
 
 void GameObject::pushcomponent(E_Component p_key, Component* p_com)

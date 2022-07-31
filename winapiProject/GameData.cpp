@@ -1,5 +1,6 @@
 #include "GameData.h"
 #include "Vector2.h"
+#include "Rect.h"
 
 GameData::GameData()
 {
@@ -43,11 +44,37 @@ int GameData::geteffectSound()
 
 const Vector2& GameData::getcameraPivot()
 {
-	if (cameraPivot) {
-		return *cameraPivot;
+	if (cameraLimit) {
+		int limitx = cameraLimit->gethalfweight() - windowX * 0.5;
+		int limity = cameraLimit->gethalfheight() - windowY * 0.5;
+		Vector2 tempVec = cameraLimit->getpivot() + *cameraPivot;
+		if (cameraPivot) {
+			if (abs(tempVec.getx()) > limitx) {
+				if (tempVec.getx() < 0)
+					tempVec.setx(-limitx);
+				else
+					tempVec.setx(limitx);
+			}
+			if (abs(tempVec.gety()) > limity) {
+				if (tempVec.gety() < 0)
+					tempVec.sety(-limity);
+				else
+					tempVec.sety(limity);
+			}
+			return tempVec;
+		}
+		else {
+			return Vector2(0, 0);
+		}
 	}
 	else {
-		return Vector2(0, 0);
+		if (cameraPivot) {
+			return *cameraPivot;
+		}
+		else {
+			return Vector2(0, 0);
+		}
+
 	}
 
 }
@@ -77,7 +104,8 @@ void GameData::seteffectSound(int p_val)
 	effectSound = p_val;
 }
 
-void GameData::setcameraPivot(const Vector2* p_pivot)
+void GameData::setcameraPivot(const Vector2* p_pivot, const Rect* limit)
 {
 	cameraPivot = p_pivot;
+	cameraLimit = limit;
 }

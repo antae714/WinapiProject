@@ -2,11 +2,13 @@
 
 #include "Script.h"
 #include "UpdateFunction.h"
+#include "KeyInputFunction.h"
 
-class TextScript : public Script, public UpdateFunction
+class GameObject;
+class TextScript : public Script, public KeyInputFunction
 {
 private:
-	double accumulateTime;
+	GameObject* textobj;
 public:
 	TextScript();
 public:

@@ -22,7 +22,7 @@ enum class E_Objtype
 
 	UI,
 
-
+	text,
 
 	MAX
 };

@@ -8,7 +8,9 @@ void UpdateManager::Updating()
 	for (ObjIter iter = allObject->allObjbegin(); iter != allObject->allObjend(); ++iter)
 	{
 		GameObject* obj = iter.operator*().second;
+		if (!obj->getisActive()) continue;
 		obj->Update();
+
 
 		if (allObject->getupdated()) {
 			allObject->setupdated(false);

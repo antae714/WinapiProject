@@ -31,5 +31,7 @@ void GameManager::logicUpdate()
 	inputManager->InputLogic();
 	keyinputManager->InputLogic();
 	updateManager->Updating();
+	AllObject::getInstance()->ratedelelte();
 	camera->Render();
+
 }

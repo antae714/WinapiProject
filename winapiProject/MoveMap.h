@@ -15,5 +15,5 @@ public:
 	MoveMap();
 	virtual void Set(string, string, int, int);
 public:
-	virtual void play();
+	virtual void Update();
 };

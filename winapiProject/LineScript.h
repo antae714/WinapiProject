@@ -20,7 +20,7 @@ public:
 	virtual void Set(int, int, bool);
 	virtual void Awake(GameObject* p_owner);
 	virtual void Start();
-	virtual void play();
+	virtual void Update();
 	void Setting();
 
 

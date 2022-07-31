@@ -18,7 +18,6 @@ PuzzleBoardScript::PuzzleBoardScript()
 	ifstream file;
 
 	file.open(string("./Resource/Level/") + "balance" + ".txt");
-	//file.open("./Resource/Level/balance.txt");
 	_ASSERT(!file.fail() && "¿¡·¯");
 
 	while (!file.eof())

@@ -1,6 +1,10 @@
 #include "TextComponent.h"
 #include "Vector2.h"
 #include "E_Objtype.h"
+#include "Macro.h"
+#include "GameObject.h"
+#include "E_Component.h"
+#include "GameTime.h"
 #include <fstream>
 
 TextComponent::TextComponent() :
@@ -17,6 +21,16 @@ TextComponent::TextComponent(const Vector2& p_pint, const string& p_text) :
 TextComponent::~TextComponent()
 {
 	delete point;
+}
+
+void TextComponent::Update()
+{
+	TextComponent* text = GETCOMPONENT(owner, TextComponent);
+	accumulateTime += GameTime::getInstance()->getdeltaTime();
+	if (accumulateTime >= 0.07) {
+		accumulateTime -= 0.07;
+		text->nextnownum();
+	}
 }
 
 bool TextComponent::nextLine()

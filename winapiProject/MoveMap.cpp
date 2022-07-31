@@ -23,7 +23,7 @@ void MoveMap::Set(string p_src, string p_dest, int p_x, int p_y)
 	m_pos_y = p_y;
 }
 
-void MoveMap::play()
+void MoveMap::Update()
 {
 	AllObject* allObject = AllObject::getInstance();
 	pair<ObjIter, ObjIter> temp = allObject->getallObj(E_Objtype::character);

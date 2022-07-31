@@ -48,6 +48,7 @@ void Camera::beforeRender()
 
 	for (ObjIter iter = allObject->allObjbegin(); iter != allObject->allObjend(); ++iter) {
 		const GameObject* obj = iter.operator*().second;
+		if (!obj->getisActive()) continue;
 		
 		Component* transform = obj->getcomponent(E_Component::TransformComponent);
 		Component* ui = obj->getcomponent(E_Component::UITransformComponent);

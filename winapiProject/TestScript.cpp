@@ -18,7 +18,7 @@ TestScript::TestScript()
 	speed = 2;
 }
 
-void TestScript::play()
+void TestScript::Update()
 {
 	InputLogic();
 	MoveLogic();

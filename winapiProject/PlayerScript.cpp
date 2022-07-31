@@ -29,7 +29,7 @@ PlayerScript::PlayerScript()
 	right = 0;
 }
 
-void PlayerScript::play()
+void PlayerScript::Update()
 {
 	InputLogic();
 	MoveLogic();
@@ -44,41 +44,33 @@ void PlayerScript::InputLogic()
 
 	if (imsg == WM_KEYDOWN) {
 		if (wparam == VK_LEFT || wparam == VK_A) {
-			Fnptrplay.emplace(VK_LEFT, &PlayerScript::xminus);
+			x -= 1;
 		}
 		else if (wparam == VK_RIGHT || wparam == VK_D) {
-			Fnptrplay.emplace(VK_RIGHT, &PlayerScript::xplus);
+			x += 1;
 		}
 		else if (wparam == VK_UP || wparam == VK_W) {
-			Fnptrplay.emplace(VK_UP, &PlayerScript::yplus);
+			y += 1;
 		}
 		else if (wparam == VK_DOWN || wparam == VK_S) {
-			Fnptrplay.emplace(VK_DOWN, &PlayerScript::yminus);
+			y -= 1;
 		}
 		else if (wparam == VK_SHIFT) {
-			speed = PLAYERSPEED * 3;
-		}
-		else if (wparam == VK_Q) {
-			TransformComponent* tempcom = dynamic_cast<TransformComponent*>(owner->getcomponent(E_Component::TransformComponent));
-			tempcom->setrotate(tempcom->getrotate() + 0.1);
-		}
-		else if (wparam == VK_E) {
-			TransformComponent* tempcom = dynamic_cast<TransformComponent*>(owner->getcomponent(E_Component::TransformComponent));
-			tempcom->setrotate(tempcom->getrotate() - 0.1);
+			if (moveState != E_PlayerState::Puzzle) speed = PLAYERSPEED * 3;
 		}
 	}
 	else if (imsg == WM_KEYUP) {
 		if (wparam == VK_LEFT || wparam == VK_A) {
-			Fnptrplay.erase(VK_LEFT);
+			x = 0;
 		}
 		else if (wparam == VK_RIGHT || wparam == VK_D) {
-			Fnptrplay.erase(VK_RIGHT);
+			x = 0;
 		}
 		else if (wparam == VK_UP || wparam == VK_W) {
-			Fnptrplay.erase(VK_UP);
+			y = 0;
 		}
 		else if (wparam == VK_DOWN || wparam == VK_S) {
-			Fnptrplay.erase(VK_DOWN);
+			y = 0;
 		}
 		else if (wparam == VK_SHIFT) {
 			speed = PLAYERSPEED;
@@ -88,17 +80,12 @@ void PlayerScript::InputLogic()
 
 void PlayerScript::MoveLogic()
 {
-	for (const pair<int, void(PlayerScript::*)()>& item : Fnptrplay) {
-		(this->*item.second)();
-	}
 	GameTime* gameTime = GameTime::getInstance();
 	TransformComponent* tempcom = dynamic_cast<TransformComponent*>(owner->getcomponent(E_Component::TransformComponent));
 
 	tempcom->move(Vector2(x, y).GetNormalize() * speed * gameTime->getdeltaTime() * 100);
 
 	LimitArea();
-	x = 0;
-	y = 0;
 }
 
 void PlayerScript::LimitArea()
@@ -138,26 +125,6 @@ void PlayerScript::SetMovableArea(int p_top, int p_bottom, int p_left, int p_rig
 	bottom = p_bottom;
 	left = p_left;
 	right = p_right;
-}
-
-void PlayerScript::xplus()
-{
-	++x;
-}
-
-void PlayerScript::xminus()
-{
-	--x;
-}
-
-void PlayerScript::yplus()
-{
-	++y;
-}
-
-void PlayerScript::yminus()
-{
-	--y;
 }
 
 void PlayerScript::setmoveState(E_PlayerState p_moveState)

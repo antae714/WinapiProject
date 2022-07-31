@@ -16,6 +16,7 @@ void InputManager::InputLogic()
 	for (ObjIter iter = allObject->allObjbegin(); iter != allObject->allObjend(); ++iter)
 	{
 		GameObject* obj = iter.operator*().second;
+		if (!obj->getisActive()) continue;
 		InputComponenet* tempcom2 = dynamic_cast<InputComponenet*>(obj->getcomponent(E_Component::InputComponenet));
 		if (!tempcom2) continue;
 		if (tempcom2->isClicked()) {

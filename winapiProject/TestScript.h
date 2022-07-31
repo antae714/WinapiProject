@@ -17,7 +17,7 @@ private:
 public:
 	TestScript();
 public:
-	virtual void play();
+	virtual void Update();
 
 private:
 	void InputLogic();

@@ -24,6 +24,15 @@ ObjIter AllObject::allObjend()
     return allObj.end();
 }
 
+void AllObject::ratedelelte()
+{
+    for (ObjIter item : safedelete) {
+        delete item.operator*().second;
+        allObj.erase(item);
+        safedelete.erase(safedelete.begin());
+    }
+}
+
 pair<ObjIter, ObjIter> AllObject::getallObj(const E_Objtype& p_key)
 {
     return allObj.equal_range(p_key);
@@ -50,6 +59,16 @@ void AllObject::setActiveGroup(const E_Objtype& p_key, bool p_bool)
     }
 }
 
+void AllObject::setActiveGroup(const E_Objtype& first, const E_Objtype& second, bool p_bool)
+{
+    for (int temp = (int)first; temp <= (int)second; ++temp) {
+        pair<ObjIter, ObjIter> tempiter = allObj.equal_range((E_Objtype)temp);
+        for (ObjIter iter = tempiter.first; iter != tempiter.second; ++iter) {
+            iter.operator*().second->setisActive(p_bool);
+        }
+    }
+}
+
 void AllObject::addPivotGroup(const E_Objtype& p_key, const Vector2& p_vec)
 {
     pair<ObjIter, ObjIter> tempiter = allObj.equal_range(p_key);
@@ -70,8 +89,18 @@ void AllObject::deleteGroup(const E_Objtype& p_key)
 
 void AllObject::deleteObj(ObjIter iter)
 {
-    delete iter.operator*().second;
-    allObj.erase(iter);
+    safedelete.push_back(iter);
+    /*delete iter.operator*().second;
+    allObj.erase(iter);*/
+}
+
+void AllObject::deleteObj(GameObject* obj)
+{
+    for (ObjIter iter = allObj.begin(); iter != allObj.end();++iter) {
+        if (iter.operator*().second == obj) {
+            deleteObj(iter);
+        }
+    }
 }
 
 bool AllObject::getupdated() {

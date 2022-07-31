@@ -73,7 +73,7 @@ void LineScript::Start()
 	Setting();
 }
 
-void LineScript::play()
+void LineScript::Update()
 {
 	if (!isend) {
 		Setting();

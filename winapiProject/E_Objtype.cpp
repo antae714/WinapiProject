@@ -15,7 +15,8 @@ string enumObj::conversion(const E_Objtype& p_enum) {
 		ENUMTOSTRING(E_Objtype, background)
 		ENUMTOSTRING(E_Objtype, PuzzleBoard)
 		ENUMTOSTRING(E_Objtype, puzzleType)
-		ENUMTOSTRING(E_Objtype, puzzleDot)
+			ENUMTOSTRING(E_Objtype, puzzleDot)
+			ENUMTOSTRING(E_Objtype, text)
 	}
 }
 
@@ -32,6 +33,7 @@ E_Objtype enumObj::conversion(const string& p_str) {
 		STRINGTOENUM(PuzzleBoard, E_Objtype)
 		STRINGTOENUM(puzzleType, E_Objtype)
 		STRINGTOENUM(puzzleDot, E_Objtype)
+		STRINGTOENUM(text, E_Objtype)
 
 		_ASSERT(0 && "ø¿≈∏?");
 }

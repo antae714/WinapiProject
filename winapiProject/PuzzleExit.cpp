@@ -17,7 +17,11 @@ PuzzleExit::PuzzleExit()
 
 void PuzzleExit::play()
 {
-	LevelData::LevelLode("testLevel");
+	AllObject* allObject = AllObject::getInstance();
+	//LevelData::LevelLode("testLevel");
+	allObject->setActiveGroup(E_Objtype::testLevel, true);
+	allObject->setActiveGroup(E_Objtype::text, true);
+	allObject->setActiveGroup(E_Objtype::testLevel2, true);
 
 	//버튼이 먼저 지워지면 에러
 	LevelData::DeleteLevel(E_Objtype::puzzleliner);
@@ -27,7 +31,6 @@ void PuzzleExit::play()
 	LevelData::DeleteLevel(E_Objtype::empty);
 	LevelData::DeleteLevel(E_Objtype::puzzlecleartest);
 
-	AllObject* allObject = AllObject::getInstance();
 	pair<ObjIter, ObjIter> temp = allObject->getallObj(E_Objtype::character);
 
 	for (ObjIter iter = temp.first; iter != temp.second; ++iter)
@@ -38,10 +41,11 @@ void PuzzleExit::play()
 		TransformComponent* tempcom = dynamic_cast<TransformComponent*>(obj->getcomponent(E_Component::TransformComponent));
 		tempcom->setpivot(Vector2(350, -200));
 		GameData* gameData = GameData::getInstance();
-		gameData->setcameraPivot(nullptr);
+		gameData->setcameraPivot(nullptr, nullptr);
 
 		PlayerScript* tempscr = dynamic_cast<PlayerScript*>(obj->getscriptptr());
 		tempscr->SetMovableArea(-150, -250, -590, 590);
+		tempscr->setmoveState(E_PlayerState::Nomal);
 
 		return;
 	}

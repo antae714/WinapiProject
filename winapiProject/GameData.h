@@ -8,6 +8,7 @@
 #define EFFECTSOUND 100
 
 class Vector2;
+class Rect;
 
 class GameData : public SingletonCls<GameData>
 {
@@ -18,6 +19,8 @@ private:
 	int backSound;
 	int effectSound;
 	const Vector2* cameraPivot;
+	const Rect* cameraLimit;
+
 public:
 	GameData();
 	virtual ~GameData();
@@ -35,6 +38,6 @@ public:
 	void setwindowY(int);
 	void setbackSound(int);
 	void seteffectSound(int);
-	void setcameraPivot(const Vector2*);
+	void setcameraPivot(const Vector2* pivot, const Rect* limit);
 };
 

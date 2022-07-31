@@ -15,6 +15,13 @@ TextureComponent::TextureComponent()
 	rect = new Rect();
 }
 
+TextureComponent::TextureComponent(const string& p_str, const Rect& p_rect)
+{
+	rect = new Rect();
+	*rect = p_rect;
+	setbitmap(p_str, p_rect.gethalfweight(), p_rect.gethalfweight());
+}
+
 TextureComponent::TextureComponent(const string& p_str, const Rect& p_rect , int p_x, int p_y)
 {
 	rect = new Rect();
