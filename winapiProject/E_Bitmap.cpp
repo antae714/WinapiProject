@@ -37,14 +37,26 @@ string enumBitmap::conversion(const E_Bitmap& p_enum) {
 		return "Red";
 	case E_Bitmap::logo:
 		return "logo";
-	case E_Bitmap::npc:
-		return "npc";
-	case E_Bitmap::npc2:
-		return "npc2";
+	case E_Bitmap::npc_assistant:
+		return "npc_assistant";
+	case E_Bitmap::npc1_1:
+		return "npc1_1";
+	case E_Bitmap::npc1_2:
+		return "npc1_2";
+	case E_Bitmap::npc1_3:
+		return "npc1_3";
 	case E_Bitmap::start:
 		return "start";
+	case E_Bitmap::load:
+		return "load";
+	case E_Bitmap::option:
+		return "option";
 	case E_Bitmap::exit:
 		return "exit";
+	case E_Bitmap::TitleButton:
+		return "TitleButton";
+	case E_Bitmap::UI_Character:
+		return "UI_Character";
 	case E_Bitmap::MAX:
 		return "";
 	}
@@ -107,21 +119,45 @@ E_Bitmap enumBitmap::conversion(const string& p_str) {
 	{
 		return E_Bitmap::logo;
 	}
-	else if ("npc" == p_str)
+	else if ("npc_assistant" == p_str)
 	{
-		return E_Bitmap::npc;
+		return E_Bitmap::npc_assistant;
 	}
-	else if ("npc2" == p_str)
+	else if ("npc1_1" == p_str)
 	{
-		return E_Bitmap::npc2;
+		return E_Bitmap::npc1_1;
+	}
+	else if ("npc1_2" == p_str)
+	{
+		return E_Bitmap::npc1_2;
+	}
+	else if ("npc1_3" == p_str)
+	{
+		return E_Bitmap::npc1_3;
 	}
 	else if ("start" == p_str)
 	{
 		return E_Bitmap::start;
 	}
+	else if ("load" == p_str)
+	{
+		return E_Bitmap::load;
+	}
+	else if ("option" == p_str)
+	{
+		return E_Bitmap::option;
+	}
 	else if ("exit" == p_str)
 	{
 		return E_Bitmap::exit;
+	}
+	else if ("TitleButton" == p_str)
+	{
+		return E_Bitmap::TitleButton;
+	}
+	else if ("UI_Character" == p_str)
+	{
+		return E_Bitmap::UI_Character;
 	}
 	return E_Bitmap::MAX;
 }

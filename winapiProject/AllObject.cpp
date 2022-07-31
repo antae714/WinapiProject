@@ -65,10 +65,19 @@ void AllObject::deleteGroup(const E_Objtype& p_key)
         delete iter.operator*().second;
     }
     allObj.erase(tempiter.first, tempiter.second);
+    updated = true;
 }
 
 void AllObject::deleteObj(ObjIter iter)
 {
     delete iter.operator*().second;
     allObj.erase(iter);
+}
+
+bool AllObject::getupdated() {
+    return updated;
+}
+
+void AllObject::setupdated(bool p_updated) {
+    updated = p_updated;
 }

@@ -21,10 +21,16 @@ enum class E_Bitmap
 	Green,
 	Red,
 	logo,
-	npc,
-	npc2,
+	npc_assistant,
+	npc1_1,
+	npc1_2,
+	npc1_3,
 	start,
+	load,
+	option,
 	exit,
+	TitleButton,
+	UI_Character,
 
 	MAX
 };

@@ -9,5 +9,10 @@ void UpdateManager::Updating()
 	{
 		GameObject* obj = iter.operator*().second;
 		obj->Update();
+
+		if (allObject->getupdated()) {
+			allObject->setupdated(false);
+			break;
+		}
 	}
 }

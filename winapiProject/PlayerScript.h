@@ -7,7 +7,7 @@
 
 using namespace std;
 #define PLAYERSPEED 2
-#define GRIDSIZE 210
+#define GRIDSIZE 205
 
 enum class E_PlayerState {
 	Nomal,

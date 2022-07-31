@@ -1,9 +1,11 @@
 #pragma once
 #include "Script.h"
-#include "KeyInputFunction.h"
+#include "UpdateFunction.h"
 #include <string>
 
-class MoveMap : public Script, public KeyInputFunction
+using namespace std;
+
+class MoveMap : public Script, public UpdateFunction
 {
 private:
 	string m_src, m_dest;

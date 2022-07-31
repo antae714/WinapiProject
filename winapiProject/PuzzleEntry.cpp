@@ -21,6 +21,8 @@ PuzzleEntry::PuzzleEntry()
 
 void PuzzleEntry::play()
 {
+	LevelData::DeleteLevel("testLevel");
+
 	testplay(); return;
 	
 	LevelData::LevelLode("PuzzleBoard");
@@ -57,7 +59,7 @@ void PuzzleEntry::testplay()
 		for (int j = 0; j < 9; ++j) {
 
 			GameObject* gameObject = new GameObject();
-			gameObject->pushcomponent(E_Component::TransformComponent, new TransformComponent(Vector2((j - 4) * GRIDSIZE, (4 - i) * GRIDSIZE), 0));
+			gameObject->pushcomponent(E_Component::TransformComponent, new TransformComponent(Vector2(10 + (j - 4) * GRIDSIZE, -5 + (4 - i) * GRIDSIZE), 0));
 			gameObject->pushcomponent(E_Component::TextureComponent, new TextureComponent("Starbutton", Rect(0.f, 50.f, 50.f), 50, 50));
 			gameObject->pushcomponent(E_Component::KeyInputComponenet, new KeyInputComponenet());
 			gameObject->setscript(new PuzzleDotScript(i * 9 + j));
@@ -70,8 +72,8 @@ void PuzzleEntry::testplay()
 	{
 		for (int j = 0; j < 10; ++j) {
 			GameObject* gameObject = new GameObject();
-			gameObject->pushcomponent(E_Component::TransformComponent, new TransformComponent(Vector2((j - 4.5f) * GRIDSIZE, (4.5f - i) * GRIDSIZE), 0));
-			gameObject->pushcomponent(E_Component::CollisonCompoenet, new CollisonCompoenet(Rect(0, 80.f, 40.f)));
+			gameObject->pushcomponent(E_Component::TransformComponent, new TransformComponent(Vector2(10 + (j - 4.5f) * GRIDSIZE, -5 + (4.5f - i) * GRIDSIZE), 0));
+			gameObject->pushcomponent(E_Component::CollisonCompoenet, new CollisonCompoenet(Rect(0, 70.f, 35.f)));
 			gameObject->Start();
 			allObject->push(E_Objtype::empty, gameObject);
 		}

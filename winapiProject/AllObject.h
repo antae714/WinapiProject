@@ -16,6 +16,7 @@ class AllObject : public SingletonCls<AllObject>
 {
 private:
 	multimap<E_Objtype, GameObject*> allObj;
+	bool updated = false;
 public:
 	AllObject();
 	virtual ~AllObject();
@@ -33,5 +34,8 @@ public:
 	void deleteGroup(const E_Objtype& p_key);
 
 	void deleteObj(ObjIter);
+
+	bool getupdated();
+	void setupdated(bool);
 };
 
