@@ -5,7 +5,7 @@ GameStart::GameStart()
 {
 }
 
-void GameStart::play()
+void GameStart::Input()
 {
 	LevelData::DeleteLevel("titlescreen");
 	LevelData::LevelLode("testLevel");

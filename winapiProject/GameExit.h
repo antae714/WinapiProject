@@ -7,5 +7,5 @@ class GameExit : public Script, public InputFunction
 public:
 	GameExit();
 public:
-	virtual void play();
+	virtual void Input();
 };

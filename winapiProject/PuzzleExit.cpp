@@ -15,7 +15,7 @@ PuzzleExit::PuzzleExit()
 {
 }
 
-void PuzzleExit::play()
+void PuzzleExit::Input()
 {
 	AllObject* allObject = AllObject::getInstance();
 	//LevelData::LevelLode("testLevel");

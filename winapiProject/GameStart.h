@@ -7,5 +7,5 @@ class GameStart : public Script, public InputFunction
 public:
 	GameStart();
 public:
-	virtual void play();
+	virtual void Input();
 };

@@ -23,7 +23,7 @@ PuzzleDotScript::~PuzzleDotScript()
 {
 }
 
-void PuzzleDotScript::play()
+void PuzzleDotScript::KeyInput()
 {
 	clickLogic();
 }

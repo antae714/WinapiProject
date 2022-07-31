@@ -20,7 +20,7 @@ PuzzleEntry::PuzzleEntry()
 {
 }
 
-void PuzzleEntry::play()
+void PuzzleEntry::KeyInput()
 {
 	//LevelData::DeleteLevel("testLevel");
 	AllObject* allObject = AllObject::getInstance();

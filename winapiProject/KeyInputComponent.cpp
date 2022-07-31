@@ -49,7 +49,7 @@ void KeyInputComponenet::OnPressed()
 {
 	if (KeyInputFunction* tempcommand = dynamic_cast<KeyInputFunction*>(owner->getscriptptr()))
 	{
-		tempcommand->play();
+		tempcommand->KeyInput();
 	}
 }
 

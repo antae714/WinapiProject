@@ -15,7 +15,7 @@ TextScript::TextScript()
 {
 }
 
-void TextScript::play()
+void TextScript::KeyInput()
 {
 	if (!textobj) {
 		AllObject* allObject = AllObject::getInstance();

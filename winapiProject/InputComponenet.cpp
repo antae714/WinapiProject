@@ -36,7 +36,7 @@ bool InputComponenet::isClicked()
 void InputComponenet::Onclicked()
 {
 	if (InputFunction* tempcommand = dynamic_cast<InputFunction*>(owner->getscriptptr())) {
-		tempcommand->play();
+		tempcommand->Input();
 	}
 }
 

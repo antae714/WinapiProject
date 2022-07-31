@@ -6,7 +6,7 @@ GameExit::GameExit()
 {
 }
 
-void GameExit::play()
+void GameExit::Input()
 {
 	GameData::getInstance()->setisgaming(false);
 }

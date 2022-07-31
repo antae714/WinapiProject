@@ -12,6 +12,6 @@ private:
 public:
 	TextScript();
 public:
-	virtual void play();
+	virtual void KeyInput();
 };
 
