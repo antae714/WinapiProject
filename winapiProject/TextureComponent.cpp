@@ -77,9 +77,13 @@ void TextureComponent::setbitmap(string p_str,int p_x,int p_y)
 {
 	xSize = p_x;
 	ySize = p_y;
-	_ASSERT(enumBitmap::conversion(p_str) < E_Bitmap::MAX);
 	if(enumBitmap::conversion(p_str) < E_Bitmap::MAX)
 		bitmap = BitmapManager::getInstance()->getBitmap(enumBitmap::conversion(p_str), p_x, p_y);
+}
+
+void TextureComponent::setbitmap(void* ptr)
+{
+	bitmap = (HBITMAP)ptr;
 }
 
 void TextureComponent::setrect(const Rect& p_rect)

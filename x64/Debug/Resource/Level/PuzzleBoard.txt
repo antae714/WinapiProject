@@ -1,8 +1,10 @@
 // 배경
-Transform{X:-3},Texture{Bitmap:backgroundpuzzle,Width:2361,Height:2361},Script{PuzzleBoardScript}
+Transform,Texture{Bitmap:backgroundpuzzle,Width:2318,Height:2318},Script{PuzzleBoardScript}
 
 
+// 퍼즐 힌트
+UITransform{X:1193,Y:634},Texture{Bitmap:puzzlehint,Width:173,Height:173}
 
 
 // 퍼즐 닫기
-Transform{X:1300,Y:-0},Texture{Bitmap:exit,Width:250,Height:100},Input,Script{PuzzleExit}
+UITransform{X:1238,Y:24},Texture{Bitmap:puzzlebutton,Width:85,Height:48},Input,Script{PuzzleExit}

@@ -1,8 +1,14 @@
 // 배경 화면
 Transform,Texture{Bitmap:background,Width:1280,Height:720}
+Transform{X:640},Texture{Bitmap:Red,Width:10,Height:1000},Script{MoveMap,Dest:testLevel2,X:-500,Y:-200}
+
+
+Transform{X:-300,Y:-200},Texture{Bitmap:npc_assistant,Width:100,Height:149},KeyInput,Script{TextScript}
 
 // NPC (퍼즐)
-Transform{X:400,Y:-210},Texture{Bitmap:npc,Width:100,Height:170},KeyInput,Script{PuzzleEntry}
+Transform{X:400,Y:-150},Texture{Bitmap:npc1_1,Width:218,Height:185},KeyInput,Script{PuzzleEntry}
 
-// NPC (1번 맵에서 2번 맵으로 이동)
-Transform{X:550,Y:-210},Texture{Bitmap:npc2,Width:100,Height:170},KeyInput,Script{MoveMap,Dest:testLevel2,X:-500,Y:-200}
+// 대화창?
+//UITransform{X:640,Y:590},Texture{Bitmap:Dialog,Width:500,Height:248},Text{X:450,Y:580,Filename:Test},Input,Script{TextScript}
+
+

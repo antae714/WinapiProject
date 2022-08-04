@@ -53,7 +53,7 @@ void Camera::beforeRender()
 		Component* transform = obj->getcomponent(E_Component::TransformComponent);
 		Component* ui = obj->getcomponent(E_Component::UITransformComponent);
 		TextureComponent* texture = GETCOMPONENT(obj, TextureComponent);
-		if (transform && texture) {
+		if (transform && texture && texture->getbitmap()) {
 			TextureRender(MemDC, texture);
 		}
 		else if (ui && texture) {

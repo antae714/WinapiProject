@@ -40,6 +40,7 @@ pair<ObjIter, ObjIter> AllObject::getallObj(const E_Objtype& p_key)
 
 void AllObject::push(const E_Objtype& p_key, GameObject* p_obj)
 {
+    p_obj->Start();
     allObj.emplace(p_key, p_obj);
 }
 
