@@ -8,6 +8,8 @@
 #include "TextureComponent.h"
 #include "Vector2.h"
 #include "Math.h"
+#include "AllObject.h"
+#include "E_Objtype.h"
 
 #define VK_A 0x41
 #define VK_S 0x53
@@ -27,12 +29,16 @@ PlayerScript::PlayerScript()
 	bottom = 0;
 	left = 0;
 	right = 0;
+
+	cooldown = 0;
+	cooldown_sw = false;
 }
 
 void PlayerScript::Update()
 {
 	InputLogic();
 	MoveLogic();
+	AbilityUpdate();
 }
 
 void PlayerScript::InputLogic()
@@ -130,4 +136,50 @@ void PlayerScript::SetMovableArea(int p_top, int p_bottom, int p_left, int p_rig
 void PlayerScript::setmoveState(E_PlayerState p_moveState)
 {
 	moveState = p_moveState;
+}
+
+void PlayerScript::AbilityUpdate() {
+
+	if (!cooldown_sw) {
+		return;
+	}
+
+	GameTime* gameTime = GameTime::getInstance();
+	cooldown += gameTime->getdeltaTime() * 100;
+
+	AllObject* allObject = AllObject::getInstance();
+	pair<ObjIter, ObjIter> temp = allObject->getallObj(E_Objtype::puzzleMine);
+	Vector2 playerpos = dynamic_cast<TransformComponent*>(owner->getcomponent(E_Component::TransformComponent))->getpivot();
+
+	if (cooldown > 500) {
+		TextureComponent* texture = dynamic_cast<TextureComponent*>(owner->getcomponent(E_Component::TextureComponent));
+		texture->setbitmap("character2", texture->getxSize(), texture->getySize());
+		cooldown_sw = false;
+
+		for (ObjIter iter = temp.first; iter != temp.second; ++iter)
+		{
+			GameObject* obj = iter.operator*().second;
+			dynamic_cast<TextureComponent*>(obj->getcomponent(E_Component::TextureComponent))->setbitmap("Green", 50, 50);
+		}
+
+		return;
+	}
+
+	for (ObjIter iter = temp.first; iter != temp.second; ++iter)
+	{
+		GameObject* obj = iter.operator*().second;
+		Vector2 objpos = dynamic_cast<TransformComponent*>(obj->getcomponent(E_Component::TransformComponent))->getpivot();
+
+		if (Math::lpts(objpos, playerpos, 250)) {
+			dynamic_cast<TextureComponent*>(obj->getcomponent(E_Component::TextureComponent))->setbitmap("Starbutton_Fake", 50, 50);
+		}
+	}
+}
+
+void PlayerScript::Ability() {
+
+	TextureComponent* texture = dynamic_cast<TextureComponent*>(owner->getcomponent(E_Component::TextureComponent));
+	texture->setbitmap("character3", texture->getxSize(), texture->getySize());
+	cooldown = 0;
+	cooldown_sw = true;
 }

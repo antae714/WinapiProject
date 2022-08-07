@@ -14,6 +14,7 @@
 #include "LineScript.h"
 #include "PlayerScript.h"
 #include "TextScript.h"
+#include "UI_Hit.h"
 
 Script* LevelLoader::AllocScript(const E_Script& p_enum)
 {
@@ -39,6 +40,8 @@ Script* LevelLoader::AllocScript(const E_Script& p_enum)
 		return new PlayerScript();
 	case E_Script::TextScript:
 		return new TextScript();
+	case E_Script::UI_Hit:
+		return new UI_Hit();
 
 	default:
 		_ASSERT(0 && "존재하지않는 스크립트");

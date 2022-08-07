@@ -1,4 +1,5 @@
 #include "PuzzleDotScript.h"
+#include "KeyInputComponent.h"
 #include "TextureComponent.h"
 #include "TransformComponent.h"
 #include "GameObject.h"
@@ -6,8 +7,10 @@
 #include "AllObject.h"
 #include "E_Objtype.h"
 #include "Macro.h"
+#include "Rect.h"
 #include "LineScript.h"
 #include "PuzzleBoardScript.h"
+#include "PuzzleAbility.h"
 
 PuzzleDotScript::PuzzleDotScript() :
 	refCount(0), number(0)
@@ -28,30 +31,25 @@ void PuzzleDotScript::KeyInput()
 	clickLogic();
 }
 
-void PuzzleDotScript::plusrefCount(LineScript* p_line)
+void PuzzleDotScript::plusrefCount()
 {
-	line.push_back(p_line);
-	if (1 == ++refCount)
+	if (0 < ++refCount)
 	{
 		TextureComponent* texture = GETCOMPONENT(owner, TextureComponent);
 		texture->setbitmap("Starbutton_Selected", texture->getxSize(), texture->getySize());
+		if (!status) {
+			status = 1;
+			CreateAbility();
+		}
 	}
 }
 
 void PuzzleDotScript::minusrefCount()
 {
-	if (0 == --refCount) {
+	if (0 >= --refCount) {
 		TextureComponent* texture = GETCOMPONENT(owner, TextureComponent);
 		texture->setbitmap("Starbutton", texture->getxSize(), texture->getySize());
 	}
-}
-
-void PuzzleDotScript::cut()
-{
-	for (LineScript* item : line) {
-		delete item;
-	}
-	line.clear();
 }
 
 int PuzzleDotScript::getnumber()
@@ -82,7 +80,7 @@ void PuzzleDotScript::clickLogic()
 
 			if (puzzle->isAnswer(owner, line->getfirstptr())) {
 				line->setsecond(owner);
-				plusrefCount(line);
+				plusrefCount();
 				line->Setting();
 			}
 			else {
@@ -101,4 +99,21 @@ void PuzzleDotScript::clickLogic()
 		tempobj->Start();
 		AllObject::getInstance()->push(E_Objtype::puzzleliner, tempobj);
 	}
+}
+
+void PuzzleDotScript::CreateAbility() {
+
+	AllObject* allObject = AllObject::getInstance();
+	GameObject* gameObject = new GameObject();
+	gameObject->pushcomponent(E_Component::TextureComponent, new TextureComponent("Green", Rect(0.f, 50.f, 50.f), 50, 50));
+	TransformComponent* posit = dynamic_cast<TransformComponent*>(owner->getcomponent(E_Component::TransformComponent));
+	gameObject->pushcomponent(E_Component::TransformComponent, new TransformComponent(posit->getpivot(), 0));
+	KeyInputComponenet* keyinput = new KeyInputComponenet();
+	keyinput->setkey(0x58);
+	gameObject->pushcomponent(E_Component::KeyInputComponenet, keyinput);
+
+	gameObject->setscript(new PuzzleAbility());
+	gameObject->Start();
+
+	allObject->push(E_Objtype::puzzleAbility, gameObject);
 }

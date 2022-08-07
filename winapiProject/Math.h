@@ -37,9 +37,7 @@ bool OBBtest(const Vector2& unit, const Vector2& axisvec, const Vector2& otherve
 float Distance(const Vector2& first, const Vector2& second);
 //가까우면 참
 bool iscolose(const Vector2& first, const Vector2& second, float distance);
-
-int rand(int, int);
-
+bool lpts(const Vector2& first, const Vector2& second, float distance);
 
 template<class T>
 void Swap(T& p_first, T& p_second)

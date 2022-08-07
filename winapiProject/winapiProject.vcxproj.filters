@@ -276,6 +276,9 @@
     <ClInclude Include="PuzzleEnemy2.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="UI_Hit.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AllObject.cpp">
@@ -475,6 +478,9 @@
     </ClCompile>
     <ClCompile Include="PuzzleEnemy2.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="UI_Hit.cpp">
+      <Filter>헤더 파일</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

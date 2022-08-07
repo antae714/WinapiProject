@@ -9,8 +9,10 @@
 #include "GameObject.h"
 #include "TextureComponent.h"
 #include "LineScript.h"
+#include "PuzzleMine.h"
 #include "Macro.h"
 #include "Math.h"
+#include "Rect.h"
 #include <fstream>
 
 PuzzleBoardScript::PuzzleBoardScript()
@@ -20,6 +22,7 @@ PuzzleBoardScript::PuzzleBoardScript()
 	file.open(string("./Resource/Level/") + "balance" + ".txt");
 	_ASSERT(!file.fail() && "¿¡·¯");
 
+	bool deny_creation[81] = { 0, };
 	while (!file.eof())
 	{
 		string line;
@@ -41,12 +44,68 @@ PuzzleBoardScript::PuzzleBoardScript()
 				}
 			}
 		}
+		deny_creation[stoi(comp.at(0))] = true;
+		deny_creation[stoi(comp.at(1))] = true;
 		answerVec.emplace_back(stoi(comp.at(0)), stoi(comp.at(1)));
 		answercheck.push_back(stoi(comp.at(2)));
 	}
 	answerVec.resize(answerVec.size());
 	answercheck.resize(answercheck.size());
 	file.close();
+
+	vector<int> mine_avoid;
+	mine_avoid.push_back(40);
+	for (int i = 0; i < 81; ++i) {
+		if (deny_creation[i] == true) {
+			mine_avoid.push_back(i);
+		}
+	}
+
+	AllObject* allObject = AllObject::getInstance();
+	pair<ObjIter, ObjIter> temp = allObject->getallObj(E_Objtype::puzzleDot);
+
+	for (int i = 0; i < 15; ++i) {
+		int rd;
+
+		while (1) {
+			bool repeated = false;
+			rd = rand() % 81;
+
+			for (int j = 0; j < mine_avoid.size(); ++j) {
+				if (rd == mine_avoid[j]) {
+					repeated = true;
+					break;
+				}
+			}
+
+			if (!repeated) {
+				break;
+			}
+		}
+		mine_avoid.push_back(rd);
+
+		GameObject* gameObject = new GameObject();
+		gameObject->pushcomponent(E_Component::TextureComponent, new TextureComponent("Green", Rect(0.f, 50.f, 50.f), 50, 50));
+		GameObject* obj = nullptr;
+		TransformComponent* posit = nullptr;
+
+		int j = 0;
+		for (ObjIter iter = temp.first; iter != temp.second; ++iter)
+		{
+			if (j == rd) {
+				obj = iter.operator*().second;
+				posit = dynamic_cast<TransformComponent*>(obj->getcomponent(E_Component::TransformComponent));
+				break;
+			}
+			++j;
+		}		
+		gameObject->pushcomponent(E_Component::TransformComponent, new TransformComponent(posit->getpivot(), 0));
+
+		gameObject->setscript(new PuzzleMine(obj));
+		gameObject->Start();
+
+		allObject->push(E_Objtype::puzzleMine, gameObject);
+	}
 }
 
 bool PuzzleBoardScript::isAnswer(const GameObject* p_first, const GameObject* p_second)

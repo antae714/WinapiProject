@@ -7,6 +7,16 @@ string enumBitmap::conversion(const E_Bitmap& p_enum) {
 		return "background";
 	case E_Bitmap::background_2:
 		return "background_2";
+	case E_Bitmap::background_3:
+		return "background_3";
+	case E_Bitmap::background_4:
+		return "background_4";
+	case E_Bitmap::background_5:
+		return "background_5";
+	case E_Bitmap::background_6:
+		return "background_6";
+	case E_Bitmap::background_7:
+		return "background_7";
 	case E_Bitmap::background_Title:
 		return "background_Title";
 	case E_Bitmap::backgroundpuzzle:
@@ -17,6 +27,8 @@ string enumBitmap::conversion(const E_Bitmap& p_enum) {
 		return "character";
 	case E_Bitmap::character2:
 		return "character2";
+	case E_Bitmap::character3:
+		return "character3";
 	case E_Bitmap::puzzlebutton:
 		return "puzzlebutton";
 	case E_Bitmap::puzzlecleartestimg:
@@ -25,6 +37,8 @@ string enumBitmap::conversion(const E_Bitmap& p_enum) {
 		return "Starbutton";
 	case E_Bitmap::Starbutton_Selected:
 		return "Starbutton_Selected";
+	case E_Bitmap::Starbutton_Fake:
+		return "Starbutton_Fake";
 	case E_Bitmap::Dialog:
 		return "Dialog";
 	case E_Bitmap::Line:
@@ -39,6 +53,8 @@ string enumBitmap::conversion(const E_Bitmap& p_enum) {
 		return "logo";
 	case E_Bitmap::npc_assistant:
 		return "npc_assistant";
+	case E_Bitmap::npc:
+		return "npc";
 	case E_Bitmap::npc1_1:
 		return "npc1_1";
 	case E_Bitmap::npc1_2:
@@ -57,6 +73,8 @@ string enumBitmap::conversion(const E_Bitmap& p_enum) {
 		return "TitleButton";
 	case E_Bitmap::UI_Character:
 		return "UI_Character";
+	case E_Bitmap::UI_Character_Hit:
+		return "UI_Character_Hit";
 	case E_Bitmap::MAX:
 		return "";
 	}
@@ -68,6 +86,26 @@ E_Bitmap enumBitmap::conversion(const string& p_str) {
 	else if ("background_2" == p_str)
 	{
 		return E_Bitmap::background_2;
+	}
+	else if ("background_3" == p_str)
+	{
+		return E_Bitmap::background_3;
+	}
+	else if ("background_4" == p_str)
+	{
+		return E_Bitmap::background_4;
+	}
+	else if ("background_5" == p_str)
+	{
+		return E_Bitmap::background_5;
+	}
+	else if ("background_6" == p_str)
+	{
+		return E_Bitmap::background_6;
+	}
+	else if ("background_7" == p_str)
+	{
+		return E_Bitmap::background_7;
 	}
 	else if ("background_Title" == p_str)
 	{
@@ -87,6 +125,9 @@ E_Bitmap enumBitmap::conversion(const string& p_str) {
 	else if ("character2" == p_str) {
 		return E_Bitmap::character2;
 	}
+	else if ("character3" == p_str) {
+		return E_Bitmap::character3;
+	}
 	else if ("puzzlebutton" == p_str) {
 		return E_Bitmap::puzzlebutton;
 	}
@@ -98,6 +139,9 @@ E_Bitmap enumBitmap::conversion(const string& p_str) {
 	}
 	else if ("Starbutton_Selected" == p_str) {
 		return E_Bitmap::Starbutton_Selected;
+	}
+	else if ("Starbutton_Fake" == p_str) {
+		return E_Bitmap::Starbutton_Fake;
 	}
 	else if ("Dialog" == p_str) {
 		return E_Bitmap::Dialog;
@@ -122,6 +166,10 @@ E_Bitmap enumBitmap::conversion(const string& p_str) {
 	else if ("npc_assistant" == p_str)
 	{
 		return E_Bitmap::npc_assistant;
+	}
+	else if ("npc" == p_str)
+	{
+		return E_Bitmap::npc;
 	}
 	else if ("npc1_1" == p_str)
 	{
@@ -158,6 +206,10 @@ E_Bitmap enumBitmap::conversion(const string& p_str) {
 	else if ("UI_Character" == p_str)
 	{
 		return E_Bitmap::UI_Character;
+	}
+	else if ("UI_Character_Hit" == p_str)
+	{
+	return E_Bitmap::UI_Character_Hit;
 	}
 	return E_Bitmap::MAX;
 }

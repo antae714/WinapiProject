@@ -328,6 +328,14 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
         else if (key == "KeyInput")
         {
             KeyInputComponenet* tempcomp = new KeyInputComponenet();
+            int interactive = 0x5A;
+
+            if (tempmap.find("Interactive") != tempmap.end())
+            {
+                interactive = stoi(object->find(key)->second.find("Interactive")->second);
+            }
+
+            tempcomp->setkey(interactive);
             tempobj->pushcomponent(E_Component::KeyInputComponenet, tempcomp);
         }
 
@@ -366,5 +374,8 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
         tempobj->pushcomponent(E_Component::TextComponent, tempcomp);
  }
     }
+
+    //AllObject::getInstance()->push(tempobj);
+    tempobj->Start();
     return tempobj;
 }

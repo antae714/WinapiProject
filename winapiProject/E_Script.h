@@ -19,6 +19,7 @@ enum class E_Script
 	LineScript,
 	PlayerScript,
 	TextScript,
+	UI_Hit,
 
 	MAX
 };
