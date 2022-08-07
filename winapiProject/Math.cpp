@@ -4,6 +4,7 @@
 #include "Vector2.h"
 #include "Rect.h"
 #include "GameData.h"
+#include <random>
 #include <algorithm>
 
 Vector2 Math::CarttoScreen(const Vector2& p_vec)
@@ -169,6 +170,15 @@ float Math::Distance(const Vector2& first, const Vector2& second)
 bool Math::iscolose(const Vector2& first, const Vector2& second, float distance)
 {
     return first.getx() * second.getx() + first.gety() * second.gety() <= distance * distance;
+}
+
+int Math::rand(int first, int second)
+{
+    static std::random_device rd;
+    static std::mt19937 gen(rd());
+    std::uniform_int_distribution<int> dis(first, second);
+   
+    return dis(gen);
 }
 
 

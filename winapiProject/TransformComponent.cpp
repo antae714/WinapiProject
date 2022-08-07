@@ -66,7 +66,7 @@ void TransformComponent::move(const Vector2& p_vec)
     CollisonCompoenet* collison = GETCOMPONENT(owner, CollisonCompoenet);
     if (collison) {
         GameObject* obj = collison->CollisonLogic();
-        if (obj) {
+        if (obj && obj->getisActive()) {
             /*Vector2 other = GETCOMPONENT(obj, TransformComponent)->getpivot();
             Vector2 distance = *pivot - other;
             if (abs(distance.getx()) > abs(distance.gety())) {

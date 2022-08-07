@@ -222,9 +222,6 @@
     <ClInclude Include="E_Sound.h">
       <Filter>헤더 파일\Enum</Filter>
     </ClInclude>
-    <ClInclude Include="TextComponent.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Macro.h">
       <Filter>헤더 파일\Manager</Filter>
     </ClInclude>
@@ -264,11 +261,20 @@
     <ClInclude Include="CollisonCompoenet.h">
       <Filter>헤더 파일\Component</Filter>
     </ClInclude>
-    <ClInclude Include="TextScript.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="CollisonFunction.h">
       <Filter>헤더 파일\Function</Filter>
+    </ClInclude>
+    <ClInclude Include="TextComponent.h">
+      <Filter>헤더 파일\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="TextScript.h">
+      <Filter>헤더 파일\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="PuzzleEnemy1.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="PuzzleEnemy2.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -413,9 +419,6 @@
     <ClCompile Include="GameStart.cpp">
       <Filter>소스 파일\Script</Filter>
     </ClCompile>
-    <ClCompile Include="TextComponent.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="E_Sound.cpp">
       <Filter>소스 파일\Enum</Filter>
     </ClCompile>
@@ -458,10 +461,19 @@
     <ClCompile Include="CollisonCompoenet.cpp">
       <Filter>소스 파일\Component</Filter>
     </ClCompile>
+    <ClCompile Include="CollisonFunction.cpp">
+      <Filter>소스 파일\Function</Filter>
+    </ClCompile>
+    <ClCompile Include="TextComponent.cpp">
+      <Filter>소스 파일\Component</Filter>
+    </ClCompile>
     <ClCompile Include="TextScript.cpp">
+      <Filter>소스 파일\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="PuzzleEnemy1.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="CollisonFunction.cpp">
+    <ClCompile Include="PuzzleEnemy2.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

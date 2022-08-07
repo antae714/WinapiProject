@@ -45,6 +45,7 @@ void Camera::beforeRender()
 	MemDc MemDC(hdc, beforeBuffer);
 
 	PatBlt(MemDC(), 0, 0, gameData->getwindowX(), gameData->getwindowY(), BLACKNESS);
+	vector<TextureComponent*> uitexture;
 
 	for (ObjIter iter = allObject->allObjbegin(); iter != allObject->allObjend(); ++iter) {
 		const GameObject* obj = iter.operator*().second;
@@ -57,13 +58,17 @@ void Camera::beforeRender()
 			TextureRender(MemDC, texture);
 		}
 		else if (ui && texture) {
-			UIRender(MemDC, texture);
+			uitexture.push_back(texture);
 		}
 
 		TextComponent* text = GETCOMPONENT(obj, TextComponent);
 		if (text) {
 			TextRender(MemDC, text);
 		}
+	}
+
+	for (TextureComponent* item : uitexture) {
+		UIRender(MemDC, item);
 	}
 
 	ReleaseDC(WindowMsg::getInstance()->gethWnd(), hdc);

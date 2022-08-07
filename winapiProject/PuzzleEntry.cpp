@@ -15,6 +15,8 @@
 #include "CollisonCompoenet.h"
 #include "Rect.h"
 #include "Macro.h"
+#include "Math.h"
+#include "PuzzleEnemy1.h"
 
 PuzzleEntry::PuzzleEntry()
 {
@@ -36,7 +38,7 @@ void PuzzleEntry::KeyInput()
 			gameObject->pushcomponent(E_Component::TextureComponent, new TextureComponent("Starbutton", Rect(0.f, 50.f, 50.f), 50, 50));
 			gameObject->pushcomponent(E_Component::KeyInputComponenet, new KeyInputComponenet());
 			gameObject->setscript(new PuzzleDotScript(i * 9 + j));
-			gameObject->Start();
+
 			allObject->push(E_Objtype::puzzleDot, gameObject);
 		}
 	}
@@ -47,11 +49,18 @@ void PuzzleEntry::KeyInput()
 			GameObject* gameObject = new GameObject();
 			gameObject->pushcomponent(E_Component::TransformComponent, new TransformComponent(Vector2(10 + (j - 4.5f) * GRIDSIZE, -5 + (4.5f - i) * GRIDSIZE), 0));
 			gameObject->pushcomponent(E_Component::CollisonCompoenet, new CollisonCompoenet(Rect(0, 70.f, 35.f)));
-			gameObject->Start();
 			allObject->push(E_Objtype::empty, gameObject);
 		}
 	}
 	LevelData::LevelLode("PuzzleBoard");
+
+	GameObject* gameObject = new GameObject();
+	gameObject->pushcomponent(E_Component::TransformComponent, new TransformComponent(Vector2(200,200), 0));
+	gameObject->pushcomponent(E_Component::TextureComponent, new TextureComponent("npc_assistant", Rect(0.f, 50.f, 50.f)));
+	gameObject->pushcomponent(E_Component::CollisonCompoenet, new CollisonCompoenet(Rect(0, 50.f, 50.f)));
+	gameObject->setscript(new PuzzleEnemy1());
+	allObject->push(E_Objtype::puzzleliner, gameObject);
+
 
 	pair<ObjIter, ObjIter> temp = allObject->getallObj(E_Objtype::character);
 	pair<ObjIter, ObjIter> temp2 = allObject->getallObj(E_Objtype::PuzzleBoard);

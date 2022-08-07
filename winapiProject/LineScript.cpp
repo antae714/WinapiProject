@@ -20,13 +20,13 @@ LineScript::LineScript() :
 LineScript::LineScript(GameObject* p_first, const GameObject* p_second) :
 	first(p_first), second(p_second), isend(false)
 {
-	GETSCRIPT(first, PuzzleDotScript)->plusrefCount();
+	GETSCRIPT(first, PuzzleDotScript)->plusrefCount(this);
 }
 
 LineScript::LineScript(GameObject* p_first, const GameObject* p_second, bool p_isend) :
 	first(p_first), second(p_second), isend(p_isend)
 {
-	GETSCRIPT(first, PuzzleDotScript)->plusrefCount();
+	GETSCRIPT(first, PuzzleDotScript)->plusrefCount(this);
 }
 
 
@@ -50,11 +50,11 @@ void LineScript::Set(int p_first, int p_second, bool p_isend = true)
 		GameObject* obj = iter.operator*().second;
 		if (i == p_first) {
 			first = obj;
-			GETSCRIPT(first, PuzzleDotScript)->plusrefCount();
+			GETSCRIPT(first, PuzzleDotScript)->plusrefCount(this);
 		}
 		else if (i == p_second) {
 			second = obj;
-			GETSCRIPT(second, PuzzleDotScript)->plusrefCount();
+			GETSCRIPT(second, PuzzleDotScript)->plusrefCount(this);
 		}
 	}
 

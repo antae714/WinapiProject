@@ -13,7 +13,8 @@ GameManager::GameManager()
 	camera = new Camera();
 	inputManager = new InputManager();
 	keyinputManager = new KeyInputManager();
-	SoundManager::getInstance()->PlaySound_(E_Sound::BackGround);
+	SoundManager::getInstance();
+	//SoundManager::getInstance()->PlaySound_(E_Sound::BackGround);
 }
 
 GameManager::~GameManager()

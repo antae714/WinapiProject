@@ -28,9 +28,10 @@ void PuzzleDotScript::KeyInput()
 	clickLogic();
 }
 
-void PuzzleDotScript::plusrefCount()
+void PuzzleDotScript::plusrefCount(LineScript* p_line)
 {
-	if (0 < ++refCount)
+	line.push_back(p_line);
+	if (1 == ++refCount)
 	{
 		TextureComponent* texture = GETCOMPONENT(owner, TextureComponent);
 		texture->setbitmap("Starbutton_Selected", texture->getxSize(), texture->getySize());
@@ -39,10 +40,18 @@ void PuzzleDotScript::plusrefCount()
 
 void PuzzleDotScript::minusrefCount()
 {
-	if (0 >= --refCount) {
+	if (0 == --refCount) {
 		TextureComponent* texture = GETCOMPONENT(owner, TextureComponent);
 		texture->setbitmap("Starbutton", texture->getxSize(), texture->getySize());
 	}
+}
+
+void PuzzleDotScript::cut()
+{
+	for (LineScript* item : line) {
+		delete item;
+	}
+	line.clear();
 }
 
 int PuzzleDotScript::getnumber()
@@ -73,7 +82,7 @@ void PuzzleDotScript::clickLogic()
 
 			if (puzzle->isAnswer(owner, line->getfirstptr())) {
 				line->setsecond(owner);
-				plusrefCount();
+				plusrefCount(line);
 				line->Setting();
 			}
 			else {

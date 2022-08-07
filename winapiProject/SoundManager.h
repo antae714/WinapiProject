@@ -14,6 +14,7 @@ private:
     FMOD::System* system;
     array<FMOD::Sound*, (size_t)E_Sound::MAX> soundarr;
     FMOD::Channel* channel;
+    FMOD::Channel* channel2;
 
 public:
     SoundManager();
@@ -21,5 +22,9 @@ public:
 
 public:
 	//사용할 메서드
-	bool PlaySound_(const E_Sound&);
+	bool PlaySound_(E_Sound);
+    void changeBackground(E_Sound);
+
+    void setBackVolume(float);
+    void setEffectVolume(float);
 };

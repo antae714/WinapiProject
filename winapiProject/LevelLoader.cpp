@@ -366,8 +366,5 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
         tempobj->pushcomponent(E_Component::TextComponent, tempcomp);
  }
     }
-
-    //AllObject::getInstance()->push(tempobj);
-    tempobj->Start();
     return tempobj;
 }
