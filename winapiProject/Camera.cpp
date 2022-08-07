@@ -1,4 +1,4 @@
-#include "Camera.h"
+ï»¿#include "Camera.h"
 #include "WindowMsg.h"
 #include "GameData.h"
 #include "Vector2.h"
@@ -50,7 +50,7 @@ void Camera::beforeRender()
 	for (ObjIter iter = allObject->allObjbegin(); iter != allObject->allObjend(); ++iter) {
 		const GameObject* obj = iter.operator*().second;
 		if (!obj->getisActive()) continue;
-		
+
 		Component* transform = obj->getcomponent(E_Component::TransformComponent);
 		Component* ui = obj->getcomponent(E_Component::UITransformComponent);
 		TextureComponent* texture = GETCOMPONENT(obj, TextureComponent);
@@ -143,12 +143,12 @@ void Camera::TextRender(MemDc& p_memdc, const TextComponent* p_text)
 {
 	Vector2 point = p_text->getpoint();
 	string text = p_text->getText();
-	int strlength = p_text->getnownum()+1;
+	int strlength = p_text->getnownum() + 1;
 	MyBitmap tempBitmap(p_memdc(), strlength * 11, 30);
 	MemDc greenDc(p_memdc(), green);
 	MemDc tempdc(p_memdc(), tempBitmap());
 
-	HFONT font = CreateFont(30, 10, 0, 0, 0, 0, 0, 0, HANGEUL_CHARSET, 0, 0, NONANTIALIASED_QUALITY, 0, TEXT("±¼¸²"));
+	HFONT font = CreateFont(30, 10, 0, 0, 0, 0, 0, 0, HANGEUL_CHARSET, 0, 0, NONANTIALIASED_QUALITY, 0, TEXT("ï¿½ï¿½ï¿½ï¿½"));
 
 	SetBkColor(tempdc(), MaskColor);
 	StretchBlt(tempdc(), 0, 0, strlength * 11, 30, greenDc(), 0, 0, 1, 1, SRCCOPY);

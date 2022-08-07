@@ -7,8 +7,3 @@ Transform{X:-300,Y:-200},Texture{Bitmap:npc_assistant,Width:100,Height:149},KeyI
 
 // NPC (퍼즐)
 Transform{X:400,Y:-150},Texture{Bitmap:npc1_1,Width:218,Height:185},KeyInput,Script{PuzzleEntry}
-
-// 대화창?
-//UITransform{X:640,Y:590},Texture{Bitmap:Dialog,Width:500,Height:248},Text{X:450,Y:580,Filename:Test},Input,Script{TextScript}
-
-

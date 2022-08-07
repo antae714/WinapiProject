@@ -277,6 +277,12 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="UI_Hit.h">
+      <Filter>헤더 파일\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="PuzzleMine.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="PuzzleAbility.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -480,7 +486,13 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="UI_Hit.cpp">
-      <Filter>헤더 파일</Filter>
+      <Filter>소스 파일\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="PuzzleAbility.cpp">
+      <Filter>소스 파일\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="PuzzleMine.cpp">
+      <Filter>소스 파일\Script</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
