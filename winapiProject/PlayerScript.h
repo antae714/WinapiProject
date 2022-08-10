@@ -30,6 +30,8 @@ private:
 
 	double cooldown;
 	bool cooldown_sw;
+
+	int life;
 public:
 	PlayerScript();
 public:
@@ -38,6 +40,11 @@ public:
 	void SetMovableArea(int, int, int, int);
 	void setmoveState(E_PlayerState);
 	void Ability();
+	void onHit();
+	void Damage();
+	void LifeReset();
+	int getLife();
+
 
 private:
 	void InputLogic();

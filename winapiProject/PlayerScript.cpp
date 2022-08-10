@@ -10,6 +10,9 @@
 #include "Math.h"
 #include "AllObject.h"
 #include "E_Objtype.h"
+#include "LineScript.h"
+#include "Macro.h"
+#include "UI_Hit.h"
 
 #define VK_A 0x41
 #define VK_S 0x53
@@ -32,6 +35,8 @@ PlayerScript::PlayerScript()
 
 	cooldown = 0;
 	cooldown_sw = false;
+
+	life = 5;
 }
 
 void PlayerScript::Update()
@@ -182,4 +187,42 @@ void PlayerScript::Ability() {
 	texture->setbitmap("character3", texture->getxSize(), texture->getySize());
 	cooldown = 0;
 	cooldown_sw = true;
+}
+
+void PlayerScript::onHit()
+{
+	AllObject* allObject = AllObject::getInstance();
+	pair<ObjIter, ObjIter> temp2 = allObject->getallObj(E_Objtype::puzzleliner);
+	for (ObjIter iter = temp2.first; iter != temp2.second; ++iter) {
+		GameObject* obj = iter.operator*().second;
+		LineScript* line = GETSCRIPT(obj, LineScript);
+		if (!line->getisend()) {
+			line->setisend(true);
+			allObject->deleteObj(obj);
+		}
+	}
+
+	pair<ObjIter, ObjIter> temp3 = allObject->getallObj(E_Objtype::background);
+	for (ObjIter iter = temp3.first; iter != temp3.second; ++iter) {
+		GameObject* obj = iter.operator*().second;
+		UI_Hit* hit = GETSCRIPT(obj, UI_Hit);
+		if (!hit) continue;
+
+		hit->Hit();
+		break;
+	}
+
+	Damage();
+}
+
+void PlayerScript::Damage() {
+	--life;
+}
+
+void PlayerScript::LifeReset() {
+	life = 5;
+}
+
+int PlayerScript::getLife() {
+	return life;
 }

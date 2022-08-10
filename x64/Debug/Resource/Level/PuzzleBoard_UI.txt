@@ -1,0 +1,15 @@
+// 퍼즐 힌트
+UITransform{X:1193,Y:634},Texture{Bitmap:puzzlehint,Width:173,Height:173}
+
+
+// 퍼즐 닫기
+UITransform{X:1238,Y:24},Texture{Bitmap:puzzlebutton,Width:85,Height:48},Input,Script{PuzzleExit}
+
+
+UITransform{},Text{X:110,Y:10,Filename:Life}
+UITransform{},Text{X:210,Y:10,Filename:LifeCount},Script{Life}
+
+UITransform{},Text{X:110,Y:40,Filename:Timer}
+UITransform{},Text{X:210,Y:40,Filename:TimerCount},Script{Timer}
+
+UITransform{},Script{FailureCheck}

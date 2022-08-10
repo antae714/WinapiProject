@@ -29,8 +29,8 @@ void AllObject::ratedelelte()
     for (ObjIter item : safedelete) {
         delete item.operator*().second;
         allObj.erase(item);
-        safedelete.erase(safedelete.begin());
     }
+    safedelete.clear();
 }
 
 pair<ObjIter, ObjIter> AllObject::getallObj(const E_Objtype& p_key)

@@ -13,13 +13,62 @@
 #include "Macro.h"
 #include "Math.h"
 #include "Rect.h"
+#include "CollisonCompoenet.h"
+#include "PuzzleEnemy1.h"
+#include "PuzzleEnemy2.h"
 #include <fstream>
 
 PuzzleBoardScript::PuzzleBoardScript()
 {
+}
+
+bool PuzzleBoardScript::isAnswer(const GameObject* p_first, const GameObject* p_second)
+{
+	int first = GETSCRIPT(p_first, PuzzleDotScript)->getnumber();
+	int second = GETSCRIPT(p_second, PuzzleDotScript)->getnumber();
+	if (first > second) Math::Swap(first, second);
+	pair<int, int> temppair(first, second);
+	
+	for (int i = 0; i < answerVec.size(); ++i) {
+		if (temppair == answerVec.at(i)) {
+			answer(i);
+			return true;
+		}
+	}
+	return false;
+
+}
+
+void PuzzleBoardScript::Start()
+{
+	AllObject* allObject = AllObject::getInstance();
+	for (int i = 0; i < answercheck.size(); ++i) {
+		if (answercheck.at(i)) {
+			GameObject* tempobj = new GameObject();
+			tempobj->pushcomponent(E_Component::TransformComponent, new TransformComponent());
+			tempobj->pushcomponent(E_Component::TextureComponent, new TextureComponent());
+			LineScript* line = new LineScript();
+			tempobj->setscript(line);
+			line->Set(answerVec.at(i).first, answerVec.at(i).second, true);
+			tempobj->Start();
+			allObject->push(E_Objtype::puzzleliner, tempobj);
+		}
+	}
+
+	pair<ObjIter, ObjIter> temp = allObject->getallObj(E_Objtype::puzzleEnemy);
+	for (ObjIter iter = temp.first; iter != temp.second; ++iter) {
+		PuzzleEnemy2* enemy2 = GETSCRIPT((*iter).second, PuzzleEnemy2);
+		if (enemy2) {
+			enemy2->Init();
+		}
+	}
+}
+
+void PuzzleBoardScript::Set(const string& type)
+{
 	ifstream file;
 
-	file.open(string("./Resource/Level/") + "balance" + ".txt");
+	file.open(string("./Resource/Level/") + type + ".txt");
 	_ASSERT(!file.fail() && "에러");
 
 	bool deny_creation[81] = { 0, };
@@ -44,10 +93,40 @@ PuzzleBoardScript::PuzzleBoardScript()
 				}
 			}
 		}
-		deny_creation[stoi(comp.at(0))] = true;
-		deny_creation[stoi(comp.at(1))] = true;
-		answerVec.emplace_back(stoi(comp.at(0)), stoi(comp.at(1)));
-		answercheck.push_back(stoi(comp.at(2)));
+
+		if (comp.at(0) == "Dot") {
+			deny_creation[stoi(comp.at(1))] = true;
+			deny_creation[stoi(comp.at(2))] = true;
+			answerVec.emplace_back(stoi(comp.at(1)), stoi(comp.at(2)));
+			answercheck.push_back(stoi(comp.at(3)));
+		}
+
+		if (comp.at(0) == "Enenmy") {
+			if (comp.at(1) == "chaser") {
+				{
+					//추격자
+					AllObject* allObject = AllObject::getInstance();
+					GameObject* gameObject = new GameObject();
+					Rect rect(50.f, 50.f);
+					gameObject->pushcomponent(E_Component::TransformComponent, new TransformComponent(Vector2(), 0));
+					gameObject->pushcomponent(E_Component::TextureComponent, new TextureComponent("chaser", rect));
+					gameObject->pushcomponent(E_Component::CollisonCompoenet, new CollisonCompoenet(rect));
+					gameObject->setscript(new PuzzleEnemy1());
+					allObject->push(E_Objtype::puzzleEnemy, gameObject);
+				}
+			}
+			else if (comp.at(1) == "Ant") {
+				{
+					AllObject* allObject = AllObject::getInstance();
+					GameObject* gameObject = new GameObject();
+					Rect rect(50.f, 50.f);
+					gameObject->pushcomponent(E_Component::TransformComponent, new TransformComponent(Vector2(), 0));
+					gameObject->pushcomponent(E_Component::TextureComponent, new TextureComponent("Ant", rect));
+					gameObject->setscript(new PuzzleEnemy2());
+					allObject->push(E_Objtype::puzzleEnemy, gameObject);
+				}
+			}
+		}
 	}
 	answerVec.resize(answerVec.size());
 	answercheck.resize(answercheck.size());
@@ -85,7 +164,7 @@ PuzzleBoardScript::PuzzleBoardScript()
 		mine_avoid.push_back(rd);
 
 		GameObject* gameObject = new GameObject();
-		gameObject->pushcomponent(E_Component::TextureComponent, new TextureComponent("Green", Rect(0.f, 50.f, 50.f), 50, 50));
+		gameObject->pushcomponent(E_Component::TextureComponent, new TextureComponent("Green", Rect(50.f, 50.f)));
 		GameObject* obj = nullptr;
 		TransformComponent* posit = nullptr;
 
@@ -98,46 +177,13 @@ PuzzleBoardScript::PuzzleBoardScript()
 				break;
 			}
 			++j;
-		}		
+		}
 		gameObject->pushcomponent(E_Component::TransformComponent, new TransformComponent(posit->getpivot(), 0));
 
 		gameObject->setscript(new PuzzleMine(obj));
 		gameObject->Start();
 
 		allObject->push(E_Objtype::puzzleMine, gameObject);
-	}
-}
-
-bool PuzzleBoardScript::isAnswer(const GameObject* p_first, const GameObject* p_second)
-{
-	int first = GETSCRIPT(p_first, PuzzleDotScript)->getnumber();
-	int second = GETSCRIPT(p_second, PuzzleDotScript)->getnumber();
-	if (first > second) Math::Swap(first, second);
-	pair<int, int> temppair(first, second);
-	
-	for (int i = 0; i < answerVec.size(); ++i) {
-		if (temppair == answerVec.at(i)) {
-			answer(i);
-			return true;
-		}
-	}
-	return false;
-
-}
-
-void PuzzleBoardScript::Start()
-{
-	for (int i = 0; i < answercheck.size(); ++i) {
-		if (answercheck.at(i)) {
-			GameObject* tempobj = new GameObject();
-			tempobj->pushcomponent(E_Component::TransformComponent, new TransformComponent());
-			tempobj->pushcomponent(E_Component::TextureComponent, new TextureComponent());
-			LineScript* line = new LineScript();
-			line->Set(answerVec.at(i).first, answerVec.at(i).second, true);
-			tempobj->setscript(line);
-			tempobj->Start();
-			AllObject::getInstance()->push(E_Objtype::puzzleliner, tempobj);
-		}
 	}
 }
 

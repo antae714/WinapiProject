@@ -12,6 +12,7 @@
 #include "CollisonCompoenet.h"
 #include "LineScript.h"
 #include "UI_Hit.h"
+#include "PlayerScript.h"
 #include "Vector2.h"
 #include "SoundManager.h"
 #include "Math.h"
@@ -38,7 +39,12 @@ void PuzzleMine::Update()
 	TextureComponent* tempcom2 = dynamic_cast<TextureComponent*>(owner->getcomponent(E_Component::TextureComponent));
 
 	if (Math::isin(tempcom2->getrectptr(), playertxt->getrectptr())) {
-		pair<ObjIter, ObjIter> temp2 = allObject->getallObj(E_Objtype::puzzleliner);
+
+		dynamic_cast<PlayerScript*>(obj->getscriptptr())->onHit();
+
+		master->setisActive(false);
+		owner->setisActive(false);
+		/*pair<ObjIter, ObjIter> temp2 = allObject->getallObj(E_Objtype::puzzleliner);
 		for (ObjIter iter = temp2.first; iter != temp2.second; ++iter) {
 			GameObject* obj = iter.operator*().second;
 			LineScript* line = GETSCRIPT(obj, LineScript);
@@ -47,9 +53,6 @@ void PuzzleMine::Update()
 				allObject->deleteObj(obj);
 			}
 		}
-		master->setisActive(false);
-		owner->setisActive(false);
-
 		pair<ObjIter, ObjIter> temp3 = allObject->getallObj(E_Objtype::background);
 		for (ObjIter iter = temp3.first; iter != temp3.second; ++iter) {
 			GameObject* obj = iter.operator*().second;
@@ -58,6 +61,6 @@ void PuzzleMine::Update()
 
 			hit->Hit();
 			break;
-		}
+		}*/
 	}
 }

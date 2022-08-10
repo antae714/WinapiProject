@@ -30,9 +30,11 @@ public:
 	int getySize() const;
 
 	void setbitmap	(string, int, int);
-	void setbitmap(void*);
+	HBITMAP setbitmap(void*);
 	void setrect	(const Rect&);
 private:
 	//void DeleteBitmap();
+
+	void transformset();
 };
 

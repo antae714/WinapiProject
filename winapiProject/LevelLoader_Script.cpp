@@ -15,6 +15,9 @@
 #include "PlayerScript.h"
 #include "TextScript.h"
 #include "UI_Hit.h"
+#include "Life.h"
+#include "Timer.h"
+#include "FailureCheck.h"
 
 Script* LevelLoader::AllocScript(const E_Script& p_enum)
 {
@@ -42,6 +45,12 @@ Script* LevelLoader::AllocScript(const E_Script& p_enum)
 		return new TextScript();
 	case E_Script::UI_Hit:
 		return new UI_Hit();
+	case E_Script::Life:
+		return new Life();
+	case E_Script::Timer:
+		return new Timer();
+	case E_Script::FailureCheck:
+		return new FailureCheck();
 
 	default:
 		_ASSERT(0 && "존재하지않는 스크립트");

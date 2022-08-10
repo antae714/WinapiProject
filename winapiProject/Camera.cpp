@@ -32,6 +32,7 @@ void Camera::Render()
 	realRender();
 }
 
+#include "E_Objtype.h"
 void Camera::beforeRender()
 {
 	HDC hdc;
@@ -46,6 +47,7 @@ void Camera::beforeRender()
 
 	PatBlt(MemDC(), 0, 0, gameData->getwindowX(), gameData->getwindowY(), BLACKNESS);
 	vector<TextureComponent*> uitexture;
+	vector<TextComponent*> textvec;
 
 	for (ObjIter iter = allObject->allObjbegin(); iter != allObject->allObjend(); ++iter) {
 		const GameObject* obj = iter.operator*().second;
@@ -54,6 +56,11 @@ void Camera::beforeRender()
 		Component* transform = obj->getcomponent(E_Component::TransformComponent);
 		Component* ui = obj->getcomponent(E_Component::UITransformComponent);
 		TextureComponent* texture = GETCOMPONENT(obj, TextureComponent);
+
+		if (iter.operator*().first == E_Objtype::character) {
+ 			int a = 10;
+		}
+
 		if (transform && texture && texture->getbitmap()) {
 			TextureRender(MemDC, texture);
 		}
@@ -63,12 +70,16 @@ void Camera::beforeRender()
 
 		TextComponent* text = GETCOMPONENT(obj, TextComponent);
 		if (text) {
-			TextRender(MemDC, text);
+			textvec.push_back(text);
 		}
 	}
 
 	for (TextureComponent* item : uitexture) {
 		UIRender(MemDC, item);
+	}
+
+	for (TextComponent* item : textvec) {
+		TextRender(MemDC, item);
 	}
 
 	ReleaseDC(WindowMsg::getInstance()->gethWnd(), hdc);
@@ -148,13 +159,17 @@ void Camera::TextRender(MemDc& p_memdc, const TextComponent* p_text)
 	MemDc greenDc(p_memdc(), green);
 	MemDc tempdc(p_memdc(), tempBitmap());
 
-	HFONT font = CreateFont(30, 10, 0, 0, 0, 0, 0, 0, HANGEUL_CHARSET, 0, 0, NONANTIALIASED_QUALITY, 0, TEXT("����"));
+	HFONT font = CreateFont(30, 10, 0, 0, 0, 0, 0, 0, HANGEUL_CHARSET, 0, 0, NONANTIALIASED_QUALITY, 0, TEXT("굴림"));
+	HFONT oldfont = (HFONT)SelectObject(tempdc(), font);;
+	//DeleteObject((HFONT)SelectObject(tempdc(), font));
 
 	SetBkColor(tempdc(), MaskColor);
 	StretchBlt(tempdc(), 0, 0, strlength * 11, 30, greenDc(), 0, 0, 1, 1, SRCCOPY);
-	DeleteObject((HFONT)SelectObject(tempdc(), font));
 	TextOut(tempdc(), 0, 0, text.c_str(), strlength);
 	transparentBlt(p_memdc(), point.getx(), point.gety(), strlength * 11, 30, tempdc());
+
+	SelectObject(tempdc(), oldfont);
+	DeleteObject(font);
 }
 
 void Camera::UIRender(MemDc& p_memdc, const TextureComponent* p_texture)

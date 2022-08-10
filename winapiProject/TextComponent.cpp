@@ -70,7 +70,7 @@ void TextComponent::FileSet(const string& p_text)
 {
 	ifstream file;
 	file.open("./Resource/TextScript/" + p_text + ".txt");
-	 
+	_ASSERT(file.is_open() && "¿¡·¯");
 	if (file.fail()) return;
 
 	while (!file.eof()) {

@@ -131,7 +131,7 @@ void TestScript2::AddLine(Vector2 p_begin, Vector2 p_end)
 
 	TextureComponent* tempcomp2 = new TextureComponent();
 	tempcomp2->setbitmap("Line", line_length, 5);
-	tempcomp2->setrect(Rect(0, line_length, 5));
+	tempcomp2->setrect(Rect(line_length, 5));
 	tempobj->pushcomponent(E_Component::TextureComponent, tempcomp2);
 
 	tempobj->Start();

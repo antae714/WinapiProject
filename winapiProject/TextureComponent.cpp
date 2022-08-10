@@ -36,16 +36,7 @@ TextureComponent::~TextureComponent()
 
 void TextureComponent::Start()
 {
-	TransformComponent* Transform = GETCOMPONENT(owner, TransformComponent);
-	if (Transform) {
-		rect->setpivotptr(Transform->getpivotptr());
-		rect->setrotateptr(Transform->getrotateptr());
-	}
-	UITransformComponent* UI = GETCOMPONENT(owner, UITransformComponent);
-	if (UI) {
-		rect->setpivotptr(UI->getpivotptr());
-		rect->setrotateptr(UI->getrotateptr());
-	}
+	transformset();
 }
 
 HBITMAP TextureComponent::getbitmap() const
@@ -81,12 +72,29 @@ void TextureComponent::setbitmap(string p_str,int p_x,int p_y)
 		bitmap = BitmapManager::getInstance()->getBitmap(enumBitmap::conversion(p_str), p_x, p_y);
 }
 
-void TextureComponent::setbitmap(void* ptr)
+HBITMAP TextureComponent::setbitmap(void* ptr)
 {
+	HBITMAP returnbit = bitmap;
 	bitmap = (HBITMAP)ptr;
+	return returnbit;
 }
 
 void TextureComponent::setrect(const Rect& p_rect)
 {
 	*rect = p_rect;
+	transformset();
+}
+
+void TextureComponent::transformset()
+{
+	TransformComponent* Transform = GETCOMPONENT(owner, TransformComponent);
+	if (Transform) {
+		rect->setpivotptr(Transform->getpivotptr());
+		rect->setrotateptr(Transform->getrotateptr());
+	}
+	UITransformComponent* UI = GETCOMPONENT(owner, UITransformComponent);
+	if (UI) {
+		rect->setpivotptr(UI->getpivotptr());
+		rect->setrotateptr(UI->getrotateptr());
+	}
 }

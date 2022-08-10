@@ -20,6 +20,9 @@ enum class E_Script
 	PlayerScript,
 	TextScript,
 	UI_Hit,
+	Life,
+	Timer,
+	FailureCheck,
 
 	MAX
 };

@@ -21,7 +21,7 @@ void TextScript::KeyInput()
 		AllObject* allObject = AllObject::getInstance();
 		GameObject* gameObject = new GameObject();
 		gameObject->pushcomponent(E_Component::UITransformComponent, new UITransformComponent(Vector2(640, 590), 0));
-		gameObject->pushcomponent(E_Component::TextureComponent, new TextureComponent("Dialog",Rect(0,500,248)));
+		gameObject->pushcomponent(E_Component::TextureComponent, new TextureComponent("Dialog",Rect(500,248)));
 		gameObject->pushcomponent(E_Component::TextComponent, new TextComponent(Vector2(450,580), "Test"));
 		gameObject->pushcomponent(E_Component::InputComponenet, new InputComponenet());
 		gameObject->Start();

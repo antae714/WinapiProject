@@ -164,6 +164,7 @@
     <ClInclude Include="E_Objtype.h" />
     <ClInclude Include="E_Script.h" />
     <ClInclude Include="E_Sound.h" />
+    <ClInclude Include="FailureCheck.h" />
     <ClInclude Include="GameData.h" />
     <ClInclude Include="GameExit.h" />
     <ClInclude Include="GameManager.h" />
@@ -177,6 +178,7 @@
     <ClInclude Include="KeyInputManager.h" />
     <ClInclude Include="LevelData.h" />
     <ClInclude Include="LevelLoader.h" />
+    <ClInclude Include="Life.h" />
     <ClInclude Include="LineScript.h" />
     <ClInclude Include="Macro.h" />
     <ClInclude Include="Main.h" />
@@ -207,6 +209,7 @@
     <ClInclude Include="TextComponent.h" />
     <ClInclude Include="TextScript.h" />
     <ClInclude Include="TextureComponent.h" />
+    <ClInclude Include="Timer.h" />
     <ClInclude Include="TransformComponent.h" />
     <ClInclude Include="UITransformComponent.h" />
     <ClInclude Include="UI_Hit.h" />
@@ -235,6 +238,7 @@
     <ClCompile Include="E_Objtype.cpp" />
     <ClCompile Include="E_Script.cpp" />
     <ClCompile Include="E_Sound.cpp" />
+    <ClCompile Include="FailureCheck.cpp" />
     <ClCompile Include="GameData.cpp" />
     <ClCompile Include="GameExit.cpp" />
     <ClCompile Include="GameManager.cpp" />
@@ -249,6 +253,7 @@
     <ClCompile Include="LevelData.cpp" />
     <ClCompile Include="LevelLoader.cpp" />
     <ClCompile Include="LevelLoader_Script.cpp" />
+    <ClCompile Include="Life.cpp" />
     <ClCompile Include="LineScript.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -278,6 +283,7 @@
     <ClCompile Include="TextComponent.cpp" />
     <ClCompile Include="TextScript.cpp" />
     <ClCompile Include="TextureComponent.cpp" />
+    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
     <ClCompile Include="UITransformComponent.cpp" />
     <ClCompile Include="UI_Hit.cpp" />

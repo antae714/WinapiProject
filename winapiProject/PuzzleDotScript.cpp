@@ -31,10 +31,10 @@ void PuzzleDotScript::KeyInput()
 	clickLogic();
 }
 
-void PuzzleDotScript::plusrefCount(LineScript* p_line)
+void PuzzleDotScript::plusrefCount(GameObject* p_line)
 {
 	line.push_back(p_line);
-	if (0 == ++refCount)
+	if (1 == ++refCount)
 	{
 		TextureComponent* texture = GETCOMPONENT(owner, TextureComponent);
 		texture->setbitmap("Starbutton_Selected", texture->getxSize(), texture->getySize());
@@ -47,8 +47,9 @@ void PuzzleDotScript::plusrefCount(LineScript* p_line)
 
 void PuzzleDotScript::cut()
 {
-	for (LineScript* item : line) {
-		delete item;
+	AllObject* allObject = AllObject::getInstance();
+	for (GameObject* item : line) {
+		allObject->deleteObj(item);
 	}
 	line.clear();
 }
@@ -59,6 +60,11 @@ void PuzzleDotScript::minusrefCount()
 		TextureComponent* texture = GETCOMPONENT(owner, TextureComponent);
 		texture->setbitmap("Starbutton", texture->getxSize(), texture->getySize());
 	}
+}
+
+int PuzzleDotScript::getrefCount()
+{
+	return refCount;
 }
 
 int PuzzleDotScript::getnumber()
@@ -89,7 +95,7 @@ void PuzzleDotScript::clickLogic()
 
 			if (puzzle->isAnswer(owner, line->getfirstptr())) {
 				line->setsecond(owner);
-				plusrefCount(line);
+				plusrefCount(obj);
 				line->Setting();
 			}
 			else {
@@ -114,7 +120,7 @@ void PuzzleDotScript::CreateAbility() {
 
 	AllObject* allObject = AllObject::getInstance();
 	GameObject* gameObject = new GameObject();
-	gameObject->pushcomponent(E_Component::TextureComponent, new TextureComponent("Green", Rect(0.f, 50.f, 50.f), 50, 50));
+	gameObject->pushcomponent(E_Component::TextureComponent, new TextureComponent("Green", Rect(50.f, 50.f)));
 	TransformComponent* posit = dynamic_cast<TransformComponent*>(owner->getcomponent(E_Component::TransformComponent));
 	gameObject->pushcomponent(E_Component::TransformComponent, new TransformComponent(posit->getpivot(), 0));
 	KeyInputComponenet* keyinput = new KeyInputComponenet();

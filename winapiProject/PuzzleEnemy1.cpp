@@ -18,19 +18,41 @@ void PuzzleEnemy1::Start()
 	GameObject* player = (*AllObject::getInstance()->getallObj(E_Objtype::character).first).second;
 	transform = GETCOMPONENT(owner, TransformComponent);
 	transform2 = GETCOMPONENT(player, TransformComponent);
+	
+	pivotset();
 }
 
 void PuzzleEnemy1::Update()
 {
 	GameTime* gameTime = GameTime::getInstance();
 	Vector2 distance = transform2->getpivot() - transform->getpivot();
-	transform->move(distance.GetNormalize() * PLAYERSPEED * gameTime->getdeltaTime() * 80);
+	transform->addpivot(distance.GetNormalize() * PLAYERSPEED * gameTime->getdeltaTime() * 80);
+	//transform->move(distance.GetNormalize() * PLAYERSPEED * gameTime->getdeltaTime() * 80);
 }
 
 void PuzzleEnemy1::OnCollisonEnter(GameObject* other)
 {
 	//ÁÙ²÷±â
 
+	AllObject* allObject = AllObject::getInstance();
+	GETSCRIPT((*allObject->getallObj(E_Objtype::character).first).second,PlayerScript)->onHit();
 
-	AllObject::getInstance()->deleteObj(owner);
+	pivotset();
+	//AllObject::getInstance()->deleteObj(owner);
 }
+
+void PuzzleEnemy1::pivotset()
+{
+	int temp = rand() % 4;
+	Vector2 tempvec;
+	if (temp == 0)
+		tempvec = Vector2(-2318, rand() % 2318 - 1159);
+	if (temp == 1)
+		tempvec = Vector2(2318, rand() % 2318 - 1159);
+	if (temp == 2)
+		tempvec = Vector2(rand() % 2318 - 1159, -2318);
+	if (temp == 3)
+		tempvec = Vector2(rand() % 2318 - 1159, 2318);
+	transform->setpivot(tempvec);
+}
+ 

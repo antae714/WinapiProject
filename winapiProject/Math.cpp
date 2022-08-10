@@ -5,6 +5,7 @@
 #include "Rect.h"
 #include "GameData.h"
 #include <algorithm>
+#include <random>
 
 Vector2 Math::CarttoScreen(const Vector2& p_vec)
 {
@@ -178,6 +179,14 @@ bool Math::lpts(const Vector2& first, const Vector2& second, float distance)
     int y1 = first.gety();
     int y2 = second.gety();
     return (x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1) <= distance * distance;
+}
+
+int Math::randint(int first, int second)
+{
+    static random_device rd;
+    static mt19937 gen(rd());
+    uniform_int_distribution<int> dis(first, second);
+    return dis(gen);
 }
 
 

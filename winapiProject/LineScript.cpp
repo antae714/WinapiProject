@@ -20,13 +20,13 @@ LineScript::LineScript() :
 LineScript::LineScript(GameObject* p_first, const GameObject* p_second) :
 	first(p_first), second(p_second), isend(false)
 {
-	GETSCRIPT(first, PuzzleDotScript)->plusrefCount(this);
+	GETSCRIPT(first, PuzzleDotScript)->plusrefCount(owner);
 }
 
 LineScript::LineScript(GameObject* p_first, const GameObject* p_second, bool p_isend) :
 	first(p_first), second(p_second), isend(p_isend)
 {
-	GETSCRIPT(first, PuzzleDotScript)->plusrefCount(this);
+	GETSCRIPT(first, PuzzleDotScript)->plusrefCount(owner);
 }
 
 
@@ -50,11 +50,11 @@ void LineScript::Set(int p_first, int p_second, bool p_isend = true)
 		GameObject* obj = iter.operator*().second;
 		if (i == p_first) {
 			first = obj;
-			GETSCRIPT(first, PuzzleDotScript)->plusrefCount(this);
+			GETSCRIPT(first, PuzzleDotScript)->plusrefCount(owner);
 		}
 		else if (i == p_second) {
 			second = obj;
-			GETSCRIPT(second, PuzzleDotScript)->plusrefCount(this);
+			GETSCRIPT(second, PuzzleDotScript)->plusrefCount(owner);
 		}
 	}
 
@@ -104,7 +104,7 @@ void LineScript::Setting()
 	TextureComponent* tempcomp2 = (TextureComponent*)owner->getcomponent(E_Component::TextureComponent);
 	//tempcomp2->setrect(*tempcomp2->getrect().setweight(line_length));
 	tempcomp2->setbitmap("Line", 100, 5);
-	tempcomp2->setrect(Rect(0, line_length, 5));
+	tempcomp2->setrect(Rect(line_length, 5));
 
 	tempcomp2->Start();
 }

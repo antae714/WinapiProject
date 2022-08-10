@@ -40,6 +40,8 @@ enum class E_Bitmap
 	TitleButton,
 	UI_Character,
 	UI_Character_Hit,
+	chaser,
+	Ant,
 
 	MAX
 };

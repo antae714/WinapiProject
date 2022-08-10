@@ -1,86 +1,90 @@
 #include "E_Bitmap.h"
+#include "Macro.h"
 
 string enumBitmap::conversion(const E_Bitmap& p_enum) {
 	switch (p_enum)
 	{
-	case E_Bitmap::background:
-		return "background";
-	case E_Bitmap::background_2:
-		return "background_2";
-	case E_Bitmap::background_3:
-		return "background_3";
-	case E_Bitmap::background_4:
-		return "background_4";
-	case E_Bitmap::background_5:
-		return "background_5";
-	case E_Bitmap::background_6:
-		return "background_6";
-	case E_Bitmap::background_7:
-		return "background_7";
-	case E_Bitmap::background_Title:
-		return "background_Title";
-	case E_Bitmap::backgroundpuzzle:
-		return "backgroundpuzzle";
-	case E_Bitmap::puzzlehint:
-		return "puzzlehint";
-	case E_Bitmap::character:
-		return "character";
-	case E_Bitmap::character2:
-		return "character2";
-	case E_Bitmap::character3:
-		return "character3";
-	case E_Bitmap::puzzlebutton:
-		return "puzzlebutton";
-	case E_Bitmap::puzzlecleartestimg:
-		return "puzzlecleartestimg";
-	case E_Bitmap::Starbutton:
-		return "Starbutton";
-	case E_Bitmap::Starbutton_Selected:
-		return "Starbutton_Selected";
-	case E_Bitmap::Starbutton_Fake:
-		return "Starbutton_Fake";
-	case E_Bitmap::Dialog:
-		return "Dialog";
-	case E_Bitmap::Line:
-		return "Line";
-	case E_Bitmap::Blue:
-		return "Blue";
-	case E_Bitmap::Green:
-		return "Green";
-	case E_Bitmap::Red:
-		return "Red";
-	case E_Bitmap::logo:
-		return "logo";
-	case E_Bitmap::npc_assistant:
-		return "npc_assistant";
-	case E_Bitmap::npc:
-		return "npc";
-	case E_Bitmap::npc1_1:
-		return "npc1_1";
-	case E_Bitmap::npc1_2:
-		return "npc1_2";
-	case E_Bitmap::npc1_3:
-		return "npc1_3";
-	case E_Bitmap::start:
-		return "start";
-	case E_Bitmap::load:
-		return "load";
-	case E_Bitmap::option:
-		return "option";
-	case E_Bitmap::exit:
-		return "exit";
-	case E_Bitmap::TitleButton:
-		return "TitleButton";
-	case E_Bitmap::UI_Character:
-		return "UI_Character";
-	case E_Bitmap::UI_Character_Hit:
-		return "UI_Character_Hit";
-	case E_Bitmap::MAX:
-		return "";
+		ENUMTOSTRING(E_Bitmap, background)
+		ENUMTOSTRING(E_Bitmap, background_2)
+		ENUMTOSTRING(E_Bitmap, background_3)
+		ENUMTOSTRING(E_Bitmap, background_4)
+		ENUMTOSTRING(E_Bitmap, background_5)
+		ENUMTOSTRING(E_Bitmap, background_6)
+		ENUMTOSTRING(E_Bitmap, background_7)
+		ENUMTOSTRING(E_Bitmap, background_Title)
+		ENUMTOSTRING(E_Bitmap, backgroundpuzzle)
+		ENUMTOSTRING(E_Bitmap, puzzlehint)
+		ENUMTOSTRING(E_Bitmap, character)
+		ENUMTOSTRING(E_Bitmap, character2)
+		ENUMTOSTRING(E_Bitmap, character3)
+		ENUMTOSTRING(E_Bitmap, puzzlebutton)
+		ENUMTOSTRING(E_Bitmap, puzzlecleartestimg)
+		ENUMTOSTRING(E_Bitmap, Starbutton)
+		ENUMTOSTRING(E_Bitmap, Starbutton_Selected)
+		ENUMTOSTRING(E_Bitmap, Starbutton_Fake)
+		ENUMTOSTRING(E_Bitmap, Dialog)
+		ENUMTOSTRING(E_Bitmap, Line)
+		ENUMTOSTRING(E_Bitmap, Blue)
+		ENUMTOSTRING(E_Bitmap, Green)
+		ENUMTOSTRING(E_Bitmap, Red)
+		ENUMTOSTRING(E_Bitmap, logo)
+		ENUMTOSTRING(E_Bitmap, npc_assistant)
+		ENUMTOSTRING(E_Bitmap, npc)
+		ENUMTOSTRING(E_Bitmap, npc1_1)
+		ENUMTOSTRING(E_Bitmap, npc1_2)
+		ENUMTOSTRING(E_Bitmap, npc1_3)
+		ENUMTOSTRING(E_Bitmap, start)
+		ENUMTOSTRING(E_Bitmap, load)
+		ENUMTOSTRING(E_Bitmap, option)
+		ENUMTOSTRING(E_Bitmap, exit)
+		ENUMTOSTRING(E_Bitmap, TitleButton)
+		ENUMTOSTRING(E_Bitmap, UI_Character)
+		ENUMTOSTRING(E_Bitmap, UI_Character_Hit)
+			ENUMTOSTRING(E_Bitmap, chaser)
+			ENUMTOSTRING(E_Bitmap, Ant)
 	}
 }
 E_Bitmap enumBitmap::conversion(const string& p_str) {
-	if ("background" == p_str) {
+	STRINGTOENUM(E_Bitmap, background)
+	STRINGTOENUM(E_Bitmap, background_2)
+	STRINGTOENUM(E_Bitmap, background_3)
+	STRINGTOENUM(E_Bitmap, background_4)
+	STRINGTOENUM(E_Bitmap, background_5)
+	STRINGTOENUM(E_Bitmap, background_6)
+	STRINGTOENUM(E_Bitmap, background_7)
+	STRINGTOENUM(E_Bitmap, background_Title)
+	STRINGTOENUM(E_Bitmap, backgroundpuzzle)
+	STRINGTOENUM(E_Bitmap, puzzlehint)
+	STRINGTOENUM(E_Bitmap, character)
+	STRINGTOENUM(E_Bitmap, character2)
+	STRINGTOENUM(E_Bitmap, character3)
+	STRINGTOENUM(E_Bitmap, puzzlebutton)
+	STRINGTOENUM(E_Bitmap, puzzlecleartestimg)
+	STRINGTOENUM(E_Bitmap, Starbutton)
+	STRINGTOENUM(E_Bitmap, Starbutton_Selected)
+	STRINGTOENUM(E_Bitmap, Starbutton_Fake)
+	STRINGTOENUM(E_Bitmap, Dialog)
+	STRINGTOENUM(E_Bitmap, Line)
+	STRINGTOENUM(E_Bitmap, Blue)
+	STRINGTOENUM(E_Bitmap, Green)
+	STRINGTOENUM(E_Bitmap, Red)
+	STRINGTOENUM(E_Bitmap, logo)
+	STRINGTOENUM(E_Bitmap, npc_assistant)
+	STRINGTOENUM(E_Bitmap, npc)
+	STRINGTOENUM(E_Bitmap, npc1_1)
+	STRINGTOENUM(E_Bitmap, npc1_2)
+	STRINGTOENUM(E_Bitmap, npc1_3)
+	STRINGTOENUM(E_Bitmap, start)
+	STRINGTOENUM(E_Bitmap, load)
+	STRINGTOENUM(E_Bitmap, option)
+	STRINGTOENUM(E_Bitmap, exit)
+	STRINGTOENUM(E_Bitmap, TitleButton)
+	STRINGTOENUM(E_Bitmap, UI_Character)
+	STRINGTOENUM(E_Bitmap, UI_Character_Hit)
+		STRINGTOENUM(E_Bitmap, chaser)
+		STRINGTOENUM(E_Bitmap, Ant)
+		return E_Bitmap::MAX;
+	/*if ("background" == p_str) {
 		return E_Bitmap::background;
 	}
 	else if ("background_2" == p_str)
@@ -211,7 +215,7 @@ E_Bitmap enumBitmap::conversion(const string& p_str) {
 	{
 	return E_Bitmap::UI_Character_Hit;
 	}
-	return E_Bitmap::MAX;
+	return E_Bitmap::MAX;*/
 }
 
 string enumBitmap::toFile(const E_Bitmap& p_enum) {

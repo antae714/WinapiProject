@@ -6,6 +6,7 @@ using namespace std;
 
 enum class E_Objtype
 {
+
 	empty = 0,
 	level1_1,
 	level1_2,
@@ -29,10 +30,11 @@ enum class E_Objtype
 	puzzleliner,
 	puzzleDot,
 	puzzleMine,
+	puzzleEnemy,
 	puzzleAbility,
+	character,
 	PuzzleBoard_UI,
 	puzzlecleartest,
-	character,
 	background,
 
 	UI,

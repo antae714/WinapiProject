@@ -1,28 +1,37 @@
 #include "Rect.h"
 #include "Vector2.h"
 #include "Math.h"
+#include "TransformComponent.h"
+#include "UITransformComponent.h"
 #include "Macro.h"
 #include <algorithm>
 #include <string>
 #include <iterator>
 
 Rect::Rect() :
-	pivot(nullptr), rotate(0), weight(10), height(10)
+	pivot(nullptr), rotate(nullptr), weight(10), height(10)
 {
 	Awake();
 }
 
-Rect::Rect(const Vector2* p_pivot, const float& p_rotate, const float& p_weight, const float& p_height) :
-	pivot(p_pivot), rotate(&p_rotate), weight(p_weight), height(p_height)
+Rect::Rect(const float& p_weight, const float& p_height) :
+	pivot(nullptr), rotate(nullptr), weight(p_weight), height(p_height)
 {
 	Awake();
 }
 
-Rect::Rect(const float& p_rotate, const float& p_weight, const float& p_height) :
-	pivot(nullptr), rotate(&p_rotate), weight(p_weight), height(p_height)
+Rect::Rect(const float& p_weight, const float& p_height, TransformComponent* comp) :
+	pivot(comp->getpivotptr()), rotate(comp->getrotateptr()), weight(p_weight), height(p_height)
 {
 	Awake();
 }
+
+Rect::Rect(const float& p_weight, const float& p_height, UITransformComponent* comp) :
+	pivot(comp->getpivotptr()), rotate(comp->getrotateptr()), weight(p_weight), height(p_height)
+{
+	Awake();
+}
+
 
 Rect::~Rect()
 {
@@ -81,7 +90,8 @@ Vector2 Rect::getpivot() const
 
 float Rect::getrotate() const
 {
-	return *rotate;
+	if(rotate) return *rotate;
+	return 0.f;
 }
 
 float Rect::getheight() const

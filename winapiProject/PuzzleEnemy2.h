@@ -18,10 +18,18 @@ private:
 	GameObject* target;
 	TransformComponent* transform;
 	TransformComponent* transform2;
+
+	double attacktime;
 public:
 	PuzzleEnemy2();
 
 public:
 	virtual void Update();
+	virtual void Init();
+
+
+private:
+	void movestate();
+	void attacktate();
 };
 

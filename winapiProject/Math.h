@@ -39,6 +39,8 @@ float Distance(const Vector2& first, const Vector2& second);
 bool iscolose(const Vector2& first, const Vector2& second, float distance);
 bool lpts(const Vector2& first, const Vector2& second, float distance);
 
+int randint(int first, int second);
+
 template<class T>
 void Swap(T& p_first, T& p_second)
 {

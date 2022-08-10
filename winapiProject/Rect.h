@@ -9,6 +9,8 @@ using namespace std;
 class Vector2;
 typedef array<Vector2, 3> Triange;
 
+class TransformComponent;
+class UITransformComponent;
 class Rect
 {
 private:
@@ -25,8 +27,9 @@ private:
 	
 public:
 	Rect();
-	Rect(const Vector2* p_pivot, const float& p_rotate, const float& p_weight, const float& p_height);
-	Rect(const float& p_rotate, const float& p_weight, const float& p_height);
+	Rect(const float& p_weight, const float& p_height);
+	Rect(const float& p_weight, const float& p_height, TransformComponent*);
+	Rect(const float& p_weight, const float& p_height, UITransformComponent*);
 	virtual ~Rect(); 
 private:
 	void Awake();

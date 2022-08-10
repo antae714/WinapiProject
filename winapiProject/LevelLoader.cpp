@@ -17,6 +17,7 @@
 #include "CollisonCompoenet.h"
 #include "TextComponent.h"
 #include "UITransformComponent.h"
+#include "PuzzleEntry.h"
 
 void LevelLoader::LoadLevel(E_Objtype p_file)
 {
@@ -153,7 +154,7 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
                 continue;
             }
 
-            tempobj->setscript(AllocScript(enumScr::conversion(temp)));
+            tempobj->setscript(AllocScript(enumScr::conversion(temp))); 
 
             if ("MoveMap" == temp)
             {
@@ -227,6 +228,17 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
                 LineScript* tempscr = dynamic_cast<LineScript*>(tempobj->getscriptptr());
                 tempscr->Set(first, second, true);
             }
+
+            if ("PuzzleEntry" == temp)
+            {
+                string typestr;
+                if (tempmap.find("typestr") != tempmap.end())
+                {
+                    typestr = tempmap.find("typestr").operator*().second;
+                }
+                PuzzleEntry* tempscr = dynamic_cast<PuzzleEntry*>(tempobj->getscriptptr());
+                tempscr->Set(typestr);
+            }
         }
 
         else if (key == "Transform")
@@ -273,10 +285,8 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
 
         else if (key == "Texture")
         {
-            TextureComponent* tempcomp = new TextureComponent();
             string bitmap;
             int x = 0, y = 0, width = 0, height = 0, twidth = 100, theight = 100;
-            float rotate = 0.000000f;
 
             if (tempmap.find("Width") != tempmap.end())
             {
@@ -308,13 +318,8 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
             {
                 bitmap = object->find(key)->second.find("Bitmap")->second;
             }
-            if (tempmap.find("Rotate") != tempmap.end())
-            {
-                rotate = stof(tempmap.find("Rotate")->second);
-            }
 
-            tempcomp->setrect(Rect(rotate, (float)width, (float)height));
-            tempcomp->setbitmap(bitmap, twidth, theight);
+            TextureComponent* tempcomp = new TextureComponent(bitmap,Rect((float)width, (float)height), twidth, theight);
 
             tempobj->pushcomponent(E_Component::TextureComponent, tempcomp);
         }
@@ -350,7 +355,7 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
         {
             height = stoi(object->find(key)->second.find("Height")->second);
         }
-        CollisonCompoenet* tempcomp = new CollisonCompoenet(Rect(0, width, height));
+        CollisonCompoenet* tempcomp = new CollisonCompoenet(Rect(width, height));
         tempobj->pushcomponent(E_Component::CollisonCompoenet, tempcomp);
         }
 
