@@ -147,6 +147,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AllObject.h" />
+    <ClInclude Include="AnimationStruct.h" />
     <ClInclude Include="BitmapManager.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Cls.h" />
@@ -221,6 +222,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AllObject.cpp" />
+    <ClCompile Include="AnimationStruct.cpp" />
     <ClCompile Include="BitmapManager.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Cls.cpp" />

@@ -40,9 +40,17 @@ void Life::Update()
 
 	if (currentlife < life)
 	{
-		for (int i = 0; i < life - currentlife; ++i) {
-			dynamic_cast<TextComponent*>(owner->getcomponent(E_Component::TextComponent))->nextLine();
+		temp = allObject->getallObj(E_Objtype::Puzzleheart);
+		for (ObjIter iter = temp.first; iter != temp.second; ++iter)
+		{
+			obj = iter.operator*().second;
+			if (!obj->getisActive()) continue;
+
+			obj->setisActive(false);
+
+			if (--life == currentlife) {
+				break;
+			}
 		}
-		life -= life - currentlife;
 	}
 }

@@ -16,6 +16,7 @@
 #include "CollisonCompoenet.h"
 #include "PuzzleEnemy1.h"
 #include "PuzzleEnemy2.h"
+#include "AnimationStruct.h"
 #include <fstream>
 
 PuzzleBoardScript::PuzzleBoardScript()
@@ -121,7 +122,9 @@ void PuzzleBoardScript::Set(const string& type)
 					GameObject* gameObject = new GameObject();
 					Rect rect(50.f, 50.f);
 					gameObject->pushcomponent(E_Component::TransformComponent, new TransformComponent(Vector2(), 0));
-					gameObject->pushcomponent(E_Component::TextureComponent, new TextureComponent("Ant", rect));
+					vector<string> tempvec{ "move" };
+					vector<int> temp2vec{ 2 };
+					gameObject->pushcomponent(E_Component::TextureComponent, new TextureComponent(AnimationStruct(0.3, "Ant", tempvec, temp2vec), rect));
 					gameObject->setscript(new PuzzleEnemy2());
 					allObject->push(E_Objtype::puzzleEnemy, gameObject);
 				}

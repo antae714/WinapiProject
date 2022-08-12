@@ -10,9 +10,10 @@
 #include "Math.h"
 #include "AllObject.h"
 #include "E_Objtype.h"
-#include "LineScript.h"
 #include "Macro.h"
+#include "LineScript.h"
 #include "UI_Hit.h"
+#include "AnimationStruct.h"
 
 #define VK_A 0x41
 #define VK_S 0x53
@@ -37,6 +38,15 @@ PlayerScript::PlayerScript()
 	cooldown_sw = false;
 
 	life = 5;
+
+	is_moving = false;
+	prev_is_moving = true;
+	is_dashing = false;
+	prev_is_dashing = true;
+	direction = 0;
+	prev_direction = -1;
+	animation_time = 0;
+	animation_phase = 0;
 }
 
 void PlayerScript::Update()
@@ -44,6 +54,7 @@ void PlayerScript::Update()
 	InputLogic();
 	MoveLogic();
 	AbilityUpdate();
+	//AnimationUpdate();
 }
 
 void PlayerScript::InputLogic()
@@ -51,8 +62,6 @@ void PlayerScript::InputLogic()
 	WindowMsg* windowMsg = WindowMsg::getInstance();
 	const UINT& imsg = windowMsg->getiMessage();
 	const WPARAM& wparam = windowMsg->getwParam();
-	const Vector2* playerpos = dynamic_cast<TransformComponent*>(owner->getcomponent(E_Component::TransformComponent))->getpivotptr();
-
 	if (imsg == WM_KEYDOWN) {
 		if (wparam == VK_LEFT || wparam == VK_A) {
 			x -= 1;
@@ -67,7 +76,10 @@ void PlayerScript::InputLogic()
 			y -= 1;
 		}
 		else if (wparam == VK_SHIFT) {
-			if (moveState != E_PlayerState::Puzzle) speed = PLAYERSPEED * 3;
+			if (moveState != E_PlayerState::Puzzle) {
+				speed = PLAYERSPEED * 3;
+				is_dashing = true;
+			}
 		}
 	}
 	else if (imsg == WM_KEYUP) {
@@ -85,6 +97,7 @@ void PlayerScript::InputLogic()
 		}
 		else if (wparam == VK_SHIFT) {
 			speed = PLAYERSPEED;
+			is_dashing = false;
 		}
 	}
 }
@@ -95,6 +108,20 @@ void PlayerScript::MoveLogic()
 	TransformComponent* tempcom = dynamic_cast<TransformComponent*>(owner->getcomponent(E_Component::TransformComponent));
 
 	tempcom->move(Vector2(x, y).GetNormalize() * speed * gameTime->getdeltaTime() * 100);
+	AnimationStruct* animation = GETCOMPONENT(owner, TextureComponent)->getanimationptr();
+
+	if (x > 0) animation->setdirection(0);
+	else if (x < 0) animation->setdirection(1);
+
+	if (x == 0 && y == 0) animation->setState("idle");
+	else if (is_dashing) animation->setState("run");
+	else animation->setState("move");
+
+	/*if (x > 0) direction = 0;
+	else if (x < 0) direction = 1;
+
+	if (x == 0 && y == 0) is_moving = false;
+	else is_moving = true;*/
 
 	LimitArea();
 }
@@ -189,6 +216,197 @@ void PlayerScript::Ability() {
 	cooldown_sw = true;
 }
 
+void PlayerScript::Damage() {
+	--life;
+}
+
+void PlayerScript::LifeReset() {
+	life = 5;
+}
+
+int PlayerScript::getLife() {
+	return life;
+}
+
+void PlayerScript::AnimationUpdate() {
+
+	if (prev_is_moving != is_moving) {
+		prev_is_moving = is_moving;
+		animation_time = 0;
+		animation_phase = 0;
+	}
+	if (prev_is_dashing != is_dashing) {
+		prev_is_dashing = is_dashing;
+		animation_time = 0;
+		animation_phase = 0;
+	}
+	if (prev_direction != direction) {
+		prev_direction = direction;
+		animation_time = 0;
+		animation_phase = 0;
+	}
+
+	GameTime* gameTime = GameTime::getInstance();
+	animation_time += gameTime->getdeltaTime() * 100;
+
+	TextureComponent* texture = dynamic_cast<TextureComponent*>(owner->getcomponent(E_Component::TextureComponent));
+
+	switch (moveState) {
+	case E_PlayerState::Nomal:
+
+		if (is_moving) {
+			if (is_dashing) {
+				if (animation_time >= 90 && animation_phase == 6) {
+					animation_time = 0;
+					animation_phase = 0;
+				}
+
+				if (animation_time >= 0 && animation_phase == 0) {
+					if (direction == 0)
+						texture->setbitmap("character_run_2", texture->getxSize(), texture->getySize());
+					if (direction == 1)
+						texture->setbitmap("character_run2_2", texture->getxSize(), texture->getySize());
+					animation_phase = 1;
+				}
+
+				else if (animation_time >= 15 && animation_phase == 1) {
+					if (direction == 0)
+						texture->setbitmap("character_run_3", texture->getxSize(), texture->getySize());
+					if (direction == 1)
+						texture->setbitmap("character_run2_3", texture->getxSize(), texture->getySize());
+					animation_phase = 2;
+				}
+
+				else if (animation_time >= 30 && animation_phase == 2) {
+					if (direction == 0)
+						texture->setbitmap("character_run_4", texture->getxSize(), texture->getySize());
+					if (direction == 1)
+						texture->setbitmap("character_run2_4", texture->getxSize(), texture->getySize());
+					animation_phase = 3;
+				}
+
+				else if (animation_time >= 45 && animation_phase == 3) {
+					if (direction == 0)
+						texture->setbitmap("character_run_5", texture->getxSize(), texture->getySize());
+					if (direction == 1)
+						texture->setbitmap("character_run2_5", texture->getxSize(), texture->getySize());
+					animation_phase = 4;
+				}
+
+				else if (animation_time >= 60 && animation_phase == 4) {
+					if (direction == 0)
+						texture->setbitmap("character_run_4", texture->getxSize(), texture->getySize());
+					if (direction == 1)
+						texture->setbitmap("character_run2_4", texture->getxSize(), texture->getySize());
+					animation_phase = 5;
+				}
+
+				else if (animation_time >= 75 && animation_phase == 5) {
+					if (direction == 0)
+						texture->setbitmap("character_run_3", texture->getxSize(), texture->getySize());
+					if (direction == 1)
+						texture->setbitmap("character_run2_3", texture->getxSize(), texture->getySize());
+					animation_phase = 6;
+				}
+			}
+
+			else {
+				if (animation_time >= 60 && animation_phase == 4) {
+					animation_time = 0;
+					animation_phase = 0;
+				}
+
+				if (animation_time >= 0 && animation_phase == 0) {
+					if (direction == 0)
+						texture->setbitmap("character_move_1", texture->getxSize(), texture->getySize());
+					if (direction == 1)
+						texture->setbitmap("character_move2_1", texture->getxSize(), texture->getySize());
+					animation_phase = 1;
+				}
+
+				else if (animation_time >= 15 && animation_phase == 1) {
+					if (direction == 0)
+						texture->setbitmap("character_move_2", texture->getxSize(), texture->getySize());
+					if (direction == 1)
+						texture->setbitmap("character_move2_2", texture->getxSize(), texture->getySize());
+					animation_phase = 2;
+				}
+
+				else if (animation_time >= 30 && animation_phase == 2) {
+					if (direction == 0)
+						texture->setbitmap("character_move_3", texture->getxSize(), texture->getySize());
+					if (direction == 1)
+						texture->setbitmap("character_move2_3", texture->getxSize(), texture->getySize());
+					animation_phase = 3;
+				}
+
+				else if (animation_time >= 45 && animation_phase == 3) {
+					if (direction == 0)
+						texture->setbitmap("character_move_4", texture->getxSize(), texture->getySize());
+					if (direction == 1)
+						texture->setbitmap("character_move2_4", texture->getxSize(), texture->getySize());
+					animation_phase = 4;
+				}
+			}
+		}
+
+		else {
+			if (animation_time >= 375 && animation_phase == 6) {
+				animation_time = 0;
+				animation_phase = 0;
+			}
+
+			if (animation_time >= 0 && animation_phase == 0) {
+				if (direction == 0)
+					texture->setbitmap("character_idle_1", texture->getxSize(), texture->getySize());
+				if (direction == 1)
+					texture->setbitmap("character_idle2_1", texture->getxSize(), texture->getySize());
+				animation_phase = 1;
+			}
+
+			else if (animation_time >= 300 && animation_phase == 1) {
+				if (direction == 0)
+					texture->setbitmap("character_idle_2", texture->getxSize(), texture->getySize());
+				if (direction == 1)
+					texture->setbitmap("character_idle2_2", texture->getxSize(), texture->getySize());
+				animation_phase = 2;
+			}
+
+			else if (animation_time >= 315 && animation_phase == 2) {
+				if (direction == 0)
+					texture->setbitmap("character_idle_3", texture->getxSize(), texture->getySize());
+				if (direction == 1)
+					texture->setbitmap("character_idle2_3", texture->getxSize(), texture->getySize());
+				animation_phase = 3;
+			}
+
+			else if (animation_time >= 330 && animation_phase == 3) {
+				if (direction == 0)
+					texture->setbitmap("character_idle_4", texture->getxSize(), texture->getySize());
+				if (direction == 1)
+					texture->setbitmap("character_idle2_4", texture->getxSize(), texture->getySize());
+				animation_phase = 4;
+			}
+
+			else if (animation_time >= 345 && animation_phase == 4) {
+				if (direction == 0)
+					texture->setbitmap("character_idle_3", texture->getxSize(), texture->getySize());
+				if (direction == 1)
+					texture->setbitmap("character_idle2_3", texture->getxSize(), texture->getySize());
+				animation_phase = 5;
+			}
+
+			else if (animation_time >= 360 && animation_phase == 5) {
+				if (direction == 0)
+					texture->setbitmap("character_idle_2", texture->getxSize(), texture->getySize());
+				if (direction == 1)
+					texture->setbitmap("character_idle2_2", texture->getxSize(), texture->getySize());
+				animation_phase = 6;
+			}
+		}
+	}
+}
+
 void PlayerScript::onHit()
 {
 	AllObject* allObject = AllObject::getInstance();
@@ -213,16 +431,4 @@ void PlayerScript::onHit()
 	}
 
 	Damage();
-}
-
-void PlayerScript::Damage() {
-	--life;
-}
-
-void PlayerScript::LifeReset() {
-	life = 5;
-}
-
-int PlayerScript::getLife() {
-	return life;
 }

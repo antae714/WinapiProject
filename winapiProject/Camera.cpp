@@ -8,6 +8,7 @@
 #include "E_Component.h"
 #include "TextureComponent.h"
 #include "TextComponent.h"
+#include "AnimationStruct.h"
 #include "Rect.h"
 #include "Math.h"
 #include "MemDc.h"
@@ -52,15 +53,12 @@ void Camera::beforeRender()
 	for (ObjIter iter = allObject->allObjbegin(); iter != allObject->allObjend(); ++iter) {
 		const GameObject* obj = iter.operator*().second;
 		if (!obj->getisActive()) continue;
-
 		Component* transform = obj->getcomponent(E_Component::TransformComponent);
 		Component* ui = obj->getcomponent(E_Component::UITransformComponent);
 		TextureComponent* texture = GETCOMPONENT(obj, TextureComponent);
 
-		if (iter.operator*().first == E_Objtype::character) {
- 			int a = 10;
-		}
-
+		if (iter.operator*().first == E_Objtype::character)
+			int a = 5;
 		if (transform && texture && texture->getbitmap()) {
 			TextureRender(MemDC, texture);
 		}
@@ -115,27 +113,27 @@ void Camera::TextureRender(MemDc& p_memdc, const TextureComponent* p_texture)
 	for (int i = 0; i < 4; i++)
 	{
 		pointarr[i] = Math::CarttoScreen(vec2vec.at(i)).toPOINT();
-		if (min.x > pointarr[i].x) {
-			min.x = pointarr[i].x;
-		}
-		if (max.x < pointarr[i].x) {
-			max.x = pointarr[i].x;
-		}
-		if (min.y > pointarr[i].y) {
-			min.y = pointarr[i].y;
-		}
-		if (max.y < pointarr[i].y) {
-			max.y = pointarr[i].y;
-		}
+		if (min.x > pointarr[i].x) min.x = pointarr[i].x;
+		if (max.x < pointarr[i].x) max.x = pointarr[i].x;
+		if (min.y > pointarr[i].y) min.y = pointarr[i].y;
+		if (max.y < pointarr[i].y) max.y = pointarr[i].y;
 	}
 	int xSize = max.x - min.x, ySize = max.y - min.y;
 	for (int i = 0; i < 4; i++) {
 		pointarr[i].x -= min.x;
 		pointarr[i].y -= min.y;
 	}
+	if (p_texture->getanimationconst() && p_texture->getanimationconst()->getdirection()) {
+		POINT tempPoint = pointarr[1];
+		pointarr[1] = pointarr[0];
+		pointarr[0] = tempPoint;
+
+		tempPoint = pointarr[2];
+		pointarr[2] = pointarr[3];
+		pointarr[3] = tempPoint;
+	}
 	int rectWeight = (int)temprect.getweight();
 	int rectHeight = (int)temprect.getheight();
-
 	MyBitmap tempBitmap(p_memdc(), xSize, ySize);
 	MyBitmap BackBitmap(p_memdc(), rectWeight, rectHeight);
 

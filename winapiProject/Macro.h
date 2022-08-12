@@ -10,3 +10,4 @@
 #define GETSCRIPT(obj, Script) dynamic_cast<Script*>(obj->getscriptptr())
 
 
+#define GETDATA(string, data, conversion) if (tempmap.find(#string) != tempmap.end()) data = conversion(object->find(key)->second.find(#string)->second);

@@ -32,6 +32,12 @@ private:
 	bool cooldown_sw;
 
 	int life;
+
+	bool is_moving, prev_is_moving;
+	bool is_dashing, prev_is_dashing;
+	int direction, prev_direction;
+	double animation_time;
+	int animation_phase;
 public:
 	PlayerScript();
 public:
@@ -44,6 +50,7 @@ public:
 	void Damage();
 	void LifeReset();
 	int getLife();
+	void AnimationUpdate();
 
 
 private:

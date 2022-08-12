@@ -18,6 +18,9 @@
 #include "TextComponent.h"
 #include "UITransformComponent.h"
 #include "PuzzleEntry.h"
+#include "AnimationStruct.h"
+#include "Macro.h"
+
 
 void LevelLoader::LoadLevel(E_Objtype p_file)
 {
@@ -145,10 +148,8 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
         if (key == "Script")
         {
             string temp;
-            if (tempmap.find("Value") != tempmap.end())
-            {
-                temp = tempmap.find("Value")->second;
-            }
+
+            GETDATA(Value, temp)
             else
             {
                 continue;
@@ -161,22 +162,10 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
                 string src = enumObj::conversion(p_file), dest = "";
                 int x = 0, y = 0;
 
-                if (tempmap.find("Src") != tempmap.end())
-                {
-                    src = tempmap.find("Src")->second;
-                }
-                if (tempmap.find("Dest") != tempmap.end())
-                {
-                    dest = tempmap.find("Dest")->second;
-                }
-                if (tempmap.find("X") != tempmap.end())
-                {
-                    x = stoi(tempmap.find("X")->second);
-                }
-                if (tempmap.find("Y") != tempmap.end())
-                {
-                    y = stoi(tempmap.find("Y")->second);
-                }
+                GETDATA(Src, src);
+                GETDATA(Dest, dest);
+                GETDATA(X, x, stoi);
+                GETDATA(Y, y, stoi);
 
                 MoveMap* tempscr = dynamic_cast<MoveMap*>(tempobj->getscriptptr());
                 tempscr->Set(src, dest, x, y);
@@ -191,22 +180,10 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
                 int left = WINDOWX / -2 + tempcom->getxSize() / 2;
                 int right = WINDOWX / 2 - tempcom->getxSize() / 2;
 
-                if (tempmap.find("Top") != tempmap.end())
-                {
-                    top = stoi(tempmap.find("Top")->second);
-                }
-                if (tempmap.find("Bottom") != tempmap.end())
-                {
-                    bottom = stoi(tempmap.find("Bottom")->second);
-                }
-                if (tempmap.find("Left") != tempmap.end())
-                {
-                    left = stoi(tempmap.find("Left")->second);
-                }
-                if (tempmap.find("Right") != tempmap.end())
-                {
-                    right = stoi(tempmap.find("Right")->second);
-                }
+                GETDATA(Top, top, stoi);
+                GETDATA(Bottom, bottom, stoi);
+                GETDATA(Left, left, stoi);
+                GETDATA(Right, right, stoi);
 
                 PlayerScript* tempscr = dynamic_cast<PlayerScript*>(tempobj->getscriptptr());
                 tempscr->SetMovableArea(top, bottom, left, right);
@@ -215,16 +192,9 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
             if ("LineScript" == temp)
             {
                 int first = 0, second = 0;
-                if (tempmap.find("first") != tempmap.end())
-                {
-                    first = stoi(tempmap.find("first").operator*().second);
-                }
-                if (tempmap.find("second") != tempmap.end())
-                {
-                    second = stoi(tempmap.find("second").operator*().second);
-                }
-                _ASSERT(first && "미할당");
-                _ASSERT(second && "미할당");
+                GETDATA(first, first, stoi);
+                GETDATA(second, second, stoi);
+
                 LineScript* tempscr = dynamic_cast<LineScript*>(tempobj->getscriptptr());
                 tempscr->Set(first, second, true);
             }
@@ -232,10 +202,8 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
             if ("PuzzleEntry" == temp)
             {
                 string typestr;
-                if (tempmap.find("typestr") != tempmap.end())
-                {
-                    typestr = tempmap.find("typestr").operator*().second;
-                }
+
+                GETDATA(typestr, typestr);
                 PuzzleEntry* tempscr = dynamic_cast<PuzzleEntry*>(tempobj->getscriptptr());
                 tempscr->Set(typestr);
             }
@@ -246,19 +214,10 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
             TransformComponent* tempcomp = new TransformComponent();
             int x = 0, y = 0;
             float rotate = 0.000000f;
+            GETDATA(X, x, stoi);
+            GETDATA(Y, y, stoi);
+            GETDATA(Rotate, rotate, stoi);
 
-            if (tempmap.find("X") != tempmap.end())
-            {
-                x = stoi(tempmap.find("X")->second);
-            }
-            if (tempmap.find("Y") != tempmap.end())
-            {
-                y = stoi(tempmap.find("Y")->second);
-            }
-            if (tempmap.find("Rotate") != tempmap.end())
-            {
-                rotate = stof(tempmap.find("Rotate")->second);
-            }
 
             tempcomp->setpivot(Vector2(x, y));
             tempcomp->setrotate(rotate);
@@ -270,14 +229,8 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
         {
         int x = 0, y = 0;
 
-        if (tempmap.find("X") != tempmap.end())
-        {
-            x = stoi(tempmap.find("X")->second);
-        }
-        if (tempmap.find("Y") != tempmap.end())
-        {
-            y = stoi(tempmap.find("Y")->second);
-        }
+        GETDATA(X, x, stoi);
+        GETDATA(Y, y, stoi);
 
         UITransformComponent* tempcomp = new UITransformComponent(Vector2(x, y), 0);
         tempobj->pushcomponent(E_Component::UITransformComponent, tempcomp);
@@ -298,28 +251,31 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
                 height = stoi(object->find(key)->second.find("Height")->second);
                 theight = height;
             }
-            if (tempmap.find("ObjectWidth") != tempmap.end())
-            {
-                width = stoi(object->find(key)->second.find("ObjectWidth")->second);
+            GETDATA(ObjectWidth, width, stoi);
+            GETDATA(ObjectHeight, height, stoi);
+            GETDATA(TextureWidth, twidth, stoi);
+            GETDATA(TextureHeight, theight, stoi);
+            GETDATA(Bitmap, bitmap);
+
+            string name = "";
+            vector<string> stateName;
+            vector<int> stateCount;
+            double time = 0;
+            GETDATA(AnimationName, name);
+            GETDATA(Time, time, stod);
+
+            for (int j = 0; tempmap.find("state_" + to_string(j)) != tempmap.end(); ++j) {
+                stateName.push_back(object->find(key)->second.find("state_" + to_string(j))->second);
             }
-            if (tempmap.find("ObjectHeight") != tempmap.end())
-            {
-                height = stoi(object->find(key)->second.find("ObjectHeight")->second);
-            }
-            if (tempmap.find("TextureWidth") != tempmap.end())
-            {
-                twidth = stoi(object->find(key)->second.find("TextureWidth")->second);
-            }
-            if (tempmap.find("TextureHeight") != tempmap.end())
-            {
-                theight = stoi(object->find(key)->second.find("TextureHeight")->second);
-            }
-            if (tempmap.find("Bitmap") != tempmap.end())
-            {
-                bitmap = object->find(key)->second.find("Bitmap")->second;
+            for (int j = 0; tempmap.find("count_" + to_string(j)) != tempmap.end(); ++j) {
+                stateCount.push_back(stoi(object->find(key)->second.find("count_" + to_string(j))->second));
             }
 
-            TextureComponent* tempcomp = new TextureComponent(bitmap,Rect((float)width, (float)height), twidth, theight);
+            TextureComponent* tempcomp;
+            if ("" == name)
+                tempcomp = new TextureComponent(bitmap,Rect((float)width, (float)height), twidth, theight);
+            else
+                tempcomp = new TextureComponent(AnimationStruct(time, name, stateName, stateCount), Rect((float)width, (float)height), twidth, theight);
 
             tempobj->pushcomponent(E_Component::TextureComponent, tempcomp);
         }
@@ -335,10 +291,7 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
             KeyInputComponenet* tempcomp = new KeyInputComponenet();
             int interactive = 0x5A;
 
-            if (tempmap.find("Interactive") != tempmap.end())
-            {
-                interactive = stoi(object->find(key)->second.find("Interactive")->second);
-            }
+            GETDATA(Interactive, interactive, stoi);
 
             tempcomp->setkey(interactive);
             tempobj->pushcomponent(E_Component::KeyInputComponenet, tempcomp);
@@ -347,14 +300,10 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
         else if (key == "Collison")
         {
         int width = 0, height = 0;
-        if (tempmap.find("Width") != tempmap.end())
-        {
-            width = stoi(object->find(key)->second.find("Width")->second);
-        }
-        if (tempmap.find("Height") != tempmap.end())
-        {
-            height = stoi(object->find(key)->second.find("Height")->second);
-        }
+
+        GETDATA(Width, width, stoi);
+        GETDATA(Height, height, stoi);
+
         CollisonCompoenet* tempcomp = new CollisonCompoenet(Rect(width, height));
         tempobj->pushcomponent(E_Component::CollisonCompoenet, tempcomp);
         }
@@ -363,18 +312,9 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
         {
         int x = 0, y = 0;
         string filename;
-        if (tempmap.find("X") != tempmap.end())
-        {
-            x = stoi(tempmap.find("X")->second);
-        }
-        if (tempmap.find("Y") != tempmap.end())
-        {
-            y = stoi(tempmap.find("Y")->second);
-        }
-        if (tempmap.find("Filename") != tempmap.end())
-        {
-            filename = tempmap.find("Filename")->second;
-        }
+        GETDATA(X, x, stoi);
+        GETDATA(Y, y, stoi);
+        GETDATA(Filename, filename);
         TextComponent* tempcomp = new TextComponent(Vector2(x, y), filename);
         tempobj->pushcomponent(E_Component::TextComponent, tempcomp);
  }

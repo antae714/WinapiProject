@@ -34,6 +34,7 @@ enum class E_Objtype
 	puzzleAbility,
 	character,
 	PuzzleBoard_UI,
+	Puzzleheart,
 	puzzlecleartest,
 	background,
 

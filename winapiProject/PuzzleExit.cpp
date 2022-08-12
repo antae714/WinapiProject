@@ -31,6 +31,7 @@ void PuzzleExit::Input()
 	LevelData::DeleteLevel(E_Objtype::puzzleHint);
 	LevelData::DeleteLevel(E_Objtype::PuzzleBoard);
 	LevelData::DeleteLevel(E_Objtype::PuzzleBoard_UI);
+	LevelData::DeleteLevel(E_Objtype::Puzzleheart);
 	LevelData::DeleteLevel(E_Objtype::puzzleDot);
 	LevelData::DeleteLevel(E_Objtype::puzzleMine);
 	LevelData::DeleteLevel(E_Objtype::puzzleAbility);
@@ -40,7 +41,7 @@ void PuzzleExit::Input()
 
 	GameObject* obj = (*allObject->getallObj(E_Objtype::character).first).second;
 
-	dynamic_cast<TextureComponent*>(obj->getcomponent(E_Component::TextureComponent))->setbitmap("character", 100, 150);
+	dynamic_cast<TextureComponent*>(obj->getcomponent(E_Component::TextureComponent))->setbitmap("character_idle_1", 100, 150);
 	dynamic_cast<TextureComponent*>(obj->getcomponent(E_Component::TextureComponent))->setrect(Rect(100, 150));
 
 	TransformComponent* tempcom = dynamic_cast<TransformComponent*>(obj->getcomponent(E_Component::TransformComponent));

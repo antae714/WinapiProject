@@ -3,6 +3,7 @@
 #include "UpdateFunction.h"
 
 enum class E_enemyState {
+	search,
 	move,
 	attack,
 

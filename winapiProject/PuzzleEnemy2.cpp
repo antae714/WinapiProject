@@ -21,11 +21,11 @@ void PuzzleEnemy2::Update()
 {
 	 if (state == E_enemyState::move) movestate();
 	 else if (state == E_enemyState::attack) attacktate();
+	 else if (state == E_enemyState::search) Init();
 }
 
 void PuzzleEnemy2::Init()
 {
-	state = E_enemyState::move;
 	vector<GameObject*> dotvec;
 	AllObject* allObject = AllObject::getInstance();
 	pair<ObjIter, ObjIter> temp = allObject->getallObj(E_Objtype::puzzleDot);
@@ -37,6 +37,8 @@ void PuzzleEnemy2::Init()
 		}
 	}
 
+	if (0 == dotvec.size()) return;
+	state = E_enemyState::move;
 	target = dotvec.at(rand() % dotvec.size());
 
 
@@ -81,6 +83,6 @@ void PuzzleEnemy2::attacktate()
 	if (attacktime <=0) {
 		GETSCRIPT(target, PuzzleDotScript)->cut();
 
-		Init();
+		state = E_enemyState::search;
 	}
 }

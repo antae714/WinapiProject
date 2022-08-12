@@ -79,10 +79,10 @@ void PuzzleEntry::KeyInput()
 	}
 
 	LevelData::LevelLode("PuzzleBoard_UI");
+	LevelData::LevelLode("Puzzleheart");
 
 	TextureComponent* limittexture = GETCOMPONENT(Boardobj, TextureComponent);
 
-	dynamic_cast<TextureComponent*>(obj->getcomponent(E_Component::TextureComponent))->setbitmap("character2", 60, 90);
 	dynamic_cast<TextureComponent*>(obj->getcomponent(E_Component::TextureComponent))->setrect(Rect(60, 90));
 
 	TransformComponent* tempcom = dynamic_cast<TransformComponent*>(obj->getcomponent(E_Component::TransformComponent));

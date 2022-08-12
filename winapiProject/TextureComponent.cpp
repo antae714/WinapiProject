@@ -7,11 +7,13 @@
 #include "UITransformComponent.h"
 #include "WindowMsg.h"
 #include "BitmapManager.h"
+#include "AnimationStruct.h"
 #include "Macro.h"
 
 TextureComponent::TextureComponent()
 {
-	bitmap = nullptr; 
+	bitmap = nullptr;
+	animation = nullptr;
 	rect = new Rect();
 }
 
@@ -19,14 +21,37 @@ TextureComponent::TextureComponent(const string& p_str, const Rect& p_rect)
 {
 	rect = new Rect();
 	*rect = p_rect;
-	setbitmap(p_str, p_rect.gethalfweight(), p_rect.gethalfweight());
+	animation = nullptr;
+	setbitmap(p_str, p_rect.getweight(), p_rect.getheight());
 }
 
-TextureComponent::TextureComponent(const string& p_str, const Rect& p_rect , int p_x, int p_y)
+TextureComponent::TextureComponent(const string& p_str, const Rect& p_rect, int p_x, int p_y)
 {
 	rect = new Rect();
 	*rect = p_rect;
+	animation = nullptr;
 	setbitmap(p_str, p_x, p_y);
+}
+
+
+TextureComponent::TextureComponent(const AnimationStruct& p_animation, const Rect& p_rect , int p_x, int p_y)
+{
+	rect = new Rect();
+	*rect = p_rect;
+	animation = new AnimationStruct(p_animation);
+	bitmap = nullptr;
+
+	setbitmap(animation->getbitmapname(), p_x, p_y);
+}
+
+TextureComponent::TextureComponent(const AnimationStruct& p_animation, const Rect& p_rect)
+{
+	rect = new Rect();
+	*rect = p_rect;
+	animation = new AnimationStruct(p_animation);
+	bitmap = nullptr;
+
+	setbitmap(animation->getbitmapname(), p_rect.getweight(), p_rect.getheight());
 }
 
 TextureComponent::~TextureComponent()
@@ -37,6 +62,14 @@ TextureComponent::~TextureComponent()
 void TextureComponent::Start()
 {
 	transformset();
+}
+
+void TextureComponent::Update()
+{
+	if (animation) {
+		animation->Update();
+		setbitmap(animation->getbitmapname(), xSize, ySize);
+	}
 }
 
 HBITMAP TextureComponent::getbitmap() const
@@ -64,10 +97,21 @@ int TextureComponent::getySize() const
 	return ySize;
 }
 
+AnimationStruct* TextureComponent::getanimationptr() const
+{
+	return animation;
+}
+
+const AnimationStruct* TextureComponent::getanimationconst() const
+{
+	return animation;
+}
+
 void TextureComponent::setbitmap(string p_str,int p_x,int p_y)
 {
 	xSize = p_x;
 	ySize = p_y;
+
 	if(enumBitmap::conversion(p_str) < E_Bitmap::MAX)
 		bitmap = BitmapManager::getInstance()->getBitmap(enumBitmap::conversion(p_str), p_x, p_y);
 }
