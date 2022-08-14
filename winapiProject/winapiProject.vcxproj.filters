@@ -67,9 +67,6 @@
     <Filter Include="헤더 파일\Level">
       <UniqueIdentifier>{d148e5db-e332-45ad-a199-e71e222efe20}</UniqueIdentifier>
     </Filter>
-    <Filter Include="TrashCan">
-      <UniqueIdentifier>{b9e18dea-fdef-4b73-9028-5203692a4fc6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\Function">
       <UniqueIdentifier>{2b0e371b-3ff4-401b-a1a7-8e53f1d687f1}</UniqueIdentifier>
     </Filter>
@@ -242,15 +239,6 @@
     </ClInclude>
     <ClInclude Include="PuzzleEntry.h">
       <Filter>헤더 파일\Script</Filter>
-    </ClInclude>
-    <ClInclude Include="TestScript3.h">
-      <Filter>TrashCan</Filter>
-    </ClInclude>
-    <ClInclude Include="TestScript2.h">
-      <Filter>TrashCan</Filter>
-    </ClInclude>
-    <ClInclude Include="TestScript.h">
-      <Filter>TrashCan</Filter>
     </ClInclude>
     <ClInclude Include="GameTime.h">
       <Filter>헤더 파일\Manager</Filter>
@@ -463,15 +451,6 @@
     </ClCompile>
     <ClCompile Include="PuzzleEntry.cpp">
       <Filter>소스 파일\Script</Filter>
-    </ClCompile>
-    <ClCompile Include="TestScript3.cpp">
-      <Filter>TrashCan</Filter>
-    </ClCompile>
-    <ClCompile Include="TestScript2.cpp">
-      <Filter>TrashCan</Filter>
-    </ClCompile>
-    <ClCompile Include="TestScript.cpp">
-      <Filter>TrashCan</Filter>
     </ClCompile>
     <ClCompile Include="GameTime.cpp">
       <Filter>소스 파일\Manager</Filter>

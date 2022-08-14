@@ -43,10 +43,10 @@ void Camera::beforeRender()
 
 	hdc = GetDC(WindowMsg::getInstance()->gethWnd());
 	if (beforeBuffer) DeleteObject(beforeBuffer);
-	beforeBuffer = CreateCompatibleBitmap(hdc, gameData->getwindowX(), gameData->getwindowY());
+	beforeBuffer = CreateCompatibleBitmap(hdc, gameData->getIngamewindowX(), gameData->getIngamewindowY());
 	MemDc MemDC(hdc, beforeBuffer);
 
-	PatBlt(MemDC(), 0, 0, gameData->getwindowX(), gameData->getwindowY(), BLACKNESS);
+	PatBlt(MemDC(), 0, 0, gameData->getIngamewindowX(), gameData->getIngamewindowY(), BLACKNESS);
 	vector<TextureComponent*> uitexture;
 	vector<TextComponent*> textvec;
 
@@ -94,7 +94,7 @@ void Camera::realRender()
 
 	MemDc MemDC(hdc, beforeBuffer);
 
-	BitBlt(hdc, 0, 0, gameData->getwindowX(), gameData->getwindowY(), MemDC(), 0, 0, SRCCOPY);
+	BitBlt(hdc, 0, 0, gameData->getIngamewindowX(), gameData->getIngamewindowY(), MemDC(), 0, 0, SRCCOPY);
 
 	EndPaint(hWnd, &ps);
 }

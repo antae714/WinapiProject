@@ -39,6 +39,12 @@ void LevelLoader::LoadLevel(E_Objtype p_file)
         string line;
 
         getline(file, line);
+        while (line.size() > 0 && line.back() == '\\') {
+            line.erase(--line.end());
+            string templine;
+            getline(file, templine);
+            line += templine;
+        }
         if ('\0' == line[0]) continue;
         if ('/' == line[0]) continue;
 

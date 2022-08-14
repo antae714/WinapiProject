@@ -11,6 +11,7 @@ enum class E_enemyState {
 };
 
 class GameObject;
+class Vector2;
 class TransformComponent;
 class PuzzleEnemy2 : public Script, public UpdateFunction
 {
@@ -19,18 +20,20 @@ private:
 	GameObject* target;
 	TransformComponent* transform;
 	TransformComponent* transform2;
-
+	int speed;
 	double attacktime;
 public:
 	PuzzleEnemy2();
 
 public:
 	virtual void Update();
-	virtual void Init();
+	virtual void Set(int p_speed);
+	void Init();
 
 
 private:
 	void movestate();
 	void attacktate();
+	void pivotset();
+	void search();
 };
-

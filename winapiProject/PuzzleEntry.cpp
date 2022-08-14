@@ -7,7 +7,6 @@
 #include "TextureComponent.h"
 #include "TransformComponent.h"
 #include "Vector2.h"
-#include "TestScript2.h"
 #include "PlayerScript.h"
 #include "GameData.h"
 #include "PuzzleDotScript.h"

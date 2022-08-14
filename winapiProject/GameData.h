@@ -29,6 +29,8 @@ public:
 	bool getisgaming();
 	int getwindowX();
 	int getwindowY();
+	int getIngamewindowX();
+	int getIngamewindowY();
 	int getbackSound();
 	int geteffectSound();
 	const Vector2& getcameraPivot();

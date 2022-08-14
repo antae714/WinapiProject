@@ -5,8 +5,8 @@
 GameData::GameData()
 {
 	isgaming = true;
-	windowX = WINDOWX;
-	windowY = WINDOWY;
+	windowX = WINDOWX + 16;
+	windowY = WINDOWY + 39;
 	backSound = BACKSOUND;
 	effectSound = EFFECTSOUND;
 
@@ -30,6 +30,16 @@ int GameData::getwindowX()
 int GameData::getwindowY()
 {
 	return windowY;
+}
+
+int GameData::getIngamewindowX()
+{
+	return windowX - 16;
+}
+
+int GameData::getIngamewindowY()
+{
+	return windowY - 39;
 }
 
 int GameData::getbackSound()

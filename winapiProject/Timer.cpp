@@ -18,6 +18,7 @@ Timer::Timer()
 
 void Timer::Update()
 {
+	//return;
 	GameTime* gameTime = GameTime::getInstance();
 	time -= gameTime->getdeltaTime();
 

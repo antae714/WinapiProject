@@ -22,11 +22,16 @@ void PuzzleEnemy1::Start()
 	pivotset();
 }
 
+void PuzzleEnemy1::Set(int p_speed)
+{
+	speed = p_speed;
+}
+
 void PuzzleEnemy1::Update()
 {
 	GameTime* gameTime = GameTime::getInstance();
 	Vector2 distance = transform2->getpivot() - transform->getpivot();
-	transform->addpivot(distance.GetNormalize() * PLAYERSPEED * gameTime->getdeltaTime() * 80);
+	transform->addpivot(distance.GetNormalize() * PLAYERSPEED * gameTime->getdeltaTime() * speed);
 	//transform->move(distance.GetNormalize() * PLAYERSPEED * gameTime->getdeltaTime() * 80);
 }
 

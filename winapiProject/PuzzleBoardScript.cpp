@@ -112,7 +112,9 @@ void PuzzleBoardScript::Set(const string& type)
 					gameObject->pushcomponent(E_Component::TransformComponent, new TransformComponent(Vector2(), 0));
 					gameObject->pushcomponent(E_Component::TextureComponent, new TextureComponent("chaser", rect));
 					gameObject->pushcomponent(E_Component::CollisonCompoenet, new CollisonCompoenet(rect));
-					gameObject->setscript(new PuzzleEnemy1());
+					PuzzleEnemy1* enemy = new PuzzleEnemy1();
+					enemy->Set(stoi(comp.at(2)));
+					gameObject->setscript(enemy);
 					allObject->push(E_Objtype::puzzleEnemy, gameObject);
 				}
 			}
@@ -125,7 +127,9 @@ void PuzzleBoardScript::Set(const string& type)
 					vector<string> tempvec{ "move" };
 					vector<int> temp2vec{ 2 };
 					gameObject->pushcomponent(E_Component::TextureComponent, new TextureComponent(AnimationStruct(0.3, "Ant", tempvec, temp2vec), rect));
-					gameObject->setscript(new PuzzleEnemy2());
+					PuzzleEnemy2* enemy = new PuzzleEnemy2();
+					enemy->Set(stoi(comp.at(2)));
+					gameObject->setscript(enemy);
 					allObject->push(E_Objtype::puzzleEnemy, gameObject);
 				}
 			}

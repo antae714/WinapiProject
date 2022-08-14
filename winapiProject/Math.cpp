@@ -10,8 +10,8 @@
 Vector2 Math::CarttoScreen(const Vector2& p_vec)
 {
     GameData* gameData = GameData::getInstance();
-    float windowX = gameData->getwindowX();
-    float windowY = gameData->getwindowY();
+    float windowX = gameData->getIngamewindowX();
+    float windowY = gameData->getIngamewindowY();
     Vector2 pivot = gameData->getcameraPivot();
     Vector2 tempVec = p_vec - pivot;
 
@@ -22,8 +22,8 @@ Vector2 Math::CarttoScreen(const Vector2& p_vec)
 Vector2 Math::ScreentoCart(const Vector2& p_vec)
 {
     GameData* gameData = GameData::getInstance();
-    float windowX = gameData->getwindowX();
-    float windowY = gameData->getwindowY();
+    float windowX = gameData->getIngamewindowX();
+    float windowY = gameData->getIngamewindowY();
     Vector2 pivot = gameData->getcameraPivot();
 
     Vector2 tempVec;

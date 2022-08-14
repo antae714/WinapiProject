@@ -8,7 +8,6 @@
 #include "TransformComponent.h"
 #include "Vector2.h"
 #include "Rect.h"
-#include "TestScript2.h"
 #include "PlayerScript.h"
 #include "GameData.h"
 

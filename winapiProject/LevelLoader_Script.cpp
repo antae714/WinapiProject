@@ -1,9 +1,6 @@
 #include "LevelLoader.h"
 
 // 스크립트
-#include "TestScript.h"
-#include "TestScript2.h"
-#include "TestScript3.h"
 #include "GameStart.h"
 #include "GameExit.h"
 #include "MoveMap.h"

@@ -217,6 +217,7 @@ void PlayerScript::Ability() {
 }
 
 void PlayerScript::Damage() {
+	//return;
 	--life;
 }
 

@@ -21,10 +21,68 @@ void PuzzleEnemy2::Update()
 {
 	 if (state == E_enemyState::move) movestate();
 	 else if (state == E_enemyState::attack) attacktate();
-	 else if (state == E_enemyState::search) Init();
+	 else if (state == E_enemyState::search) search();
+}
+
+void PuzzleEnemy2::Set(int p_speed)
+{
+	speed = p_speed;
 }
 
 void PuzzleEnemy2::Init()
+{
+	transform = GETCOMPONENT(owner, TransformComponent);
+	pivotset();
+	search();
+	transform2 = GETCOMPONENT(target, TransformComponent);
+	attacktime = 5;
+}
+
+void PuzzleEnemy2::movestate()
+{
+	GameTime* gameTime = GameTime::getInstance();
+	Vector2 distance = transform2->getpivot() - transform->getpivot();
+
+	transform->addpivot(distance.GetNormalize() * PLAYERSPEED * gameTime->getdeltaTime() * speed);
+
+	TextureComponent* Texture1 = GETCOMPONENT(target, TextureComponent);
+	TextureComponent* Texture2 = GETCOMPONENT(owner, TextureComponent);
+
+	const Rect& rect1 = Texture1->getrectptr();
+	const Rect& rect2 = Texture2->getrectptr();
+
+	if (Math::isin(rect1, rect2))
+		state = E_enemyState::attack;
+}
+
+void PuzzleEnemy2::attacktate()
+{
+	GameTime* gameTime = GameTime::getInstance();
+	attacktime -= gameTime->getdeltaTime();
+	if (attacktime <=0) {
+		GETSCRIPT(target, PuzzleDotScript)->cut();
+		pivotset();
+		attacktime = 5;
+		state = E_enemyState::search;
+	}
+}
+
+void PuzzleEnemy2::pivotset()
+{
+	int temp = rand() % 4;
+	Vector2 tempvec;
+	if (temp == 0)
+		tempvec = Vector2(-2318, rand() % 2318 - 1159);
+	if (temp == 1)
+		tempvec = Vector2(2318, rand() % 2318 - 1159);
+	if (temp == 2)
+		tempvec = Vector2(rand() % 2318 - 1159, -2318);
+	if (temp == 3)
+		tempvec = Vector2(rand() % 2318 - 1159, 2318);
+	transform->setpivot(tempvec);
+}
+
+void PuzzleEnemy2::search()
 {
 	vector<GameObject*> dotvec;
 	AllObject* allObject = AllObject::getInstance();
@@ -40,49 +98,4 @@ void PuzzleEnemy2::Init()
 	if (0 == dotvec.size()) return;
 	state = E_enemyState::move;
 	target = dotvec.at(rand() % dotvec.size());
-
-
-	transform = GETCOMPONENT(owner, TransformComponent);
-	int tempval = rand() % 4;
-	Vector2 tempvec;
-	if (tempval == 0)
-		tempvec = Vector2(-2318, rand() % 2318 - 1159);
-	if (tempval == 1)
-		tempvec = Vector2(2318, rand() % 2318 - 1159);
-	if (tempval == 2)
-		tempvec = Vector2(rand() % 2318 - 1159, -2318);
-	if (tempval == 3)
-		tempvec = Vector2(rand() % 2318 - 1159, 2318);
-	transform->setpivot(tempvec);
-	transform2 = GETCOMPONENT(target, TransformComponent);
-
-	attacktime = 5;
-}
-
-void PuzzleEnemy2::movestate()
-{
-	GameTime* gameTime = GameTime::getInstance();
-	Vector2 distance = transform2->getpivot() - transform->getpivot();
-	transform->addpivot(distance.GetNormalize() * PLAYERSPEED * gameTime->getdeltaTime() * 110);
-
-	TextureComponent* Texture1 = GETCOMPONENT(target, TextureComponent);
-	TextureComponent* Texture2 = GETCOMPONENT(owner, TextureComponent);
-
-	const Rect& rect1 = Texture1->getrectptr();
-	const Rect& rect2 = Texture2->getrectptr();
-	if (Math::isin(rect1, rect2))
-	{
-		state = E_enemyState::attack;
-	}
-}
-
-void PuzzleEnemy2::attacktate()
-{
-	GameTime* gameTime = GameTime::getInstance();
-	attacktime -= gameTime->getdeltaTime();
-	if (attacktime <=0) {
-		GETSCRIPT(target, PuzzleDotScript)->cut();
-
-		state = E_enemyState::search;
-	}
 }

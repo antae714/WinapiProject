@@ -52,6 +52,8 @@ void TransformComponent::addpivot(const Vector2& p_pivot)
 
 void TransformComponent::setpivot(const Vector2& p_pivot)
 {
+    if (this == nullptr) 
+        return;
     *pivot = p_pivot;
 }
 

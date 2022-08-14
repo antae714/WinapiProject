@@ -204,9 +204,6 @@
     <ClInclude Include="Script.h" />
     <ClInclude Include="SingletonCls.h" />
     <ClInclude Include="SoundManager.h" />
-    <ClInclude Include="TestScript.h" />
-    <ClInclude Include="TestScript2.h" />
-    <ClInclude Include="TestScript3.h" />
     <ClInclude Include="TextComponent.h" />
     <ClInclude Include="TextScript.h" />
     <ClInclude Include="TextureComponent.h" />
@@ -279,9 +276,6 @@
     <ClCompile Include="Script.cpp" />
     <ClCompile Include="SingletonCls.cpp" />
     <ClCompile Include="SoundManager.cpp" />
-    <ClCompile Include="TestScript.cpp" />
-    <ClCompile Include="TestScript2.cpp" />
-    <ClCompile Include="TestScript3.cpp" />
     <ClCompile Include="TextComponent.cpp" />
     <ClCompile Include="TextScript.cpp" />
     <ClCompile Include="TextureComponent.cpp" />
