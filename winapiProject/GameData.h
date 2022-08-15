@@ -1,6 +1,8 @@
 #pragma once
 
 #include "SingletonCls.h"
+#include <map>
+#include <string>
 
 #define WINDOWX 1280
 #define WINDOWY 720
@@ -20,6 +22,7 @@ private:
 	int effectSound;
 	const Vector2* cameraPivot;
 	const Rect* cameraLimit;
+	map<string, int> game_varias;
 
 public:
 	GameData();
@@ -34,6 +37,7 @@ public:
 	int getbackSound();
 	int geteffectSound();
 	const Vector2& getcameraPivot();
+	int getvarias(string);
 
 	void setisgaming(bool);
 	void setwindowX(int);
@@ -41,5 +45,7 @@ public:
 	void setbackSound(int);
 	void seteffectSound(int);
 	void setcameraPivot(const Vector2* pivot, const Rect* limit);
+	void setvarias(string, int);
+	void resetvarias();
 };
 

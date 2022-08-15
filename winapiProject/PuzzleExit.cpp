@@ -9,6 +9,8 @@
 #include "Vector2.h"
 #include "Rect.h"
 #include "PlayerScript.h"
+#include "AnimationStruct.h"
+#include "PuzzleData.h"
 #include "GameData.h"
 
 PuzzleExit::PuzzleExit()
@@ -38,19 +40,23 @@ void PuzzleExit::Input()
 	LevelData::DeleteLevel(E_Objtype::empty);
 	LevelData::DeleteLevel(E_Objtype::puzzlecleartest);
 
-	GameObject* obj = (*allObject->getallObj(E_Objtype::character).first).second;
+	GameObject* player = (*allObject->getallObj(E_Objtype::character).first).second;
+	TextureComponent* texture = dynamic_cast<TextureComponent*>(player->getcomponent(E_Component::TextureComponent));
 
-	dynamic_cast<TextureComponent*>(obj->getcomponent(E_Component::TextureComponent))->setbitmap("character_idle_1", 100, 150);
-	dynamic_cast<TextureComponent*>(obj->getcomponent(E_Component::TextureComponent))->setrect(Rect(100, 150));
+	texture->setrect(Rect(100, 150));
 
-	TransformComponent* tempcom = dynamic_cast<TransformComponent*>(obj->getcomponent(E_Component::TransformComponent));
+	texture->getanimationptr()->setisupdate(true);
+	TransformComponent* tempcom = dynamic_cast<TransformComponent*>(player->getcomponent(E_Component::TransformComponent));
 	tempcom->setpivot(Vector2(0, -200));
 	GameData* gameData = GameData::getInstance();
 	gameData->setcameraPivot(nullptr, nullptr);
 
-	PlayerScript* tempscr = dynamic_cast<PlayerScript*>(obj->getscriptptr());
+	PlayerScript* tempscr = dynamic_cast<PlayerScript*>(player->getscriptptr());
 	tempscr->SetMovableArea(-150, -250, -590, 590);
 	tempscr->setmoveState(E_PlayerState::Nomal);
+	tempscr->setismove(true);
+
+	PuzzleData::deleteInstance();
 
 	return;
 }

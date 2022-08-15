@@ -123,7 +123,7 @@ void Camera::TextureRender(MemDc& p_memdc, const TextureComponent* p_texture)
 		pointarr[i].x -= min.x;
 		pointarr[i].y -= min.y;
 	}
-	if (p_texture->getanimationconst() && p_texture->getanimationconst()->getdirection()) {
+	if (p_texture->getdirection()) {
 		POINT tempPoint = pointarr[1];
 		pointarr[1] = pointarr[0];
 		pointarr[0] = tempPoint;

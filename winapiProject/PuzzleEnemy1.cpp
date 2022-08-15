@@ -8,6 +8,9 @@
 #include "Vector2.h"
 #include "GameTime.h"
 #include "PlayerScript.h"
+#include "AnimationStruct.h"
+#include "TextureComponent.h"
+#include "PuzzleData.h"
 
 PuzzleEnemy1::PuzzleEnemy1()
 {
@@ -29,10 +32,14 @@ void PuzzleEnemy1::Set(int p_speed)
 
 void PuzzleEnemy1::Update()
 {
+	if (PuzzleData::getInstance()->getisclear()) return;
 	GameTime* gameTime = GameTime::getInstance();
 	Vector2 distance = transform2->getpivot() - transform->getpivot();
 	transform->addpivot(distance.GetNormalize() * PLAYERSPEED * gameTime->getdeltaTime() * speed);
-	//transform->move(distance.GetNormalize() * PLAYERSPEED * gameTime->getdeltaTime() * 80);
+
+	TextureComponent* texture = GETCOMPONENT(owner, TextureComponent);
+	if (distance.getx() > 0) texture->setdirection(0);
+	else if (distance.getx() < 0) texture->setdirection(1);
 }
 
 void PuzzleEnemy1::OnCollisonEnter(GameObject* other)

@@ -11,6 +11,8 @@
 #include "LineScript.h"
 #include "PuzzleBoardScript.h"
 #include "PuzzleAbility.h"
+#include "PuzzleBoardScript.h"
+#include "PuzzleData.h"
 
 PuzzleDotScript::PuzzleDotScript() :
 	refCount(0), number(0)
@@ -28,6 +30,8 @@ PuzzleDotScript::~PuzzleDotScript()
 
 void PuzzleDotScript::KeyInput()
 {
+	if (PuzzleData::getInstance()->getisclear()) return;
+
 	clickLogic();
 }
 
@@ -38,7 +42,7 @@ void PuzzleDotScript::plusrefCount(GameObject* p_line)
 	{
 		TextureComponent* texture = GETCOMPONENT(owner, TextureComponent);
 		texture->setbitmap("Starbutton_Selected", texture->getxSize(), texture->getySize());
-		if (!status) {
+		if (!status && GETSCRIPT(line.back(), LineScript)->getisend()) {
 			status = 1;
 			CreateAbility();
 		}
@@ -89,9 +93,6 @@ void PuzzleDotScript::clickLogic()
 		if (!line->getisend()) {
 			islining = false;
 			line->setisend(true);
-
-			pair<ObjIter, ObjIter> temp = allObject->getallObj(E_Objtype::PuzzleBoard);
-			PuzzleBoardScript* puzzle = GETSCRIPT(temp.first.operator*().second, PuzzleBoardScript);
 
 			if (puzzle->isAnswer(owner, line->getfirstptr())) {
 				line->setsecond(owner);

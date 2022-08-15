@@ -11,6 +11,9 @@
 #include "PuzzleDotScript.h"
 #include "PlayerScript.h"
 #include "Rect.h"
+#include "AnimationStruct.h"
+#include "TextureComponent.h"
+#include "PuzzleData.h"
 #include "Math.h"
 
 PuzzleEnemy2::PuzzleEnemy2()
@@ -19,9 +22,11 @@ PuzzleEnemy2::PuzzleEnemy2()
 
 void PuzzleEnemy2::Update()
 {
-	 if (state == E_enemyState::move) movestate();
-	 else if (state == E_enemyState::attack) attacktate();
-	 else if (state == E_enemyState::search) search();
+	if (PuzzleData::getInstance()->getisclear()) return;
+
+	if (state == E_enemyState::move) movestate();
+	else if (state == E_enemyState::attack) attacktate();
+	else if (state == E_enemyState::search) search();
 }
 
 void PuzzleEnemy2::Set(int p_speed)
@@ -47,6 +52,9 @@ void PuzzleEnemy2::movestate()
 
 	TextureComponent* Texture1 = GETCOMPONENT(target, TextureComponent);
 	TextureComponent* Texture2 = GETCOMPONENT(owner, TextureComponent);
+
+	if (distance.getx() > 0) Texture2->setdirection(0);
+	else if (distance.getx() < 0) Texture2->setdirection(1);
 
 	const Rect& rect1 = Texture1->getrectptr();
 	const Rect& rect2 = Texture2->getrectptr();
@@ -98,4 +106,5 @@ void PuzzleEnemy2::search()
 	if (0 == dotvec.size()) return;
 	state = E_enemyState::move;
 	target = dotvec.at(rand() % dotvec.size());
+	transform2 = GETCOMPONENT(target, TransformComponent);
 }

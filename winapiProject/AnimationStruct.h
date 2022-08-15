@@ -8,7 +8,7 @@ using namespace std;
 class AnimationStruct : public UpdateFunction
 {
 private:
-	bool direction;
+	bool isupdate;
 	double time;
 	double maxtime;
 	double breaktime;
@@ -26,12 +26,12 @@ public:
 	virtual void Update();
 	string getbitmapname();
 
+
+	bool getisupdate();
+	void setisupdate(bool);
+
+
 	void setState(int);
 	void setState(string);
-
-
-
-	bool getdirection() const;
-	void setdirection(bool);
 };
 

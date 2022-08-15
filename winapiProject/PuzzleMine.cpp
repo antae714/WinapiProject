@@ -17,6 +17,7 @@
 #include "SoundManager.h"
 #include "Math.h"
 #include "Macro.h"
+#include "PuzzleData.h"
 
 PuzzleMine::PuzzleMine(GameObject* p_master)
 {
@@ -25,42 +26,21 @@ PuzzleMine::PuzzleMine(GameObject* p_master)
 
 void PuzzleMine::Update()
 {
+	if (PuzzleData::getInstance()->getisclear()) return;
+
 	AllObject* allObject = AllObject::getInstance();
 	pair<ObjIter, ObjIter> temp = allObject->getallObj(E_Objtype::character);
-	TextureComponent* playertxt = nullptr;
-	GameObject* obj = nullptr;
-	for (ObjIter iter = temp.first; iter != temp.second; ++iter)
-	{
-		obj = iter.operator*().second;
-		playertxt = dynamic_cast<TextureComponent*>(obj->getcomponent(E_Component::TextureComponent));
-		break;
-	}
+	GameObject* player = player = temp.first.operator*().second;;
+	TextureComponent* playertxt = dynamic_cast<TextureComponent*>(player->getcomponent(E_Component::TextureComponent));
+	
 
 	TextureComponent* tempcom2 = dynamic_cast<TextureComponent*>(owner->getcomponent(E_Component::TextureComponent));
 
 	if (Math::isin(tempcom2->getrectptr(), playertxt->getrectptr())) {
 
-		dynamic_cast<PlayerScript*>(obj->getscriptptr())->onHit();
+		dynamic_cast<PlayerScript*>(player->getscriptptr())->onHit();
 
 		master->setisActive(false);
 		owner->setisActive(false);
-		/*pair<ObjIter, ObjIter> temp2 = allObject->getallObj(E_Objtype::puzzleliner);
-		for (ObjIter iter = temp2.first; iter != temp2.second; ++iter) {
-			GameObject* obj = iter.operator*().second;
-			LineScript* line = GETSCRIPT(obj, LineScript);
-			if (!line->getisend()) {
-				line->setisend(true);
-				allObject->deleteObj(obj);
-			}
-		}
-		pair<ObjIter, ObjIter> temp3 = allObject->getallObj(E_Objtype::background);
-		for (ObjIter iter = temp3.first; iter != temp3.second; ++iter) {
-			GameObject* obj = iter.operator*().second;
-			UI_Hit* hit = GETSCRIPT(obj, UI_Hit);
-			if (!hit) continue;
-
-			hit->Hit();
-			break;
-		}*/
 	}
 }

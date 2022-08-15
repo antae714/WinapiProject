@@ -17,6 +17,7 @@ private:
 	//∑∫≈ ±€
 	Rect* rect;
 	AnimationStruct* animation;
+	bool direction;
 public:
 	TextureComponent();
 	TextureComponent(const string&, const Rect&);
@@ -36,7 +37,10 @@ public:
 	int getySize() const;
 	AnimationStruct* getanimationptr() const;
 	const AnimationStruct* getanimationconst() const;
+	bool getdirection() const;
 
+
+	void setdirection(bool);
 	void setbitmap	(string, int, int);
 	HBITMAP setbitmap(void*);
 	void setrect	(const Rect&);

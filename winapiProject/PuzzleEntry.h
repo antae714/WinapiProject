@@ -8,11 +8,12 @@ class PuzzleEntry : public Script, public KeyInputFunction
 {
 private:
 	string str;
+	string varias;
 public:
 	PuzzleEntry();
 public:
 	//인풋 매니저에서 불러와서 호출
 	virtual void KeyInput();
-	virtual void Set(string);
+	virtual void Set(string, string);
 };
 

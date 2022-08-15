@@ -1,6 +1,7 @@
 #include "GameData.h"
 #include "Vector2.h"
 #include "Rect.h"
+#include "Macro.h"
 
 GameData::GameData()
 {
@@ -89,6 +90,13 @@ const Vector2& GameData::getcameraPivot()
 
 }
 
+int GameData::getvarias(string p_str) {
+	if (game_varias.find(p_str) != game_varias.end()) {
+		return game_varias.find(p_str)->second;
+	}
+	else return 0;
+}
+
 void GameData::setisgaming(bool p_bool)
 {
 	isgaming = p_bool;
@@ -118,4 +126,16 @@ void GameData::setcameraPivot(const Vector2* p_pivot, const Rect* limit)
 {
 	cameraPivot = p_pivot;
 	cameraLimit = limit;
+}
+
+void GameData::setvarias(string p_str, int p_val) {
+	if (game_varias.find(p_str) != game_varias.end()) {
+		game_varias[p_str] = p_val;
+	}
+	else {
+		game_varias.insert(make_pair(p_str, p_val));
+	}
+}
+void GameData::resetvarias() {
+	game_varias.clear();
 }

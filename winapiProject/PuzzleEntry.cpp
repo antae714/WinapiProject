@@ -14,6 +14,7 @@
 #include "CollisonCompoenet.h"
 #include "PuzzleBoardScript.h"
 #include "Rect.h"
+#include "AnimationStruct.h"
 #include "Macro.h"
 #include <time.h>
 
@@ -55,16 +56,18 @@ void PuzzleEntry::KeyInput()
 	}
 	
 	pair<ObjIter, ObjIter> temp = allObject->getallObj(E_Objtype::character);
-	GameObject* obj = nullptr;
-	for (ObjIter iter = temp.first; iter != temp.second; ++iter)
-	{
-		obj = iter.operator*().second;
-		PlayerScript* tempscr = dynamic_cast<PlayerScript*>(obj->getscriptptr());
-		tempscr->SetMovableArea(900, -900, -900, 900);
-		tempscr->setmoveState(E_PlayerState::Puzzle);
-		tempscr->LifeReset();
-		break;
-	}
+	GameObject* player = nullptr;
+	player = (*temp.first).second;
+	TextureComponent* texture = dynamic_cast<TextureComponent*>(player->getcomponent(E_Component::TextureComponent));
+	texture->setbitmap("character2", 100, 150);
+	texture->setrect(Rect(60, 90));
+	texture->getanimationptr()->setisupdate(false);
+	TransformComponent* transform = dynamic_cast<TransformComponent*>(player->getcomponent(E_Component::TransformComponent));
+	transform->setpivot(Vector2(0, 0));
+	PlayerScript* tempscr = dynamic_cast<PlayerScript*>(player->getscriptptr());
+	tempscr->SetMovableArea(900, -900, -900, 900);
+	tempscr->setmoveState(E_PlayerState::Puzzle);
+	tempscr->LifeReset();
 	//ÆÛÁñ»ý¼º
 	//LevelData::LevelLode("PuzzleBoard");
 	GameObject* Boardobj = new GameObject();
@@ -72,7 +75,7 @@ void PuzzleEntry::KeyInput()
 		Boardobj->pushcomponent(E_Component::TransformComponent, new TransformComponent(Vector2(), 0));
 		Boardobj->pushcomponent(E_Component::TextureComponent, new TextureComponent("backgroundpuzzle", Rect(2318.f, 2318.f)));
 		PuzzleBoardScript* PuzzleBoard = new PuzzleBoardScript();
-		PuzzleBoard->Set(str);
+		PuzzleBoard->Set(str, varias);
 		Boardobj->setscript(PuzzleBoard);
 		allObject->push(E_Objtype::PuzzleBoard, Boardobj);
 	}
@@ -81,20 +84,14 @@ void PuzzleEntry::KeyInput()
 	LevelData::LevelLode("Puzzleheart");
 
 	TextureComponent* limittexture = GETCOMPONENT(Boardobj, TextureComponent);
-
-	dynamic_cast<TextureComponent*>(obj->getcomponent(E_Component::TextureComponent))->setrect(Rect(60, 90));
-
-	TransformComponent* tempcom = dynamic_cast<TransformComponent*>(obj->getcomponent(E_Component::TransformComponent));
-	tempcom->setpivot(Vector2(0, 0));
+	
 	GameData* gameData = GameData::getInstance();
-	gameData->setcameraPivot(tempcom->getpivotptr(), &limittexture->getrectptr());
-
-	PlayerScript* tempscr = dynamic_cast<PlayerScript*>(obj->getscriptptr());
-	tempscr->SetMovableArea(900, -900, -900, 900);
-	tempscr->setmoveState(E_PlayerState::Puzzle);
+	gameData->setcameraPivot(transform->getpivotptr(), &limittexture->getrectptr());
 }
 
-void PuzzleEntry::Set(string p_str)
+void PuzzleEntry::Set(string p_str, string p_varias)
 {
 	str = p_str;
+	varias = p_varias;
 }
+

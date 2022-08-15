@@ -8,6 +8,7 @@
 #include "GameObject.h"
 #include "TextComponent.h"
 #include "Math.h"
+#include "PuzzleData.h"
 
 Timer::Timer()
 {
@@ -15,9 +16,9 @@ Timer::Timer()
 	time = 300;
 }
 
-
 void Timer::Update()
 {
+	if (PuzzleData::getInstance()->getisclear()) return;
 	//return;
 	GameTime* gameTime = GameTime::getInstance();
 	time -= gameTime->getdeltaTime();

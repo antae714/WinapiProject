@@ -285,6 +285,12 @@
     <ClInclude Include="AnimationStruct.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="PuzzleData.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelUpdater.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AllObject.cpp">
@@ -495,6 +501,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="AnimationStruct.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="PuzzleData.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelUpdater.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

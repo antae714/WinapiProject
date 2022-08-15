@@ -3,6 +3,7 @@
 #include "Script.h"
 #include "KeyInputFunction.h"
 using namespace std;
+
 class GameObject;
 class PuzzleDotScript : public Script, public KeyInputFunction
 {

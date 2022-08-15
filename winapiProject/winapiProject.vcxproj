@@ -179,6 +179,7 @@
     <ClInclude Include="KeyInputManager.h" />
     <ClInclude Include="LevelData.h" />
     <ClInclude Include="LevelLoader.h" />
+    <ClInclude Include="LevelUpdater.h" />
     <ClInclude Include="Life.h" />
     <ClInclude Include="LineScript.h" />
     <ClInclude Include="Macro.h" />
@@ -192,6 +193,7 @@
     <ClInclude Include="OnTriggerEvent.h" />
     <ClInclude Include="PlayerScript.h" />
     <ClInclude Include="PuzzleAbility.h" />
+    <ClInclude Include="PuzzleData.h" />
     <ClInclude Include="PuzzleDotScript.h" />
     <ClInclude Include="PuzzleBoardScript.h" />
     <ClInclude Include="PuzzleEnemy1.h" />
@@ -252,6 +254,7 @@
     <ClCompile Include="LevelData.cpp" />
     <ClCompile Include="LevelLoader.cpp" />
     <ClCompile Include="LevelLoader_Script.cpp" />
+    <ClCompile Include="LevelUpdater.cpp" />
     <ClCompile Include="Life.cpp" />
     <ClCompile Include="LineScript.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -264,6 +267,7 @@
     <ClCompile Include="OnTriggerEvent.cpp" />
     <ClCompile Include="PlayerScript.cpp" />
     <ClCompile Include="PuzzleAbility.cpp" />
+    <ClCompile Include="PuzzleData.cpp" />
     <ClCompile Include="PuzzleDotScript.cpp" />
     <ClCompile Include="PuzzleBoardScript.cpp" />
     <ClCompile Include="PuzzleEnemy1.cpp" />

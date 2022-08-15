@@ -10,46 +10,37 @@
 #include "AnimationStruct.h"
 #include "Macro.h"
 
-TextureComponent::TextureComponent()
+TextureComponent::TextureComponent() : bitmap(nullptr), animation(nullptr), rect(new Rect()), direction(false)
 {
-	bitmap = nullptr;
-	animation = nullptr;
-	rect = new Rect();
 }
 
-TextureComponent::TextureComponent(const string& p_str, const Rect& p_rect)
+TextureComponent::TextureComponent(const string& p_str, const Rect& p_rect) : 
+	bitmap(nullptr), animation(nullptr), rect(new Rect()), direction(false)
 {
-	rect = new Rect();
 	*rect = p_rect;
-	animation = nullptr;
 	setbitmap(p_str, p_rect.getweight(), p_rect.getheight());
 }
 
-TextureComponent::TextureComponent(const string& p_str, const Rect& p_rect, int p_x, int p_y)
+TextureComponent::TextureComponent(const string& p_str, const Rect& p_rect, int p_x, int p_y) : 
+	bitmap(nullptr), animation(nullptr), rect(new Rect()), direction(false)
 {
-	rect = new Rect();
 	*rect = p_rect;
-	animation = nullptr;
 	setbitmap(p_str, p_x, p_y);
 }
 
 
-TextureComponent::TextureComponent(const AnimationStruct& p_animation, const Rect& p_rect , int p_x, int p_y)
+TextureComponent::TextureComponent(const AnimationStruct& p_animation, const Rect& p_rect , int p_x, int p_y) : 
+	bitmap(nullptr), animation(new AnimationStruct(p_animation)), rect(new Rect()), direction(false)
 {
-	rect = new Rect();
 	*rect = p_rect;
-	animation = new AnimationStruct(p_animation);
-	bitmap = nullptr;
 
 	setbitmap(animation->getbitmapname(), p_x, p_y);
 }
 
-TextureComponent::TextureComponent(const AnimationStruct& p_animation, const Rect& p_rect)
+TextureComponent::TextureComponent(const AnimationStruct& p_animation, const Rect& p_rect) : 
+	bitmap(nullptr), animation(new AnimationStruct(p_animation)), rect(new Rect()), direction(false)
 {
-	rect = new Rect();
 	*rect = p_rect;
-	animation = new AnimationStruct(p_animation);
-	bitmap = nullptr;
 
 	setbitmap(animation->getbitmapname(), p_rect.getweight(), p_rect.getheight());
 }
@@ -68,7 +59,8 @@ void TextureComponent::Update()
 {
 	if (animation) {
 		animation->Update();
-		setbitmap(animation->getbitmapname(), xSize, ySize);
+		if(animation->getisupdate())
+			setbitmap(animation->getbitmapname(), xSize, ySize);
 	}
 }
 
@@ -105,6 +97,16 @@ AnimationStruct* TextureComponent::getanimationptr() const
 const AnimationStruct* TextureComponent::getanimationconst() const
 {
 	return animation;
+}
+
+bool TextureComponent::getdirection() const
+{
+	return direction;
+}
+
+void TextureComponent::setdirection(bool p_direction)
+{
+	direction = p_direction;
 }
 
 void TextureComponent::setbitmap(string p_str,int p_x,int p_y)

@@ -1,17 +1,35 @@
-﻿  PuzzleBoardScript.cpp
+﻿  BitmapManager.cpp
+  LevelLoader.cpp
+D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(160,13): warning C4003: 함수 같은 매크로 호출 'GETDATA'에 대해 인수가 부족합니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(173,13): warning C4003: 함수 같은 매크로 호출 'GETDATA'에 대해 인수가 부족합니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(174,13): warning C4003: 함수 같은 매크로 호출 'GETDATA'에 대해 인수가 부족합니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(214,13): warning C4003: 함수 같은 매크로 호출 'GETDATA'에 대해 인수가 부족합니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(215,13): warning C4003: 함수 같은 매크로 호출 'GETDATA'에 대해 인수가 부족합니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(226,13): warning C4003: 함수 같은 매크로 호출 'GETDATA'에 대해 인수가 부족합니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(227,13): warning C4003: 함수 같은 매크로 호출 'GETDATA'에 대해 인수가 부족합니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(256,13): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(259,43): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(259,40): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(272,82): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(272,79): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(295,13): warning C4003: 함수 같은 매크로 호출 'GETDATA'에 대해 인수가 부족합니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(301,13): warning C4003: 함수 같은 매크로 호출 'GETDATA'에 대해 인수가 부족합니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(344,77): warning C4244: '인수': 'int'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(344,70): warning C4244: '인수': 'int'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(354,13): warning C4003: 함수 같은 매크로 호출 'GETDATA'에 대해 인수가 부족합니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(355,68): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(355,65): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  LevelLoader_Script.cpp
+  LevelUpdater.cpp
+  PuzzleDotScript.cpp
+D:\VisualStudio2022\winapiProject\winapiProject\PuzzleDotScript.cpp(97,8): error C2065: 'puzzle': 선언되지 않은 식별자입니다.
+  PuzzleBoardScript.cpp
   PuzzleEnemy1.cpp
-D:\VisualStudio2022\winapiProject\winapiProject\PuzzleEnemy1.cpp(34,84): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\PuzzleEnemy1.cpp(34,89): warning C4244: '인수': 'int'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\PuzzleEnemy1.cpp(54,42): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\PuzzleEnemy1.cpp(56,41): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\PuzzleEnemy1.cpp(58,35): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\PuzzleEnemy1.cpp(60,35): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  PuzzleEnemy2.cpp
-D:\VisualStudio2022\winapiProject\winapiProject\PuzzleEnemy2.cpp(46,84): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\PuzzleEnemy2.cpp(46,89): warning C4244: '인수': 'int'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\PuzzleEnemy2.cpp(75,42): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\PuzzleEnemy2.cpp(77,41): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\PuzzleEnemy2.cpp(79,35): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\PuzzleEnemy2.cpp(81,35): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\PuzzleEnemy1.cpp(38,84): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\PuzzleEnemy1.cpp(38,89): warning C4244: '인수': 'int'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\PuzzleEnemy1.cpp(61,42): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\PuzzleEnemy1.cpp(63,41): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\PuzzleEnemy1.cpp(65,35): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\PuzzleEnemy1.cpp(67,35): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  UITransformComponent.cpp
   코드를 생성하고 있습니다...
-  winapiProject.vcxproj -> D:\VisualStudio2022\winapiProject\x64\Debug\winapiProject.exe

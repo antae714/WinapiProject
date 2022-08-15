@@ -20,19 +20,29 @@ LineScript::LineScript() :
 LineScript::LineScript(GameObject* p_first, const GameObject* p_second) :
 	first(p_first), second(p_second), isend(false)
 {
-	GETSCRIPT(first, PuzzleDotScript)->plusrefCount(owner);
 }
 
 LineScript::LineScript(GameObject* p_first, const GameObject* p_second, bool p_isend) :
 	first(p_first), second(p_second), isend(p_isend)
 {
-	GETSCRIPT(first, PuzzleDotScript)->plusrefCount(owner);
 }
 
 
 LineScript::~LineScript()
 {
 	//버튼이 먼저 지워지면 에러
+
+	AllObject* allObject = AllObject::getInstance();
+	pair<ObjIter, ObjIter> temp = allObject->getallObj(E_Objtype::PuzzleBoard);
+	if (temp.first == temp.second) return;
+	pair<ObjIter, ObjIter> temp2 = allObject->getallObj(E_Objtype::character);
+	if (temp2.first == temp2.second) return;
+	GameObject* player = temp2.first.operator*().second;
+	PuzzleBoardScript* puzzle = GETSCRIPT(temp.first.operator*().second, PuzzleBoardScript);
+
+	if(player != second)
+		puzzle->AnswerDelete(first, second);
+
 	GETSCRIPT(first, PuzzleDotScript)->minusrefCount();
 	PuzzleDotScript* PuzzleDot = GETSCRIPT(second, PuzzleDotScript);
 	if (PuzzleDot) {
@@ -66,6 +76,8 @@ void LineScript::Set(int p_first, int p_second, bool p_isend = true)
 void LineScript::Awake(GameObject* p_owner)
 { 
 	Script::Awake(p_owner);
+	if(first)
+		GETSCRIPT(first, PuzzleDotScript)->plusrefCount(owner);
 }
 
 void LineScript::Start()

@@ -17,6 +17,9 @@
 #include "PuzzleEnemy1.h"
 #include "PuzzleEnemy2.h"
 #include "AnimationStruct.h"
+#include "PlayerScript.h"
+#include "GameData.h"
+#include "PuzzleData.h"
 #include <fstream>
 
 PuzzleBoardScript::PuzzleBoardScript()
@@ -38,6 +41,21 @@ bool PuzzleBoardScript::isAnswer(const GameObject* p_first, const GameObject* p_
 	}
 	return false;
 
+}
+
+void PuzzleBoardScript::AnswerDelete(const GameObject* p_first, const GameObject* p_second)
+{
+	int first = GETSCRIPT(p_first, PuzzleDotScript)->getnumber();
+	int second = GETSCRIPT(p_second, PuzzleDotScript)->getnumber();
+	if (first > second) Math::Swap(first, second);
+	pair<int, int> temppair(first, second);
+
+	for (int i = 0; i < answerVec.size(); ++i) {
+		if (temppair == answerVec.at(i)) {
+			answercheck.at(i) = false;
+			break;
+		}
+	}
 }
 
 void PuzzleBoardScript::Start()
@@ -65,8 +83,9 @@ void PuzzleBoardScript::Start()
 	}
 }
 
-void PuzzleBoardScript::Set(const string& type)
+void PuzzleBoardScript::Set(const string& type, string p_varias)
 {
+	varias = p_varias;
 	ifstream file;
 
 	file.open(string("./Resource/Level/") + type + ".txt");
@@ -194,12 +213,22 @@ void PuzzleBoardScript::Set(const string& type)
 	}
 }
 
-
 void PuzzleBoardScript::answer(int p_val)
 {
 	answercheck.at(p_val) = true;
 	for (bool item : answercheck) {
 		if (!item) return;
 	}
+	PuzzleData::getInstance()->setisclear(true);
+
+	AllObject* allObject = AllObject::getInstance();
+	GameObject* player = (*allObject->getallObj(E_Objtype::character).first).second;
+	PlayerScript* tempscr = dynamic_cast<PlayerScript*>(player->getscriptptr());
+	tempscr->setismove(false);
+
 	LevelData::LevelLode(E_Objtype::puzzlecleartest);
+
+	
+	GameData* gamedata = GameData::getInstance();
+	gamedata->setvarias(varias, gamedata->getvarias(varias) + 1);
 }

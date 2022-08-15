@@ -9,12 +9,13 @@ class PuzzleBoardScript : public Script
 private:
 	vector<bool> answercheck;
 	vector<pair<int, int>> answerVec;
+	string varias;
 public:
 	PuzzleBoardScript();
 public:
 	virtual void Start();
-	virtual void Set(const string&);
+	virtual void Set(const string&, string);
 	bool isAnswer(const GameObject*, const GameObject*);
-
+	void AnswerDelete(const GameObject*, const GameObject*);
 	void answer(int);
 };

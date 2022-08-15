@@ -23,6 +23,7 @@ enum class E_Script
 	Life,
 	Timer,
 	FailureCheck,
+	LevelUpdater,
 
 	MAX
 };

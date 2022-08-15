@@ -14,6 +14,8 @@
 #include "MoveMap.h"
 #include "PlayerScript.h"
 #include "LineScript.h"
+#include "TextScript.h"
+#include "LevelUpdater.h"
 #include "CollisonCompoenet.h"
 #include "TextComponent.h"
 #include "UITransformComponent.h"
@@ -156,63 +158,92 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
             string temp;
 
             GETDATA(Value, temp)
-            else
-            {
-                continue;
+        else
+        {
+            continue;
+        }
+
+        tempobj->setscript(AllocScript(enumScr::conversion(temp)));
+
+        if ("MoveMap" == temp)
+        {
+            string src = enumObj::conversion(p_file), dest = "";
+            int x = 0, y = 0;
+
+            GETDATA(Src, src);
+            GETDATA(Dest, dest);
+            GETDATA(X, x, stoi);
+            GETDATA(Y, y, stoi);
+
+            MoveMap* tempscr = dynamic_cast<MoveMap*>(tempobj->getscriptptr());
+            tempscr->Set(src, dest, x, y);
+        }
+
+        if ("PlayerScript" == temp)
+        {
+            TextureComponent* tempcom = dynamic_cast<TextureComponent*>(tempobj->getcomponent(E_Component::TextureComponent));
+
+            int top = WINDOWY / 2 - tempcom->getySize() / 2;
+            int bottom = WINDOWY / -2 + tempcom->getySize() / 2;
+            int left = WINDOWX / -2 + tempcom->getxSize() / 2;
+            int right = WINDOWX / 2 - tempcom->getxSize() / 2;
+
+            GETDATA(Top, top, stoi);
+            GETDATA(Bottom, bottom, stoi);
+            GETDATA(Left, left, stoi);
+            GETDATA(Right, right, stoi);
+
+            PlayerScript* tempscr = dynamic_cast<PlayerScript*>(tempobj->getscriptptr());
+            tempscr->SetMovableArea(top, bottom, left, right);
+        }
+
+        if ("LineScript" == temp)
+        {
+            int first = 0, second = 0;
+            GETDATA(first, first, stoi);
+            GETDATA(second, second, stoi);
+
+            LineScript* tempscr = dynamic_cast<LineScript*>(tempobj->getscriptptr());
+            tempscr->Set(first, second, true);
+        }
+
+        if ("PuzzleEntry" == temp)
+        {
+            string typestr, varias;
+
+            GETDATA(typestr, typestr);
+            GETDATA(Varias, varias);
+            PuzzleEntry* tempscr = dynamic_cast<PuzzleEntry*>(tempobj->getscriptptr());
+            tempscr->Set(typestr, varias);
+        }
+
+        if ("TextScript" == temp) {
+            string dialog, varias = "null";
+            int value = 0;
+
+            TextScript* tempscr = dynamic_cast<TextScript*>(tempobj->getscriptptr());
+
+            GETDATA(Dialog, dialog);
+            GETDATA(Varias, varias);
+
+            if ("null" == varias) {
+                tempscr->Set(dialog);
             }
-
-            tempobj->setscript(AllocScript(enumScr::conversion(temp))); 
-
-            if ("MoveMap" == temp)
-            {
-                string src = enumObj::conversion(p_file), dest = "";
-                int x = 0, y = 0;
-
-                GETDATA(Src, src);
-                GETDATA(Dest, dest);
-                GETDATA(X, x, stoi);
-                GETDATA(Y, y, stoi);
-
-                MoveMap* tempscr = dynamic_cast<MoveMap*>(tempobj->getscriptptr());
-                tempscr->Set(src, dest, x, y);
+            else {
+                GETDATA(Val, value, stoi);
+                tempscr->Set(dialog, varias, value);
             }
+        }
 
-            if ("PlayerScript" == temp)
-            {
-                TextureComponent* tempcom = dynamic_cast<TextureComponent*>(tempobj->getcomponent(E_Component::TextureComponent));
-                
-                int top = WINDOWY / 2 - tempcom->getySize() / 2;
-                int bottom = WINDOWY / -2 + tempcom->getySize() / 2;
-                int left = WINDOWX / -2 + tempcom->getxSize() / 2;
-                int right = WINDOWX / 2 - tempcom->getxSize() / 2;
+        if ("LevelUpdater" == temp) {
+            int level = 0;
 
-                GETDATA(Top, top, stoi);
-                GETDATA(Bottom, bottom, stoi);
-                GETDATA(Left, left, stoi);
-                GETDATA(Right, right, stoi);
+            LevelUpdater* tempscr = dynamic_cast<LevelUpdater*>(tempobj->getscriptptr());
 
-                PlayerScript* tempscr = dynamic_cast<PlayerScript*>(tempobj->getscriptptr());
-                tempscr->SetMovableArea(top, bottom, left, right);
-            }
+            GETDATA(Level, level, stoi);
 
-            if ("LineScript" == temp)
-            {
-                int first = 0, second = 0;
-                GETDATA(first, first, stoi);
-                GETDATA(second, second, stoi);
-
-                LineScript* tempscr = dynamic_cast<LineScript*>(tempobj->getscriptptr());
-                tempscr->Set(first, second, true);
-            }
-
-            if ("PuzzleEntry" == temp)
-            {
-                string typestr;
-
-                GETDATA(typestr, typestr);
-                PuzzleEntry* tempscr = dynamic_cast<PuzzleEntry*>(tempobj->getscriptptr());
-                tempscr->Set(typestr);
-            }
+            tempscr->Set(level);
+        }
         }
 
         else if (key == "Transform")
@@ -233,13 +264,13 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
 
         else if (key == "UITransform")
         {
-        int x = 0, y = 0;
+            int x = 0, y = 0;
 
-        GETDATA(X, x, stoi);
-        GETDATA(Y, y, stoi);
+            GETDATA(X, x, stoi);
+            GETDATA(Y, y, stoi);
 
-        UITransformComponent* tempcomp = new UITransformComponent(Vector2(x, y), 0);
-        tempobj->pushcomponent(E_Component::UITransformComponent, tempcomp);
+            UITransformComponent* tempcomp = new UITransformComponent(Vector2(x, y), 0);
+            tempobj->pushcomponent(E_Component::UITransformComponent, tempcomp);
         }
 
         else if (key == "Texture")
@@ -279,7 +310,7 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
 
             TextureComponent* tempcomp;
             if ("" == name)
-                tempcomp = new TextureComponent(bitmap,Rect((float)width, (float)height), twidth, theight);
+                tempcomp = new TextureComponent(bitmap, Rect((float)width, (float)height), twidth, theight);
             else
                 tempcomp = new TextureComponent(AnimationStruct(time, name, stateName, stateCount), Rect((float)width, (float)height), twidth, theight);
 
@@ -305,25 +336,25 @@ GameObject* LevelLoader::Initialize(E_Objtype p_file, vector<string>* comp, map<
 
         else if (key == "Collison")
         {
-        int width = 0, height = 0;
+            int width = 0, height = 0;
 
-        GETDATA(Width, width, stoi);
-        GETDATA(Height, height, stoi);
+            GETDATA(Width, width, stoi);
+            GETDATA(Height, height, stoi);
 
-        CollisonCompoenet* tempcomp = new CollisonCompoenet(Rect(width, height));
-        tempobj->pushcomponent(E_Component::CollisonCompoenet, tempcomp);
+            CollisonCompoenet* tempcomp = new CollisonCompoenet(Rect(width, height));
+            tempobj->pushcomponent(E_Component::CollisonCompoenet, tempcomp);
         }
 
         else if (key == "Text")
         {
-        int x = 0, y = 0;
-        string filename;
-        GETDATA(X, x, stoi);
-        GETDATA(Y, y, stoi);
-        GETDATA(Filename, filename);
-        TextComponent* tempcomp = new TextComponent(Vector2(x, y), filename);
-        tempobj->pushcomponent(E_Component::TextComponent, tempcomp);
- }
+            int x = 0, y = 0;
+            string filename;
+            GETDATA(X, x, stoi);
+            GETDATA(Y, y, stoi);
+            GETDATA(Filename, filename);
+            TextComponent* tempcomp = new TextComponent(Vector2(x, y), filename);
+            tempobj->pushcomponent(E_Component::TextComponent, tempcomp);
+        }
     }
 
     //AllObject::getInstance()->push(tempobj);

@@ -38,6 +38,8 @@ private:
 	int direction, prev_direction;
 	double animation_time;
 	int animation_phase;
+
+	bool ismove;
 public:
 	PlayerScript();
 public:
@@ -52,6 +54,8 @@ public:
 	int getLife();
 	void AnimationUpdate();
 
+	bool getismove();
+	void setismove(bool);
 
 private:
 	void InputLogic();

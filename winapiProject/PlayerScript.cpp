@@ -47,6 +47,8 @@ PlayerScript::PlayerScript()
 	prev_direction = -1;
 	animation_time = 0;
 	animation_phase = 0;
+
+	ismove = true;
 }
 
 void PlayerScript::Update()
@@ -104,14 +106,16 @@ void PlayerScript::InputLogic()
 
 void PlayerScript::MoveLogic()
 {
+	if (!ismove) return;
 	GameTime* gameTime = GameTime::getInstance();
 	TransformComponent* tempcom = dynamic_cast<TransformComponent*>(owner->getcomponent(E_Component::TransformComponent));
 
 	tempcom->move(Vector2(x, y).GetNormalize() * speed * gameTime->getdeltaTime() * 100);
-	AnimationStruct* animation = GETCOMPONENT(owner, TextureComponent)->getanimationptr();
+	TextureComponent* texture = GETCOMPONENT(owner, TextureComponent);
+	AnimationStruct* animation = texture->getanimationptr();
 
-	if (x > 0) animation->setdirection(0);
-	else if (x < 0) animation->setdirection(1);
+	if (x > 0) texture->setdirection(0);
+	else if (x < 0) texture->setdirection(1);
 
 	if (x == 0 && y == 0) animation->setState("idle");
 	else if (is_dashing) animation->setState("run");
@@ -217,7 +221,7 @@ void PlayerScript::Ability() {
 }
 
 void PlayerScript::Damage() {
-	//return;
+	return;
 	--life;
 }
 
@@ -406,6 +410,16 @@ void PlayerScript::AnimationUpdate() {
 			}
 		}
 	}
+}
+
+bool PlayerScript::getismove()
+{
+	return ismove;
+}
+
+void PlayerScript::setismove(bool p_ismove)
+{
+	ismove = p_ismove;
 }
 
 void PlayerScript::onHit()

@@ -2,7 +2,8 @@
 #include "GameTime.h"
 
 AnimationStruct::AnimationStruct(double p_animation_time, string p_name, vector<string> p_statename, vector<int> p_statecount) :
-	direction(false), time(0), maxtime(p_animation_time), count(1), state(0), name(p_name), statename(p_statename), statecount(p_statecount)
+	time(0), maxtime(p_animation_time), count(1), state(0), name(p_name), 
+	statename(p_statename), statecount(p_statecount), isupdate(true)
 {
 }
 
@@ -41,12 +42,12 @@ void AnimationStruct::setState(string p_str)
 	}
 }
 
-bool AnimationStruct::getdirection() const
+bool AnimationStruct::getisupdate()
 {
-	return direction;
+	return isupdate;
 }
 
-void AnimationStruct::setdirection(bool p_direction)
+void AnimationStruct::setisupdate(bool p_isupdate)
 {
-	direction = p_direction;
+	isupdate = p_isupdate;
 }
