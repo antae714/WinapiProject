@@ -5,7 +5,8 @@
 class LevelUpdater : public Script, public UpdateFunction
 {
 private:
-	int level;
+	//int level;
+	void(LevelUpdater::* FNptr)();
 public:
 	LevelUpdater();
 public:

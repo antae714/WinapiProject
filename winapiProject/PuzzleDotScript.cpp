@@ -93,7 +93,8 @@ void PuzzleDotScript::clickLogic()
 		if (!line->getisend()) {
 			islining = false;
 			line->setisend(true);
-
+			pair<ObjIter, ObjIter> temp = allObject->getallObj(E_Objtype::PuzzleBoard);
+			PuzzleBoardScript* puzzle = GETSCRIPT(temp.first.operator*().second, PuzzleBoardScript);
 			if (puzzle->isAnswer(owner, line->getfirstptr())) {
 				line->setsecond(owner);
 				plusrefCount(obj);

@@ -1,7 +1,9 @@
 // 배경 화면
 Transform,Texture{Bitmap:background_7,Width:1280,Height:720}
 Transform{X:-640},Texture{Width:10,Height:1000},Script{MoveMap,Dest:level2_5,X:500,Y:-200}
+Transform,Script{LevelUpdater,Level:11}
 
 
 // NPC (조력자)
-Transform{X:300,Y:-200},Texture{Bitmap:npc_assistant,Width:115,Height:146},KeyInput,Script{TextScript}
+Transform{X:300,Y:-200},Texture{Bitmap:npc_assistant,Width:115,Height:146},KeyInput,\
+Script{TextScript,Dialog:dialog11,Varias:ending,Val:1}

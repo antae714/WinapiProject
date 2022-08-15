@@ -1,5 +1,10 @@
 #include "PuzzleData.h"
 
+PuzzleData::PuzzleData()
+{
+    isclear = false;
+}
+
 bool PuzzleData::getisclear()
 {
     return isclear;

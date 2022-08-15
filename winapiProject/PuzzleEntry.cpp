@@ -87,6 +87,17 @@ void PuzzleEntry::KeyInput()
 	
 	GameData* gameData = GameData::getInstance();
 	gameData->setcameraPivot(transform->getpivotptr(), &limittexture->getrectptr());
+
+	temp = allObject->getallObj(E_Objtype::PuzzleBoard_UI);
+	for (ObjIter iter = temp.first; iter != temp.second; ++iter)
+	{
+		GameObject* obj = iter.operator*().second;
+		TextureComponent* guidetexture = GETCOMPONENT(obj, TextureComponent);
+		if (tempscr != nullptr) {
+			guidetexture->setbitmap(str, guidetexture->getxSize(), guidetexture->getySize());
+			break;
+		}
+	}
 }
 
 void PuzzleEntry::Set(string p_str, string p_varias)

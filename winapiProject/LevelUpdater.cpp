@@ -25,24 +25,25 @@ LevelUpdater::LevelUpdater()
 
 void LevelUpdater::Update()
 {
-	switch (level) {
-	case 0: level1_1(); break;
-	case 1: level1_2(); break;
-	case 2: level1_3(); break;
-	case 3: level1_4(); break;
-	case 4: level1_5(); break;
-	case 5: level1_6(); break;
-	case 6: level2_1(); break;
-	case 7: level2_2(); break;
-	case 8: level2_3(); break;
-	case 9: level2_4(); break;
-	case 10: level2_5(); break;
-	case 11: level2_6(); break;
-	}
+	(this->*FNptr)();
 }
 void LevelUpdater::Set(int p_level)
 {
-	level = p_level;
+	//level = p_level;
+	switch (p_level) {
+	case 0: FNptr = &LevelUpdater::level1_1; break;
+	case 1: FNptr = &LevelUpdater::level1_2; break;
+	case 2: FNptr = &LevelUpdater::level1_3; break;
+	case 3: FNptr = &LevelUpdater::level1_4; break;
+	case 4: FNptr = &LevelUpdater::level1_5; break;
+	case 5: FNptr = &LevelUpdater::level1_6; break;
+	case 6: FNptr = &LevelUpdater::level2_1; break;
+	case 7: FNptr = &LevelUpdater::level2_2; break;
+	case 8: FNptr = &LevelUpdater::level2_3; break;
+	case 9: FNptr = &LevelUpdater::level2_4; break;
+	case 10: FNptr = &LevelUpdater::level2_5; break;
+	case 11: FNptr = &LevelUpdater::level2_6; break;
+	}
 }
 
 void LevelUpdater::level1_1()

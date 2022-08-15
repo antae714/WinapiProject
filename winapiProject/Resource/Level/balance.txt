@@ -7,7 +7,5 @@ Dot,34,60,0,
 Dot,60,66,1,
 Dot,66,75,0,
 
-Enenmy,chaser,55,
-Enenmy,Ant,40,
-
-//초기속도는 각각 110,80이엿습니다
+Enenmy,chaser,
+Enenmy,Ant,
