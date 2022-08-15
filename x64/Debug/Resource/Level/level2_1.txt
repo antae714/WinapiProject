@@ -1,7 +1,9 @@
 // 배경 화면
 Transform,Texture{Bitmap:background_4,Width:1280,Height:720}
 Transform{X:640},Texture{Width:10,Height:1000},Script{MoveMap,Dest:level2_2,X:-500,Y:-200}
+Transform,Script{LevelUpdater,Level:6}
 
 
 // NPC (퍼즐)
-Transform{Y:-150},Texture{Bitmap:npc,Width:100,Height:170},KeyInput,Script{PuzzleEntry}
+Transform{Y:-150},Texture{Bitmap:npc2_2,Width:300,Height:300},KeyInput,\
+Script{TextScript,Dialog:dialog8,Varias:level2_1_npc,Val:1}

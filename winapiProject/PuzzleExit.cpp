@@ -12,6 +12,9 @@
 #include "AnimationStruct.h"
 #include "PuzzleData.h"
 #include "GameData.h"
+#include "CollisonCompoenet.h"
+#include "Macro.h"
+#include "GameData.h"
 
 PuzzleExit::PuzzleExit()
 {
@@ -41,6 +44,8 @@ void PuzzleExit::Input()
 	LevelData::DeleteLevel(E_Objtype::puzzlecleartest);
 
 	GameObject* player = (*allObject->getallObj(E_Objtype::character).first).second;
+	CollisonCompoenet* coll = GETCOMPONENT(player, CollisonCompoenet);
+	coll->setrect(Rect(100, 150));
 	TextureComponent* texture = dynamic_cast<TextureComponent*>(player->getcomponent(E_Component::TextureComponent));
 
 	texture->setrect(Rect(100, 150));

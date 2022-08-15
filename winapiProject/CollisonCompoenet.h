@@ -23,4 +23,8 @@ public:
 
 	const Rect& getrect();
 	void setistriger(CollisonCompoenet* , bool);
+
+	void setrect(const Rect&);
+private:
+	void transformset();
 };

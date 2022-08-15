@@ -2,7 +2,9 @@
 Transform,Texture{Bitmap:background_4,Width:1280,Height:720}
 Transform{X:-640},Texture{Width:10,Height:1000},Script{MoveMap,Dest:level2_1,X:500,Y:-200}
 Transform{X:640},Texture{Width:10,Height:1000},Script{MoveMap,Dest:level2_3,X:-500,Y:-200}
+Transform,Script{LevelUpdater,Level:7}
 
 
 // NPC (퍼즐)
-Transform{Y:-150},Texture{Bitmap:npc,Width:100,Height:170},KeyInput,Script{PuzzleEntry}
+Transform{Y:-150},Texture{Bitmap:npc2_1,Width:300,Height:300},KeyInput,\
+Script{TextScript,Dialog:dialog7,Varias:level2_2_npc,Val:1}

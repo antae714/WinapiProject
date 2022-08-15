@@ -30,6 +30,7 @@ private:
 
 	double cooldown;
 	bool cooldown_sw;
+	bool first_sw;
 
 	int life;
 

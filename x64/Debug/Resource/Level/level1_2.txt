@@ -2,7 +2,8 @@
 Transform,Texture{Bitmap:background_2,Width:1280,Height:720}
 Transform{X:-640},Texture{Width:10,Height:1000},Script{MoveMap,Dest:level1_1,X:500,Y:-200}
 Transform{X:640},Texture{Width:10,Height:1000},Script{MoveMap,Dest:level1_3,X:-500,Y:-200}
-
+Transform,Script{LevelUpdater,Level:1}
 
 // NPC (조력자)
-Transform{X:300,Y:-200},Texture{Bitmap:npc_assistant,Width:115,Height:146},KeyInput,Script{TextScript}
+Transform{X:300,Y:-200},Texture{Bitmap:npc_assistant,Width:115,Height:146},KeyInput,\
+Script{TextScript,Dialog:dialog1,Varias:level1_2_npc,Val:1}

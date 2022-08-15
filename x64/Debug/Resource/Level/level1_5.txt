@@ -2,7 +2,17 @@
 Transform,Texture{Bitmap:background_3,Width:1280,Height:720}
 Transform{X:-640},Texture{Width:10,Height:1000},Script{MoveMap,Dest:level1_4,X:500,Y:-200}
 Transform{X:640},Texture{Width:10,Height:1000},Script{MoveMap,Dest:level1_6,X:-500,Y:-200}
+Transform,Script{LevelUpdater,Level:4}
+
+
+Transform{X:640},Texture{Bitmap:Red,Width:300,Height:720},Collison{Width:300,Height:720}
 
 
 // NPC (퍼즐)
-Transform{Y:-150},Texture{Bitmap:npc1_3,Width:336,Height:225},KeyInput,Script{PuzzleEntry}
+Transform{Y:-150},Texture{Bitmap:npc1_3,Width:336,Height:225},KeyInput,\
+Script{TextScript,Dialog:dialog4,Varias:level1_5_npc,Val:1}
+
+
+// NPC (조력자)
+Transform{X:400,Y:-200},Texture{Bitmap:npc_assistant,Width:115,Height:146},KeyInput,\
+Script{TextScript,Dialog:dialog4_3}

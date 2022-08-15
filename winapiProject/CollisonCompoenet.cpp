@@ -28,11 +28,7 @@ CollisonCompoenet::~CollisonCompoenet()
 
 void CollisonCompoenet::Start()
 {
-	if (Component* tempcomponenet = owner->getcomponent(E_Component::TransformComponent)) {
-		TransformComponent* temp = dynamic_cast<TransformComponent*>(tempcomponenet);
-		rect->setpivotptr(temp->getpivotptr());
-		rect->setrotateptr(temp->getrotateptr());
-	}
+	transformset();
 }
 
 GameObject* CollisonCompoenet::CollisonLogic()
@@ -106,5 +102,20 @@ void CollisonCompoenet::setistriger(CollisonCompoenet* other,bool p_istriger)
 	else {
 		this->OnCollisonExit(other);
 		other->OnCollisonExit(this);
+	}
+}
+
+void CollisonCompoenet::setrect(const Rect& p_rect)
+{
+	*rect = p_rect;
+	transformset();
+}
+
+void CollisonCompoenet::transformset()
+{
+	if (Component* tempcomponenet = owner->getcomponent(E_Component::TransformComponent)) {
+		TransformComponent* temp = dynamic_cast<TransformComponent*>(tempcomponenet);
+		rect->setpivotptr(temp->getpivotptr());
+		rect->setrotateptr(temp->getrotateptr());
 	}
 }

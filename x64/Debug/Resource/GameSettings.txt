@@ -1,5 +1,0 @@
-Currency: 100
-Switch_1: 1
-Switch_2: 0
-Switch_3: 1
-PuzzleData:0

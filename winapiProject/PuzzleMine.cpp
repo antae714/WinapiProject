@@ -16,6 +16,7 @@
 #include "Vector2.h"
 #include "SoundManager.h"
 #include "Math.h"
+#include "Rect.h"
 #include "Macro.h"
 #include "PuzzleData.h"
 
@@ -31,12 +32,10 @@ void PuzzleMine::Update()
 	AllObject* allObject = AllObject::getInstance();
 	pair<ObjIter, ObjIter> temp = allObject->getallObj(E_Objtype::character);
 	GameObject* player = player = temp.first.operator*().second;;
-	TextureComponent* playertxt = dynamic_cast<TextureComponent*>(player->getcomponent(E_Component::TextureComponent));
-	
+	TransformComponent* playercomp = dynamic_cast<TransformComponent*>(player->getcomponent(E_Component::TransformComponent));
 
 	TextureComponent* tempcom2 = dynamic_cast<TextureComponent*>(owner->getcomponent(E_Component::TextureComponent));
-
-	if (Math::isin(tempcom2->getrectptr(), playertxt->getrectptr())) {
+	if (Math::isin(tempcom2->getrectptr(), Rect(30, 70, playercomp))) {
 
 		dynamic_cast<PlayerScript*>(player->getscriptptr())->onHit();
 

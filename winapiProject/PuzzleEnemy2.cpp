@@ -40,7 +40,7 @@ void PuzzleEnemy2::Init()
 	pivotset();
 	search();
 	transform2 = GETCOMPONENT(target, TransformComponent);
-	attacktime = 5;
+	attacktime = 6;
 }
 
 void PuzzleEnemy2::movestate()
@@ -70,7 +70,7 @@ void PuzzleEnemy2::attacktate()
 	if (attacktime <=0) {
 		GETSCRIPT(target, PuzzleDotScript)->cut();
 		pivotset();
-		attacktime = 5;
+		attacktime = 6;
 		state = E_enemyState::search;
 	}
 }

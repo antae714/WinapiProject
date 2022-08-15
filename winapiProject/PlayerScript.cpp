@@ -187,7 +187,8 @@ void PlayerScript::AbilityUpdate() {
 	pair<ObjIter, ObjIter> temp = allObject->getallObj(E_Objtype::puzzleMine);
 	Vector2 playerpos = dynamic_cast<TransformComponent*>(owner->getcomponent(E_Component::TransformComponent))->getpivot();
 
-	if (cooldown > 500) {
+	if (cooldown > 500 || (first_sw && cooldown > 300)) {
+		first_sw = false;
 		TextureComponent* texture = dynamic_cast<TextureComponent*>(owner->getcomponent(E_Component::TextureComponent));
 		texture->setbitmap("character2", texture->getxSize(), texture->getySize());
 		cooldown_sw = false;
@@ -221,12 +222,13 @@ void PlayerScript::Ability() {
 }
 
 void PlayerScript::Damage() {
-	return;
+	//return;
 	--life;
 }
 
 void PlayerScript::LifeReset() {
 	life = 5;
+	first_sw = true;
 }
 
 int PlayerScript::getLife() {
