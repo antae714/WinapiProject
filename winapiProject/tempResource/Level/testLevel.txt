@@ -1,9 +1,0 @@
-// 배경 화면
-Transform,Texture{Bitmap:background,Width:1280,Height:720}
-Transform{X:640},Texture{Bitmap:Red,Width:10,Height:1000},Script{MoveMap,Dest:testLevel2,X:-500,Y:-200}
-
-
-Transform{X:-300,Y:-200},Texture{Bitmap:npc_assistant,Width:100,Height:149},KeyInput,Script{TextScript}
-
-// NPC (퍼즐)
-Transform{X:400,Y:-150},Texture{Bitmap:npc1_1,Width:218,Height:185},KeyInput,Script{PuzzleEntry}

@@ -1,2 +1,0 @@
-// 배경
-Transform,Texture{Bitmap:backgroundpuzzle,Width:2318,Height:2318},Script{PuzzleBoardScript,typestr:balance}

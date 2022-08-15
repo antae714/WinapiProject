@@ -1,5 +1,0 @@
-UITransform{X:270,Y:25},Texture{Bitmap:heart,Width:27,Height:27}
-UITransform{X:235,Y:25},Texture{Bitmap:heart,Width:27,Height:27}
-UITransform{X:200,Y:25},Texture{Bitmap:heart,Width:27,Height:27}
-UITransform{X:165,Y:25},Texture{Bitmap:heart,Width:27,Height:27}
-UITransform{X:130,Y:25},Texture{Bitmap:heart,Width:27,Height:27}

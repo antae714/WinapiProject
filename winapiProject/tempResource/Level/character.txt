@@ -1,7 +1,0 @@
-// 캐릭터
-//Transform{X:-400,Y:-200},Texture{Bitmap:character_idle_1,Width:100,Height:150},Script{PlayerScript,Top:-150,Bottom:-250},Collison{Width:100,Height:150}
-// 캐릭터
-Transform{X:-400,Y:-200},\
-Texture{AnimationName:character,state_0:idle,count_0:4,state_1:move,count_1:4,state_2:run,count_2:5,Time:0.3,Width:100,Height:150},\
-Script{PlayerScript,Top:-150,Bottom:-250},\
-Collison{Width:100,Height:150}

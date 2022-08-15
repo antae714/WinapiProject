@@ -1,8 +1,0 @@
-// 배경 화면
-Transform,Texture{Bitmap:background_5,Width:1280,Height:720}
-Transform{X:-640},Texture{Width:10,Height:1000},Script{MoveMap,Dest:level2_2,X:500,Y:-200}
-Transform{X:640},Texture{Width:10,Height:1000},Script{MoveMap,Dest:level2_4,X:-500,Y:-200}
-
-
-// NPC (조력자)
-Transform{X:300,Y:-200},Texture{Bitmap:npc_assistant,Width:115,Height:146},KeyInput,Script{TextScript}
