@@ -1,5 +1,6 @@
 #include "FailureCheck.h"
 #include "LevelData.h"
+#include "PuzzleData.h"
 #include "AllObject.h"
 #include "E_Objtype.h"
 #include "E_Component.h"
@@ -50,10 +51,13 @@ void FailureCheck::Update()
 
 	if (!sw) return;
 
+	PuzzleData::getInstance()->setisclear(true);
 	GameObject* gameObject = new GameObject();
 	gameObject->pushcomponent(E_Component::UITransformComponent, new UITransformComponent(Vector2(640,360), 0));
-	gameObject->pushcomponent(E_Component::TextureComponent, new TextureComponent("Red", Rect(200.f, 100.f), 200, 100));
+	gameObject->pushcomponent(E_Component::TextureComponent, new TextureComponent("puzzlefailure", Rect(400.f, 200.f), 400, 200));
 
 	gameObject->Start();
 	allObject->push(E_Objtype::PuzzleBoard_UI, gameObject);
+
+	owner->setisActive(false);
 }

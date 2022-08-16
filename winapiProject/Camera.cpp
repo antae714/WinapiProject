@@ -152,19 +152,59 @@ void Camera::TextRender(MemDc& p_memdc, const TextComponent* p_text)
 {
 	Vector2 point = p_text->getpoint();
 	string text = p_text->getText();
-	int strlength = p_text->getnownum() + 1;
-	MyBitmap tempBitmap(p_memdc(), strlength * 11, 30);
+	string temptext;
+	int strlength = p_text->getnownum();
+	int tempy = 0;
+	int tempxlength = 40;
 	MemDc greenDc(p_memdc(), green);
+
+
+	for (int i = 0; i < text.size();++i) {
+		if ('-' != text.at(i))
+		{
+			temptext.push_back(text.at(i));
+		}
+		else {
+			text.erase(0, i + 2);
+			if (strlength < (i + 1)) strlength = 0;
+			else if (text.size() < strlength) strlength = text.size();
+			else strlength -= i + 1;
+			
+			break;
+		}
+	}
+
+	MyBitmap tempBitmap(p_memdc(), (strlength + 10) * 11, 30);
 	MemDc tempdc(p_memdc(), tempBitmap());
 
 	HFONT font = CreateFont(30, 10, 0, 0, 0, 0, 0, 0, HANGEUL_CHARSET, 0, 0, NONANTIALIASED_QUALITY, 0, TEXT("굴림"));
 	HFONT oldfont = (HFONT)SelectObject(tempdc(), font);;
-	//DeleteObject((HFONT)SelectObject(tempdc(), font));
+
+	SetBkColor(tempdc(), MaskColor);
+	StretchBlt(tempdc(), 0, 0, temptext.size() * 11, 30, greenDc(), 0, 0, 1, 1, SRCCOPY);
+	TextOut(tempdc(), 0, 0, temptext.c_str(), temptext.size());
+	transparentBlt(p_memdc(), 760, 480, temptext.size() * 11, 30, tempdc());
+
+	while (strlength > tempxlength) {
+		while (text.at(tempxlength) < 0) {
+			--tempxlength;
+		}
+		SetBkColor(tempdc(), MaskColor);
+		StretchBlt(tempdc(), 0, 0, tempxlength * 11, 30, greenDc(), 0, 0, 1, 1, SRCCOPY);
+		TextOut(tempdc(), 0, 0, text.c_str(), tempxlength);
+		transparentBlt(p_memdc(), point.getx(), point.gety() + tempy, tempxlength * 11, 30, tempdc());
+		tempy += 30;
+		strlength -= tempxlength;
+		text.erase(0, tempxlength);
+		tempxlength = 40;
+	}
+
 
 	SetBkColor(tempdc(), MaskColor);
 	StretchBlt(tempdc(), 0, 0, strlength * 11, 30, greenDc(), 0, 0, 1, 1, SRCCOPY);
 	TextOut(tempdc(), 0, 0, text.c_str(), strlength);
-	transparentBlt(p_memdc(), point.getx(), point.gety(), strlength * 11, 30, tempdc());
+	transparentBlt(p_memdc(), point.getx(), point.gety() + tempy, strlength * 11, 30, tempdc());
+
 
 	SelectObject(tempdc(), oldfont);
 	DeleteObject(font);

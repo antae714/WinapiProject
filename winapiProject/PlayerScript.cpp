@@ -13,6 +13,7 @@
 #include "Macro.h"
 #include "LineScript.h"
 #include "UI_Hit.h"
+#include "Rect.h"
 #include "AnimationStruct.h"
 
 #define VK_A 0x41
@@ -108,9 +109,10 @@ void PlayerScript::MoveLogic()
 {
 	if (!ismove) return;
 	GameTime* gameTime = GameTime::getInstance();
-	TransformComponent* tempcom = dynamic_cast<TransformComponent*>(owner->getcomponent(E_Component::TransformComponent));
 
+	TransformComponent* tempcom = dynamic_cast<TransformComponent*>(owner->getcomponent(E_Component::TransformComponent));
 	tempcom->move(Vector2(x, y).GetNormalize() * speed * gameTime->getdeltaTime() * 100);
+
 	TextureComponent* texture = GETCOMPONENT(owner, TextureComponent);
 	AnimationStruct* animation = texture->getanimationptr();
 
@@ -187,10 +189,26 @@ void PlayerScript::AbilityUpdate() {
 	pair<ObjIter, ObjIter> temp = allObject->getallObj(E_Objtype::puzzleMine);
 	Vector2 playerpos = dynamic_cast<TransformComponent*>(owner->getcomponent(E_Component::TransformComponent))->getpivot();
 
-	if (cooldown > 500 || (first_sw && cooldown > 300)) {
+	pair<ObjIter, ObjIter> temp2 = allObject->getallObj(E_Objtype::character);
+	for (ObjIter iter = temp2.first; iter != temp2.second; ++iter)
+	{
+		GameObject* obj = iter.operator*().second;
+		if (dynamic_cast<PlayerScript*>(obj->getscriptptr())) continue;
+
+		dynamic_cast<TransformComponent*>(obj->getcomponent(E_Component::TransformComponent))->setpivot(Vector2(playerpos.getx(), 60 + playerpos.gety()));
+	}
+
+	if (cooldown > 500 ||
+		(first_sw && cooldown > 300)) {
 		first_sw = false;
-		TextureComponent* texture = dynamic_cast<TextureComponent*>(owner->getcomponent(E_Component::TextureComponent));
-		texture->setbitmap("character2", texture->getxSize(), texture->getySize());
+		for (ObjIter iter = temp2.first; iter != temp2.second; ++iter)
+		{
+			GameObject* obj = iter.operator*().second;
+			if (dynamic_cast<PlayerScript*>(obj->getscriptptr())) continue;
+
+			allObject->deleteObj(obj);
+		}
+
 		cooldown_sw = false;
 
 		for (ObjIter iter = temp.first; iter != temp.second; ++iter)
@@ -215,8 +233,14 @@ void PlayerScript::AbilityUpdate() {
 
 void PlayerScript::Ability() {
 
-	TextureComponent* texture = dynamic_cast<TextureComponent*>(owner->getcomponent(E_Component::TextureComponent));
-	texture->setbitmap("character3", texture->getxSize(), texture->getySize());
+	Vector2 playerpos = dynamic_cast<TransformComponent*>(owner->getcomponent(E_Component::TransformComponent))->getpivot();
+
+	AllObject* allObject = AllObject::getInstance();
+	GameObject* gameObject = new GameObject();
+	gameObject->pushcomponent(E_Component::TransformComponent, new TransformComponent(Vector2(playerpos.getx(), 60 + playerpos.gety()), 0));
+	gameObject->pushcomponent(E_Component::TextureComponent, new TextureComponent("character3", Rect(30.f, 30.f)));
+	allObject->push(E_Objtype::character, gameObject);
+
 	cooldown = 0;
 	cooldown_sw = true;
 }

@@ -5,7 +5,7 @@ Transform{X:640},Texture{Width:10,Height:1000},Script{MoveMap,Dest:level1_6,X:-5
 Transform,Script{LevelUpdater,Level:4}
 
 
-Transform{X:640},Texture{Bitmap:Red,Width:300,Height:720},Collison{Width:300,Height:720}
+Transform{X:640},Texture{Bitmap:npc,Width:300,Height:720},Collison{Width:300,Height:720}
 
 
 // NPC (퍼즐)

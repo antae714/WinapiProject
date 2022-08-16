@@ -63,7 +63,7 @@ void PuzzleEntry::KeyInput()
 	TextureComponent* texture = GETCOMPONENT(player, TextureComponent);
 	texture->setbitmap("character2", 100, 150);
 	texture->setrect(Rect(60, 90));
-	texture->getanimationptr()->setisupdate(false);
+	//texture->getanimationptr()->setisupdate(false);
 
 	TransformComponent* transform = GETCOMPONENT(player, TransformComponent);
 	transform->setpivot(Vector2(0, 0));

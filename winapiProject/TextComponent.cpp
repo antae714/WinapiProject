@@ -59,10 +59,9 @@ bool TextComponent::beforeLine()
 
 void TextComponent::nextnownum()
 {
-	if (nownum < Text.at(nowLine).size() -1) {
-		++nownum;
-		if(0 > Text.at(nowLine).at(nownum))
-			++nownum;
+	if (nownum < Text.at(nowLine).size()) {
+		if (++nownum == Text.at(nowLine).size()) return;
+		if (0 > Text.at(nowLine).at(nownum)) ++nownum;
 	}
 }
 

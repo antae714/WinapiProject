@@ -4,6 +4,7 @@
 #include "GameStart.h"
 #include "GameExit.h"
 #include "MoveMap.h"
+#include "MoveMap2.h"
 #include "PuzzleBoardScript.h"
 #include "PuzzleDotScript.h"
 #include "PuzzleEntry.h"
@@ -27,6 +28,8 @@ Script* LevelLoader::AllocScript(const E_Script& p_enum)
 		return new GameExit();
 	case E_Script::MoveMap:
 		return new MoveMap();
+	case E_Script::MoveMap2:
+		return new MoveMap2();
 	case E_Script::PuzzleBoardScript:
 		return new PuzzleBoardScript();
 	case E_Script::PuzzleDotScript:
@@ -36,7 +39,7 @@ Script* LevelLoader::AllocScript(const E_Script& p_enum)
 	case E_Script::PuzzleExit:
 		return new PuzzleExit();
 	case E_Script::LineScript:
-		return new LineScript();
+		return new LineScript(); 
 	case E_Script::PlayerScript:
 		return new PlayerScript();
 	case E_Script::TextScript:

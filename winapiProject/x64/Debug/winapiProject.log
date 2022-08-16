@@ -1,2 +1,6 @@
-﻿  PuzzleMine.cpp
+﻿  Camera.cpp
+D:\VisualStudio2022\winapiProject\winapiProject\Camera.cpp(170,61): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\Camera.cpp(184,85): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\Camera.cpp(185,59): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\Camera.cpp(186,72): warning C4267: '인수': 'size_t'에서 'const int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   winapiProject.vcxproj -> D:\VisualStudio2022\winapiProject\x64\Debug\winapiProject.exe

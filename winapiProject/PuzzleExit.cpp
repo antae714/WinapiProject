@@ -50,7 +50,7 @@ void PuzzleExit::Input()
 
 	texture->setrect(Rect(100, 150));
 
-	texture->getanimationptr()->setisupdate(true);
+	//texture->getanimationptr()->setisupdate(true);
 	TransformComponent* tempcom = dynamic_cast<TransformComponent*>(player->getcomponent(E_Component::TransformComponent));
 	tempcom->setpivot(Vector2(0, -200));
 	GameData* gameData = GameData::getInstance();

@@ -1,3 +1,5 @@
 // 배경 화면
 Transform,Texture{Bitmap:background,Width:1280,Height:720}
-Transform{X:640},Texture{Width:10,Height:1000},Script{MoveMap,Dest:level1_2,X:-500,Y:-200}
+Transform{X:640},Texture{Width:10,Height:1000},Script{MoveMap,Dest:level1_2,X:-500,Y:-200}Transform{Y:1},Texture{Width:275,Height:360},KeyInput,Script{MoveMap2,Dest:level2_3,X:0,Y:-200}
+
+Transform{Y:100},Texture{Bitmap:Tutorial0,Width:500,Height:197}

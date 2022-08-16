@@ -45,10 +45,12 @@ enum class E_Bitmap
 	character_run2_6,
 	character2,
 	character3,
-	puzzlebutton,
+	puzzlebutton, 
 	puzzle_ui,
 	puzzlecleartestimg,
-	Starbutton,
+	puzzleclear,
+	puzzlefailure,
+	Starbutton, 
 	Starbutton_Selected,
 	Starbutton_Fake,
 	heart,
@@ -86,15 +88,20 @@ enum class E_Bitmap
 	chaser,
 	Ant_move_1,
 	Ant_move_2,
+	Tutorial0,
+	Tutorial1,
+	Tutorial2,
+	Tutorial3,
+	Tutorial4,
+	elevator,
 
 	MAX
 };
 
 
-namespace enumBitmap {
-	;
-	string conversion(const E_Bitmap&);
-	E_Bitmap conversion(const string&);
+namespace enumBitmap {;
+string conversion(const E_Bitmap&);
+E_Bitmap conversion(const string&);
 
-	string toFile(const E_Bitmap&);
+string toFile(const E_Bitmap&);
 }
