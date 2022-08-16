@@ -291,6 +291,9 @@
     <ClInclude Include="AnimationStruct.h">
       <Filter>헤더 파일\BaseData</Filter>
     </ClInclude>
+    <ClInclude Include="MoveMap2.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AllObject.cpp">
@@ -508,6 +511,9 @@
     </ClCompile>
     <ClCompile Include="AnimationStruct.cpp">
       <Filter>소스 파일\BaseData</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveMap2.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -4,6 +4,7 @@
 #include "Macro.h"
 #include "GameObject.h"
 #include "E_Component.h"
+#include "TextureComponent.h"
 #include "GameTime.h"
 #include <fstream>
 
@@ -14,6 +15,12 @@ TextComponent::TextComponent() :
 
 TextComponent::TextComponent(const Vector2& p_pint, const string& p_text) :
 	point(new Vector2(p_pint)), nowLine(0), nownum(0)
+{
+	FileSet(p_text);
+}
+
+TextComponent::TextComponent(const Vector2& p_pint, const string& p_text, bool p_isdialog) :
+	point(new Vector2(p_pint)), nowLine(0), nownum(0), isdialog(p_isdialog)
 {
 	FileSet(p_text);
 }
@@ -38,6 +45,23 @@ bool TextComponent::nextLine()
 	if (nowLine < Text.size() - 1) {
 		++nowLine;
 		nownum = 0;
+		string temptext;
+		string text = Text.at(nowLine);
+		for (int i = 0; i < text.size(); ++i) {
+			if ('-' != text.at(i))
+			{
+				temptext.push_back(text.at(i));
+			}
+			else {
+				if ("ÁÖÀÎ°ø " == temptext) {
+					GETCOMPONENT(owner, TextureComponent)->setdirection(true);
+				}
+				else {
+					GETCOMPONENT(owner, TextureComponent)->setdirection(false);
+				}
+				break;
+			}
+		}
 		return true;
 	}
 	else {
@@ -102,6 +126,11 @@ int TextComponent::getnowLine() const
 int TextComponent::getnownum() const
 {
 	return nownum;
+}
+
+bool TextComponent::getisdialog() const
+{
+	return isdialog;
 }
 
 void TextComponent::setpoint(const Vector2& p_point)

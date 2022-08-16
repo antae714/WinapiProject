@@ -189,6 +189,7 @@
     <ClInclude Include="Matrix3x3.h" />
     <ClInclude Include="MemDc.h" />
     <ClInclude Include="MoveMap.h" />
+    <ClInclude Include="MoveMap2.h" />
     <ClInclude Include="MyBitmap.h" />
     <ClInclude Include="OnTriggerEvent.h" />
     <ClInclude Include="PlayerScript.h" />
@@ -263,6 +264,7 @@
     <ClCompile Include="Matrix3x3.cpp" />
     <ClCompile Include="MemDc.cpp" />
     <ClCompile Include="MoveMap.cpp" />
+    <ClCompile Include="MoveMap2.cpp" />
     <ClCompile Include="MyBitmap.cpp" />
     <ClCompile Include="OnTriggerEvent.cpp" />
     <ClCompile Include="PlayerScript.cpp" />

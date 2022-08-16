@@ -13,10 +13,11 @@ private:
 	int nowLine;
 	int nownum;
 	double accumulateTime;
-
+	bool isdialog;
 public:
 	TextComponent();
 	TextComponent(const Vector2&, const string&);
+	TextComponent(const Vector2&, const string&, bool);
 	virtual ~TextComponent();
 
 public:
@@ -31,6 +32,7 @@ public:
 	string getText() const;
 	int getnowLine() const;
 	int getnownum() const;
+	bool getisdialog() const;
 
 
 	void setpoint(const Vector2&);

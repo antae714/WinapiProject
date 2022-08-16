@@ -14,6 +14,7 @@
 #include "MemDc.h"
 #include "MyBitmap.h"
 #include "Macro.h"
+#include "E_Objtype.h"
 
 
 #pragma warning(disable: 4244)
@@ -33,7 +34,6 @@ void Camera::Render()
 	realRender();
 }
 
-#include "E_Objtype.h"
 void Camera::beforeRender()
 {
 	HDC hdc;
@@ -156,9 +156,8 @@ void Camera::TextRender(MemDc& p_memdc, const TextComponent* p_text)
 	int strlength = p_text->getnownum();
 	int tempy = 0;
 	int tempxlength = 40;
-	MemDc greenDc(p_memdc(), green);
 
-
+	if(p_text->getisdialog())
 	for (int i = 0; i < text.size();++i) {
 		if ('-' != text.at(i))
 		{
@@ -174,33 +173,38 @@ void Camera::TextRender(MemDc& p_memdc, const TextComponent* p_text)
 		}
 	}
 
+	MemDc greenDc(p_memdc(), green);
 	MyBitmap tempBitmap(p_memdc(), (strlength + 10) * 11, 30);
 	MemDc tempdc(p_memdc(), tempBitmap());
+	SetBkColor(tempdc(), MaskColor);
 
 	HFONT font = CreateFont(30, 10, 0, 0, 0, 0, 0, 0, HANGEUL_CHARSET, 0, 0, NONANTIALIASED_QUALITY, 0, TEXT("굴림"));
 	HFONT oldfont = (HFONT)SelectObject(tempdc(), font);;
 
-	SetBkColor(tempdc(), MaskColor);
-	StretchBlt(tempdc(), 0, 0, temptext.size() * 11, 30, greenDc(), 0, 0, 1, 1, SRCCOPY);
-	TextOut(tempdc(), 0, 0, temptext.c_str(), temptext.size());
-	transparentBlt(p_memdc(), 760, 480, temptext.size() * 11, 30, tempdc());
-
-	while (strlength > tempxlength) {
-		while (text.at(tempxlength) < 0) {
-			--tempxlength;
+	if (p_text->getisdialog()) {
+		StretchBlt(tempdc(), 0, 0, temptext.size() * 11, 30, greenDc(), 0, 0, 1, 1, SRCCOPY);
+		TextOut(tempdc(), 0, 0, temptext.c_str(), temptext.size());
+		if ("주인공 " == temptext) {
+			transparentBlt(p_memdc(), 420, 480, temptext.size() * 11, 30, tempdc());
 		}
-		SetBkColor(tempdc(), MaskColor);
-		StretchBlt(tempdc(), 0, 0, tempxlength * 11, 30, greenDc(), 0, 0, 1, 1, SRCCOPY);
-		TextOut(tempdc(), 0, 0, text.c_str(), tempxlength);
-		transparentBlt(p_memdc(), point.getx(), point.gety() + tempy, tempxlength * 11, 30, tempdc());
-		tempy += 30;
-		strlength -= tempxlength;
-		text.erase(0, tempxlength);
-		tempxlength = 40;
+		else {
+			transparentBlt(p_memdc(), 760, 480, temptext.size() * 11, 30, tempdc());
+		}
+
+		while (strlength > tempxlength) {
+			while (text.at(tempxlength) < 0) {
+				--tempxlength;
+			}
+			StretchBlt(tempdc(), 0, 0, tempxlength * 11, 30, greenDc(), 0, 0, 1, 1, SRCCOPY);
+			TextOut(tempdc(), 0, 0, text.c_str(), tempxlength);
+			transparentBlt(p_memdc(), point.getx(), point.gety() + tempy, tempxlength * 11, 30, tempdc());
+			tempy += 30;
+			strlength -= tempxlength;
+			text.erase(0, tempxlength + 1);
+			tempxlength = 40;
+		}
 	}
 
-
-	SetBkColor(tempdc(), MaskColor);
 	StretchBlt(tempdc(), 0, 0, strlength * 11, 30, greenDc(), 0, 0, 1, 1, SRCCOPY);
 	TextOut(tempdc(), 0, 0, text.c_str(), strlength);
 	transparentBlt(p_memdc(), point.getx(), point.gety() + tempy, strlength * 11, 30, tempdc());
@@ -233,7 +237,18 @@ void Camera::UIRender(MemDc& p_memdc, const TextureComponent* p_texture)
 	StretchBlt(BackDc(), 0, 0, Weight, Height, greenDc(), 0, 0, 1, 1, SRCCOPY);
 	StretchBlt(tempObjDc(), 0, 0, xSize, ySize, ObjDc(), 0, 0, xSize, ySize, SRCCOPY);
 
-	StretchBlt(BackDc(), 0, 0, Weight, Height, tempObjDc(), 0, 0, xSize, ySize, SRCCOPY);
+
+	if (p_texture->getdirection()) {
+		POINT pointarr[4];
+		pointarr[0] = Vector2(Weight, 0).toPOINT();
+		pointarr[1] = Vector2(0, 0).toPOINT();
+		pointarr[2] = Vector2(Weight, Height).toPOINT();
+		pointarr[3] = Vector2(0, Height).toPOINT(); 
+		PlgBlt(BackDc(), pointarr, tempObjDc(), 0, 0, xSize, ySize, 0, 0, 0);
+	}
+	else{
+		StretchBlt(BackDc(), 0, 0, Weight, Height, tempObjDc(), 0, 0, xSize, ySize, SRCCOPY);
+	}
 	transparentBlt(p_memdc(), pivot.getx() - halfWeight, pivot.gety() - halfHeight, Weight, Height, BackDc());
 }
 
