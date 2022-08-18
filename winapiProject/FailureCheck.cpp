@@ -7,6 +7,7 @@
 #include "WindowMsg.h"
 #include "GameObject.h"
 #include "PlayerScript.h"
+#include "TextComponent.h"
 #include "UITransformComponent.h"
 #include "TextureComponent.h"
 #include "TextComponent.h"
@@ -51,10 +52,17 @@ void FailureCheck::Update()
 
 	if (!sw) return;
 
+	GameObject* player = (*allObject->getallObj(E_Objtype::character).first).second;
+	PlayerScript* tempscr = dynamic_cast<PlayerScript*>(player->getscriptptr());
+	tempscr->setismove(false);
+
 	PuzzleData::getInstance()->setisclear(true);
 	GameObject* gameObject = new GameObject();
 	gameObject->pushcomponent(E_Component::UITransformComponent, new UITransformComponent(Vector2(640,360), 0));
 	gameObject->pushcomponent(E_Component::TextureComponent, new TextureComponent("puzzlefailure", Rect(400.f, 200.f), 400, 200));
+
+	TextComponent* tempcomp = new TextComponent(Vector2(590, 340), "PuzzleFailure", false);
+	gameObject->pushcomponent(E_Component::TextComponent, tempcomp);
 
 	gameObject->Start();
 	allObject->push(E_Objtype::PuzzleBoard_UI, gameObject);

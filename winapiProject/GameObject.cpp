@@ -48,6 +48,13 @@ void GameObject::pushcomponent(E_Component p_key, Component* p_com)
 	p_com->Awake(this);
 }
 
+void GameObject::deletecomponent(E_Component p_key)
+{
+	map<E_Component, Component*>::const_iterator iter = componentMap.find(p_key);
+	delete (*iter).second;
+	componentMap.erase(p_key);
+}
+
 Component* GameObject::getcomponent(E_Component p_key) const
 {
 	map<E_Component, Component*>::const_iterator iter = componentMap.find(p_key);
@@ -84,4 +91,12 @@ void GameObject::setscript(Script* p_script)
 {
 	script = p_script;
 	script->Awake(this);
+}
+
+void GameObject::deletescript()
+{
+	if (script) {
+		delete script;
+		script = nullptr;
+	}
 }

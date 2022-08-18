@@ -38,5 +38,8 @@ public:
 	void setpoint(const Vector2&);
 	//void setText(const string&);
 	void setnowLine(const int&);
+
+private:
+	void directionset();
 };
 

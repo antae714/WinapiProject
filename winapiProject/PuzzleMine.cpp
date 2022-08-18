@@ -33,9 +33,9 @@ void PuzzleMine::Update()
 	pair<ObjIter, ObjIter> temp = allObject->getallObj(E_Objtype::character);
 	GameObject* player = player = temp.first.operator*().second;;
 	TransformComponent* playercomp = dynamic_cast<TransformComponent*>(player->getcomponent(E_Component::TransformComponent));
-
+	
 	TextureComponent* tempcom2 = dynamic_cast<TextureComponent*>(owner->getcomponent(E_Component::TextureComponent));
-	if (Math::isin(tempcom2->getrectptr(), Rect(30, 70, playercomp))) {
+	if (Math::isin(tempcom2->getrectptr(), Rect(40, 90, playercomp))) {
 
 		dynamic_cast<PlayerScript*>(player->getscriptptr())->onHit();
 

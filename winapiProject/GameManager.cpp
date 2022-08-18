@@ -13,7 +13,6 @@ GameManager::GameManager()
 	camera = new Camera();
 	inputManager = new InputManager();
 	keyinputManager = new KeyInputManager();
-	SoundManager::getInstance();
 	//SoundManager::getInstance()->PlaySound_(E_Sound::BackGround);
 }
 
@@ -32,6 +31,7 @@ void GameManager::logicUpdate()
 	inputManager->InputLogic();
 	keyinputManager->InputLogic();
 	updateManager->Updating();
+	SoundManager::getInstance()->Update();
 	AllObject::getInstance()->ratedelelte();
 	camera->Render();
 

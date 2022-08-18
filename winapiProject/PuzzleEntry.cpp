@@ -1,4 +1,5 @@
 #include "PuzzleEntry.h"
+#include "SoundManager.h"
 #include "LevelData.h"
 #include "AllObject.h"
 #include "E_Objtype.h"
@@ -26,6 +27,8 @@ void PuzzleEntry::KeyInput()
 {
 	srand(time(NULL));
 	AllObject* allObject = AllObject::getInstance();
+	SoundManager::getInstance()->changeBackground(E_Sound::Puzzle);
+	SoundManager::getInstance()->setBGSMute(false);
 
 	for (int i = (int)E_Objtype::level1_1; i <= (int)E_Objtype::level2_6; ++i) {
 		allObject->setActiveGroup((E_Objtype)i, false);
@@ -37,7 +40,7 @@ void PuzzleEntry::KeyInput()
 		for (int j = 0; j < 9; ++j) {
 
 			GameObject* gameObject = new GameObject();
-			gameObject->pushcomponent(E_Component::TransformComponent, new TransformComponent(Vector2(10 + (j - 4) * GRIDSIZE, -5 + (4 - i) * GRIDSIZE), 0));
+			gameObject->pushcomponent(E_Component::TransformComponent, new TransformComponent(Vector2(10 + (j - 4) * GRIDSIZE, 5 + (4 - i) * GRIDSIZE), 0));
 			gameObject->pushcomponent(E_Component::TextureComponent, new TextureComponent("Starbutton", Rect(50.f, 50.f)));
 			gameObject->pushcomponent(E_Component::KeyInputComponenet, new KeyInputComponenet());
 			gameObject->setscript(new PuzzleDotScript(i * 9 + j));

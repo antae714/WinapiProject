@@ -24,7 +24,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdPa
 	RegisterClass(&WndClass);							//WNDCLASS 구조체의 번지를 전달
 
 	GameData* gameData = GameData::getInstance();
-	hWnd = CreateWindow("winapi", "winapi",			//윈도우를 생성
+	hWnd = CreateWindow("winapi", "Zodiac Dream",			//윈도우를 생성
 		WS_OVERLAPPEDWINDOW ^ WS_THICKFRAME ^ WS_CAPTION | WS_VISIBLE, 0,
 		0,  gameData->getwindowX(),  gameData->getwindowY()
 		, NULL, (HMENU)NULL, hInstance, NULL);

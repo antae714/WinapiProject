@@ -5,8 +5,16 @@
 using namespace std;
 enum class E_Sound
 {
+// BGM
 	BackGround = 0,
+	Puzzle,
+	
+// BGS
+	Timer,
+
+// SE
 	Click,
+	Hit,
 
 	MAX
 };

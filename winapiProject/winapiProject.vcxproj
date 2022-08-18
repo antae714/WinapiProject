@@ -212,6 +212,7 @@
     <ClInclude Include="TextureComponent.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TransformComponent.h" />
+    <ClInclude Include="Tutorial.h" />
     <ClInclude Include="UITransformComponent.h" />
     <ClInclude Include="UI_Hit.h" />
     <ClInclude Include="UpdateFunction.h" />
@@ -287,6 +288,7 @@
     <ClCompile Include="TextureComponent.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
+    <ClCompile Include="Tutorial.cpp" />
     <ClCompile Include="UITransformComponent.cpp" />
     <ClCompile Include="UI_Hit.cpp" />
     <ClCompile Include="UpdateFunction.cpp" />

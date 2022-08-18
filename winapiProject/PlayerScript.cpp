@@ -1,4 +1,5 @@
 #include "PlayerScript.h"
+#include "SoundManager.h"
 #include "WindowMsg.h"
 #include "GameData.h"
 #include "GameObject.h"
@@ -246,6 +247,7 @@ void PlayerScript::Ability() {
 }
 
 void PlayerScript::Damage() {
+	SoundManager::getInstance()->PlaySound_(E_Sound::Hit);
 	//return;
 	--life;
 }

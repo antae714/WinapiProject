@@ -13,6 +13,7 @@
 #include "TextComponent.h"
 #include "TextScript.h"
 #include "PuzzleEntry.h"
+#include "Tutorial.h"
 #include "PuzzleExit.h"
 #include "Timer.h"
 #include "Rect.h"
@@ -90,7 +91,11 @@ void LevelUpdater::level1_3()
 			GameObject* obj = iter.operator*().second;
 			TextScript* tempscr = dynamic_cast<TextScript*>(obj->getscriptptr());
 			if (tempscr != nullptr) {
-				tempscr->Set("dialog2_2", "level1_3_npc", 3);
+
+				obj->deletescript();
+
+				Tutorial* tempscr2 = new Tutorial();
+				obj->setscript(tempscr2);
 				break;
 			}
 		}
@@ -100,12 +105,18 @@ void LevelUpdater::level1_3()
 		{
 			GameObject* obj = iter.operator*().second;
 			TextScript* tempscr = dynamic_cast<TextScript*>(obj->getscriptptr());
+			Tutorial* tempscr2 = dynamic_cast<Tutorial*>(obj->getscriptptr());
 			if (tempscr != nullptr) {
-				delete tempscr;
+				tempscr->Set("dialog2_2", "level1_3_npc", 4);
+				break;
+			}
+			if (tempscr2 != nullptr) {
+				
+				obj->deletescript();
 
-				PuzzleEntry* tempscr2 = new PuzzleEntry();
-				tempscr2->Set("puzzle_1", "level1_3_npc");
-				obj->setscript(tempscr2);
+				tempscr = new TextScript();
+				tempscr->Set("dialog2_2", "level1_3_npc", 4);
+				obj->setscript(tempscr);
 				break;
 			}
 		}
@@ -114,18 +125,40 @@ void LevelUpdater::level1_3()
 		for (ObjIter iter = temp.first; iter != temp.second; ++iter)
 		{
 			GameObject* obj = iter.operator*().second;
-			PuzzleEntry* tempscr = dynamic_cast<PuzzleEntry*>(obj->getscriptptr());
+			TextScript* tempscr = dynamic_cast<TextScript*>(obj->getscriptptr());
 			if (tempscr != nullptr) {
-				delete tempscr;
 
-				TextScript* tempscr2 = new TextScript();
-				tempscr2->Set("dialog2_3", "level1_3_npc", 5);
+				obj->deletescript();
+
+				PuzzleEntry* tempscr2 = new PuzzleEntry();
+				tempscr2->Set("puzzle_1", "level1_3_npc");
 				obj->setscript(tempscr2);
 				break;
 			}
 		}
 	}
 	if (gamedata->getvarias("level1_3_npc") == 5) {
+		for (ObjIter iter = temp.first; iter != temp.second; ++iter)
+		{
+			GameObject* obj = iter.operator*().second;
+			TextScript* tempscr = dynamic_cast<TextScript*>(obj->getscriptptr());
+			PuzzleEntry* tempscr2 = dynamic_cast<PuzzleEntry*>(obj->getscriptptr());
+			if (tempscr != nullptr) {
+				tempscr->Set("dialog2_3", "level1_3_npc", 6);
+				break;
+			}
+			if (tempscr2 != nullptr) {
+
+				obj->deletescript();
+
+				tempscr = new TextScript();
+				tempscr->Set("dialog2_3", "level1_3_npc", 6);
+				obj->setscript(tempscr);
+				break;
+			}
+		}
+	}
+	if (gamedata->getvarias("level1_3_npc") == 6) {
 		for (ObjIter iter = temp.first; iter != temp.second; ++iter)
 		{
 			GameObject* obj = iter.operator*().second;
@@ -160,7 +193,8 @@ void LevelUpdater::level1_4()
 			GameObject* obj = iter.operator*().second;
 			TextScript* tempscr = dynamic_cast<TextScript*>(obj->getscriptptr());
 			if (tempscr != nullptr) {
-				delete tempscr;
+
+				obj->deletescript();
 
 				PuzzleEntry* tempscr2 = new PuzzleEntry();
 				tempscr2->Set("puzzle_2", "level1_4_npc");
@@ -173,13 +207,19 @@ void LevelUpdater::level1_4()
 		for (ObjIter iter = temp.first; iter != temp.second; ++iter)
 		{
 			GameObject* obj = iter.operator*().second;
-			PuzzleEntry* tempscr = dynamic_cast<PuzzleEntry*>(obj->getscriptptr());
+			TextScript* tempscr = dynamic_cast<TextScript*>(obj->getscriptptr());
+			PuzzleEntry* tempscr2 = dynamic_cast<PuzzleEntry*>(obj->getscriptptr());
 			if (tempscr != nullptr) {
-				delete tempscr;
+				tempscr->Set("dialog3_2", "level1_4_npc", 4);
+				break;
+			}
+			if (tempscr2 != nullptr) {
 
-				TextScript* tempscr2 = new TextScript();
-				tempscr2->Set("dialog3_2", "level1_4_npc", 4);
-				obj->setscript(tempscr2);
+				obj->deletescript();
+
+				tempscr = new TextScript();
+				tempscr->Set("dialog3_2", "level1_4_npc", 4);
+				obj->setscript(tempscr);
 				break;
 			}
 		}
@@ -218,10 +258,15 @@ void LevelUpdater::level1_5()
 		{
 			GameObject* obj = iter.operator*().second;
 			TextScript* tempscr = dynamic_cast<TextScript*>(obj->getscriptptr());
+			PuzzleEntry* tempscr2 = dynamic_cast<PuzzleEntry*>(obj->getscriptptr());
+			if (tempscr2 != nullptr) {
+				break;
+			}
 			if (tempscr != nullptr) {
-				delete tempscr;
 
-				PuzzleEntry* tempscr2 = new PuzzleEntry();
+				obj->deletescript();
+
+				tempscr2 = new PuzzleEntry();
 				tempscr2->Set("puzzle_3", "level1_5_npc");
 				obj->setscript(tempscr2);
 				break;
@@ -232,29 +277,24 @@ void LevelUpdater::level1_5()
 		for (ObjIter iter = temp.first; iter != temp.second; ++iter)
 		{
 			GameObject* obj = iter.operator*().second;
-			PuzzleEntry* tempscr = dynamic_cast<PuzzleEntry*>(obj->getscriptptr());
-			if (tempscr != nullptr) {
-				delete tempscr;
-
-				TextScript* tempscr2 = new TextScript();
-				tempscr2->Set("dialog4_2", "level1_5_npc", 4);
-				obj->setscript(tempscr2);
-				break;
-			}
-		}
-	}
-	if (gamedata->getvarias("level1_5_npc") == 4) {
-		for (ObjIter iter = temp.first; iter != temp.second; ++iter)
-		{
-			GameObject* obj = iter.operator*().second;
 			TextScript* tempscr = dynamic_cast<TextScript*>(obj->getscriptptr());
+			PuzzleEntry* tempscr2 = dynamic_cast<PuzzleEntry*>(obj->getscriptptr());
 			if (tempscr != nullptr) {
-				tempscr->Set("dialog4_3");
+				tempscr->Set("dialog4_2");
+				break;
+			}
+			if (tempscr2 != nullptr) {
+
+				obj->deletescript();
+
+				tempscr = new TextScript();
+				tempscr->Set("dialog4_2");
+				obj->setscript(tempscr);
 				break;
 			}
 		}
 	}
-	if (gamedata->getvarias("level1_3_npc") >= 4 &&
+	if (gamedata->getvarias("level1_3_npc") >= 5 &&
 		gamedata->getvarias("level1_4_npc") >= 3 &&
 		gamedata->getvarias("level1_5_npc") >= 3) {
 		int sw = 0;
@@ -290,6 +330,7 @@ void LevelUpdater::level1_5()
 					break;
 				}
 				else {
+					tempscr->Set("dialog4_2");
 					++sw;
 				}
 			}
@@ -323,7 +364,7 @@ void LevelUpdater::level2_1()
 			GameObject* obj = iter.operator*().second;
 			TextScript* tempscr = dynamic_cast<TextScript*>(obj->getscriptptr());
 			if (tempscr != nullptr) {
-				delete tempscr;
+				obj->deletescript();
 
 				PuzzleEntry* tempscr2 = new PuzzleEntry();
 				tempscr2->Set("puzzle_5", "level2_1_npc");
@@ -336,13 +377,18 @@ void LevelUpdater::level2_1()
 		for (ObjIter iter = temp.first; iter != temp.second; ++iter)
 		{
 			GameObject* obj = iter.operator*().second;
-			PuzzleEntry* tempscr = dynamic_cast<PuzzleEntry*>(obj->getscriptptr());
+			TextScript* tempscr = dynamic_cast<TextScript*>(obj->getscriptptr());
+			PuzzleEntry* tempscr2 = dynamic_cast<PuzzleEntry*>(obj->getscriptptr());
 			if (tempscr != nullptr) {
-				delete tempscr;
+				tempscr->Set("dialog8_2", "level2_1_npc", 4);
+				break;
+			}
+			if (tempscr2 != nullptr) {
+				obj->deletescript();
 
-				TextScript* tempscr2 = new TextScript();
-				tempscr2->Set("dialog8_2", "level2_1_npc", 4);
-				obj->setscript(tempscr2);
+				tempscr = new TextScript();
+				tempscr->Set("dialog8_2", "level2_1_npc", 4);
+				obj->setscript(tempscr);
 				break;
 			}
 		}
@@ -382,7 +428,7 @@ void LevelUpdater::level2_2()
 			GameObject* obj = iter.operator*().second;
 			TextScript* tempscr = dynamic_cast<TextScript*>(obj->getscriptptr());
 			if (tempscr != nullptr) {
-				delete tempscr;
+				obj->deletescript();
 
 				PuzzleEntry* tempscr2 = new PuzzleEntry();
 				tempscr2->Set("puzzle_4", "level2_2_npc");
@@ -395,13 +441,19 @@ void LevelUpdater::level2_2()
 		for (ObjIter iter = temp.first; iter != temp.second; ++iter)
 		{
 			GameObject* obj = iter.operator*().second;
-			PuzzleEntry* tempscr = dynamic_cast<PuzzleEntry*>(obj->getscriptptr());
+			TextScript* tempscr = dynamic_cast<TextScript*>(obj->getscriptptr());
+			PuzzleEntry* tempscr2 = dynamic_cast<PuzzleEntry*>(obj->getscriptptr());
 			if (tempscr != nullptr) {
-				delete tempscr;
+				tempscr->Set("dialog7_2", "level2_2_npc", 4);
+				break;
+			}
+			if (tempscr2 != nullptr) {
 
-				TextScript* tempscr2 = new TextScript();
-				tempscr2->Set("dialog7_2", "level2_2_npc", 4);
-				obj->setscript(tempscr2);
+				obj->deletescript();
+
+				tempscr = new TextScript();
+				tempscr->Set("dialog7_2", "level2_2_npc", 4);
+				obj->setscript(tempscr);
 				break;
 			}
 		}
@@ -455,6 +507,69 @@ void LevelUpdater::level2_4()
 			}
 		}
 	}
+	if (gamedata->getvarias("level2_4_npc") == 1) {
+		for (ObjIter iter = temp.first; iter != temp.second; ++iter)
+		{
+			GameObject* obj = iter.operator*().second;
+			TextScript* tempscr = dynamic_cast<TextScript*>(obj->getscriptptr());
+			if (tempscr != nullptr) {
+				tempscr->Set("dialog9_1", "level2_4_npc", 2);
+				break;
+			}
+		}
+	}
+	if (gamedata->getvarias("level2_4_npc") == 2) {
+		for (ObjIter iter = temp.first; iter != temp.second; ++iter)
+		{
+			GameObject* obj = iter.operator*().second;
+			TextScript* tempscr = dynamic_cast<TextScript*>(obj->getscriptptr());
+			PuzzleEntry* tempscr2 = dynamic_cast<PuzzleEntry*>(obj->getscriptptr());
+			if (tempscr2 != nullptr) {
+				break;
+			}
+			if (tempscr != nullptr) {
+
+				obj->deletescript();
+
+				tempscr2 = new PuzzleEntry();
+				tempscr2->Set("puzzle_6", "level2_4_npc");
+				obj->setscript(tempscr2);
+				break;
+			}
+		}
+	}
+	if (gamedata->getvarias("level2_4_npc") == 3) {
+		for (ObjIter iter = temp.first; iter != temp.second; ++iter)
+		{
+			GameObject* obj = iter.operator*().second;
+			TextScript* tempscr = dynamic_cast<TextScript*>(obj->getscriptptr());
+			PuzzleEntry* tempscr2 = dynamic_cast<PuzzleEntry*>(obj->getscriptptr());
+			if (tempscr != nullptr) {
+				tempscr->Set("dialog9_2", "level2_4_npc", 4);
+				break;
+			}
+			if (tempscr2 != nullptr) {
+
+				obj->deletescript();
+
+				tempscr = new TextScript();
+				tempscr->Set("dialog9_2", "level2_4_npc", 4);
+				obj->setscript(tempscr);
+				break;
+			}
+		}
+	}
+	if (gamedata->getvarias("level2_4_npc") == 4) {
+		for (ObjIter iter = temp.first; iter != temp.second; ++iter)
+		{
+			GameObject* obj = iter.operator*().second;
+			TextScript* tempscr = dynamic_cast<TextScript*>(obj->getscriptptr());
+			if (tempscr != nullptr) {
+				tempscr->Set("dialog9_3");
+				break;
+			}
+		}
+	}
 	if (gamedata->getvarias("level2_4_npc") < 3) {
 		int sw = 0;
 		for (ObjIter iter = temp.first; iter != temp.second; ++iter)
@@ -495,58 +610,6 @@ void LevelUpdater::level2_4()
 			}
 		}
 	}
-	if (gamedata->getvarias("level2_4_npc") == 1) {
-		for (ObjIter iter = temp.first; iter != temp.second; ++iter)
-		{
-			GameObject* obj = iter.operator*().second;
-			TextScript* tempscr = dynamic_cast<TextScript*>(obj->getscriptptr());
-			if (tempscr != nullptr) {
-				tempscr->Set("dialog9_1", "level2_4_npc", 2);
-				break;
-			}
-		}
-	}
-	if (gamedata->getvarias("level2_4_npc") == 2) {
-		for (ObjIter iter = temp.first; iter != temp.second; ++iter)
-		{
-			GameObject* obj = iter.operator*().second;
-			TextScript* tempscr = dynamic_cast<TextScript*>(obj->getscriptptr());
-			if (tempscr != nullptr) {
-				delete tempscr;
-
-				PuzzleEntry* tempscr2 = new PuzzleEntry();
-				tempscr2->Set("puzzle_6", "level2_4_npc");
-				obj->setscript(tempscr2);
-				break;
-			}
-		}
-	}
-	if (gamedata->getvarias("level2_4_npc") == 3) {
-		for (ObjIter iter = temp.first; iter != temp.second; ++iter)
-		{
-			GameObject* obj = iter.operator*().second;
-			PuzzleEntry* tempscr = dynamic_cast<PuzzleEntry*>(obj->getscriptptr());
-			if (tempscr != nullptr) {
-				delete tempscr;
-
-				TextScript* tempscr2 = new TextScript();
-				tempscr2->Set("dialog9_2", "level2_4_npc", 4);
-				obj->setscript(tempscr2);
-				break;
-			}
-		}
-	}
-	if (gamedata->getvarias("level2_4_npc") == 4) {
-		for (ObjIter iter = temp.first; iter != temp.second; ++iter)
-		{
-			GameObject* obj = iter.operator*().second;
-			TextScript* tempscr = dynamic_cast<TextScript*>(obj->getscriptptr());
-			if (tempscr != nullptr) {
-				tempscr->Set("dialog9_3");
-				break;
-			}
-		}
-	}
 }
 
 void LevelUpdater::level2_5()
@@ -560,7 +623,8 @@ void LevelUpdater::level2_5()
 			GameObject* obj = iter.operator*().second;
 			TextScript* tempscr = dynamic_cast<TextScript*>(obj->getscriptptr());
 			if (tempscr != nullptr) {
-				delete tempscr;
+
+				obj->deletescript();
 
 				PuzzleEntry* tempscr2 = new PuzzleEntry();
 				tempscr2->Set("puzzle_7", "level2_5_npc");
@@ -579,13 +643,42 @@ void LevelUpdater::level2_5()
 				obj->setisActive(false);
 			}
 
-			PuzzleEntry* tempscr = dynamic_cast<PuzzleEntry*>(obj->getscriptptr());
+			TextScript* tempscr = dynamic_cast<TextScript*>(obj->getscriptptr());
+			PuzzleEntry* tempscr2 = dynamic_cast<PuzzleEntry*>(obj->getscriptptr());
 			if (tempscr != nullptr) {
-				delete tempscr;
+				tempscr->Set("dialog10_1", "level2_5_npc", 3);
+				TextureComponent* tempcom2 = dynamic_cast<TextureComponent*>(obj->getcomponent(E_Component::TextureComponent));
+				tempcom2->setbitmap("npc_assistant", 115, 146);
+				tempcom2->setrect(Rect(115, 146));
+				break;
+			}
+			if (tempscr2 != nullptr) {
 
-				TextScript* tempscr2 = new TextScript();
-				tempscr2->Set("dialog10_1");
-				obj->setscript(tempscr2);
+				obj->deletescript();
+
+				tempscr = new TextScript();
+				tempscr->Set("dialog10_1", "level2_5_npc", 3);
+				TextureComponent* tempcom2 = dynamic_cast<TextureComponent*>(obj->getcomponent(E_Component::TextureComponent));
+				tempcom2->setbitmap("npc_assistant", 115, 146);
+				tempcom2->setrect(Rect(115, 146));
+				obj->setscript(tempscr);
+				break;
+			}
+		}
+	}
+	if (gamedata->getvarias("level2_5_npc") == 3) {
+		for (ObjIter iter = temp.first; iter != temp.second; ++iter)
+		{
+			GameObject* obj = iter.operator*().second;
+
+			CollisonCompoenet* tempcom = dynamic_cast<CollisonCompoenet*>(obj->getcomponent(E_Component::CollisonCompoenet));
+			if (tempcom != nullptr) {
+				obj->setisActive(false);
+			}
+
+			TextScript* tempscr = dynamic_cast<TextScript*>(obj->getscriptptr());
+			if (tempscr != nullptr) {
+				obj->setisActive(false);
 				break;
 			}
 		}

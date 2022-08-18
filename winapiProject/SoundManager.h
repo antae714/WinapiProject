@@ -15,6 +15,7 @@ private:
     array<FMOD::Sound*, (size_t)E_Sound::MAX> soundarr;
     FMOD::Channel* channel;
     FMOD::Channel* channel2;
+    FMOD::Channel* channel3;
 
 public:
     SoundManager();
@@ -26,5 +27,8 @@ public:
     void changeBackground(E_Sound);
 
     void setBackVolume(float);
+    void setBGSMute(bool);
     void setEffectVolume(float);
+
+    void Update();
 };

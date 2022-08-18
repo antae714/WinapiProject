@@ -1,4 +1,5 @@
 #include "PuzzleExit.h"
+#include "SoundManager.h"
 #include "LevelData.h"
 #include "AllObject.h"
 #include "E_Objtype.h"
@@ -23,6 +24,8 @@ PuzzleExit::PuzzleExit()
 void PuzzleExit::Input()
 {
 	AllObject* allObject = AllObject::getInstance();
+	SoundManager::getInstance()->changeBackground(E_Sound::BackGround);
+	SoundManager::getInstance()->setBGSMute(true);
 	//LevelData::LevelLode("testLevel");
 
 	for (int i = (int)E_Objtype::level1_1; i <= (int)E_Objtype::level2_6; ++i) {

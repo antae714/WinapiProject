@@ -1,51 +1,13 @@
-﻿  Camera.cpp
-D:\VisualStudio2022\winapiProject\winapiProject\Camera.cpp(169,61): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\Camera.cpp(185,86): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\Camera.cpp(186,60): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\Camera.cpp(188,74): warning C4267: '인수': 'size_t'에서 'const int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\Camera.cpp(191,74): warning C4267: '인수': 'size_t'에서 'const int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  FailureCheck.cpp
-  GameManager.cpp
-  LevelLoader.cpp
-D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(161,13): warning C4003: 함수 같은 매크로 호출 'GETDATA'에 대해 인수가 부족합니다.
-D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(174,13): warning C4003: 함수 같은 매크로 호출 'GETDATA'에 대해 인수가 부족합니다.
-D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(175,13): warning C4003: 함수 같은 매크로 호출 'GETDATA'에 대해 인수가 부족합니다.
-D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(187,13): warning C4003: 함수 같은 매크로 호출 'GETDATA'에 대해 인수가 부족합니다.
-D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(188,13): warning C4003: 함수 같은 매크로 호출 'GETDATA'에 대해 인수가 부족합니다.
-D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(228,13): warning C4003: 함수 같은 매크로 호출 'GETDATA'에 대해 인수가 부족합니다.
-D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(229,13): warning C4003: 함수 같은 매크로 호출 'GETDATA'에 대해 인수가 부족합니다.
-D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(240,13): warning C4003: 함수 같은 매크로 호출 'GETDATA'에 대해 인수가 부족합니다.
-D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(241,13): warning C4003: 함수 같은 매크로 호출 'GETDATA'에 대해 인수가 부족합니다.
-D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(270,13): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(273,43): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(273,40): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(286,78): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(286,75): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(309,13): warning C4003: 함수 같은 매크로 호출 'GETDATA'에 대해 인수가 부족합니다.
-D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(315,13): warning C4003: 함수 같은 매크로 호출 'GETDATA'에 대해 인수가 부족합니다.
-D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(358,73): warning C4244: '인수': 'int'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(358,66): warning C4244: '인수': 'int'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(368,9): warning C4003: 함수 같은 매크로 호출 'GETDATA'에 대해 인수가 부족합니다.
-D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(369,64): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\LevelLoader.cpp(369,61): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  LevelUpdater.cpp
-  Life.cpp
-  MoveMap.cpp
-D:\VisualStudio2022\winapiProject\winapiProject\MoveMap.cpp(62,67): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\MoveMap.cpp(70,66): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\MoveMap.cpp(71,67): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\MoveMap.cpp(78,33): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\MoveMap.cpp(78,30): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  MoveMap2.cpp
-D:\VisualStudio2022\winapiProject\winapiProject\MoveMap2.cpp(62,69): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\MoveMap2.cpp(70,69): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\MoveMap2.cpp(71,70): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\MoveMap2.cpp(78,33): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\VisualStudio2022\winapiProject\winapiProject\MoveMap2.cpp(78,30): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  PuzzleMine.cpp
-  TextComponent.cpp
-  TextScript.cpp
+﻿  PlayerScript.cpp
+D:\VisualStudio2022\winapiProject\winapiProject\PlayerScript.cpp(115,27): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\PlayerScript.cpp(115,24): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\PlayerScript.cpp(115,47): warning C4244: '인수': 'int'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\PlayerScript.cpp(115,77): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\PlayerScript.cpp(142,18): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\PlayerScript.cpp(145,18): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\PlayerScript.cpp(149,18): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\VisualStudio2022\winapiProject\winapiProject\PlayerScript.cpp(152,18): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   Timer.cpp
-  UI_Hit.cpp
   코드를 생성하고 있습니다...
+  LINK : D:\VisualStudio2022\winapiProject\x64\Debug\winapiProject.exe을(를) 찾을 수 없거나 마지막 증분 링크에 의해 빌드되지 않았습니다. 전체 링크를 수행하고 있습니다.
   winapiProject.vcxproj -> D:\VisualStudio2022\winapiProject\x64\Debug\winapiProject.exe

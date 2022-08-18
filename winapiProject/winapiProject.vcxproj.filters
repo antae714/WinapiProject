@@ -294,6 +294,9 @@
     <ClInclude Include="MoveMap2.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Tutorial.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AllObject.cpp">
@@ -513,6 +516,9 @@
       <Filter>소스 파일\BaseData</Filter>
     </ClCompile>
     <ClCompile Include="MoveMap2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Tutorial.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

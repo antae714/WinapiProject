@@ -1,2 +1,2 @@
 // 퍼즐 클리어 이미지
-UITransform{X:640,Y:360},Texture{Bitmap:puzzlecleartestimg,Width:200,Height:136}
+UITransform{X:640,Y:360},Text{X:590,Y:340,Filename:PuzzleClear},Texture{Bitmap:puzzleclear,Width:400,Height:200}

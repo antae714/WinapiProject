@@ -2,10 +2,10 @@
 Transform,Texture{Bitmap:background_Title,Width:1280,Height:720}
 
 // 게임 시작 버튼
-Transform{X:-450,Y:-250},Texture{Bitmap:start,Width:200,Height:117},Input,Script{GameStart}
+Transform{X:-300,Y:-250},Texture{Bitmap:start,Width:200,Height:117},Input,Script{GameStart}
 
 // 종료 버튼
-Transform{X:450,Y:-250},Texture{Bitmap:exit,Width:200,Height:117},Input,Script{GameExit}
+Transform{X:300,Y:-250},Texture{Bitmap:exit,Width:200,Height:117},Input,Script{GameExit}
 
 
 
@@ -16,5 +16,5 @@ Transform{X:450,Y:-250},Texture{Bitmap:exit,Width:200,Height:117},Input,Script{G
 
 
 
-Transform{X:150,Y:-250},Texture{Bitmap:TitleButton,Width:200,Height:117}
-Transform{X:-150,Y:-250},Texture{Bitmap:TitleButton,Width:200,Height:117}
+//Transform{X:150,Y:-250},Texture{Bitmap:TitleButton,Width:200,Height:117}
+//Transform{X:-150,Y:-250},Texture{Bitmap:TitleButton,Width:200,Height:117}

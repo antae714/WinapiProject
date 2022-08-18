@@ -110,7 +110,7 @@ void LineScript::Setting()
 	GameObject* tempobj = new GameObject();
 
 	TransformComponent* tempcomp = (TransformComponent*)owner->getcomponent(E_Component::TransformComponent);
-	tempcomp->setpivot(Vector2(px, py));
+	tempcomp->setpivot(Vector2(px, py - 10));
 	tempcomp->setrotate(line_atan);
 
 	TextureComponent* tempcomp2 = (TextureComponent*)owner->getcomponent(E_Component::TextureComponent);

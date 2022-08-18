@@ -32,6 +32,7 @@ TextComponent::~TextComponent()
 
 void TextComponent::Update()
 {
+	directionset();
 	TextComponent* text = GETCOMPONENT(owner, TextComponent);
 	accumulateTime += GameTime::getInstance()->getdeltaTime();
 	if (accumulateTime >= 0.07) {
@@ -45,23 +46,7 @@ bool TextComponent::nextLine()
 	if (nowLine < Text.size() - 1) {
 		++nowLine;
 		nownum = 0;
-		string temptext;
-		string text = Text.at(nowLine);
-		for (int i = 0; i < text.size(); ++i) {
-			if ('-' != text.at(i))
-			{
-				temptext.push_back(text.at(i));
-			}
-			else {
-				if ("주인공 " == temptext) {
-					GETCOMPONENT(owner, TextureComponent)->setdirection(true);
-				}
-				else {
-					GETCOMPONENT(owner, TextureComponent)->setdirection(false);
-				}
-				break;
-			}
-		}
+		
 		return true;
 	}
 	else {
@@ -74,6 +59,7 @@ bool TextComponent::beforeLine()
 	if (nowLine >= Text.size()) {
 		--nowLine;
 		nownum = 0;
+
 		return true;
 	}
 	else {
@@ -141,4 +127,25 @@ void TextComponent::setpoint(const Vector2& p_point)
 void TextComponent::setnowLine(const int& p_val)
 {
 	nowLine = p_val;
+}
+
+void TextComponent::directionset()
+{
+	string temptext;
+	string text = Text.at(nowLine);
+	for (int i = 0; i < text.size(); ++i) {
+		if ('-' != text.at(i))
+		{
+			temptext.push_back(text.at(i));
+		}
+		else {
+			if ("주인공 " == temptext) {
+				GETCOMPONENT(owner, TextureComponent)->setdirection(true);
+			}
+			else {
+				GETCOMPONENT(owner, TextureComponent)->setdirection(false);
+			}
+			break;
+		}
+	}
 }

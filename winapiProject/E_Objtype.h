@@ -37,6 +37,7 @@ enum class E_Objtype
 	Puzzleheart,
 	puzzlecleartest,
 	background,
+	Tutorial,
 
 	UI,
 

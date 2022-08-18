@@ -22,6 +22,7 @@ public:
 	void Update();
 
 	void pushcomponent(E_Component, Component*);
+	void deletecomponent(E_Component);
 
 	Component* getcomponent(E_Component) const;
 
@@ -31,6 +32,7 @@ public:
 	Script* getscriptptr() const;
 	void setscript(Script*);
 
+	void deletescript();
 };
 
 

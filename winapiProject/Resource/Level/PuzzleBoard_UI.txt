@@ -3,7 +3,7 @@ UITransform{X:1193,Y:634},Texture{Bitmap:puzzlehint,Width:173,Height:173}
 
 
 // 퍼즐 닫기
-UITransform{X:1238,Y:24},Texture{Bitmap:puzzlebutton,Width:85,Height:48},Input,Script{PuzzleExit}
+UITransform{X:1230,Y:20},Texture{Bitmap:puzzlebutton,Width:100,Height:40},Input,Script{PuzzleExit}
 
 // 시간
 UITransform{X:140,Y:65},Texture{Bitmap:puzzle_ui,Width:60,Height:35},Text{X:120,Y:50,Filename:TimerCount},Script{Timer}

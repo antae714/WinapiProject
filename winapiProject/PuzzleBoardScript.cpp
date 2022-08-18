@@ -188,6 +188,10 @@ void PuzzleBoardScript::Set(const string& type, string p_varias)
 			}
 		}
 		mine_avoid.push_back(rd);
+		if (rd > 8) mine_avoid.push_back(rd - 9);
+		if (rd % 9 != 0) mine_avoid.push_back(rd - 1);
+		if (rd % 9 != 8) mine_avoid.push_back(rd + 1);
+		if (rd > 71) mine_avoid.push_back(rd + 9);
 
 		GameObject* gameObject = new GameObject();
 		gameObject->pushcomponent(E_Component::TextureComponent, new TextureComponent("Green", Rect(50.f, 50.f)));

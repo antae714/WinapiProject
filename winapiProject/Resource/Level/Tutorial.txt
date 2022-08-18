@@ -1,0 +1,2 @@
+// 배경 화면
+UITransform{X:640,Y:360},Texture{Bitmap:Tutorial1,Width:500,Height:500}
